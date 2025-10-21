@@ -3,7 +3,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import LightSwitch from '$lib/components/LightSwitch.svelte';
 	let { children } = $props();
-	 import { CalendarIcon, CircleUserIcon, MenuIcon, SearchIcon } from '@lucide/svelte';
+	 import {CircleUserIcon, MenuIcon } from '@lucide/svelte';
   import { AppBar } from '@skeletonlabs/skeleton-svelte';
 </script>
 
@@ -17,8 +17,8 @@
       <p class="text-3xl">Clippr</p>
     </AppBar.Headline>
     <AppBar.Trail>
-		<LightSwitch></LightSwitch>
-      <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon class="size-6" /></button>
+		  <LightSwitch></LightSwitch>
+      <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon class="size-8" /></button>
     </AppBar.Trail>
   </AppBar.Toolbar>
 </AppBar>
