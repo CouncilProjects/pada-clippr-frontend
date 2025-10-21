@@ -1,3 +1,12 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+/* Skeleton core styles first */
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton-svelte';
+
+/* Theme LAST */
+@import '@skeletonlabs/skeleton/themes/terminus';
+
+@custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
