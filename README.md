@@ -1,38 +1,17 @@
-# sv
+# Clippr — SvelteKit App
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is the **SvelteKit app** that acts as the Frontend for the project **Clippr**.
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Tech Stack
 
-```sh
-# create a new project in the current directory
-npx sv create
+- **Svelte** — v5 (latest as of *20 October 2025*)
+- **SvelteKit** — v2  
+- **Vite** — Used as the build system, configured to act as a **Single Page Application (SPA)**
+- **Tailwind CSS** — For utility-first styling
+- **Skeleton UI** — For prebuilt and customizable UI components
+- **Lucide Icons** — For clean and consistent iconography
+- **playwright** — For testing
 
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+---
