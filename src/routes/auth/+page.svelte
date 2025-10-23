@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-    import { loggedUser } from "$lib/universalReactivity/auth.svelte";
+    import { loggedUser, logInUser } from "$lib/universalReactivity/auth.svelte";
     //change between login and signup
     let signup=$state(false);
     const onclick=()=>{
@@ -61,21 +61,21 @@
 
     function loginSubmit(e: Event) {
 		e.preventDefault();
-        
-        loggedUser.username="fake";
+        logInUser("fake","fakeToken","fakeRole");
         goto('/');
+        // NOTE stopped at 23-10-2025 and waiting for login route impl
 	}
 
     function signupSubmit(e: Event) {
 		e.preventDefault();
-        console.log("signup");
+        // NOTE stopped at 23-10-2025 and waiting for signup route impl
 	}
 </script>
 
-<div class="flex content-center align-center justify-center p-4">
+<div class="flex content-center align-center justify-center px-2 md:p-4">
     <div class="card flex flex-col preset-filled-surface-400-600 p-4 space-y-2">
             <h4 class="h4 text-center">{signup?'Signup':'Login'}</h4>
-            <form class="space-y-8" onsubmit={signup?signupSubmit:loginSubmit}>
+            <form class="space-y-4 md:space-y-8" onsubmit={signup?signupSubmit:loginSubmit}>
                 <label class="label">
                     <span class="label-text">Username</span>
                     <input class="input {formErrors.username&&'ring-error-500'}" 
@@ -113,7 +113,7 @@
 
                 
 
-                <label class="flex items-center space-x-2 m-2">
+                <label class="flex items-center space-x-2 md:m-2">
                     <input class="checkbox" bind:checked={passwordVisibility} type="checkbox" />
                     <p>Show password</p>
                 </label>

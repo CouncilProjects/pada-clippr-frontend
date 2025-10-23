@@ -34,6 +34,8 @@
 		"vite": "^7.1.7"
 	},
 	"dependencies": {
-		"@lucide/svelte": "^0.546.0"
+		"@lucide/svelte": "^0.546.0",
+		"axios": "^1.12.2",
+		"axios-auth-refresh": "^3.3.6"
 	}
 }

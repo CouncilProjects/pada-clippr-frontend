@@ -3,12 +3,24 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import LightSwitch from '$lib/components/LightSwitch.svelte';
 	let { children } = $props();
-	 import {CircleUserIcon, MenuIcon } from '@lucide/svelte';
+	 import {CircleUserIcon, MenuIcon,Euro } from '@lucide/svelte';
   import { AppBar } from '@skeletonlabs/skeleton-svelte';
   import {loggedUser} from "$lib/universalReactivity/auth.svelte"
 
   import {Toast} from "@skeletonlabs/skeleton-svelte"
   import {toaster} from "$lib/toast"
+
+  import { fade } from 'svelte/transition';
+	import { goto } from '$app/navigation';
+
+  let hovered = $state(false);
+  const mouseTrack=()=>{
+    hovered=!hovered;
+  }
+
+  const onclick=()=>{
+    goto('/');
+  }
 </script>
 
 
@@ -16,9 +28,16 @@
   <AppBar.Toolbar class="grid-cols-[auto_1fr_auto] content-center">
     <AppBar.Lead>
       <button type="button" class="btn-icon btn-icon-lg hover:preset-tonal"><MenuIcon /></button>
+      
     </AppBar.Lead>
-    <AppBar.Headline>
-      <p class="text-3xl">Clippr</p>
+    <AppBar.Headline class="flex flex-row items-center">
+      <button onmouseenter={mouseTrack} onmouseleave={mouseTrack} {onclick}>
+        {#if hovered}
+          <p class=" text-base md:text-3xl" in:fade>Clipp€r</p>
+        {:else}
+          <p class=" text-base md:text-3xl" in:fade>Clippr</p>
+        {/if}
+      </button>
     </AppBar.Headline>
     <AppBar.Trail>
 		  <LightSwitch></LightSwitch>

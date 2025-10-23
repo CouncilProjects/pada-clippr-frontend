@@ -1,3 +1,4 @@
+import apiCaller from "$lib/axiosConfig";
 
 
 interface loggedUserInfo{
@@ -12,3 +13,14 @@ export const loggedUser = $state<loggedUserInfo>({
     token:null,
     accountType:null
 })
+
+export const getAccessToken=()=>{
+    return loggedUser.token;
+}
+
+export const logInUser=(name:string,token:string,type:string)=>{
+    loggedUser.username=name;
+    loggedUser.token=token;
+    loggedUser.accountType=type;
+    apiCaller.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
