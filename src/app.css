@@ -10,3 +10,10 @@
 @import '@skeletonlabs/skeleton/themes/terminus';
 
 @custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
+
+
+/*I wanted to override the color when text is selected. */
+::selection {
+    background-color: rgb(77, 158, 250); 
+    color: black; 
+}

@@ -21,41 +21,54 @@
   const onclick=()=>{
     goto('/');
   }
+
+  const lastLogIn = localStorage.getItem('lastLogin');
 </script>
-
-
-<AppBar>
-  <AppBar.Toolbar class="grid-cols-[auto_1fr_auto] content-center">
-    <AppBar.Lead>
-      <button type="button" class="btn-icon btn-icon-lg hover:preset-tonal"><MenuIcon /></button>
-      
-    </AppBar.Lead>
-    <AppBar.Headline class="flex flex-row items-center">
-      <button onmouseenter={mouseTrack} onmouseleave={mouseTrack} {onclick}>
-        {#if hovered}
-          <p class=" text-base md:text-3xl" in:fade>Clipp€r</p>
-        {:else}
-          <p class=" text-base md:text-3xl" in:fade>Clippr</p>
-        {/if}
-      </button>
-    </AppBar.Headline>
-    <AppBar.Trail>
-		  <LightSwitch></LightSwitch>
-      <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon class="size-8" /></button>
-      {#if loggedUser.username!=null}
-        <p class="text-base">{loggedUser.username}</p>
-      {/if}
-      
-    </AppBar.Trail>
-  </AppBar.Toolbar>
-</AppBar>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-{@render children?.()}
+<div class="h-screen grid grid-rows-[auto_1fr_auto]">
+	<!-- Header -->
+	<AppBar>
+    <AppBar.Toolbar class="grid-cols-[auto_1fr_auto] content-center">
+      <AppBar.Lead>
+        <button type="button" class="btn-icon btn-icon-lg hover:preset-tonal"><MenuIcon /></button>
+        
+      </AppBar.Lead>
+      <AppBar.Headline class="flex flex-row items-center">
+        <button onmouseenter={mouseTrack} onmouseleave={mouseTrack} {onclick}>
+          {#if hovered}
+            <p class=" text-base md:text-3xl" in:fade>Clipp€r</p>
+          {:else}
+            <p class=" text-base md:text-3xl" in:fade>Clippr</p>
+          {/if}
+        </button>
+      </AppBar.Headline>
+      <AppBar.Trail>
+        <LightSwitch></LightSwitch>
+        <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon class="size-8" /></button>
+        {#if loggedUser.username!=null}
+          <p class="text-base">{loggedUser.username}</p>
+        {/if}
+        
+      </AppBar.Trail>
+    </AppBar.Toolbar>
+  </AppBar>
 
+	<!-- Main -->
+	<main class="p-4 space-y-4">
+		{@render children?.()}
+	</main>
+	<!-- Footer -->
+	<footer class="bg-surface-300-700 p-4 ">
+    {#if lastLogIn}
+      <p>Last Login : {lastLogIn}</p>
+    {/if}
+    <p class="text-right">2025</p>
+  </footer>
+</div>
 
 <!--we create a singleton toaster here-->
 <Toast.Group {toaster}>

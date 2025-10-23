@@ -62,6 +62,8 @@
     function loginSubmit(e: Event) {
 		e.preventDefault();
         logInUser("fake","fakeToken","fakeRole");
+        localStorage.setItem('lastLogin',new Date().toLocaleString("el-GR"));
+        
         goto('/');
         // NOTE stopped at 23-10-2025 and waiting for login route impl
 	}
