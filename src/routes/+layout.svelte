@@ -3,8 +3,8 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import LightSwitch from '$lib/components/LightSwitch.svelte';
 	let { children } = $props();
-	 import {CircleUserIcon, MenuIcon,Euro } from '@lucide/svelte';
-  import { AppBar } from '@skeletonlabs/skeleton-svelte';
+	 import {CircleUserIcon, MenuIcon,Euro,House,Store,Handshake,Inbox } from '@lucide/svelte';
+  import { AppBar, Navigation } from '@skeletonlabs/skeleton-svelte';
   import {loggedUser} from "$lib/universalReactivity/auth.svelte"
 
   import {Toast} from "@skeletonlabs/skeleton-svelte"
@@ -12,11 +12,21 @@
 
   import { fade } from 'svelte/transition';
 	import { goto } from '$app/navigation';
+  import { Popover, Portal } from '@skeletonlabs/skeleton-svelte';
 
   let hovered = $state(false);
   const mouseTrack=()=>{
     hovered=!hovered;
   }
+
+  let anchorRail = 'btn hover:preset-tonal aspect-square w-full max-w-[84px] flex flex-col items-center gap-0.5';
+  //NOTE these are for a basic user, when auth is set up i will have different links for each role 
+  const links = [
+    { label: 'Home', href: '/', icon: House },
+    { label: 'My Clippings', href: '#', icon: Store },
+    { label: 'Intrest Offers', href: '#', icon: Inbox },
+    { label: 'My Offers', href: '#', icon: Handshake },
+  ];
 
   const onclick=()=>{
     goto('/');
@@ -27,14 +37,40 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+  <title>Clipp€r</title>
 </svelte:head>
 
 <div class="h-screen grid grid-rows-[auto_1fr_auto]">
 	<!-- Header -->
-	<AppBar>
+	<AppBar class="sticky top-0 z-10 bg-surface-100-900/80 backdrop-blur-sm"> <!--NOTE: in skeleton ui the /80 means 80% transparency-->
     <AppBar.Toolbar class="grid-cols-[auto_1fr_auto] content-center">
       <AppBar.Lead>
-        <button type="button" class="btn-icon btn-icon-lg hover:preset-tonal"><MenuIcon /></button>
+        <Popover>
+          <Popover.Trigger class="btn"><MenuIcon></MenuIcon></Popover.Trigger>
+          <Portal>
+            <Popover.Positioner>
+              <Popover.Content class="card max-w-md mt-5 p-4 bg-surface-100-900 shadow-xl space-y-2 max-h-[70dvh] overflow-hidden">
+                <Popover.Title class="font-bold">Menu</Popover.Title>
+                <Popover.Description class="overflow-y-auto max-h-[60dvh] smooth-scroll"> 
+                  <Navigation layout="rail">
+                    <Navigation.Content>
+                      <Navigation.Menu>
+                        {#each links as link (link)}
+                          {@const Icon = link.icon}
+                          <a href={link.href} class={anchorRail}>
+                            <Icon class="size-5" />
+                            <span class="text-xs">{link.label}</span>
+                          </a>
+                        {/each}
+                      </Navigation.Menu>
+                    </Navigation.Content>
+                  </Navigation>
+                </Popover.Description>
+                <Popover.CloseTrigger class="btn preset-tonal-secondary hidden md:block">Close</Popover.CloseTrigger>
+              </Popover.Content>
+            </Popover.Positioner>
+          </Portal>
+        </Popover>
         
       </AppBar.Lead>
       <AppBar.Headline class="flex flex-row items-center">

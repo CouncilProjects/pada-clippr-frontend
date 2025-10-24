@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
+	import apiCaller from "$lib/axiosConfig";
     import { loggedUser, logInUser } from "$lib/universalReactivity/auth.svelte";
+
+    //change as needed
+    const LOGINURL="login";
+    const SIGNUPURL="signup";
+
     //change between login and signup
     let signup=$state(false);
     const onclick=()=>{
@@ -59,18 +65,46 @@
     })
     
 
-    function loginSubmit(e: Event) {
+    async function loginSubmit(e: Event) {
 		e.preventDefault();
         logInUser("fake","fakeToken","fakeRole");
         localStorage.setItem('lastLogin',new Date().toLocaleString("el-GR"));
         
         goto('/');
+        return;
         // NOTE stopped at 23-10-2025 and waiting for login route impl
+
+        try {
+            const result = await apiCaller.post(LOGINURL,{username:formState.username,password:formState.password});
+            const {user,token,role}=result.data;
+            logInUser(user,token,role);
+            goto('/');
+        } catch (error) {
+            // TODO i wait for the backend to see how the errors look like
+        }
 	}
 
-    function signupSubmit(e: Event) {
+    async function signupSubmit(e: Event) {
 		e.preventDefault();
         // NOTE stopped at 23-10-2025 and waiting for signup route impl
+        return;
+
+        try {
+            const result = await apiCaller.post(SIGNUPURL,{username:formState.username,password:formState.password});
+        } catch (error) {
+            // TODO i wait for the backend to see how the errors look like
+
+            return; //failed signup dont proceed
+        }
+        //assume good signup
+        try {
+            const result = await apiCaller.post(LOGINURL,{username:formState.username,password:formState.password});
+            const {user,token,role}=result.data;
+            logInUser(user,token,role);
+            goto('/');
+        } catch (error) {
+            // TODO i wait for the backend to see how the errors look like
+        }
 	}
 </script>
 
