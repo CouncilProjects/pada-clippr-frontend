@@ -44,7 +44,7 @@
     $effect(()=>{
         
         if (formState.username.trim().length < 4) {
-            formErrors.username = "Username should be 4 characters at least";
+            formErrors.username = "Username must be 4 characters at least";
         } else {
             formErrors.username = '';
         }
@@ -52,7 +52,7 @@
 
     $effect(()=>{
         if (formState.password.trim().length < 8) {
-            formErrors.password = "Password should be 8 characters at least";
+            formErrors.password = "Password must be 8 characters at least";
         } else {
             formErrors.password = '';
         }
@@ -118,9 +118,8 @@
                         bind:value={formState.username} 
                         type="text" 
                         placeholder="Username"/>
-                    {#if formErrors.username}
-                        <p class="text-error-800-200 text-xs">{formErrors.username}</p>
-                    {/if}
+                
+                    <p class="text-error-800-200 text-xs min-h-[1.25rem]" class:invisible={!formErrors.username}>{formErrors.username}</p>
                 </label>
 
                 <label class="label">
@@ -129,9 +128,7 @@
                         bind:value={formState.password} 
                         type={passwordVisibility?'text':'password'} 
                         placeholder="Password"/>
-                    {#if formErrors.password}
-                        <p class="text-error-800-200 text-xs">{formErrors.password}</p>
-                    {/if}
+                    <p class="text-error-800-200 text-xs min-h-[1.25rem]" class:invisible={!formErrors.password}>{formErrors.password}</p>
                 </label>
 
                 {#if signup}
@@ -141,9 +138,7 @@
                             bind:value={formState.confirm} 
                             type={passwordVisibility?'text':'password'} 
                             placeholder="Confirm Password"/>
-                        {#if formErrors.confirm}
-                            <p class="text-error-800-200 text-xs">{formErrors.confirm}</p>
-                        {/if}
+                        <p class="text-error-800-200 text-xs min-h-[1.25rem]" class:invisible={!formErrors.confirm}>{formErrors.confirm}</p>
                     </label>
                 {/if}
 

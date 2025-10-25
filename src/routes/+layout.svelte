@@ -1,9 +1,8 @@
 <script lang="ts">
 	import '../app.css';
-	import favicon from '$lib/assets/favicon.svg';
 	import LightSwitch from '$lib/components/LightSwitch.svelte';
 	let { children } = $props();
-	 import {CircleUserIcon, MenuIcon,Euro,House,Store,Handshake,Inbox } from '@lucide/svelte';
+	 import {CircleUserIcon, MenuIcon,House,Store,Handshake,Inbox,Settings } from '@lucide/svelte';
   import { AppBar, Navigation } from '@skeletonlabs/skeleton-svelte';
   import {loggedUser} from "$lib/universalReactivity/auth.svelte"
 
@@ -19,14 +18,20 @@
     hovered=!hovered;
   }
 
+  //2 different kinds of clicable icons, chose what you like best
+  let anchorRailComplex = 'btn hover:preset-outlined-primary-500 hover:bg-surface-500/30 aspect-square w-full max-w-[84px] flex flex-col items-center gap-0.5';
   let anchorRail = 'btn hover:preset-tonal aspect-square w-full max-w-[84px] flex flex-col items-center gap-0.5';
   //NOTE these are for a basic user, when auth is set up i will have different links for each role 
   const links = [
-    { label: 'Home', href: '/', icon: House },
     { label: 'My Clippings', href: '#', icon: Store },
     { label: 'Intrest Offers', href: '#', icon: Inbox },
     { label: 'My Offers', href: '#', icon: Handshake },
   ];
+
+  const commonlinks=[
+    { label: 'Home', href: '/', icon: House },
+    { label: 'Settings', href: '#', icon: Settings },
+  ]
 
   const onclick=()=>{
     goto('/');
@@ -36,7 +41,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>Clipp€r</title>
 </svelte:head>
 
@@ -55,7 +60,7 @@
                   <Navigation layout="rail">
                     <Navigation.Content>
                       <Navigation.Menu>
-                        {#each links as link (link)}
+                        {#each [commonlinks[0],...links,commonlinks[1]] as link (link)}
                           {@const Icon = link.icon}
                           <a href={link.href} class={anchorRail}>
                             <Icon class="size-5" />
@@ -66,7 +71,7 @@
                     </Navigation.Content>
                   </Navigation>
                 </Popover.Description>
-                <Popover.CloseTrigger class="btn preset-tonal-secondary hidden md:block">Close</Popover.CloseTrigger>
+                
               </Popover.Content>
             </Popover.Positioner>
           </Portal>
