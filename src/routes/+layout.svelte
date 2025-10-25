@@ -2,7 +2,7 @@
 	import '../app.css';
 	import LightSwitch from '$lib/components/LightSwitch.svelte';
 	let { children } = $props();
-	 import {CircleUserIcon, MenuIcon,House,Store,Handshake,Inbox,Settings } from '@lucide/svelte';
+	 import {CircleUserIcon, MenuIcon,House,Store,Handshake,Inbox,Settings,Share2,ChartColumnBig,MessageCircleWarning,ShieldCheck, Icon, Ribbon } from '@lucide/svelte';
   import { AppBar, Navigation } from '@skeletonlabs/skeleton-svelte';
   import {loggedUser} from "$lib/universalReactivity/auth.svelte"
 
@@ -13,30 +13,60 @@
 	import { goto } from '$app/navigation';
   import { Popover, Portal } from '@skeletonlabs/skeleton-svelte';
 
+  // tracks when the site title is hovered and onclick sends the user home
   let hovered = $state(false);
   const mouseTrack=()=>{
     hovered=!hovered;
   }
 
+  const onclick=()=>{
+    goto('/');
+  }
+
   //2 different kinds of clicable icons, chose what you like best
   let anchorRailComplex = 'btn hover:preset-outlined-primary-500 hover:bg-surface-500/30 aspect-square w-full max-w-[84px] flex flex-col items-center gap-0.5';
   let anchorRail = 'btn hover:preset-tonal aspect-square w-full max-w-[84px] flex flex-col items-center gap-0.5';
-  //NOTE these are for a basic user, when auth is set up i will have different links for each role 
-  const links = [
-    { label: 'My Clippings', href: '#', icon: Store },
-    { label: 'Intrest Offers', href: '#', icon: Inbox },
-    { label: 'My Offers', href: '#', icon: Handshake },
-  ];
+   
+  //types for the nav links
+  type Role = 'user'|'shop'|'admin';
+  type AccountLinks = Record<Role,{label:string,href:string,icon:any}[]>;
+
+  const navLinksLookUpTable:AccountLinks ={
+    user:[
+        { label: 'My Clippings', href: '#', icon: Store },
+        { label: 'Intrest Offers', href: '#', icon: Inbox },
+        { label: 'My Offers', href: '#', icon: Handshake },
+    ],
+    shop:[
+      { label: 'My Clippings', href: '#', icon: Store },
+      { label: 'My analitics', href: '#', icon: ChartColumnBig },
+      { label: 'Reviews', href: '#', icon: Inbox },
+      { label: 'Shop Socials', href: '#', icon: Share2 },
+    ],
+    admin:[
+      { label: 'Site analytics', href: '#', icon: ChartColumnBig },
+      { label: 'Reports', href: '#', icon: MessageCircleWarning },
+      { label: 'Verification', href: '#', icon: ShieldCheck },
+    ],
+  }
+
+  // function to get nav links, if bad role is given it returns nothing
+  function getNavLinks(role:string|null) {
+    if(role==null) return [];
+    return navLinksLookUpTable[role as Role];
+  }
 
   const commonlinks=[
     { label: 'Home', href: '/', icon: House },
     { label: 'Settings', href: '#', icon: Settings },
   ]
 
-  const onclick=()=>{
-    goto('/');
-  }
+  const currentUserLinks =$derived(
+    [commonlinks[0],...getNavLinks(loggedUser.accountType),commonlinks[1]]
+  );
 
+  
+  //non reactive
   const lastLogIn = localStorage.getItem('lastLogin');
 </script>
 
@@ -60,7 +90,7 @@
                   <Navigation layout="rail">
                     <Navigation.Content>
                       <Navigation.Menu>
-                        {#each [commonlinks[0],...links,commonlinks[1]] as link (link)}
+                        {#each currentUserLinks as link (link)}
                           {@const Icon = link.icon}
                           <a href={link.href} class={anchorRail}>
                             <Icon class="size-5" />

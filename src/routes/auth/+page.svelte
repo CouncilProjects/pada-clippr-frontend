@@ -67,7 +67,7 @@
 
     async function loginSubmit(e: Event) {
 		e.preventDefault();
-        logInUser("fake","fakeToken","fakeRole");
+        logInUser("fake","fakeToken",formState.username);
         localStorage.setItem('lastLogin',new Date().toLocaleString("el-GR"));
         
         goto('/');
