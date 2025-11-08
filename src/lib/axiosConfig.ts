@@ -1,29 +1,33 @@
 import  axios,{ AxiosError, type InternalAxiosRequestConfig } from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
-const REFRESH_API="token/refresh";
+const REFRESH_API="user/refresh/";
 
 import { loggedUser } from "./universalReactivity/auth.svelte";
+
+axios.defaults.withCredentials=true;
+
 const apiCaller = axios.create({
-  baseURL: 'http://127.0.0.1:5000/api/',
+  baseURL: 'http://127.0.0.1:8000/api/',
 });
 
 //exported in case we need to manually refresh 
 export async function refreshLogic(){
     //assume a call just failed with a 401
     try {
-        const refreshResponse = await axios.post(`http://127.0.0.1:5000/api/${REFRESH_API}`);
-        const newToken = refreshResponse.data.token;
-        if(!newToken){
+        const refreshResponse = await axios.get(`http://127.0.0.1:8000/api/${REFRESH_API}`);
+        const {token,username,role} = refreshResponse.data;
+        if(!token){
             return Promise.reject({
                     response:{status:401}
                 }); 
         }
-        loggedUser.token = newToken;
-
-        apiCaller.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
+        loggedUser.token = token;
+        loggedUser.accountType=role;
+        loggedUser.username=username;
+        apiCaller.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         
 
-        return Promise.resolve(newToken);
+        return Promise.resolve(token);
     } catch (error) {
         return Promise.reject();
     }

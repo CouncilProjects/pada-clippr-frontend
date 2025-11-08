@@ -28,22 +28,22 @@
   let anchorRail = 'btn hover:preset-tonal aspect-square w-full max-w-[84px] flex flex-col items-center gap-0.5';
    
   //types for the nav links
-  type Role = 'user'|'shop'|'admin';
+  type Role = 'MEMBER'|'SELLER'|'ADMIN';
   type AccountLinks = Record<Role,{label:string,href:string,icon:any}[]>;
 
   const navLinksLookUpTable:AccountLinks ={
-    user:[
+    MEMBER:[
         { label: 'My Clippings', href: '#', icon: Store },
         { label: 'Intrest Offers', href: '#', icon: Inbox },
         { label: 'My Offers', href: '#', icon: Handshake },
     ],
-    shop:[
+    SELLER:[
       { label: 'My Clippings', href: '#', icon: Store },
       { label: 'My analitics', href: '#', icon: ChartColumnBig },
       { label: 'Reviews', href: '#', icon: Inbox },
       { label: 'Shop Socials', href: '#', icon: Share2 },
     ],
-    admin:[
+    ADMIN:[
       { label: 'Site analytics', href: '#', icon: ChartColumnBig },
       { label: 'Reports', href: '#', icon: MessageCircleWarning },
       { label: 'Verification', href: '#', icon: ShieldCheck },
@@ -80,32 +80,34 @@
 	<AppBar class="sticky top-0 z-10 bg-surface-100-900/80 backdrop-blur-sm"> <!--NOTE: in skeleton ui the /80 means 80% transparency-->
     <AppBar.Toolbar class="grid-cols-[auto_1fr_auto] content-center">
       <AppBar.Lead>
-        <Popover>
-          <Popover.Trigger class="btn"><MenuIcon></MenuIcon></Popover.Trigger>
-          <Portal>
-            <Popover.Positioner>
-              <Popover.Content class="card max-w-md mt-5 p-4 bg-surface-100-900 shadow-xl space-y-2 max-h-[70dvh] overflow-hidden">
-                <Popover.Title class="font-bold">Menu</Popover.Title>
-                <Popover.Description class="overflow-y-auto max-h-[60dvh] smooth-scroll"> 
-                  <Navigation layout="rail">
-                    <Navigation.Content>
-                      <Navigation.Menu>
-                        {#each currentUserLinks as link (link)}
-                          {@const Icon = link.icon}
-                          <a href={link.href} class={anchorRail}>
-                            <Icon class="size-5" />
-                            <span class="text-xs">{link.label}</span>
-                          </a>
-                        {/each}
-                      </Navigation.Menu>
-                    </Navigation.Content>
-                  </Navigation>
-                </Popover.Description>
-                
-              </Popover.Content>
-            </Popover.Positioner>
-          </Portal>
-        </Popover>
+        {#if loggedUser.accountType!=null}
+          <Popover>
+            <Popover.Trigger class="btn"><MenuIcon></MenuIcon></Popover.Trigger>
+            <Portal>
+              <Popover.Positioner>
+                <Popover.Content class="card max-w-md mt-5 p-4 bg-surface-100-900 shadow-xl space-y-2 max-h-[70dvh] overflow-hidden">
+                  <Popover.Title class="font-bold">Menu</Popover.Title>
+                  <Popover.Description class="overflow-y-auto max-h-[60dvh] smooth-scroll"> 
+                    <Navigation layout="rail">
+                      <Navigation.Content>
+                        <Navigation.Menu>
+                          {#each currentUserLinks as link (link)}
+                            {@const Icon = link.icon}
+                            <a href={link.href} class={anchorRail}>
+                              <Icon class="size-5" />
+                              <span class="text-xs">{link.label}</span>
+                            </a>
+                          {/each}
+                        </Navigation.Menu>
+                      </Navigation.Content>
+                    </Navigation>
+                  </Popover.Description>
+                  
+                </Popover.Content>
+              </Popover.Positioner>
+            </Portal>
+          </Popover>
+        {/if}
         
       </AppBar.Lead>
       <AppBar.Headline class="flex flex-row items-center">
