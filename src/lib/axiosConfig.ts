@@ -16,6 +16,7 @@ export async function refreshLogic(){
     try {
         const refreshResponse = await axios.get(`http://127.0.0.1:8000/api/${REFRESH_API}`);
         const {token,username,role} = refreshResponse.data;
+        console.log(token+" and "+username+" and +"+role);
         if(!token){
             return Promise.reject({
                     response:{status:401}

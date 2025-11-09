@@ -5,24 +5,25 @@
 	import apiCaller,{refreshLogic} from "$lib/axiosConfig"; // what to use to make http requests
 	
     async function triggerRefresh(){
-        await refreshLogic();
-        return;
+        const tok = await refreshLogic();
+        return tok;
     }
 
     $effect.pre(()=>{
         if(loggedUser.username==null){
-            triggerRefresh();
-            if(loggedUser.token==null){
+            const tok = triggerRefresh();
+            if(tok==null){
                 goto('/auth');
-            }
-            
-            queueMicrotask(()=>{
+                queueMicrotask(()=>{
                 toaster.error({
                     title:'Authentication error',
                     description:'Login to use the app'
                 });
                 
             });
+            }
+            
+            
         }
     })
 </script>
