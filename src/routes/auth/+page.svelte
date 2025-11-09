@@ -24,8 +24,6 @@
             confirm:''
         };
 
-        
-
         formErrors={
             username:'',
             password:'',
@@ -76,11 +74,8 @@
         );
 
     async function loginSubmit(e: Event|null) {
-		e?.preventDefault();
-        // NOTE stopped at 23-10-2025 and waiting for login route impl
-
+        e?.preventDefault();
         try {
-            console.log("i will try to login");
             const result = await apiCaller.post(LOGINURL,{username:formState.username,password:formState.password},{ skipAuthRefresh: true } as AxiosAuthRefreshRequestConfig );
             const {username,token,role}=result.data;
             logInUser(username,token,role);
@@ -99,10 +94,10 @@
                 }
             }
         }
-	}
+    }
 
     async function signupSubmit(e: Event) {
-		e.preventDefault();
+        e.preventDefault();
 
         try {
             const result = await apiCaller.post(SIGNUPURL,{username:formState.username,password:formState.password,email:formState.email,first_name:formState.firstName,last_name:formState.lastName});

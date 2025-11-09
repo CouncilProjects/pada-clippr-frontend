@@ -1,17 +1,19 @@
 <script lang="ts">
-	import '../app.css';
-	import LightSwitch from '$lib/components/LightSwitch.svelte';
-	let { children } = $props();
-	 import {CircleUserIcon, MenuIcon,House,Store,Handshake,Inbox,Settings,Share2,ChartColumnBig,MessageCircleWarning,ShieldCheck, Icon, Ribbon } from '@lucide/svelte';
+  import '../app.css';
+  import LightSwitch from '$lib/components/LightSwitch.svelte';
+  let { children } = $props();
+  import { CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck } from '@lucide/svelte';
   import { AppBar, Navigation } from '@skeletonlabs/skeleton-svelte';
-  import {loggedUser} from "$lib/universalReactivity/auth.svelte"
+  import { loggedUser } from "$lib/universalReactivity/auth.svelte"
 
-  import {Toast} from "@skeletonlabs/skeleton-svelte"
-  import {toaster} from "$lib/toast"
+  import { Toast } from "@skeletonlabs/skeleton-svelte"
+  import { toaster } from "$lib/toast"
 
   import { fade } from 'svelte/transition';
-	import { goto } from '$app/navigation';
+  import { goto } from '$app/navigation';
   import { Popover, Portal } from '@skeletonlabs/skeleton-svelte';
+
+  import apiCaller from '$lib/axiosConfig';
 
   // tracks when the site title is hovered and onclick sends the user home
   let hovered = $state(false);
@@ -65,7 +67,19 @@
     [commonlinks[0],...getNavLinks(loggedUser.accountType),commonlinks[1]]
   );
 
-  
+  async function logoutSubmit(e: Event|null) {
+    e?.preventDefault();
+    try {
+      await apiCaller.post("/user/logout/");
+      loggedUser.accountType = null;
+      loggedUser.token = null;
+      loggedUser.username = null;
+      goto("/auth");
+    } catch (error) {
+      console.log("Since when does the backend give an error here??");
+    }
+  }
+
   //non reactive
   const lastLogIn = localStorage.getItem('lastLogin');
 </script>
@@ -124,8 +138,8 @@
         <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon class="size-8" /></button>
         {#if loggedUser.username!=null}
           <p class="text-base">{loggedUser.username}</p>
+          <button type="button" class="btn-icon hover:preset-tonal" onclick={logoutSubmit}><LogOutIcon class="size-8" /></button>
         {/if}
-        
       </AppBar.Trail>
     </AppBar.Toolbar>
   </AppBar>
