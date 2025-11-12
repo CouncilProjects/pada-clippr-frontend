@@ -3,7 +3,7 @@
   import LightSwitch from '$lib/components/LightSwitch.svelte';
   let { children } = $props();
   import { CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck } from '@lucide/svelte';
-  import { AppBar, Navigation } from '@skeletonlabs/skeleton-svelte';
+  import { AppBar, Avatar, Navigation } from '@skeletonlabs/skeleton-svelte';
   import { loggedUser } from "$lib/universalReactivity/auth.svelte"
 
   import { Toast } from "@skeletonlabs/skeleton-svelte"
@@ -13,7 +13,7 @@
   import { goto } from '$app/navigation';
   import { Popover, Portal } from '@skeletonlabs/skeleton-svelte';
 
-  import apiCaller from '$lib/axiosConfig';
+  import apiCaller, { backend } from '$lib/axiosConfig';
 
   // tracks when the site title is hovered and onclick sends the user home
   let hovered = $state(false);
@@ -60,7 +60,7 @@
 
   const commonlinks=[
     { label: 'Home', href: '/', icon: House },
-    { label: 'Settings', href: '#', icon: Settings },
+    { label: 'Settings', href: '/account-settings', icon: Settings },
   ]
 
   const currentUserLinks =$derived(
@@ -79,6 +79,29 @@
       console.log("Since when does the backend give an error here??");
     }
   }
+
+  async function getAvatar(){
+    try {
+      const result=await apiCaller.get("/user/avatar");
+      if(result.status==200){
+        const {userAvatar} = result.data;
+        if(userAvatar.length>0){
+          loggedUser.avatar=userAvatar[0].image;
+
+        }
+      }
+    } catch (error) {
+      console.log("todo");
+    }
+  }
+
+  $effect(()=>{
+    if(loggedUser.token){
+      getAvatar();
+    }
+  })
+
+  let avatar = $derived(loggedUser.avatar ? backend + loggedUser.avatar : null);
 
   //non reactive
   const lastLogIn = localStorage.getItem('lastLogin');
@@ -133,13 +156,25 @@
           {/if}
         </button>
       </AppBar.Headline>
-      <AppBar.Trail>
-        <LightSwitch></LightSwitch>
-        <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon class="size-8" /></button>
+      <AppBar.Trail class="items-center">
+        <div class="hidden sm:block">
+          <LightSwitch></LightSwitch>
+        </div>
+        
         {#if loggedUser.username!=null}
-          <p class="text-base">{loggedUser.username}</p>
+         
+          {#if !avatar}
+          <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon size=18 /></button>
+        {:else}
+          <Avatar class="size-10 sm:size-18">
+            <Avatar.Image src={avatar} alt="small" class="w-full h-full object-cover"/>
+            <Avatar.Fallback>SK</Avatar.Fallback>
+          </Avatar>
+        {/if}
+         <p class="text-base">{loggedUser.username}</p>
           <button type="button" class="btn-icon hover:preset-tonal" onclick={logoutSubmit}><LogOutIcon class="size-8" /></button>
         {/if}
+        
       </AppBar.Trail>
     </AppBar.Toolbar>
   </AppBar>

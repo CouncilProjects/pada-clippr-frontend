@@ -6,8 +6,10 @@ import { loggedUser } from "./universalReactivity/auth.svelte";
 
 axios.defaults.withCredentials=true;
 
+export const backend="http://127.0.0.1:8000"
+
 const apiCaller = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api/',
+  baseURL: backend+'/api/',
 });
 
 //exported in case we need to manually refresh 
