@@ -48,7 +48,7 @@
     ADMIN:[
       { label: 'Site analytics', href: '#', icon: ChartColumnBig },
       { label: 'Reports', href: '#', icon: MessageCircleWarning },
-      { label: 'Verification', href: '#', icon: ShieldCheck },
+      { label: 'Verification', href: '/verifications', icon: ShieldCheck },
     ],
   }
 
