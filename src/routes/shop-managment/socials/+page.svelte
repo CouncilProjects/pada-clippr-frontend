@@ -7,10 +7,12 @@
 		Twitter,
 		Ghost,
 		Linkedin,
-		Pin
+		Pin,
+		AtSign
 	} from '@lucide/svelte';
 
 	const socials = [
+		{ name: 'email', icon: AtSign },
 		{ name: 'facebook', icon: Facebook }, // fallback (Lucide has no Facebook)
 		{ name: 'youTube', icon: Youtube },
 		{ name: 'instagram', icon: Instagram },
@@ -35,23 +37,36 @@
 
 	const discard = () => {
 		changes = 0;
-		visualSocial = data.socials;
 		resetKey++; // this will allow/force the table to reset
 	};
 
-	
+	const submition = (e: SubmitEvent) => {
+		e.preventDefault();
+		const formdata = new FormData(e.currentTarget as HTMLFormElement);
+
+		let newBaseline: Record<string, string> = {};
+		socials.forEach((social) => {
+			if (formdata.get(social.name) != '') {
+				newBaseline[social.name] = formdata.get(social.name) as string;
+			}
+		});
+
+		visualSocial = newBaseline;
+		changes = 0;
+		console.log(formdata);
+	};
 </script>
 
 <div>
-	<div class="table-wrap">
-		<form>
+	<form onsubmit={submition}>
+		<div class="table-wrap">
 			<table class="table caption-bottom">
 				<caption class="pt-4">A list of socials for your shop</caption>
 				<thead>
 					<tr>
 						<th>Social</th>
 						<th>Symbol</th>
-						<th>Link</th>
+						<th>Account</th>
 					</tr>
 				</thead>
 				{#key resetKey}
@@ -68,6 +83,7 @@
 										placeholder={visualSocial![row.name] ?? row.name}
 										value={visualSocial![row.name] ?? ''}
 										{oninput}
+										name={row.name}
 									/>
 								</td>
 							</tr>
@@ -75,10 +91,10 @@
 					</tbody>
 				{/key}
 			</table>
-			{#if changes}
-				<button class="btn preset-filled-error-400-600" onclick={discard}>Discard changes</button>
-				<button class="btn preset-filled-primary-600-400">Apply changes</button>
-			{/if}
-		</form>
-	</div>
+		</div>
+		{#if changes}
+			<button class="btn preset-filled-error-600-400 text-white" onclick={discard}>Discard changes</button>
+			<button class="btn preset-filled-primary-600-400" type="submit">Apply changes</button>
+		{/if}
+	</form>
 </div>
