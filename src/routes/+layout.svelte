@@ -13,7 +13,8 @@
   import { goto } from '$app/navigation';
   import { Popover, Portal } from '@skeletonlabs/skeleton-svelte';
 
-  import apiCaller, { backend } from '$lib/axiosConfig';
+  import apiCaller, { backend, refreshLogic } from '$lib/axiosConfig';
+	import { onMount } from 'svelte';
 
   // tracks when the site title is hovered and onclick sends the user home
   let hovered = $state(false);
@@ -43,7 +44,7 @@
       { label: 'My Clippings', href: '#', icon: Store },
       { label: 'My analitics', href: '#', icon: ChartColumnBig },
       { label: 'Reviews', href: '#', icon: Inbox },
-      { label: 'Shop Socials', href: '#', icon: Share2 },
+      { label: 'Shop Socials', href: '/shop-managment/socials', icon: Share2 },
     ],
     ADMIN:[
       { label: 'Site analytics', href: '#', icon: ChartColumnBig },
@@ -79,6 +80,32 @@
       console.log("Since when does the backend give an error here??");
     }
   }
+
+     async function triggerRefresh(){
+        try {
+            const tok = await refreshLogic();
+            console.log("i refreshed and gor a token");
+            return tok;
+        } catch (error) {
+            return null
+        }
+    }
+
+    
+onMount(async () => {
+    if (!loggedUser.username) {
+        const newToken = await triggerRefresh();
+        if (!newToken) {
+            goto('/auth');
+            toaster.error({
+                title: 'Authentication error',
+                description: 'Please login again'
+            });
+        } else {
+            
+        }
+    }
+});
 
   async function getAvatar(){
     try {
