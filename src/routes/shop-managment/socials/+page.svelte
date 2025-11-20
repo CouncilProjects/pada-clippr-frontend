@@ -1,4 +1,5 @@
 <script lang="ts">
+	import apiCaller from '$lib/axiosConfig.js';
 	import {
 		Facebook,
 		Youtube,
@@ -10,6 +11,7 @@
 		Pin,
 		AtSign
 	} from '@lucide/svelte';
+	import type { social } from './proxy+page.js';
 
 	const socials = [
 		{ name: 'email', icon: AtSign },
@@ -40,20 +42,25 @@
 		resetKey++; // this will allow/force the table to reset
 	};
 
-	const submition = (e: SubmitEvent) => {
+	const submition = async (e: SubmitEvent) => {
 		e.preventDefault();
 		const formdata = new FormData(e.currentTarget as HTMLFormElement);
 
+		const sendForm = new FormData();
+
+
 		let newBaseline: Record<string, string> = {};
 		socials.forEach((social) => {
-			if (formdata.get(social.name) != '') {
-				newBaseline[social.name] = formdata.get(social.name) as string;
+			if (formdata.get(social.name)!=visualSocial[social.name]) {
+				sendForm.append(social.name,formdata.get(social.name) as string)
 			}
 		});
-
-		visualSocial = newBaseline;
 		changes = 0;
-		console.log(formdata);
+		console.log(sendForm);
+		const {data} = await apiCaller.post("/user/update_socials/",sendForm);
+		data.updated.forEach((social:social)=>{
+      		visualSocial[social.platform]=social.url
+    	})
 	};
 </script>
 
@@ -81,7 +88,7 @@
 										class="input"
 										type="text"
 										placeholder={visualSocial![row.name] ?? row.name}
-										value={visualSocial![row.name] ?? ''}
+										value={visualSocial[row.name] ?? ''}
 										{oninput}
 										name={row.name}
 									/>
