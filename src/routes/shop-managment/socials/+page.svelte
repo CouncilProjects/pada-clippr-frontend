@@ -44,19 +44,17 @@
 
 	const submition = async (e: SubmitEvent) => {
 		e.preventDefault();
-		const formdata = new FormData(e.currentTarget as HTMLFormElement);
+		const formdata = new FormData(e.currentTarget as HTMLFormElement); //note casting the entire form in a form data is an easy way to collect a big form
 
-		const sendForm = new FormData();
+		const sendForm = new FormData(); //incase you dont want to send the entire form, simple make a second one whith only the selected things you want.
 
-
-		let newBaseline: Record<string, string> = {};
 		socials.forEach((social) => {
-			if (formdata.get(social.name)!=visualSocial[social.name]) {
+			if (formdata.get(social.name)!=visualSocial[social.name]) {//send only the fields that changed. 
 				sendForm.append(social.name,formdata.get(social.name) as string)
 			}
 		});
 		changes = 0;
-		console.log(sendForm);
+		
 		const {data} = await apiCaller.post("/user/update_socials/",sendForm);
 		data.updated.forEach((social:social)=>{
       		visualSocial[social.platform]=social.url
