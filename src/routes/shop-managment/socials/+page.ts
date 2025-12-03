@@ -1,6 +1,8 @@
 import apiCaller from '$lib/axiosConfig'
 import type { PageLoad } from './$types';
 
+import { loggedUser } from '$lib/universalReactivity/auth.svelte';
+
 export type social = Record<string, string>;
 
 const socials = [
@@ -17,7 +19,7 @@ const socials = [
 
 export const load: PageLoad = async () => {
   //15-11-2025 NOTE i wait for mike to make way to support socials. 
-  const SOCIALURL = "/user/6/socials/" // to put the get for the urls
+  const SOCIALURL = `/user/socials/${loggedUser.username}` // to put the get for the urls
   try {
     const filledSocials = await apiCaller.get(SOCIALURL);
     console.log(filledSocials.data.socials);

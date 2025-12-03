@@ -9,9 +9,12 @@
 
     let col_size = $state(Number.parseInt(preference || '3'));
 
-    type compProps={items:{title:string,neg:boolean,price:number,thumbnail?:string|undefined,stock:number,downsized?:number}[]}
+    type compProps=ItemThumbnail[]
     
-    let {items}:compProps=$props();
+    	import type { ClassValue } from 'svelte/elements';
+	import type { ItemThumbnail } from "./types";
+
+	const props: { class?: ClassValue,items:compProps } = $props();
 
     //when the list is not shown anymore save the preference.
     onDestroy(()=>{
@@ -20,7 +23,18 @@
 </script>
 
 
-<div class="items-center flex flex-col">
+<!--
+@component
+ThumbnailList component.
+
+- `items` should be of type **ItemThumbnail[]**
+- Go to `ItemThumbnail` at `src/lib/components/types.ts` to see the full shape.
+- Usage:
+  ```svelte
+  <ThumbnailList items={items}/>
+-->
+
+<div class={["items-center flex flex-col",props.class]}>
     {#if md.current}
         <Slider value={[col_size]} onValueChange={(e)=>{col_size=e.value[0]}} min={3} max={7} step={1} class="max-w-[10%]">
             <Slider.Label>Items per row</Slider.Label>
@@ -42,10 +56,10 @@
 
     <!-- Because tailwind is static we cannot use state directly inside, so we make use of css variables and the repeat-->
     <div class="p-3 m-3 gap-2 grid grid-cols-1 md:grid-cols-[repeat(var(--cols),1fr)] relative place-content-between" style={`--cols: ${col_size};`}>
-        {#if !items || items.length==0}
+        {#if !props.items || props.items.length==0}
             <p>No items found.</p>
         {:else}
-            {#each items as singleItem}
+            {#each props.items as singleItem}
                 <ListingThumbnailCard {...singleItem}></ListingThumbnailCard>
             {/each}
         {/if}

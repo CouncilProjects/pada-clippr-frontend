@@ -1,10 +1,11 @@
 
 <script lang="ts">
     const fallback = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
+    import {verifiedTextGradient} from "$lib/assets/globalColors"
     type props={
-        title:string,price:number,neg:boolean,stock:number,thumbnail?:string,downsized?:number
+        title:string,price:number,neg:boolean,stock:number,thumbnail?:string,downsized?:number,fromVerified?:boolean
     }
-    let {title,price,neg,stock,thumbnail=fallback,downsized}:props = $props()
+    let {title,price,neg,stock,thumbnail=fallback,downsized,fromVerified}:props = $props()
     console.log(downsized);
 </script>
 
@@ -17,7 +18,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <span>{title}</span>
+                        <span class="{fromVerified?verifiedTextGradient+' font-bold':''}">{title}</span>
                     </td>
                     <td>
                         <span>{price} $</span>
@@ -26,9 +27,9 @@
                 <tr>
                     <td>
                         {#if neg}
-                            <span class="text-green-600">Negotiable</span>
+                            <span class="text-green-600 dark:text-green-400">Negotiable</span>
                         {:else}
-                            <span class="text-red-400">Non negotiable</span>
+                            <span class="text-red-600 dark:text-red-400">Non negotiable</span>
                         {/if}
                     </td>
                     <td>
