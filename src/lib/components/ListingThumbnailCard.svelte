@@ -1,8 +1,9 @@
 
 <script lang="ts">
+	import { goto } from "$app/navigation";
     const fallback = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
     import {verifiedTextGradient} from "$lib/assets/globalColors"
-    let {title,price,neg,stock,thumbnail=fallback,downsized,fromVerified}:ItemThumbnail = $props()
+    let {title,price,neg,stock,thumbnail=fallback,downsized,fromVerified,clipId}:ItemThumbnail = $props()
     
     import {md} from "$lib/universalReactivity/screenSizes"
 	import type { ItemThumbnail } from "./types";
@@ -78,12 +79,15 @@ ThumbnailList component.
             </tbody>
         </table>
 {/snippet}
-<div class="cursor-pointer m-2 card 
+<button class="{clipId?'cursor-pointer':'cursor-auto'} m-2 card 
     { fromVerified?
         'bg-[#bdb8ae] dark:bg-[#595350] bg-linear-to-br from-red/10 to-blue/5 shadow-sm hover:shadow' 
         :'preset-filled-surface-300-700'} 
         hover:preset-filled-primary-500 hover:-translate-y-2 md:hover:-translate-y-5 " 
-        style={`max-width:${downsized || 100}%`}>
+        style={`max-width:${downsized || 100}%`}
+        onclick={()=>{if (clipId) goto(`/clipping/${clipId}`)}}
+        aria-roledescription="Press to go to page"
+        >
     
     <div class="flex flex-col items-center p-2 h-full">
         <img src={thumbnail} onerror={(e)=>{(e.currentTarget as HTMLImageElement).src=fallback}} alt="Thumbnail"/>
@@ -94,4 +98,4 @@ ThumbnailList component.
         {/if}
         
     </div>
-</div>
+</button>
