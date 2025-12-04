@@ -6,7 +6,7 @@
 
   let mode;
   $effect(() => {
-    mode = localStorage.getItem('mode') || 'light';
+    mode = localStorage.getItem('mode') || 'dark';
     checked = mode === 'dark';
     document.documentElement.setAttribute('data-mode', mode);
   });
@@ -18,6 +18,12 @@
     checked = event.checked;
   };
 </script>
+
+<!--
+@component
+A switch that controls the mode of the app. 
+The mode is taken form local storage not system settings. (Defaulting to dark)
+-->
 
 <Switch {checked} {onCheckedChange}>
   <Switch.Control>

@@ -37,8 +37,8 @@ const copyURL = (text:string)=>{
 }
 
 import {verifiedBgGradient,verifiedBgGradientHover,verifiedTextGradient} from "$lib/assets/globalColors"
-	import { type ItemThumbnail } from '$lib/components/types';
-	import { md } from '$lib/universalReactivity/screenSizes';
+import { type ItemThumbnail } from '$lib/components/types';
+import { md } from '$lib/universalReactivity/screenSizes'; // Note the screen sizes i made follow Tailwind sizes. Used the same way
 
 
 
@@ -58,7 +58,7 @@ import {verifiedBgGradient,verifiedBgGradientHover,verifiedTextGradient} from "$
                     <Accordion.ItemContent >
                          <div class="grid grid-cols-1 gap-3 md:gap-6">
                             {#each data.shopSocials as social}
-                                {@const Icon = socials[social.platform]}
+                                {@const Icon = socials[social.platform]} <!-- I need the variable to use it later, Icon holds the cooreponding icon from the dict-->
                                 <Tooltip positioning={{ placement: 'top' }}>
                                     <div class="relative flex flex-col justify-center items-center" >
                                         <Tooltip.Trigger>

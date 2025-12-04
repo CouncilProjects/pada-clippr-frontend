@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ListingThumbnailCard from "$lib/components/Listing-ThumbnailCard.svelte";
+	import ListingThumbnailCard from "$lib/components/ListingThumbnailCard.svelte";
     import { Slider } from '@skeletonlabs/skeleton-svelte';
 
     import {md} from "$lib/universalReactivity/screenSizes";
