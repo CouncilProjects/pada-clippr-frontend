@@ -6,15 +6,13 @@
         title:string,price:number,neg:boolean,stock:number,thumbnail?:string,downsized?:number,fromVerified?:boolean
     }
     let {title,price,neg,stock,thumbnail=fallback,downsized,fromVerified}:props = $props()
-    console.log(downsized);
+    
+    import {md} from "$lib/universalReactivity/screenSizes"
 </script>
 
-<div class="cursor-pointer m-2 card preset-filled-surface-300-700 hover:preset-filled-primary-500 hover:-translate-y-2 md:hover:-translate-y-5 " style={`max-width:${downsized || 100}%`}>
-    
-    <div class="flex flex-col items-center p-2 h-full">
-        <img src={thumbnail} onerror={(e)=>{(e.currentTarget as HTMLImageElement).src=fallback}} alt="Thumbnail"/>
-        
-        <table class="table text-center mt-auto ">
+
+{#snippet wideTable(title:string,price:number,neg:boolean,stock:number)}
+    <table class="table text-center mt-auto ">
             <tbody>
                 <tr>
                     <td>
@@ -38,5 +36,47 @@
                 </tr>
             </tbody>
         </table>
+{/snippet}
+
+{#snippet tallTable(title:string,price:number,neg:boolean,stock:number)}
+    <table class="table text-center mt-auto ">
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="{fromVerified?verifiedTextGradient+' font-bold':''}">{title}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>{price} $</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Stock left: {stock}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {#if neg}
+                            <span class="text-green-600 dark:text-green-400">Negotiable</span>
+                        {:else}
+                            <span class="text-red-600 dark:text-red-400">Non negotiable</span>
+                        {/if}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+{/snippet}
+<div class="cursor-pointer m-2 card preset-filled-surface-300-700 hover:preset-filled-primary-500 hover:-translate-y-2 md:hover:-translate-y-5 " style={`max-width:${downsized || 100}%`}>
+    
+    <div class="flex flex-col items-center p-2 h-full">
+        <img src={thumbnail} onerror={(e)=>{(e.currentTarget as HTMLImageElement).src=fallback}} alt="Thumbnail"/>
+        {#if !md.current} <!--If smaller than sm-->
+            {@render tallTable(title,price,neg,stock)}
+        {:else }
+            {@render wideTable(title,price,neg,stock)}
+        {/if}
+        
     </div>
 </div>

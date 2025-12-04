@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ThumbnailList from '$lib/components/ThumbnailList.svelte';
-	import { Portal, Tooltip } from '@skeletonlabs/skeleton-svelte';
+	import { Accordion, Portal, Tooltip } from '@skeletonlabs/skeleton-svelte';
 	import type { PageProps } from './$types';
 
 	let { data }:PageProps = $props();
@@ -14,7 +14,10 @@
 		Ghost,
 		Linkedin,
 		Pin,
-		AtSign
+		AtSign,
+
+		ChevronDownIcon
+
 	} from '@lucide/svelte';
 
     const socials = {
@@ -33,57 +36,76 @@ const copyURL = (text:string)=>{
     navigator.clipboard.writeText(text);
 }
 
-import {verifiedBgGradient,verifiedTextGradient} from "$lib/assets/globalColors"
+import {verifiedBgGradient,verifiedBgGradientHover,verifiedTextGradient} from "$lib/assets/globalColors"
+	import { type ItemThumbnail } from '$lib/components/types';
+	import { md } from '$lib/universalReactivity/screenSizes';
 
-const gradient='bg-linear-to-t from-red-600 to-sky-600 bg-clip-text text-transparent';
-const bgGradient='bg-linear-to-tr from-red-600 to-sky-600'
+
 
 
 </script>
 
+{#snippet ShowSocials()}
+    <Accordion class="flex-1 max-w-[200px] h-max bg-surface-300-700" collapsible>
+                <Accordion.Item value=1>
+                    <Accordion.ItemTrigger class="flex justify-between items-center">
+                        <span class="{verifiedTextGradient} text-lg font-bold">Shop Socials</span>
+                        <Accordion.ItemIndicator class="group">
+                        <ChevronDownIcon class="h-5 w-5 transition group-data-[state=open]:rotate-180" />
+                    </Accordion.ItemIndicator>
+                    </Accordion.ItemTrigger>
+                    
+                    <Accordion.ItemContent >
+                         <div class="grid grid-cols-1 gap-3 md:gap-6">
+                            {#each data.shopSocials as social}
+                                {@const Icon = socials[social.platform]}
+                                <Tooltip positioning={{ placement: 'top' }}>
+                                    <div class="relative flex flex-col justify-center items-center" >
+                                        <Tooltip.Trigger>
+                                        
+                                            <button class="btn-icon preset-tonal-surface {verifiedBgGradientHover}" onclick={()=>{copyURL(social.url)}}>
+                                            
+                                                <Icon size={30} />
+                                            </button>
+                                            
+                                    
+                                    </Tooltip.Trigger>
+                                    <span class="text-xs">{social.platform.toUpperCase()}</span>
+                                    </div>
+                                    <Portal>
+                                        <Tooltip.Positioner>
+                                            <Tooltip.Content class="card p-2 preset-filled-surface-800-200 flex flex-col">
+                                                <span>{social.url}</span>
+                                                
+                                                <span class="text-xs self-end italic text-secondary-200 dark:text-tertiary-900">click to copy</span>
+                                                <Tooltip.Arrow class="[--arrow-size:--spacing(2)] [--arrow-background:var(--color-surface-950-50)]">
+                                                    <Tooltip.ArrowTip />
+                                                </Tooltip.Arrow>
+                                            </Tooltip.Content>
+                                        </Tooltip.Positioner>
+                                    </Portal>
+                                </Tooltip>
+                                
+                            {/each}
+                        </div>
+                    </Accordion.ItemContent>
+                </Accordion.Item>
+            </Accordion>
+{/snippet}
 
-<div class="text-center">
+<div class="text-center items-center justify-center flex flex-col">
     {#if data.isVer}
         <h3 class="h2 {verifiedTextGradient}">Welcome to {data.paramName}'s Shop</h3>
     {:else}
         <h3 class="h3">Welcome to {data.paramName}'s page</h3>
     {/if}
+    {#if !md.current && data.isVer && data.shopSocials.length>0}
+        {@render ShowSocials()}
+    {/if}
     <div class="flex flex-row">
-        <ThumbnailList class="flex-4" items={data.items}></ThumbnailList>
-        {#if data.isVer && data.shopSocials.length>0}
-            <div class="grid grid-cols-1 flex-1 max-w-[200px] gap-3 md:gap-6 bg-surface-300-700">
-                <span class="{verifiedTextGradient} text-lg font-bold">Shop Socials</span>
-                {#each data.shopSocials as social}
-                    {@const Icon = socials[social.platform]}
-                    <Tooltip positioning={{ placement: 'top' }}>
-                        <div class="relative flex flex-col justify-center items-center" >
-                            <Tooltip.Trigger>
-                            
-                                <button class="btn-icon preset-tonal-surface hover:{verifiedBgGradient}" onclick={()=>{copyURL(social.url)}}>
-                                
-                                    <Icon size={30} />
-                                </button>
-                                
-                           
-                        </Tooltip.Trigger>
-                        <span class="text-xs">{social.platform.toUpperCase()}</span>
-                        </div>
-                        <Portal>
-                            <Tooltip.Positioner>
-                                <Tooltip.Content class="card p-2 preset-filled-surface-800-200 flex flex-col">
-                                    <span>{social.url}</span>
-                                    
-                                    <span class="text-xs self-end italic text-secondary-200 dark:text-tertiary-900">click to copy</span>
-                                    <Tooltip.Arrow class="[--arrow-size:--spacing(2)] [--arrow-background:var(--color-surface-950-50)]">
-                                        <Tooltip.ArrowTip />
-                                    </Tooltip.Arrow>
-                                </Tooltip.Content>
-                            </Tooltip.Positioner>
-                        </Portal>
-                    </Tooltip>
-                    
-                {/each}
-            </div>
+        <ThumbnailList class="flex-4" items={data.items as ItemThumbnail[]}></ThumbnailList>
+        {#if md.current && data.isVer && data.shopSocials.length>0}
+           {@render ShowSocials()}
         {/if}
     </div>
     

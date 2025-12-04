@@ -162,6 +162,9 @@ onMount(async () => {
                               <span class="text-xs">{link.label}</span>
                             </a>
                           {/each}
+                          <div class="block sm:hidden">
+                            <LightSwitch></LightSwitch>
+                          </div>
                         </Navigation.Menu>
                       </Navigation.Content>
                     </Navigation>
