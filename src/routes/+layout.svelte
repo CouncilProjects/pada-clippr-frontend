@@ -2,7 +2,7 @@
   import '../app.css';
   import LightSwitch from '$lib/components/LightSwitch.svelte';
   let { children } = $props();
-  import { CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck } from '@lucide/svelte';
+  import { SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck } from '@lucide/svelte';
   import { AppBar, Avatar, Navigation } from '@skeletonlabs/skeleton-svelte';
   import { loggedUser } from "$lib/universalReactivity/auth.svelte"
 
@@ -132,6 +132,15 @@ onMount(async () => {
 
   //non reactive
   const lastLogIn = localStorage.getItem('lastLogin');
+
+  function doSearch(e: SubmitEvent) {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const query = formData.get("q")?.toString() ?? "";
+    if (!query.trim()) return;
+
+    goto(`/search?q=${encodeURIComponent(query)}`);
+  }
 </script>
 
 <svelte:head>
@@ -175,17 +184,27 @@ onMount(async () => {
             </Portal>
           </Popover>
         {/if}
-        
       </AppBar.Lead>
+
       <AppBar.Headline class="flex flex-row items-center">
-        <button onmouseenter={mouseTrack} onmouseleave={mouseTrack} {onclick}>
-          {#if hovered}
-            <p class=" text-base md:text-3xl" in:fade>Clipp€r</p>
-          {:else}
-            <p class=" text-base md:text-3xl" in:fade>Clippr</p>
-          {/if}
-        </button>
+        <div class="pr-10">
+          <button onmouseenter={mouseTrack} onmouseleave={mouseTrack} {onclick}>
+            {#if hovered}
+              <p class=" text-base md:text-3xl" in:fade>Clipp€r</p>
+            {:else}
+              <p class=" text-base md:text-3xl" in:fade>Clippr</p>
+            {/if}
+          </button>
+        </div>
+        <form onsubmit={doSearch} class="input-group grid-cols-[auto_1fr_auto]">
+          <div class="ig-cell preset-tonal">
+            <SearchIcon size={16} />
+          </div>
+          <input class="ig-input" type="search" placeholder="Search..." name="q" autocomplete="off" />
+          <button class="ig-btn preset-filled">Submit</button>
+        </form>
       </AppBar.Headline>
+
       <AppBar.Trail class="items-center">
         <div class="hidden sm:block">
           <LightSwitch></LightSwitch>
