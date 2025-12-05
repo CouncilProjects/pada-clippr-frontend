@@ -1,12 +1,23 @@
-<script lang="ts">
-    import {loggedUser} from "$lib/universalReactivity/auth.svelte"
-    import { goto } from "$app/navigation"
-    import { toaster } from "$lib/toast";
-	import apiCaller,{refreshLogic} from "$lib/axiosConfig"; // what to use to make http requests
-	import { onMount } from "svelte";
-	import ThumbnailList from "$lib/components/ThumbnailList.svelte";
-	
-export const testItems = [
+
+
+import apiCaller from '$lib/axiosConfig';
+import axios, { Axios, AxiosError, isAxiosError, type AxiosResponse } from 'axios';
+import type { PageLoad } from './$types';
+import { error } from '@sveltejs/kit';
+
+export const load: PageLoad =async  ({params})=>{
+    const resp={};
+    let items:AxiosResponse;
+    let socials:AxiosResponse|null=null;
+    try {
+
+        /*items =await apiCaller.get("/items/search");
+        if(items.status==200){
+            if(items.data.verified==true){
+                socials =await apiCaller.get(`user/socials/${params.name}`);
+            }
+        }*/
+       const testItems = [
   {
     title: "Vintage Backpack",
     neg: false,
@@ -80,10 +91,16 @@ export const testItems = [
     fromVerified: false
   }
 ];
-
-</script>
-
-
-<div>
-    <ThumbnailList items={testItems}></ThumbnailList>
-</div>
+       socials =await apiCaller.get(`user/socials/${params.name}`);
+       console.log(socials?.data.socials);
+        return {paramName:params.name,items:testItems,isVer:true,shopSocials:socials?.data.socials}
+    } catch (err) {
+        console.error(err+"");
+        if(axios.isAxiosError(err)){
+            if(!err.response){
+                console.error('netowrk problem');
+            }
+            error(404,'Not found');
+        }
+    }
+}
