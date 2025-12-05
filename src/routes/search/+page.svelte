@@ -4,17 +4,27 @@
     import { MessageSquareDiff } from '@lucide/svelte';
     import { ArrowLeftIcon, ArrowRightIcon } from '@lucide/svelte';
     import { Pagination } from '@skeletonlabs/skeleton-svelte';
+    import ThumbnailList from "$lib/components/ThumbnailList.svelte";
+	import type { ItemThumbnail } from '$lib/components/types';
 
-    interface Item {
-        title: string
-        price: number
-        negotiable: boolean
-    }
-
-    let searchResults =  $state<Item[]>([])
+    let searchResults =  $state<ItemThumbnail[]>([])
     let pageNumber = $state(1)
     let pageSize = $state(10)
     let totalItems = $state(0)
+
+    interface Seller {
+        username: string
+        is_verified_seller: boolean
+    }
+
+    interface ItemBackend {
+        id: number
+        title: string
+        price: number
+        stock: number
+        negotiable: boolean
+        seller: Seller
+    }
 
     async function doSearch() {
         const query = page.url.searchParams.get("q");
@@ -26,7 +36,19 @@
             page: pageNumber
         }})
 
-        searchResults = result.data.results
+        searchResults = result.data.results.map(
+            (item: ItemBackend, index: number) => { return {
+                title: item.title,
+                neg: item.negotiable,
+                price: item.price,
+                stock: item.stock,
+                clipId: item.id,
+                thumbnail: `https://picsum.photos/200/200?random=${index}`,
+                fromVerified: item.seller.is_verified_seller
+            }}
+        )
+
+        console.log(searchResults)
         totalItems = result.data.count
     }
 
@@ -66,24 +88,6 @@
             </Pagination.NextTrigger>
         </Pagination>
     </div>
-    <table class="table w-full border-collapse">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Negotiable</th>
-            </tr>
-        </thead>
-        <tbody class="space-y-2">
-            {#each searchResults as item}
-                <tr>
-                    <td>{item.title}</td>
-                    <td>€{item.price}</td>
-                    <td> {#if item.negotiable}
-                        <MessageSquareDiff />
-                    {/if} </td>
-                </tr>
-            {/each}
-        </tbody>
-    </table>
+
+    <ThumbnailList items={searchResults}/>
 </div>

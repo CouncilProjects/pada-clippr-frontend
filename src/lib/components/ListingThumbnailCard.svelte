@@ -30,7 +30,7 @@ ThumbnailList component.
                         <span class="{fromVerified?verifiedTextGradient+' font-bold':''}">{title}</span>
                     </td>
                     <td>
-                        <span>{price} $</span>
+                        € <span>{price}</span>
                     </td>
                 </tr>
                 <tr>
