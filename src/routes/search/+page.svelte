@@ -1,11 +1,10 @@
 <script lang="ts">
     import { page } from '$app/state'
     import apiCaller from "$lib/axiosConfig"
-    import { MessageSquareDiff } from '@lucide/svelte';
     import { ArrowLeftIcon, ArrowRightIcon } from '@lucide/svelte';
     import { Pagination } from '@skeletonlabs/skeleton-svelte';
     import ThumbnailList from "$lib/components/ThumbnailList.svelte";
-	import type { ItemThumbnail } from '$lib/components/types';
+    import type { ItemThumbnail } from '$lib/components/types';
 
     let searchResults =  $state<ItemThumbnail[]>([])
     let pageNumber = $state(1)
@@ -28,10 +27,12 @@
 
     async function doSearch() {
         const query = page.url.searchParams.get("q");
+        const user = page.url.searchParams.get("u") ?? "";
         if(query === null) return;
 
         const result = await apiCaller.get("/item/", { params: {
             q: encodeURIComponent(query),
+            u: encodeURIComponent(user),
             amount: pageSize,
             page: pageNumber
         }})
