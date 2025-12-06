@@ -17,13 +17,15 @@ export async function refreshLogic(){
     //assume a call just failed with a 401
     try {
         const refreshResponse = await axios.get(`http://127.0.0.1:8000/api/${REFRESH_API}`);
-        const {token,username,role} = refreshResponse.data;
-        console.log(token+" and "+username+" and +"+role);
+        const {id,token,username,role} = refreshResponse.data;
+        console.log(id+" and "+token+" and "+username+" and +"+role);
         if(!token){
             return Promise.reject({
                     response:{status:401}
                 }); 
         }
+
+        loggedUser.id = id;
         loggedUser.token = token;
         loggedUser.accountType=role;
         loggedUser.username=username;

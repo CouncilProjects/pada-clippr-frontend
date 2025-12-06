@@ -2,6 +2,7 @@ import apiCaller from "$lib/axiosConfig";
 
 
 interface loggedUserInfo{
+    id:number|null,
     username:string|null,
     token:string|null,
     accountType:string|null
@@ -10,6 +11,7 @@ interface loggedUserInfo{
 
 
 export const loggedUser = $state<loggedUserInfo>({
+    id:null,
     username:null,
     token:null,
     accountType:null,
@@ -20,7 +22,8 @@ export const getAccessToken=()=>{
     return loggedUser.token;
 }
 
-export const logInUser=(name:string,token:string,type:string)=>{
+export const logInUser=(id:number,name:string,token:string,type:string)=>{
+    loggedUser.id=id;
     loggedUser.username=name;
     loggedUser.token=token;
     loggedUser.accountType=type;

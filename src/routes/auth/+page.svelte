@@ -77,8 +77,8 @@
         e?.preventDefault();
         try {
             const result = await apiCaller.post(LOGINURL,{username:formState.username,password:formState.password},{ skipAuthRefresh: true } as AxiosAuthRefreshRequestConfig );
-            const {username,token,role}=result.data;
-            logInUser(username,token,role);
+            const {id,username,token,role}=result.data;
+            logInUser(id,username,token,role);
             queueMicrotask(()=>{
                 goto('/');
             })
