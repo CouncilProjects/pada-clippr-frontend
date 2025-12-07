@@ -2,9 +2,12 @@
     import apiCaller from "$lib/axiosConfig"
     import { Pagination } from '@skeletonlabs/skeleton-svelte';
     import { ArrowLeftIcon, ArrowRightIcon } from '@lucide/svelte';
+    import type { ClassValue } from 'svelte/elements';
 
     import type { ItemThumbnail } from '$lib/components/types';
     import ThumbnailList from "$lib/components/ThumbnailList.svelte";
+
+    const props: { class?: ClassValue, klass?: ClassValue } = $props();
 
     let searchResults =  $state<ItemThumbnail[]>([])
     let pageNumber = $state(1)
@@ -70,7 +73,7 @@ searchComponent.doSearch(query, userID)
 <SearchResults bind:this={searchComponent} />
 ```
 -->
-<div class="overflow-x-auto py-5">
+<div class={["overflow-x-auto", props.class]}>
     <div class="flex justify-between items-center gap-4 w-full">
         <label class="label">
             <span class="sr-only">Page Size</span>
@@ -104,5 +107,5 @@ searchComponent.doSearch(query, userID)
         </Pagination>
     </div>
 
-    <ThumbnailList items={searchResults}/>
+    <ThumbnailList class={props.klass} items={searchResults}/>
 </div>

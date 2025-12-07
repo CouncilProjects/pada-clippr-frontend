@@ -104,7 +104,7 @@ onMount(() => searchComponent.doSearch(null, data.userID))
         {@render ShowSocials()}
     {/if}
     <div class="flex flex-row">
-        <SearchResults bind:this={searchComponent} />
+        <SearchResults bind:this={searchComponent} class="mr-3 flex-4" />
         {#if md.current && data.isVer && data.shopSocials.length>0}
            {@render ShowSocials()}
         {/if}
