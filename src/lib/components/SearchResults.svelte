@@ -53,6 +53,23 @@
     }
 </script>
 
+<!--
+@component
+Component for performing and displaying item search results.
+You should bind the component and call its `doSearch(query, userID)`function when an update is needed.
+Both `query` and `userID` are of type `string|null` but `userID` must be a positive integer.
+
+```svelte
+<script>
+let searchComponent: SearchResults
+
+// whenever an update is needed
+searchComponent.doSearch(query, userID)
+</script>
+
+<SearchResults bind:this={searchComponent} />
+```
+-->
 <div class="overflow-x-auto py-5">
     <div class="flex justify-between items-center gap-4 w-full">
         <label class="label">
