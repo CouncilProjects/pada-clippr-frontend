@@ -7,17 +7,12 @@ export const load: PageLoad = async ({params}) => {
     try {
         const id_req = await apiCaller.get(`user/by_username/${params.name}`);
         const user_id = id_req?.data.id;
-
         const socials_req = await apiCaller.get(`user/${user_id}/socials/`);
 
-        const items_req = await apiCaller.get("/item/", { params: {
-            u: encodeURIComponent(user_id)
-        }})
-
         return {
-            isVer: true,
+            userID: user_id,
             paramName: params.name,
-            items: items_req?.data.results,
+            isVer: socials_req?.data.glint,
             shopSocials: socials_req?.data.socials
         }
     } catch (err) {

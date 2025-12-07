@@ -1,9 +1,10 @@
 <script lang="ts">
-	import ThumbnailList from '$lib/components/ThumbnailList.svelte';
+	import SearchResults from '$lib/components/SearchResults.svelte';
 	import { Accordion, Portal, Tooltip } from '@skeletonlabs/skeleton-svelte';
 	import type { PageProps } from './$types';
 
-	let { data }:PageProps = $props();
+	const { data }: PageProps = $props();
+    let searchComponent: SearchResults
 
     import {
 		Facebook,
@@ -39,9 +40,9 @@ const copyURL = (text:string)=>{
 import {verifiedBgGradient,verifiedBgGradientHover,verifiedTextGradient} from "$lib/assets/globalColors"
 import { type ItemThumbnail } from '$lib/components/types';
 import { md } from '$lib/universalReactivity/screenSizes'; // Note the screen sizes i made follow Tailwind sizes. Used the same way
+	import { onMount } from 'svelte';
 
-
-
+onMount(() => searchComponent.doSearch(null, data.userID))
 
 </script>
 
@@ -103,7 +104,7 @@ import { md } from '$lib/universalReactivity/screenSizes'; // Note the screen si
         {@render ShowSocials()}
     {/if}
     <div class="flex flex-row">
-        <ThumbnailList class="flex-4" items={data.items as ItemThumbnail[]}></ThumbnailList>
+        <SearchResults bind:this={searchComponent} />
         {#if md.current && data.isVer && data.shopSocials.length>0}
            {@render ShowSocials()}
         {/if}
