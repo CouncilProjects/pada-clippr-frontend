@@ -27,20 +27,29 @@
     goto('/');
   }
 
+  let popUp = $state(false);
   import getEventBus from "$lib/universalReactivity/eventBus";
+	import PopUpAd from '$lib/components/PopUpAd.svelte';
+
+  const showPopUp = ()=>{
+    popUp=true;
+  }
+
   const eventBus = getEventBus();
   const removeEventCb=eventBus.on('thumb-card-click',()=>{
-    const lastAd = localStorage.getItem('last-popup');
+    const lastAd = localStorage.getItem(`last-popup-${loggedUser.username}`);
     if(lastAd==undefined){
-      console.log("Show ad !!");
+      showPopUp();
+      localStorage.setItem(`last-popup-${loggedUser.username}`,Date.now().toString());
       return;
     }
 
     const storedTime = parseInt(lastAd,10);
     const currentTime = Date.now();
     const fiveMinInMs = 5*60*1000;
-    if((currentTime-storedTime)>fiveMinInMs){
-      console.log("Show Ad !!");
+    if(lastAd==undefined || (currentTime-storedTime)>fiveMinInMs){
+      showPopUp();
+      localStorage.setItem(`last-popup-${loggedUser.username}`,Date.now().toString());
     } else {
       console.log("Dont show yet");
     }
@@ -174,7 +183,12 @@ onMount(async () => {
 </svelte:head>
 
 
+  {#if popUp}
+  <PopUpAd open={true} close={()=>{popUp=false}}></PopUpAd>
+{/if}
+
 <div class="h-screen grid grid-rows-[auto_1fr_auto]">
+
 	<!-- Header -->
 	<AppBar class="sticky top-0 z-10 bg-surface-100-900/80 backdrop-blur-sm"> <!--NOTE: in skeleton ui the /80 means 80% transparency-->
     <AppBar.Toolbar class="grid-cols-[auto_1fr_auto] content-center">
