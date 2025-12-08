@@ -7,6 +7,18 @@
     
     import {md} from "$lib/universalReactivity/screenSizes"
 	import type { ItemThumbnail } from "./types";
+
+    import getEventBus from "$lib/universalReactivity/eventBus";
+    const eventBus = getEventBus();
+    
+    const clickHappned=(ver:boolean,clipId?:string)=>{
+        if(!ver && clipId){
+            eventBus.emit('thumb-card-click');
+        }
+        if(clipId){
+            goto(`/clipping/${clipId}`)
+        }
+    }
 </script>
 
 
@@ -85,7 +97,7 @@ ThumbnailList component.
         :'preset-filled-surface-300-700'} 
         hover:preset-filled-primary-500 hover:-translate-y-2 md:hover:-translate-y-5 " 
         style={`max-width:${downsized || 100}%`}
-        onclick={()=>{if (clipId) goto(`/clipping/${clipId}`)}}
+        onclick={()=>{clickHappned(neg,clipId)}}
         aria-roledescription="Press to go to page"
         >
     

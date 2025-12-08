@@ -1,6 +1,7 @@
 <script lang="ts">
   import '../app.css';
   import LightSwitch from '$lib/components/LightSwitch.svelte';
+
   let { children } = $props();
   import { SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck } from '@lucide/svelte';
   import { AppBar, Avatar, Navigation } from '@skeletonlabs/skeleton-svelte';
@@ -14,7 +15,7 @@
   import { Popover, Portal } from '@skeletonlabs/skeleton-svelte';
 
   import apiCaller, { backend, refreshLogic } from '$lib/axiosConfig';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
   // tracks when the site title is hovered and onclick sends the user home
   let hovered = $state(false);
@@ -25,6 +26,30 @@
   const onclick=()=>{
     goto('/');
   }
+
+  import getEventBus from "$lib/universalReactivity/eventBus";
+  const eventBus = getEventBus();
+  const removeEventCb=eventBus.on('thumb-card-click',()=>{
+    const lastAd = localStorage.getItem('last-popup');
+    if(lastAd==undefined){
+      console.log("Show ad !!");
+      return;
+    }
+
+    const storedTime = parseInt(lastAd,10);
+    const currentTime = Date.now();
+    const fiveMinInMs = 5*60*1000;
+    if((currentTime-storedTime)>fiveMinInMs){
+      console.log("Show Ad !!");
+    } else {
+      console.log("Dont show yet");
+    }
+
+  })
+
+  onDestroy(()=>{
+    removeEventCb();
+  })
 
   //2 different kinds of clicable icons, chose what you like best
   let anchorRailComplex = 'btn hover:preset-outlined-primary-500 hover:bg-surface-500/30 aspect-square w-full max-w-[84px] flex flex-col items-center gap-0.5';
@@ -147,6 +172,7 @@ onMount(async () => {
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>Clipp€r</title>
 </svelte:head>
+
 
 <div class="h-screen grid grid-rows-[auto_1fr_auto]">
 	<!-- Header -->
