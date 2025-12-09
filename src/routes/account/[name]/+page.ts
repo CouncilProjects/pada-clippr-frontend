@@ -93,7 +93,7 @@ export const load: PageLoad =async  ({params})=>{
 ];
        socials =await apiCaller.get(`user/socials/${params.name}`);
        console.log(socials?.data.socials);
-        return {paramName:params.name,items:testItems,isVer:true,shopSocials:socials?.data.socials}
+        return {paramName:params.name,items:testItems,isVer:false,shopSocials:socials?.data.socials}
     } catch (err) {
         console.error(err+"");
         if(axios.isAxiosError(err)){
