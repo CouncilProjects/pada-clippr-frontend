@@ -56,7 +56,7 @@ import { md } from '$lib/universalReactivity/screenSizes'; // Note the screen si
                     </Accordion.ItemTrigger>
                     
                     <Accordion.ItemContent >
-                         <div class="grid grid-cols-1 gap-3 md:gap-6">
+                         <div class="grid grid-cols-1 gap-3 md:gap-6" >
                             {#each data.shopSocials as social}
                                 {@const Icon = socials[social.platform]} <!-- I need the variable to use it later, Icon holds the cooreponding icon from the dict-->
                                 <Tooltip positioning={{ placement: 'top' }}>
@@ -106,6 +106,11 @@ import { md } from '$lib/universalReactivity/screenSizes'; // Note the screen si
         <ThumbnailList class="flex-4" items={data.items as ItemThumbnail[]}></ThumbnailList>
         {#if md.current && data.isVer && data.shopSocials.length>0}
            {@render ShowSocials()}
+        {/if}
+        {#if md.current && !data.isVer}
+            <div class=" flex-1 card bg-surface-300-700 h-dvh text-2xl text-center" >
+                {@html 'AD<br>SPACE<br>FOR<br>RENT'}
+            </div>
         {/if}
     </div>
     

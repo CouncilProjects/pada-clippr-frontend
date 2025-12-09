@@ -1,0 +1,169 @@
+<script lang="ts">
+  import LightSwitch from '$lib/components/LightSwitch.svelte';
+  import { SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck } from '@lucide/svelte';
+  import { AppBar, Avatar, Navigation } from '@skeletonlabs/skeleton-svelte';
+  import { loggedUser } from "$lib/universalReactivity/auth.svelte"
+
+
+
+  import { fade } from 'svelte/transition';
+  import { goto } from '$app/navigation';
+  import { Popover, Portal } from '@skeletonlabs/skeleton-svelte';
+
+  import apiCaller, { backend} from '$lib/axiosConfig';
+
+  // tracks when the site title is hovered and onclick sends the user home
+  let hovered = $state(false);
+  const mouseTrack=()=>{
+    hovered=!hovered;
+  }
+
+  const onclick=()=>{
+    goto('/');
+  }
+
+  //2 different kinds of clicable icons, chose what you like best
+  let anchorRailComplex = 'btn hover:preset-outlined-primary-500 hover:bg-surface-500/30 aspect-square w-full max-w-[84px] flex flex-col items-center gap-0.5';
+  let anchorRail = 'btn hover:preset-tonal aspect-square w-full max-w-[84px] flex flex-col items-center gap-0.5';
+   
+  //types for the nav links
+  type Role = 'MEMBER'|'SELLER'|'ADMIN';
+  type AccountLinks = Record<Role,{label:string,href:string,icon:any}[]>;
+
+  const navLinksLookUpTable:AccountLinks ={
+    MEMBER:[
+        { label: 'My Clippings', href: '#', icon: Store },
+        { label: 'Intrest Offers', href: '#', icon: Inbox },
+        { label: 'My Offers', href: '#', icon: Handshake },
+    ],
+    SELLER:[
+      { label: 'My Clippings', href: '#', icon: Store },
+      { label: 'My analitics', href: '#', icon: ChartColumnBig },
+      { label: 'Reviews', href: '#', icon: Inbox },
+      { label: 'Shop Socials', href: '/shop-managment/socials', icon: Share2 },
+    ],
+    ADMIN:[
+      { label: 'Site analytics', href: '#', icon: ChartColumnBig },
+      { label: 'Reports', href: '#', icon: MessageCircleWarning },
+      { label: 'Verification', href: '/verifications', icon: ShieldCheck },
+    ],
+  }
+
+  // function to get nav links, if bad role is given it returns nothing
+  function getNavLinks(role:string|null) {
+    if(role==null) return [];
+    return navLinksLookUpTable[role as Role];
+  }
+
+  const commonlinks=[
+    { label: 'Home', href: '/', icon: House },
+    { label: 'Settings', href: '/account-settings', icon: Settings },
+  ]
+
+  const currentUserLinks =$derived(
+    [commonlinks[0],...getNavLinks(loggedUser.accountType),commonlinks[1]]
+  );
+
+  async function logoutSubmit(e: Event|null) {
+    e?.preventDefault();
+    try {
+      await apiCaller.post("/user/logout/");
+      loggedUser.accountType = null;
+      loggedUser.token = null;
+      loggedUser.username = null;
+      goto("/auth");
+    } catch (error) {
+      console.log("Since when does the backend give an error here??");
+    }
+  }
+  let avatar = $derived(loggedUser.avatar ? backend + loggedUser.avatar : null);
+
+  function doSearch(e: SubmitEvent) {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const query = formData.get("q")?.toString() ?? "";
+    if (!query.trim()) return;
+
+    goto(`/search?q=${encodeURIComponent(query)}`);
+  }
+</script>
+
+
+
+<AppBar class="sticky top-0 z-10 bg-surface-100-900/80 backdrop-blur-sm"> <!--NOTE: in skeleton ui the /80 means 80% transparency-->
+    <AppBar.Toolbar class="grid-cols-[auto_1fr_auto] content-center">
+      <AppBar.Lead>
+        {#if loggedUser.accountType!=null}
+          <Popover>
+            <Popover.Trigger class="btn"><MenuIcon></MenuIcon></Popover.Trigger>
+            <Portal>
+              <Popover.Positioner>
+                <Popover.Content class="card max-w-md mt-5 p-4 bg-surface-100-900 shadow-xl space-y-2 max-h-[70dvh] overflow-hidden">
+                  <Popover.Title class="font-bold">Menu</Popover.Title>
+                  <Popover.Description class="overflow-y-auto max-h-[60dvh] smooth-scroll"> 
+                    <Navigation layout="rail">
+                      <Navigation.Content>
+                        <Navigation.Menu>
+                          {#each currentUserLinks as link (link)}
+                            {@const Icon = link.icon}
+                            <a href={link.href} class={anchorRail}>
+                              <Icon class="size-5" />
+                              <span class="text-xs">{link.label}</span>
+                            </a>
+                          {/each}
+                          <div class="block sm:hidden">
+                            <LightSwitch></LightSwitch>
+                          </div>
+                        </Navigation.Menu>
+                      </Navigation.Content>
+                    </Navigation>
+                  </Popover.Description>
+                  
+                </Popover.Content>
+              </Popover.Positioner>
+            </Portal>
+          </Popover>
+        {/if}
+      </AppBar.Lead>
+
+      <AppBar.Headline class="flex flex-row items-center">
+        <div class="pr-10">
+          <button onmouseenter={mouseTrack} onmouseleave={mouseTrack} {onclick}>
+            {#if hovered}
+              <p class=" text-base md:text-3xl" in:fade>Clipp€r</p>
+            {:else}
+              <p class=" text-base md:text-3xl" in:fade>Clippr</p>
+            {/if}
+          </button>
+        </div>
+        <form onsubmit={doSearch} class="input-group grid-cols-[auto_1fr_auto]">
+          <div class="ig-cell preset-tonal">
+            <SearchIcon size={16} />
+          </div>
+          <input class="ig-input" type="search" placeholder="Search..." name="q" autocomplete="off" />
+          <button class="ig-btn preset-filled">Submit</button>
+        </form>
+      </AppBar.Headline>
+
+      <AppBar.Trail class="items-center">
+        <div class="hidden sm:block">
+          <LightSwitch></LightSwitch>
+        </div>
+        
+        {#if loggedUser.username!=null}
+         
+          {#if !avatar}
+          <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon size=18 /></button>
+        {:else}
+          <Avatar class="size-10 sm:size-18">
+            <Avatar.Image src={avatar} alt="small" class="w-full h-full object-cover"/>
+            <Avatar.Fallback>SK</Avatar.Fallback>
+          </Avatar>
+        {/if}
+         <p class="text-base">{loggedUser.username}</p>
+          <button type="button" class="btn-icon hover:preset-tonal" onclick={logoutSubmit}><LogOutIcon class="size-8" /></button>
+        {/if}
+        
+      </AppBar.Trail>
+    </AppBar.Toolbar>
+  </AppBar>
