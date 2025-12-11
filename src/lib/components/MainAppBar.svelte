@@ -32,12 +32,12 @@
 
   const navLinksLookUpTable:AccountLinks ={
     MEMBER:[
-        { label: 'My Clippings', href: '#', icon: Store },
+        { label: 'My Clippings', href: '/my-clippings', icon: Store },
         { label: 'Intrest Offers', href: '#', icon: Inbox },
         { label: 'My Offers', href: '#', icon: Handshake },
     ],
     SELLER:[
-      { label: 'My Clippings', href: '#', icon: Store },
+      { label: 'My Clippings', href: '/my-clippings', icon: Store },
       { label: 'My analitics', href: '#', icon: ChartColumnBig },
       { label: 'Reviews', href: '#', icon: Inbox },
       { label: 'Shop Socials', href: '/shop-managment/socials', icon: Share2 },
