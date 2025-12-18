@@ -85,7 +85,7 @@
 
     //reruns any time the id changes
     $effect(() => {
-        if (loggedUser.id) {
+        if (loggedUser.username) {
             getAvatar();
         }
     });
