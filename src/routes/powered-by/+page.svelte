@@ -77,8 +77,8 @@
 </script>
 
 <section class="max-w-6xl mx-auto p-6">
-  <h1 class="text-3xl font-bold mb-2">Powered by</h1>
-  <p class="text-slate-500 mb-8">
+  <h1 class="text-3xl text-center font-bold mb-2">Powered by</h1>
+  <p class="text-primary-500 mb-8 text-center">
     This project is built using modern, open-source technologies.
   </p>
 

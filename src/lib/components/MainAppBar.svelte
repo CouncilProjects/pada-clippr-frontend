@@ -2,13 +2,15 @@
   import LightSwitch from '$lib/components/LightSwitch.svelte';
   import { SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck } from '@lucide/svelte';
   import { AppBar, Avatar, Navigation } from '@skeletonlabs/skeleton-svelte';
-  import { loggedUser } from "$lib/universalReactivity/auth.svelte"
-
+  import { locale, loggedUser, toogleLocale } from "$lib/universalReactivity/auth.svelte"
+import gr from '$lib/assets/gr.svg';
+  import en from '$lib/assets/en.svg';
 
 
   import { fade } from 'svelte/transition';
   import { goto } from '$app/navigation';
   import { Popover, Portal } from '@skeletonlabs/skeleton-svelte';
+  import { loadLocale } from 'wuchale/load-utils'
 
   import apiCaller, { backend} from '$lib/axiosConfig';
 
@@ -86,6 +88,23 @@
 
     goto(`/search?q=${encodeURIComponent(query)}`);
   }
+
+  let icon = $state((localStorage.getItem("clippr-locale")||'en')=='en'?en:gr);
+
+  async function changeLocal(){
+    let loc = localStorage.getItem("clippr-locale")
+    if(loc=="gr"){
+      loc = 'en';
+      icon=en;
+    } else {
+      loc = 'gr';
+      icon=gr;
+    }
+
+    localStorage.setItem("clippr-locale",loc);
+    await loadLocale(loc);
+  }
+
 </script>
 
 
@@ -111,8 +130,9 @@
                               <span class="text-xs">{link.label}</span>
                             </a>
                           {/each}
-                          <div class="block sm:hidden">
+                          <div class="block sm:hidden flex-col space-y-2">
                             <LightSwitch></LightSwitch>
+                            <button class="btn btn-icon w-8 h-8" aria-label="Change Language" onclick={changeLocal}><img src={icon} alt={"change lang"}></button>
                           </div>
                         </Navigation.Menu>
                       </Navigation.Content>
@@ -146,8 +166,9 @@
       </AppBar.Headline>
 
       <AppBar.Trail class="items-center">
-        <div class="hidden sm:block">
+        <div class="hidden sm:block sm:flex  sm:flex-col md:flex-row items-center justify-center align-baseline">
           <LightSwitch></LightSwitch>
+          <button class="btn btn-icon w-12 h-8" aria-label="Change Language" onclick={changeLocal}><img class="w-full h-full object-cover" src={icon} alt={"change lang"}></button>
         </div>
         
         {#if loggedUser.username!=null}

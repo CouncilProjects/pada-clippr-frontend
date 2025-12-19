@@ -1,9 +1,9 @@
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
-
+import { wuchale } from '@wuchale/vite-plugin'
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit()],
+	plugins: [wuchale(),tailwindcss(), sveltekit()],
 	server:{
 		proxy:{
 			'/api' : {

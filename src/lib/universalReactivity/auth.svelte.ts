@@ -1,5 +1,18 @@
 import apiCaller from "$lib/axiosConfig";
 
+export let locale = $state({value:localStorage.getItem("clippr-locale") || 'en'});
+
+export const getLocale = () => {
+    return locale.value;
+}
+
+export const toogleLocale = ()=>{
+    if(locale.value=='en'){
+        locale.value='gr';
+    } else {
+        locale.value='en';
+    }
+}
 
 interface loggedUserInfo{
     id:number|null,
