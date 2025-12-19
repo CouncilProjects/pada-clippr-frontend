@@ -10,12 +10,14 @@
     import getEventBus from '$lib/universalReactivity/eventBus';
     import PopUpAd from '$lib/components/PopUpAd.svelte';
     import MainAppBar from '$lib/components/MainAppBar.svelte';
+    import {md} from "$lib/universalReactivity/screenSizes"
+    import {ChevronsUp} from "@lucide/svelte"
 
     //Reactive state
     let popUp = $state(false);
     const eventBus = getEventBus();
     let theScroll = $state(0);
-    let showBackToTop = $derived(theScroll > 20 ? true : false);
+    let showBackToTop = $derived(theScroll > 0 ? true : false);
 
     //Props
     let { children } = $props();
@@ -113,10 +115,14 @@
 
 {#if showBackToTop}
     <button
-        class="btn preset-filled-primary-300-700 fixed bottom-5 right-5 z-99 rounded-full"
+        class="btn preset-filled-primary-300-700 fixed m-2 !sm:left-5 bottom-5 md:right-5  z-99 rounded-full"
         onclick={backToTop}
     >
-        Back to Top
+        {#if !md.current}
+            <ChevronsUp></ChevronsUp>
+        {:else}
+            Back to Top
+        {/if}
     </button>
 {/if}
 <div class="h-screen grid grid-rows-[auto_1fr_auto]">
@@ -127,11 +133,14 @@
         {@render children?.()}
     </main>
     <!-- Footer -->
-    <footer class="bg-surface-300-700 p-4">
+    <footer class="bg-surface-300-700 p-4 relative flex items-center justify-between">
         {#if lastLogIn}
             <p>Last Login : {lastLogIn}</p>
         {/if}
-        <p class="text-right">2025</p>
+        <div class="right-5 content-end">
+            <p class="text-right">2025-2026</p>
+            <a class="anchor text-right" href="/powered-by">Powered by</a>
+        </div>
     </footer>
 </div>
 
@@ -147,3 +156,11 @@
         </Toast>
     {/snippet}
 </Toast.Group>
+
+<style>
+
+:root {
+  /* Use an existing Skeleton CSS variable */
+  --body-background-color: #e0f0e0
+}
+</style>
