@@ -19,11 +19,12 @@
 
     import getEventBus from '$lib/universalReactivity/eventBus';
     import { RatingGroup } from '@skeletonlabs/skeleton-svelte';
+    import { loggedUser } from '$lib/universalReactivity/auth.svelte';
     const eventBus = getEventBus();
 
     const clickHappned = (ver: boolean, clipId?: string) => {
         
-        if (!ver && clipId) {
+        if (!ver && clipId && loggedUser.accountType=="member") {
             eventBus.emit('thumb-card-click');
         }
         if (clipId) {
