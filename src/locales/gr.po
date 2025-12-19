@@ -1,0 +1,643 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-19T13:30:04.167Z\n"
+"PO-Revision-Date: 2025-12-19T13:30:04.167Z\n"
+"Last-Translator: \n"
+"Language: gr\n"
+"Language-Team: \n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"MIME-Version: 1.0\n"
+
+#: src/lib/components/LightSwitch.svelte
+msgid "Dark"
+msgstr "Σκοτεινό"
+
+#: src/lib/components/LightSwitch.svelte
+msgid "Light"
+msgstr "Φωτεινό"
+
+#: src/lib/components/PopUpAd.svelte
+msgid "AD SPACE"
+msgstr "ΧΩΡΟΣ ΔΙΑΦΗΜΙΣΗΣ"
+
+#. placeholder {0}: timeTillClose
+#: src/lib/components/PopUpAd.svelte
+msgid "Skip in {0}"
+msgstr "Παράλειψη σε {0}"
+
+#: src/lib/components/ReviewPopUp.svelte
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: src/lib/components/ReviewPopUp.svelte
+msgid "Review"
+msgstr "Αξιολόγηση"
+
+#: src/lib/components/ReviewPopUp.svelte
+msgid "@skeletonlabs.dev"
+msgstr "@skeletonlabs.dev"
+
+#. placeholder {0}: about
+#. placeholder {1}: reference
+#: src/lib/components/ReviewPopUp.svelte
+msgid "Leave a review for {0} {1}"
+msgstr "Αφήστε μια αξιολόγηση για {0} {1}"
+
+#: src/lib/components/ReviewPopUp.svelte
+msgid "Rate it"
+msgstr "Αξιολογήστε το"
+
+#: src/lib/components/ReviewPopUp.svelte
+msgid "Leave comment"
+msgstr "Αφήστε σχόλιο"
+
+#: src/lib/components/ReviewPopUp.svelte
+msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+msgstr "Το κείμενο αυτό είναι υποδειγματικό και δεν μεταφράζεται."
+
+#: src/lib/components/MainAppBar.svelte
+#: src/lib/components/ReviewPopUp.svelte
+msgid "Submit"
+msgstr "Υποβολή"
+
+#: src/lib/components/ReviewPopUp.svelte
+msgid "Progress"
+msgstr "Πρόοδος"
+
+#: src/lib/components/ThumbnailList.svelte
+msgid "Items per row"
+msgstr "Αντικείμενα ανά σειρά"
+
+#: src/lib/components/ThumbnailList.svelte
+msgid "No items found."
+msgstr "Δεν βρέθηκαν αντικείμενα."
+
+#: src/lib/universalReactivity/auth.svelte.ts
+msgid "Authorization"
+msgstr "Εξουσιοδότηση"
+
+#. placeholder {0}: token
+#: src/lib/universalReactivity/auth.svelte.ts
+msgid "Bearer {0}"
+msgstr "Φέρων {0}"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Please select an image file (JPEG, PNG, WEBP, etc.)"
+msgstr "Παρακαλώ επιλέξτε ένα αρχείο εικόνας (JPEG, PNG, WEBP, κ.λπ.)"
+
+#: src/routes/account-settings/+page.svelte
+msgid "File size must be less than 5MB"
+msgstr "Το μέγεθος αρχείου πρέπει να είναι μικρότερο από 5MB"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Content-Type"
+msgstr "Τύπος Περιεχομένου"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Todo"
+msgstr "Εκκρεμεί"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Avatar"
+msgstr "Άβαταρ"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Upload or change your avatar"
+msgstr "Ανεβάστε ή αλλάξτε το άβαταρ σας"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Browse Files <0/>"
+msgstr "Περιήγηση Αρχείων <0/>"
+
+#. placeholder {0}: file.size
+#: src/routes/account-settings/+page.svelte
+msgid "{0} bytes"
+msgstr "{0} bytes"
+
+#: src/routes/account-settings/+page.svelte
+#: src/routes/auth/+page.svelte
+msgid "Confirm"
+msgstr "Επιβεβαίωση"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Delete Avatar"
+msgstr "Διαγραφή Άβαταρ"
+
+#: src/routes/auth/+page.svelte
+msgid "Passwords dont match"
+msgstr "Οι κωδικοί δεν ταιριάζουν"
+
+#: src/routes/auth/+page.svelte
+msgid "Bad credentials"
+msgstr "Λάθος στοιχεία"
+
+#: src/routes/auth/+page.svelte
+#: src/routes/auth/+page.svelte
+msgid "Signup"
+msgstr "Εγγραφή"
+
+#: src/routes/auth/+page.svelte
+#: src/routes/auth/+page.svelte
+msgid "Login"
+msgstr "Σύνδεση"
+
+#: src/routes/auth/+page.svelte
+#: src/routes/auth/+page.svelte
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: src/routes/auth/+page.svelte
+#: src/routes/auth/+page.svelte
+#: src/routes/auth/+page.svelte
+msgid "Password"
+msgstr "Κωδικός"
+
+#: src/routes/auth/+page.svelte
+msgid "E-mail"
+msgstr "Ηλεκτρονικό ταχυδρομείο"
+
+#: src/routes/auth/+page.svelte
+msgid "Your email"
+msgstr "Το email σας"
+
+#: src/routes/auth/+page.svelte
+#: src/routes/verifications/+page.svelte
+msgid "First name"
+msgstr "Όνομα"
+
+#: src/routes/auth/+page.svelte
+msgid "Your legal first name"
+msgstr "Το νόμιμο όνομα σας"
+
+#: src/routes/auth/+page.svelte
+#: src/routes/verifications/+page.svelte
+msgid "Last name"
+msgstr "Επώνυμο"
+
+#: src/routes/auth/+page.svelte
+msgid "Your legal last name"
+msgstr "Το νόμιμο επώνυμό σας"
+
+#: src/routes/auth/+page.svelte
+msgid "Show password"
+msgstr "Εμφάνιση κωδικού"
+
+#: src/routes/auth/+page.svelte
+msgid "Already have an account ?"
+msgstr "Έχετε ήδη λογαριασμό;"
+
+#: src/routes/auth/+page.svelte
+msgid "Dont have an account ?"
+msgstr "Δεν έχετε λογαριασμό;"
+
+#: src/lib/components/MainAppBar.svelte
+#: src/routes/+layout.svelte
+msgid "Clipp€r"
+msgstr "Clipp€r"
+
+#: src/routes/+layout.svelte
+msgid "Back to Top"
+msgstr "Πίσω στην κορυφή"
+
+#. placeholder {0}: lastLogIn
+#: src/routes/+layout.svelte
+msgid "Last Login : {0}"
+msgstr "Τελευταία σύνδεση : {0}"
+
+#: src/routes/+layout.svelte
+#: src/routes/powered-by/+page.svelte
+msgid "Powered by"
+msgstr "Υποστηρίζεται από"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Django"
+msgstr "Django"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Backend Framework"
+msgstr "Πλαίσιο Backend"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Svelte"
+msgstr "Svelte"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Frontend Framework"
+msgstr "Πλαίσιο Frontend"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Skeleton UI"
+msgstr "Skeleton UI"
+
+#: src/routes/powered-by/+page.svelte
+msgid "UI Framework"
+msgstr "Πλαίσιο UI"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Tailwind CSS"
+msgstr "Tailwind CSS"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Styling Library"
+msgstr "Βιβλιοθήκη Στυλ"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Lucide"
+msgstr "Lucide"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Icons"
+msgstr "Εικονίδια"
+
+#: src/routes/powered-by/+page.svelte
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Version Control"
+msgstr "Έλεγχος Έκδοσης"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Trello"
+msgstr "Trello"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Project Management"
+msgstr "Διαχείριση Έργου"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Playwright"
+msgstr "Playwright"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Testing"
+msgstr "Δοκιμές"
+
+#: src/routes/powered-by/+page.svelte
+msgid "SQLite"
+msgstr "SQLite"
+
+#: src/routes/powered-by/+page.svelte
+msgid "Database"
+msgstr "Βάση Δεδομένων"
+
+#: src/routes/powered-by/+page.svelte
+msgid "This project is built using modern, open-source technologies."
+msgstr "Αυτό το έργο είναι χτισμένο χρησιμοποιώντας σύγχρονες, ανοιχτού κώδικα τεχνολογίες."
+
+#: src/lib/components/MainAppBar.svelte
+#: src/lib/components/MainAppBar.svelte
+#: src/routes/my-clippings/+page.svelte
+msgid "My Clippings"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Intrest Offers"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "My Offers"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "My analitics"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Reviews"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+#: src/routes/account/[name]/+page.svelte
+msgid "Shop Socials"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Site analytics"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Reports"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Verification"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Home"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Settings"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Menu"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Clippr"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Search..."
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "SK"
+msgstr ""
+
+#: src/lib/components/ListingThumbnailCard.svelte
+#: src/lib/components/ListingThumbnailCard.svelte
+msgid "Unrated"
+msgstr ""
+
+#: src/lib/components/ListingThumbnailCard.svelte
+#: src/lib/components/ListingThumbnailCard.svelte
+msgid "Negotiable"
+msgstr ""
+
+#: src/lib/components/ListingThumbnailCard.svelte
+#: src/lib/components/ListingThumbnailCard.svelte
+msgid "Non negotiable"
+msgstr ""
+
+#. placeholder {0}: stock
+#. placeholder {0}: stock
+#: src/lib/components/ListingThumbnailCard.svelte
+#: src/lib/components/ListingThumbnailCard.svelte
+msgid "Stock left: {0}"
+msgstr ""
+
+#: src/lib/components/ListingThumbnailCard.svelte
+msgid "Press to go to page"
+msgstr ""
+
+#: src/lib/components/ListingThumbnailCard.svelte
+msgid "Thumbnail"
+msgstr ""
+
+#: src/routes/my-clippings/+page.svelte
+msgid "+ Create New"
+msgstr ""
+
+#: src/routes/my-clippings/+page.svelte
+msgid "No items."
+msgstr ""
+
+#: src/routes/search/+page.svelte
+msgid "Page Size"
+msgstr ""
+
+#: src/routes/verifications/+page.svelte
+msgid "Search"
+msgstr ""
+
+#: src/routes/verifications/+page.svelte
+msgid "Query username"
+msgstr ""
+
+#: src/routes/verifications/+page.svelte
+msgid "Enter"
+msgstr ""
+
+#: src/routes/verifications/+page.svelte
+msgid "Submit <0/>"
+msgstr ""
+
+#: src/routes/verifications/+page.svelte
+msgid "Shop"
+msgstr ""
+
+#: src/routes/verifications/+page.svelte
+#: src/routes/verifications/+page.svelte
+msgid "Verify"
+msgstr ""
+
+#: src/routes/verifications/+page.svelte
+msgid "No results..."
+msgstr ""
+
+#: src/routes/account/[name]/+page.svelte
+msgid "click to copy"
+msgstr ""
+
+#. placeholder {0}: data.paramName
+#: src/routes/account/[name]/+page.svelte
+msgid "Welcome to {0}'s Shop"
+msgstr ""
+
+#. placeholder {0}: data.paramName
+#: src/routes/account/[name]/+page.svelte
+msgid "Welcome to {0}'s page"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "You can only upload up to 3 images"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Only image files are allowed"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Each file must be under 5MB"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "File rejected. Unsupported type or size."
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Please fill in all required fields"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Enter a valid minimum negotiable price"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Item created successfully! 🎉"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Failed to create item"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Create New Item"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "List your item on the marketplace"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Basic Information"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Title <0/>"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Description <0/>"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Describe your item in detail..."
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Tip: Be detailed to attract more buyers"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Pricing & Stock"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Price ($) <0/>"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Stock Quantity"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Infinite Stock"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Item is always available (digital products, services, etc.)"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Price is negotiable"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Allow buyers to make offers"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Minimum Acceptable Price ($)"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "The lowest price you'll accept"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Tags"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Add tags to help buyers find your item"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Separate tags with commas"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Item Images"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Upload up to 3 high-quality images (max 5MB each)"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "<0/> Browse Images"
+msgstr ""
+
+#. placeholder {0}: (file.size / 1024).toFixed(2)
+#: src/routes/my-clippings/create/+page.svelte
+msgid "{0} KB"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Creating Item..."
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Create Item"
+msgstr ""
+
+#: src/routes/shop-managment/socials/+page.svelte
+msgid "A list of socials for your shop"
+msgstr ""
+
+#: src/routes/shop-managment/socials/+page.svelte
+msgid "Social"
+msgstr ""
+
+#: src/routes/shop-managment/socials/+page.svelte
+msgid "Symbol"
+msgstr ""
+
+#: src/routes/shop-managment/socials/+page.svelte
+msgid "Account"
+msgstr ""
+
+#: src/routes/shop-managment/socials/+page.svelte
+msgid "Discard changes"
+msgstr ""
+
+#: src/routes/shop-managment/socials/+page.svelte
+msgid "Apply changes"
+msgstr ""
+
+#: src/routes/account/[name]/+page.ts
+msgid "Vintage Backpack"
+msgstr ""
+
+#: src/routes/account/[name]/+page.ts
+msgid "Retro Sunglasses"
+msgstr ""
+
+#: src/routes/account/[name]/+page.ts
+msgid "Leather Wallet"
+msgstr ""
+
+#: src/routes/account/[name]/+page.ts
+msgid "Casual Sneakers"
+msgstr ""
+
+#: src/routes/account/[name]/+page.ts
+msgid "Graphic T-Shirt"
+msgstr ""
+
+#: src/routes/account/[name]/+page.ts
+msgid "Jeans Slim Fit"
+msgstr ""
+
+#: src/routes/account/[name]/+page.ts
+msgid "Classic Watch"
+msgstr ""
+
+#: src/routes/account/[name]/+page.ts
+msgid "Beanie Hat"
+msgstr ""
+
+#: src/routes/account/[name]/+page.ts
+msgid "Wireless Earbuds"
+msgstr ""
+
+#: src/routes/account/[name]/+page.ts
+msgid "Not found"
+msgstr ""
+
+#~ msgid "press"
+#~ msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+#: src/lib/components/MainAppBar.svelte
+msgid "Change Language"
+msgstr ""

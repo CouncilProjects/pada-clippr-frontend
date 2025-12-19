@@ -21,6 +21,7 @@
         id: number
         title: string
         price: number
+        rating:number
         stock: number
         negotiable: boolean
         seller: Seller
@@ -41,6 +42,7 @@
                 title: item.title,
                 neg: item.negotiable,
                 price: item.price,
+                rating:Number(item.rating),
                 stock: item.stock,
                 clipId: item.id,
                 thumbnail: `https://picsum.photos/200/200?random=${index}`,

@@ -7,6 +7,7 @@
         price,
         neg,
         stock,
+        rating,
         thumbnail = fallback,
         downsized,
         fromVerified,
@@ -17,11 +18,13 @@
     import type { ItemThumbnail } from './types';
 
     import getEventBus from '$lib/universalReactivity/eventBus';
+    import { RatingGroup } from '@skeletonlabs/skeleton-svelte';
+    import { loggedUser } from '$lib/universalReactivity/auth.svelte';
     const eventBus = getEventBus();
 
     const clickHappned = (ver: boolean, clipId?: string) => {
         
-        if (!ver && clipId) {
+        if (!ver && clipId && loggedUser.accountType=="member") {
             eventBus.emit('thumb-card-click');
         }
         if (clipId) {
@@ -46,9 +49,25 @@ ThumbnailList component.
         <tbody>
             <tr>
                 <td>
-                    <span class={fromVerified ? verifiedTextGradient + ' font-bold' : ''}>
-                        {title}
-                    </span>
+                    <div class={`flex flex-col ${fromVerified ? verifiedTextGradient + ' font-bold' : ''}`}>
+                        <span>{title}</span>
+                    {#if rating<0}
+                        <span class="text-white font-normal">Unrated</span>
+                    {:else}
+                        <RatingGroup class={fromVerified ? 'text-yellow-200' : 'text-white'} value={rating} count={5} allowHalf={true} readOnly={true}>
+                            <RatingGroup.Control>
+                                <RatingGroup.Context>
+                                    {#snippet children(ratingGroup)}
+                                        {#each ratingGroup().items as index (index)}
+                                            <RatingGroup.Item {index} />
+                                        {/each}
+                                    {/snippet}
+                                </RatingGroup.Context>
+                            </RatingGroup.Control>
+                            <RatingGroup.HiddenInput />
+                        </RatingGroup>
+                    {/if}
+                    </div>
                 </td>
                 <td>
                     € <span>{price}</span>
@@ -75,7 +94,25 @@ ThumbnailList component.
         <tbody>
             <tr>
                 <td>
-                    <span class={fromVerified ? verifiedTextGradient + ' font-bold' : ''}>{title}</span>
+                    <div class={`flex flex-col ${fromVerified ? verifiedTextGradient + ' font-bold' : ''}`}>
+                        <span>{title}</span>
+                    {#if rating<0}
+                        <span class="text-white font-normal">Unrated</span>
+                    {:else}
+                        <RatingGroup class={fromVerified ? 'text-yellow-200' : 'text-white'} value={rating} count={5} allowHalf={true} readOnly={true}>
+                            <RatingGroup.Control>
+                                <RatingGroup.Context>
+                                    {#snippet children(ratingGroup)}
+                                        {#each ratingGroup().items as index (index)}
+                                            <RatingGroup.Item {index} />
+                                        {/each}
+                                    {/snippet}
+                                </RatingGroup.Context>
+                            </RatingGroup.Control>
+                            <RatingGroup.HiddenInput />
+                        </RatingGroup>
+                    {/if}
+                    </div>
                 </td>
             </tr>
             <tr>
