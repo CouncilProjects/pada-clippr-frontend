@@ -148,6 +148,7 @@ ThumbnailList component.
     aria-roledescription="Press to go to page"
 >
     <div class="flex flex-col items-center p-2 h-full">
+        <div class="w-32 h-32 mb-2 overflow-hidden rounded-md">
         <img
             src={thumbnail}
             onerror={(e) => {
@@ -155,6 +156,7 @@ ThumbnailList component.
             }}
             alt="Thumbnail"
         />
+        </div>
         {#if !md.current}
             <!--If smaller than md-->
             {@render tallTable(title, price, neg, stock)}

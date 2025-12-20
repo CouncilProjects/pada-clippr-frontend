@@ -12,6 +12,8 @@
     let pageSize = $state(10)
     let totalItems = $state(0)
 
+    const fallback = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
+
     interface Seller {
         username: string
         is_verified_seller: boolean
@@ -25,6 +27,7 @@
         stock: number
         negotiable: boolean
         seller: Seller
+        thumbnail: string | null
     }
 
     async function doSearch() {
@@ -45,7 +48,7 @@
                 rating:Number(item.rating),
                 stock: item.stock,
                 clipId: item.id,
-                thumbnail: `https://picsum.photos/200/200?random=${index}`,
+                thumbnail: item.thumbnail || fallback,
                 fromVerified: item.seller.is_verified_seller
             }}
         )

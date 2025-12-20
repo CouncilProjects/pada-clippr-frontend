@@ -2,8 +2,7 @@
   import { goto } from '$app/navigation';
   import type { PageData } from './$types';
 
-  // This type is automatically generated from your load() return value
-  export let data: PageData;
+  const {data} =$props<{data: PageData}>();
 
   function createNew() {
       goto('/my-clippings/create/');
