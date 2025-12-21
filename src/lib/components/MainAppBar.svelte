@@ -2,7 +2,7 @@
   import LightSwitch from '$lib/components/LightSwitch.svelte';
   import { SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck } from '@lucide/svelte';
   import { AppBar, Avatar, Navigation } from '@skeletonlabs/skeleton-svelte';
-  import { locale, loggedUser, toogleLocale } from "$lib/universalReactivity/auth.svelte"
+  import { locale, loggedUser, logoutUser, toogleLocale } from "$lib/universalReactivity/auth.svelte"
 import gr from '$lib/assets/gr.svg';
   import en from '$lib/assets/en.svg';
 
@@ -70,12 +70,10 @@ import gr from '$lib/assets/gr.svg';
     e?.preventDefault();
     try {
       await apiCaller.post("/user/logout/");
-      loggedUser.accountType = null;
-      loggedUser.token = null;
-      loggedUser.username = null;
+      logoutUser();
       goto("/auth");
     } catch (error) {
-      console.log("Since when does the backend give an error here??");
+      console.error(error);
     }
   }
   let avatar = $derived(loggedUser.avatar ? backend + loggedUser.avatar : null);

@@ -2,7 +2,7 @@ import  axios,{ AxiosError, type InternalAxiosRequestConfig } from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 const REFRESH_API="user/refresh/";
 
-import { loggedUser } from "./universalReactivity/auth.svelte";
+import { loggedUser, logInUser } from "./universalReactivity/auth.svelte";
 
 axios.defaults.withCredentials=true;
 
@@ -12,6 +12,19 @@ const apiCaller = axios.create({
   baseURL: backend+'/api/',
 });
 
+apiCaller.interceptors.request.use((config)=>{
+    const token = loggedUser.token;
+
+    if(token){
+        config.headers.Authorization = `Bearer ${token}`;
+    } else {
+        if (config.headers && 'Authorization' in config.headers){
+            delete config.headers.Authorization; //remove stale.
+        }
+    }
+
+    return config;
+})
 //exported in case we need to manually refresh 
 export async function refreshLogic(){
     //assume a call just failed with a 401
@@ -25,11 +38,7 @@ export async function refreshLogic(){
                 }); 
         }
 
-        loggedUser.id = id;
-        loggedUser.token = token;
-        loggedUser.accountType=role;
-        loggedUser.username=username;
-        apiCaller.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        logInUser(id,username,token,role);
         
 
         return Promise.resolve(token);

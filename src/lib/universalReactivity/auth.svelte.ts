@@ -40,5 +40,12 @@ export const logInUser=(id:number,name:string,token:string,type:string)=>{
     loggedUser.username=name;
     loggedUser.token=token;
     loggedUser.accountType=type;
-    apiCaller.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
+
+export const logoutUser = () => {
+    loggedUser.id = null;
+    loggedUser.username = null;
+    loggedUser.token = null;
+    loggedUser.accountType = null;
+    loggedUser.avatar=null;
 }

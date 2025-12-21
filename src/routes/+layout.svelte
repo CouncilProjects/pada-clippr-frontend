@@ -85,11 +85,13 @@
         }
     });
 
-    //reruns any time the id changes
+    //reruns any time the username changes
     $effect(() => {
-        if (loggedUser.username) {
-            getAvatar();
-        }
+        const userN = loggedUser.username;
+
+        if(!userN) return;
+        
+        getAvatar();
     });
 
     onDestroy(() => {
