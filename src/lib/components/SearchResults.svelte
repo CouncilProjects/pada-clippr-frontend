@@ -8,7 +8,6 @@
     import ThumbnailList from "$lib/components/ThumbnailList.svelte";
 
     const props: { class?: ClassValue, klass?: ClassValue } = $props();
-    const fallback = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
 
     let searchResults =  $state<ItemThumbnail[]>([])
     let pageNumber = $state(1)
@@ -50,7 +49,7 @@
                 price: item.price,
                 stock: item.stock,
                 clipId: item.id,
-                thumbnail: item.thumbnail || fallback,
+                thumbnail: item.thumbnail,
                 fromVerified: item.seller.is_verified_seller
             }}
         )

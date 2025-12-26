@@ -150,7 +150,7 @@ ThumbnailList component.
     <div class="flex flex-col items-center p-2 h-full">
         <div class="w-32 h-32 mb-2 overflow-hidden rounded-md">
         <img
-            src={thumbnail}
+            src={thumbnail ?? fallback}
             onerror={(e) => {
                 (e.currentTarget as HTMLImageElement).src = fallback;
             }}
