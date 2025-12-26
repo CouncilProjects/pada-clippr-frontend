@@ -73,17 +73,15 @@ msgid "Items per row"
 msgstr "Items per row"
 
 #: src/lib/components/ThumbnailList.svelte
+#: src/routes/my-clippings/+page.svelte
 msgid "No items found."
 msgstr "No items found."
 
-#: src/lib/universalReactivity/auth.svelte.ts
-msgid "Authorization"
-msgstr "Authorization"
+#~ msgid "Authorization"
+#~ msgstr "Authorization"
 
-#. placeholder {0}: token
-#: src/lib/universalReactivity/auth.svelte.ts
-msgid "Bearer {0}"
-msgstr "Bearer {0}"
+#~ msgid "Bearer {0}"
+#~ msgstr "Bearer {0}"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Please select an image file (JPEG, PNG, WEBP, etc.)"
@@ -356,9 +354,8 @@ msgstr "SK"
 msgid "+ Create New"
 msgstr "+ Create New"
 
-#: src/routes/my-clippings/+page.svelte
-msgid "No items."
-msgstr "No items."
+#~ msgid "No items."
+#~ msgstr "No items."
 
 #: src/routes/verifications/+page.svelte
 msgid "Search"
@@ -389,7 +386,7 @@ msgstr "Verify"
 msgid "No results..."
 msgstr "No results..."
 
-#: src/routes/search/+page.svelte
+#: src/lib/components/SearchResults.svelte
 msgid "Page Size"
 msgstr "Page Size"
 
@@ -475,29 +472,24 @@ msgstr "List your item on the marketplace"
 msgid "Basic Information"
 msgstr "Basic Information"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Title <0/>"
-msgstr "Title <0/>"
+#~ msgid "Title <0/>"
+#~ msgstr "Title <0/>"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Description <0/>"
-msgstr "Description <0/>"
+#~ msgid "Description <0/>"
+#~ msgstr "Description <0/>"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Describe your item in detail..."
-msgstr "Describe your item in detail..."
+#~ msgid "Describe your item in detail..."
+#~ msgstr "Describe your item in detail..."
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Tip: Be detailed to attract more buyers"
-msgstr "Tip: Be detailed to attract more buyers"
+#~ msgid "Tip: Be detailed to attract more buyers"
+#~ msgstr "Tip: Be detailed to attract more buyers"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Pricing & Stock"
 msgstr "Pricing & Stock"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Price ($) <0/>"
-msgstr "Price ($) <0/>"
+#~ msgid "Price ($) <0/>"
+#~ msgstr "Price ($) <0/>"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Stock Quantity"
@@ -507,9 +499,8 @@ msgstr "Stock Quantity"
 msgid "Infinite Stock"
 msgstr "Infinite Stock"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Item is always available (digital products, services, etc.)"
-msgstr "Item is always available (digital products, services, etc.)"
+#~ msgid "Item is always available (digital products, services, etc.)"
+#~ msgstr "Item is always available (digital products, services, etc.)"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Price is negotiable"
@@ -523,38 +514,32 @@ msgstr "Allow buyers to make offers"
 msgid "Minimum Acceptable Price ($)"
 msgstr "Minimum Acceptable Price ($)"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "The lowest price you'll accept"
-msgstr "The lowest price you'll accept"
+#~ msgid "The lowest price you'll accept"
+#~ msgstr "The lowest price you'll accept"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Tags"
 msgstr "Tags"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Add tags to help buyers find your item"
-msgstr "Add tags to help buyers find your item"
+#~ msgid "Add tags to help buyers find your item"
+#~ msgstr "Add tags to help buyers find your item"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Separate tags with commas"
-msgstr "Separate tags with commas"
+#~ msgid "Separate tags with commas"
+#~ msgstr "Separate tags with commas"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Item Images"
 msgstr "Item Images"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Upload up to 3 high-quality images (max 5MB each)"
-msgstr "Upload up to 3 high-quality images (max 5MB each)"
+#~ msgid "Upload up to 3 high-quality images (max 5MB each)"
+#~ msgstr "Upload up to 3 high-quality images (max 5MB each)"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "<0/> Browse Images"
 msgstr "<0/> Browse Images"
 
-#. placeholder {0}: (file.size / 1024).toFixed(2)
-#: src/routes/my-clippings/create/+page.svelte
-msgid "{0} KB"
-msgstr "{0} KB"
+#~ msgid "{0} KB"
+#~ msgstr "{0} KB"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Creating Item..."
@@ -571,6 +556,8 @@ msgstr "Unrated"
 
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
+#: src/routes/clipping/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
 msgid "Negotiable"
 msgstr "Negotiable"
 
@@ -581,8 +568,10 @@ msgstr "Non negotiable"
 
 #. placeholder {0}: stock
 #. placeholder {0}: stock
+#. placeholder {0}: data.item.stock
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
+#: src/routes/clipping/+page.svelte
 msgid "Stock left: {0}"
 msgstr "Stock left: {0}"
 
@@ -594,41 +583,32 @@ msgstr "Press to go to page"
 msgid "Thumbnail"
 msgstr "Thumbnail"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Vintage Backpack"
-msgstr "Vintage Backpack"
+#~ msgid "Vintage Backpack"
+#~ msgstr "Vintage Backpack"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Retro Sunglasses"
-msgstr "Retro Sunglasses"
+#~ msgid "Retro Sunglasses"
+#~ msgstr "Retro Sunglasses"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Leather Wallet"
-msgstr "Leather Wallet"
+#~ msgid "Leather Wallet"
+#~ msgstr "Leather Wallet"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Casual Sneakers"
-msgstr "Casual Sneakers"
+#~ msgid "Casual Sneakers"
+#~ msgstr "Casual Sneakers"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Graphic T-Shirt"
-msgstr "Graphic T-Shirt"
+#~ msgid "Graphic T-Shirt"
+#~ msgstr "Graphic T-Shirt"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Jeans Slim Fit"
-msgstr "Jeans Slim Fit"
+#~ msgid "Jeans Slim Fit"
+#~ msgstr "Jeans Slim Fit"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Classic Watch"
-msgstr "Classic Watch"
+#~ msgid "Classic Watch"
+#~ msgstr "Classic Watch"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Beanie Hat"
-msgstr "Beanie Hat"
+#~ msgid "Beanie Hat"
+#~ msgstr "Beanie Hat"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Wireless Earbuds"
-msgstr "Wireless Earbuds"
+#~ msgid "Wireless Earbuds"
+#~ msgstr "Wireless Earbuds"
 
 #: src/routes/account/[name]/+page.ts
 msgid "Not found"
@@ -641,3 +621,95 @@ msgstr "Not found"
 #: src/lib/components/MainAppBar.svelte
 msgid "Change Language"
 msgstr "Change Language"
+
+#: src/routes/clipping/+page.ts
+msgid "No item ID specified."
+msgstr "No item ID specified."
+
+#: src/routes/clipping/+page.ts
+msgid "Invalid item ID."
+msgstr "Invalid item ID."
+
+#: src/routes/clipping/+page.ts
+msgid "Failed to fetch item data."
+msgstr "Failed to fetch item data."
+
+#: src/routes/clipping/+page.svelte
+msgid "Item not found."
+msgstr "Item not found."
+
+#: src/routes/clipping/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Non-negotiable"
+msgstr "Non-negotiable"
+
+#. placeholder {0}: data.item.seller.username
+#. placeholder {1}: data.item.seller.is_verified_seller ? '(Verified)' : ''
+#: src/routes/clipping/+page.svelte
+msgid "Seller: {0} {1}"
+msgstr "Seller: {0} {1}"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "← Back"
+msgstr "← Back"
+
+#. placeholder {0}: clipping.rating
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Rating: {0}"
+msgstr "Rating: {0}"
+
+#. placeholder {0}: clipping.stock
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Stock: {0}"
+msgstr "Stock: {0}"
+
+#~ msgid "thumbnail: {0}"
+#~ msgstr "thumbnail: {0}"
+
+#~ msgid "No image available"
+#~ msgstr "No image available"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Loading…"
+msgstr "Loading…"
+
+#~ msgid "No preview available"
+#~ msgstr "No preview available"
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Title *"
+msgstr "Title *"
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Description *"
+msgstr "Description *"
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Price ($) *"
+msgstr "Price ($) *"
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "For digital products or services"
+msgstr "For digital products or services"
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Must be $0.00 or higher"
+msgstr "Must be $0.00 or higher"
+
+#~ msgid "Failed to load item."
+#~ msgstr "Failed to load item."
+
+#~ msgid "You need to be logged in to view this item."
+#~ msgstr "You need to be logged in to view this item."
+
+#~ msgid "Untitled"
+#~ msgstr "Untitled"
+
+#~ msgid "Rating:"
+#~ msgstr "Rating:"
+
+#~ msgid "Stock:"
+#~ msgstr "Stock:"
+
+#~ msgid "Description"
+#~ msgstr "Description"
