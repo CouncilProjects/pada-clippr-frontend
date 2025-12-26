@@ -29,7 +29,9 @@
     const { files } = event;
     if (!files?.length) return;
 
-    let selected = [...images, ...files];
+    console.log("Files: ",files);
+
+    let selected = [...files];
 
     if (selected.length > 3) {
       toaster.create({
@@ -42,6 +44,7 @@
     const validFiles: File[] = [];
 
     for (const file of selected) {
+      console.log("file name: ",file.name);
       if (!file.type.startsWith('image/')) {
         toaster.create({ type: 'error', description: 'Only image files are allowed' });
         continue;
@@ -72,13 +75,13 @@
       return;
     }
 
-    if (negotiable && (min_negotiable_price === null || min_negotiable_price < 0)) {
+    /*if (negotiable && (min_negotiable_price === null || min_negotiable_price < 0)) {
       toaster.create({
         type: 'error',
         description: 'Enter a valid minimum negotiable price'
       });
       return;
-    }
+    }*/
 
     loading = true;
 
@@ -93,7 +96,7 @@
       formData.append('min_negotiable_price', min_negotiable_price.toString());
     }
 
-    formData.append('tags', JSON.stringify(tagsArray));
+    //formData.append('tags', JSON.stringify(tagsArray));
 
     images.forEach(img => formData.append('images', img));
 

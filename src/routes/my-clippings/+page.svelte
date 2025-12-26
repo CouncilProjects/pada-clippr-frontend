@@ -17,15 +17,7 @@
   <div class="flex flex-wrap gap-4">
     {#each data.items as item, i (item.clipId ?? i)}
       <ListingThumbnailCard 
-        title={item.title}
-        price={item.price}
-        neg={item.neg}
-        stock={item.stock}
-        rating={item.rating}
-        thumbnail={item.thumbnail}
-        downsized={item.downsized}
-        fromVerified={item.fromVerified}
-        clipId={item.clipId}
+        item={item} downsized={item.downsized}
       />
     {/each}
   </div>

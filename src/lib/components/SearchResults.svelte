@@ -9,8 +9,6 @@
     import { loggedUser } from "$lib/universalReactivity/auth.svelte";
 
     const props: { class?: ClassValue, klass?: ClassValue } = $props();
-    const fallback = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
-    const searchesKeptLimit = 5;
 
     let searchResults =  $state<ItemBackend['results']>([])
     let pageNumber = $state(1)
@@ -30,15 +28,19 @@
         if(user != null)  params.u = user;
         params.e = expand; //JSON.parse(localStorage.getItem(`clippr-${loggedUser.id}-expand-search`) || 'false');
 
-        const result = await apiCaller.get<ItemBackend>("/item/", { params: params })
-        let userIntrests:string[] = JSON.parse(localStorage.getItem(`clippr-${loggedUser.id}-latest-searches`) || '[]');
-        if(query!=null){
-            if(userIntrests.length==searchesKeptLimit) userIntrests.pop();
-            userIntrests = [query].concat(userIntrests);
-            localStorage.setItem(`clippr-${loggedUser.id}-latest-searches`,JSON.stringify(userIntrests));
-        }
+        const result = await apiCaller.get("/item/", { params: params })
 
-        searchResults = result.data.results.map((item)=>{return {...item,thumbnail:item.thumbnail||fallback}});
+        searchResults = result.data.results.map(
+            (item: ItemBackend, index: number) => { return {
+                title: item.title,
+                neg: item.negotiable,
+                price: item.price,
+                stock: item.stock,
+                clipId: item.id,
+                thumbnail: item.thumbnail,
+                fromVerified: item.seller.is_verified_seller
+            }}
+        )
 
         totalItems = result.data.count
     }

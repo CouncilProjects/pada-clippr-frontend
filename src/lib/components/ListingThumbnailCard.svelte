@@ -62,7 +62,7 @@ ThumbnailList component.
                             <span class="text-white font-normal">Unrated</span>
                         {:else}
                             <RatingGroup
-                                class="{item.seller.is_verified_seller ? 'text-yellow-200' : 'text-white'}"
+                                class={item.seller.is_verified_seller ? 'text-yellow-200' : 'text-white'}
                                 value={Number.parseFloat(item.rating)}
                                 count={5}
                                 allowHalf
@@ -172,13 +172,13 @@ ThumbnailList component.
 >
     <div class="flex flex-col items-center p-2 h-full">
         <div class="w-32 h-32 mb-2 overflow-hidden rounded-md">
-            <img
-                src={item.thumbnail ?? fallback}
-                onerror={(e) => {
-                    (e.currentTarget as HTMLImageElement).src = fallback;
-                }}
-                alt="Thumbnail"
-            />
+        <img
+            src={item.thumbnail ?? fallback}
+            onerror={(e) => {
+                (e.currentTarget as HTMLImageElement).src = fallback;
+            }}
+            alt="Thumbnail"
+        />
         </div>
 
         {#if !md.current}

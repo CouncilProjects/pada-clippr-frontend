@@ -364,8 +364,8 @@ msgstr ""
 msgid "Non negotiable"
 msgstr ""
 
-#. placeholder {0}: stock
-#. placeholder {0}: stock
+#. placeholder {0}: item.stock
+#. placeholder {0}: item.stock
 #. placeholder {0}: data.item.stock
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
@@ -632,6 +632,7 @@ msgid "Deletes your account forever"
 msgstr ""
 
 #: src/routes/account-settings/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
 msgid "Delete"
 msgstr ""
 
@@ -785,6 +786,143 @@ msgstr "Πώς λειτουργεί η αναζήτησή μας"
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/TagSelector.svelte
-#: src/routes/my-clippings/create/+page.svelte
 msgid "Add a tag..."
 msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "← Back"
+msgstr ""
+
+#~ msgid "Loading…"
+#~ msgstr ""
+
+#~ msgid "Rating: {0}"
+#~ msgstr ""
+
+#~ msgid "Stock: {0}"
+#~ msgstr ""
+
+#~ msgid "Non-negotiable"
+#~ msgstr ""
+
+#~ msgid "Purchase failed."
+#~ msgstr ""
+
+#~ msgid "Delete failed."
+#~ msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Out of stock"
+msgstr ""
+
+#~ msgid "Buy now"
+#~ msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Edit"
+msgstr ""
+
+#~ msgid "Are you sure you want to delete <0/>?"
+#~ msgstr ""
+
+#~ msgid "Yes, delete"
+#~ msgstr ""
+
+#~ msgid "Cancel"
+#~ msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Fixed price"
+msgstr ""
+
+#~ msgid "Delete <0/>? This can't be undone."
+#~ msgstr ""
+
+#~ msgid "Edit listing"
+#~ msgstr ""
+
+#~ msgid "Are you sure you want to delete <0/>? This cannot be undone."
+#~ msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Failed to load listing."
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Delete this listing?"
+msgstr ""
+
+#~ msgid "Buy"
+#~ msgstr ""
+
+#~ msgid "This image is already added"
+#~ msgstr ""
+
+#~ msgid "Upload up to 3 images (max 5MB each)"
+#~ msgstr ""
+
+#~ msgid "File rejected."
+#~ msgstr ""
+
+#~ msgid "Maximum images reached"
+#~ msgstr ""
+
+#~ msgid "Browse Images ({0}/3)"
+#~ msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Title *"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Description *"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Price ($) *"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "For digital products or services"
+msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Must be $0.00 or higher"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Loading listing…"
+msgstr ""
+
+#. placeholder {0}: i + 1
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "View image {0}"
+msgstr ""
+
+#. placeholder {0}: clipping.seller.username
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Sold by {0}"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "✓ Verified"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Stock"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Rating"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Buy Now"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Out of Stock"
+msgstr ""
+
+#~ msgid "Please upload at least one image"
+#~ msgstr ""
