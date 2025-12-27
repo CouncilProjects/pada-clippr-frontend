@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-19T13:30:04.167Z\n"
-"PO-Revision-Date: 2025-12-19T13:30:04.167Z\n"
+"POT-Creation-Date: 2025-12-27T14:50:33.168Z\n"
+"PO-Revision-Date: 2025-12-27T14:50:33.168Z\n"
 "Last-Translator: \n"
 "Language: gr\n"
 "Language-Team: \n"
@@ -71,7 +71,7 @@ msgstr "Πρόοδος"
 
 #: src/lib/components/ThumbnailList.svelte
 msgid "Items per row"
-msgstr "Αντικείμενα ανά σειρά"
+msgstr ""
 
 #: src/lib/components/ThumbnailList.svelte
 #: src/routes/my-clippings/+page.svelte
@@ -354,7 +354,6 @@ msgstr ""
 
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
-#: src/routes/clipping/+page.svelte
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Negotiable"
 msgstr ""
@@ -369,7 +368,6 @@ msgstr ""
 #. placeholder {0}: data.item.stock
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
-#: src/routes/clipping/+page.svelte
 msgid "Stock left: {0}"
 msgstr ""
 
@@ -381,58 +379,34 @@ msgstr ""
 msgid "Thumbnail"
 msgstr ""
 
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "← Back"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Loading…"
+msgstr ""
+
+#. placeholder {0}: clipping.rating
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Rating: {0}"
+msgstr ""
+
+#. placeholder {0}: clipping.stock
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Stock: {0}"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Non-negotiable"
+msgstr ""
+
+#: src/routes/my-clippings/+page.svelte
+msgid "My Clippings"
+msgstr ""
+
 #: src/routes/my-clippings/+page.svelte
 msgid "+ Create New"
-msgstr ""
-
-#~ msgid "No items."
-#~ msgstr ""
-
-#: src/lib/components/SearchResults.svelte
-msgid "Page Size"
-msgstr ""
-
-#: src/routes/verifications/+page.svelte
-msgid "Search"
-msgstr ""
-
-#: src/routes/verifications/+page.svelte
-msgid "Query username"
-msgstr ""
-
-#: src/routes/verifications/+page.svelte
-msgid "Enter"
-msgstr ""
-
-#: src/routes/verifications/+page.svelte
-msgid "Submit <0/>"
-msgstr ""
-
-#: src/routes/verifications/+page.svelte
-msgid "Shop"
-msgstr ""
-
-#: src/routes/verifications/+page.svelte
-#: src/routes/verifications/+page.svelte
-msgid "Verify"
-msgstr ""
-
-#: src/routes/verifications/+page.svelte
-msgid "No results..."
-msgstr ""
-
-#: src/routes/account/[name]/+page.svelte
-msgid "click to copy"
-msgstr ""
-
-#. placeholder {0}: data.paramName
-#: src/routes/account/[name]/+page.svelte
-msgid "Welcome to {0}'s Shop"
-msgstr ""
-
-#. placeholder {0}: data.paramName
-#: src/routes/account/[name]/+page.svelte
-msgid "Welcome to {0}'s page"
 msgstr ""
 
 #: src/routes/my-clippings/create/+page.svelte
@@ -479,24 +453,21 @@ msgstr ""
 msgid "Basic Information"
 msgstr ""
 
-#~ msgid "Title <0/>"
-#~ msgstr ""
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Title *"
+msgstr ""
 
-#~ msgid "Description <0/>"
-#~ msgstr ""
-
-#~ msgid "Describe your item in detail..."
-#~ msgstr ""
-
-#~ msgid "Tip: Be detailed to attract more buyers"
-#~ msgstr ""
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Description *"
+msgstr ""
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Pricing & Stock"
 msgstr ""
 
-#~ msgid "Price ($) <0/>"
-#~ msgstr ""
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Price ($) *"
+msgstr ""
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Stock Quantity"
@@ -506,8 +477,9 @@ msgstr ""
 msgid "Infinite Stock"
 msgstr ""
 
-#~ msgid "Item is always available (digital products, services, etc.)"
-#~ msgstr ""
+#: src/routes/my-clippings/create/+page.svelte
+msgid "For digital products or services"
+msgstr ""
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Price is negotiable"
@@ -521,32 +493,21 @@ msgstr ""
 msgid "Minimum Acceptable Price ($)"
 msgstr ""
 
-#~ msgid "The lowest price you'll accept"
-#~ msgstr ""
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Must be $0.00 or higher"
+msgstr ""
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Tags"
 msgstr ""
 
-#~ msgid "Add tags to help buyers find your item"
-#~ msgstr ""
-
-#~ msgid "Separate tags with commas"
-#~ msgstr ""
-
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Item Images"
 msgstr ""
 
-#~ msgid "Upload up to 3 high-quality images (max 5MB each)"
-#~ msgstr ""
-
 #: src/routes/my-clippings/create/+page.svelte
 msgid "<0/> Browse Images"
 msgstr ""
-
-#~ msgid "{0} KB"
-#~ msgstr ""
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Creating Item..."
