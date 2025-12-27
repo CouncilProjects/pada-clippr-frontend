@@ -15,17 +15,16 @@
 
 {#if data.items?.length > 0}
   <div class="flex flex-wrap gap-4">
-    {#each data.items as item, i (item.clipId ?? i)}
+    {#each data.items as item}
       <ListingThumbnailCard 
         title={item.title}
         price={item.price}
-        neg={item.neg}
+        neg={item.negotiable}
         stock={item.stock}
         rating={item.rating}
         thumbnail={item.thumbnail}
-        downsized={item.downsized}
-        fromVerified={item.fromVerified}
-        clipId={item.clipId}
+        fromVerified={item.seller.is_verified_seller}
+        clipId={item.id}
       />
     {/each}
   </div>
