@@ -76,14 +76,11 @@ msgstr "Items per row"
 msgid "No items found."
 msgstr "No items found."
 
-#: src/lib/universalReactivity/auth.svelte.ts
-msgid "Authorization"
-msgstr "Authorization"
+#~ msgid "Authorization"
+#~ msgstr "Authorization"
 
-#. placeholder {0}: token
-#: src/lib/universalReactivity/auth.svelte.ts
-msgid "Bearer {0}"
-msgstr "Bearer {0}"
+#~ msgid "Bearer {0}"
+#~ msgstr "Bearer {0}"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Please select an image file (JPEG, PNG, WEBP, etc.)"
@@ -389,7 +386,7 @@ msgstr "Verify"
 msgid "No results..."
 msgstr "No results..."
 
-#: src/routes/search/+page.svelte
+#: src/lib/components/SearchResults.svelte
 msgid "Page Size"
 msgstr "Page Size"
 
@@ -594,41 +591,32 @@ msgstr "Press to go to page"
 msgid "Thumbnail"
 msgstr "Thumbnail"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Vintage Backpack"
-msgstr "Vintage Backpack"
+#~ msgid "Vintage Backpack"
+#~ msgstr "Vintage Backpack"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Retro Sunglasses"
-msgstr "Retro Sunglasses"
+#~ msgid "Retro Sunglasses"
+#~ msgstr "Retro Sunglasses"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Leather Wallet"
-msgstr "Leather Wallet"
+#~ msgid "Leather Wallet"
+#~ msgstr "Leather Wallet"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Casual Sneakers"
-msgstr "Casual Sneakers"
+#~ msgid "Casual Sneakers"
+#~ msgstr "Casual Sneakers"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Graphic T-Shirt"
-msgstr "Graphic T-Shirt"
+#~ msgid "Graphic T-Shirt"
+#~ msgstr "Graphic T-Shirt"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Jeans Slim Fit"
-msgstr "Jeans Slim Fit"
+#~ msgid "Jeans Slim Fit"
+#~ msgstr "Jeans Slim Fit"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Classic Watch"
-msgstr "Classic Watch"
+#~ msgid "Classic Watch"
+#~ msgstr "Classic Watch"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Beanie Hat"
-msgstr "Beanie Hat"
+#~ msgid "Beanie Hat"
+#~ msgstr "Beanie Hat"
 
-#: src/routes/account/[name]/+page.ts
-msgid "Wireless Earbuds"
-msgstr "Wireless Earbuds"
+#~ msgid "Wireless Earbuds"
+#~ msgstr "Wireless Earbuds"
 
 #: src/routes/account/[name]/+page.ts
 msgid "Not found"

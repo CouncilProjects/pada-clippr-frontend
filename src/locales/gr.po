@@ -76,14 +76,11 @@ msgstr "Αντικείμενα ανά σειρά"
 msgid "No items found."
 msgstr "Δεν βρέθηκαν αντικείμενα."
 
-#: src/lib/universalReactivity/auth.svelte.ts
-msgid "Authorization"
-msgstr "Εξουσιοδότηση"
+#~ msgid "Authorization"
+#~ msgstr "Εξουσιοδότηση"
 
-#. placeholder {0}: token
-#: src/lib/universalReactivity/auth.svelte.ts
-msgid "Bearer {0}"
-msgstr "Φέρων {0}"
+#~ msgid "Bearer {0}"
+#~ msgstr "Φέρων {0}"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Please select an image file (JPEG, PNG, WEBP, etc.)"
@@ -390,7 +387,7 @@ msgstr ""
 msgid "No items."
 msgstr ""
 
-#: src/routes/search/+page.svelte
+#: src/lib/components/SearchResults.svelte
 msgid "Page Size"
 msgstr ""
 
@@ -594,41 +591,32 @@ msgstr ""
 msgid "Apply changes"
 msgstr ""
 
-#: src/routes/account/[name]/+page.ts
-msgid "Vintage Backpack"
-msgstr ""
+#~ msgid "Vintage Backpack"
+#~ msgstr ""
 
-#: src/routes/account/[name]/+page.ts
-msgid "Retro Sunglasses"
-msgstr ""
+#~ msgid "Retro Sunglasses"
+#~ msgstr ""
 
-#: src/routes/account/[name]/+page.ts
-msgid "Leather Wallet"
-msgstr ""
+#~ msgid "Leather Wallet"
+#~ msgstr ""
 
-#: src/routes/account/[name]/+page.ts
-msgid "Casual Sneakers"
-msgstr ""
+#~ msgid "Casual Sneakers"
+#~ msgstr ""
 
-#: src/routes/account/[name]/+page.ts
-msgid "Graphic T-Shirt"
-msgstr ""
+#~ msgid "Graphic T-Shirt"
+#~ msgstr ""
 
-#: src/routes/account/[name]/+page.ts
-msgid "Jeans Slim Fit"
-msgstr ""
+#~ msgid "Jeans Slim Fit"
+#~ msgstr ""
 
-#: src/routes/account/[name]/+page.ts
-msgid "Classic Watch"
-msgstr ""
+#~ msgid "Classic Watch"
+#~ msgstr ""
 
-#: src/routes/account/[name]/+page.ts
-msgid "Beanie Hat"
-msgstr ""
+#~ msgid "Beanie Hat"
+#~ msgstr ""
 
-#: src/routes/account/[name]/+page.ts
-msgid "Wireless Earbuds"
-msgstr ""
+#~ msgid "Wireless Earbuds"
+#~ msgstr ""
 
 #: src/routes/account/[name]/+page.ts
 msgid "Not found"
