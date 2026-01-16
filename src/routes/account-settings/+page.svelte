@@ -1,7 +1,8 @@
 <script lang='ts'>
+    import { goto } from '$app/navigation';
 	import apiCaller from '$lib/axiosConfig';
 	import { toaster } from '$lib/toast';
-	import { loggedUser } from '$lib/universalReactivity/auth.svelte';
+	import { loggedUser, logoutUser } from '$lib/universalReactivity/auth.svelte';
 	import { FileIcon } from '@lucide/svelte';
 	import { FileUpload } from '@skeletonlabs/skeleton-svelte';
 
@@ -74,11 +75,24 @@ const delAvatar = async ()=>{
     }
 }
 
+const delAccount = async ()=>{
+    try {
+        const result = await apiCaller.post("user/delete/");
+        
+      if(result.status==200){
+        logoutUser();
+        goto("/auth");
+      }
+    } catch (error) {
+        console.error(error+'');
+    }
+}
+
 </script>
 
 <div>
 	<div class="card preset-filled-surface-300-700 text-center items-center">
-		<h3 class="h3">Todo</h3>
+		<h3 class="h3">Account settings</h3>
 		<div class="card preset-filled-surface-200-800 flex flex-col justify-center items-center">
 			<h5>Avatar</h5>
 			<p>Upload or change your avatar</p>
@@ -105,6 +119,12 @@ const delAvatar = async ()=>{
             {:else}
                 <button class="btn preset-filled-secondary-50-950" disabled={!loggedUser.avatar} onclick={delAvatar}>Delete Avatar</button>
             {/if}
+		</div>
+
+        <div class="card preset-filled-surface-200-800 flex flex-col justify-center items-center">
+			<h5 class="text-red-500">Delete Account</h5>
+			<p>Deletes your account forever</p>
+			<button class="btn preset-filled-error-300-700" onclick={delAccount}>Delete</button>
 		</div>
 	</div>
 </div>

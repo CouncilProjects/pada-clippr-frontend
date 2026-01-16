@@ -94,9 +94,8 @@ msgstr "File size must be less than 5MB"
 msgid "Content-Type"
 msgstr "Content-Type"
 
-#: src/routes/account-settings/+page.svelte
-msgid "Todo"
-msgstr "Todo"
+#~ msgid "Todo"
+#~ msgstr "Todo"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Avatar"
@@ -629,3 +628,19 @@ msgstr "Not found"
 #: src/lib/components/MainAppBar.svelte
 msgid "Change Language"
 msgstr "Change Language"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Account settings"
+msgstr "Account settings"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Delete Account"
+msgstr "Delete Account"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Deletes your account forever"
+msgstr "Deletes your account forever"
+
+#: src/routes/account-settings/+page.svelte
+msgid "Delete"
+msgstr "Delete"

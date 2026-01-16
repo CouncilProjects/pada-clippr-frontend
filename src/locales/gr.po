@@ -94,9 +94,8 @@ msgstr "Το μέγεθος αρχείου πρέπει να είναι μικρ
 msgid "Content-Type"
 msgstr "Τύπος Περιεχομένου"
 
-#: src/routes/account-settings/+page.svelte
-msgid "Todo"
-msgstr "Εκκρεμεί"
+#~ msgid "Todo"
+#~ msgstr "Εκκρεμεί"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Avatar"
@@ -628,4 +627,20 @@ msgstr ""
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
 msgid "Change Language"
+msgstr ""
+
+#: src/routes/account-settings/+page.svelte
+msgid "Account settings"
+msgstr ""
+
+#: src/routes/account-settings/+page.svelte
+msgid "Delete Account"
+msgstr ""
+
+#: src/routes/account-settings/+page.svelte
+msgid "Deletes your account forever"
+msgstr ""
+
+#: src/routes/account-settings/+page.svelte
+msgid "Delete"
 msgstr ""

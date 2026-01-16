@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('Login OK', async ({ page }) => {
   await page.goto('http://localhost:5173/auth');
-  await page.getByText('Authentication error').click();
+  
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill('test4');
   await page.getByRole('textbox', { name: 'Password' }).click();
