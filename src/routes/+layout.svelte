@@ -12,6 +12,7 @@
     import MainAppBar from '$lib/components/MainAppBar.svelte';
     import {md} from "$lib/universalReactivity/screenSizes"
     import {ChevronsUp} from "@lucide/svelte"
+    import { page } from '$app/state';
 
     //Reactive state
     let popUp = $state(false);
@@ -74,7 +75,7 @@
     onMount(async () => {
         if (!loggedUser.username) {
             const newToken = await triggerRefresh();
-            if (!newToken) {
+            if (!newToken && page.url.pathname!='/auth') {
                 goto('/auth');
                 toaster.error({
                     title: 'Authentication error',

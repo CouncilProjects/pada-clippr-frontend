@@ -55,7 +55,7 @@ ThumbnailList component.
     {/if}
 
     <!-- Because tailwind is static we cannot use state directly inside, so we make use of css variables and the repeat-->
-    <div class="p-3 m-3 gap-2 grid grid-cols-1 md:grid-cols-[repeat(var(--cols),1fr)] relative place-content-between" style={`--cols: ${col_size};`}>
+    <div class="p-3 m-3 gap-2 grid grid-cols-1 md:grid-cols-[repeat(var(--cols),1fr)] relative place-content-between" style={`--cols: ${col_size};`} data-testid="main-listing-grid">
         {#if !props.items || props.items.length==0}
             <p>No items found.</p>
         {:else}

@@ -38,8 +38,8 @@
             page: pageNumber
         }
 
-        if(query != null) params.q = encodeURIComponent(query);
-        if(user != null)  params.u = encodeURIComponent(user);
+        if(query != null) params.q = query;
+        if(user != null)  params.u = user;
 
         const result = await apiCaller.get("/item/", { params: params })
 

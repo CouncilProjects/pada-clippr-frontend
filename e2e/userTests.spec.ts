@@ -2,7 +2,7 @@ import { test, expect,Response } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
     // Go to login page
-    await page.goto('http://localhost:5173/auth');
+    await page.goto('http://localhost:5173/auth/');
 
     // Fill login form
     await page.getByRole('textbox', { name: 'Username' }).click();
@@ -46,4 +46,22 @@ test('Change avatar', async ({ page }) => {
 
     
     await page.getByRole('img', { name: 'small' }).click();
+});
+
+test('Search title-based', async ({ page }) => {
+    await page.getByRole('searchbox', { name: 'Search...' }).click();
+    await page.getByRole('searchbox', { name: 'Search...' }).fill('96b1dc01-e7c8');
+    await page.getByRole('button', { name: 'Submit' }).click();
+    await page.waitForURL(/\/search\?q=.*/);
+
+    await expect(page.getByTestId('main-listing-grid').locator(":scope > button")).toHaveCount(5);
+});
+
+test('Search title-based Greek', async ({ page }) => {
+    await page.getByRole('searchbox', { name: 'Search...' }).click();
+    await page.getByRole('searchbox', { name: 'Search...' }).fill('ΩΧΡΝΒΣΒΜ');
+    await page.getByRole('button', { name: 'Submit' }).click();
+    await page.waitForURL(/\/search\?q=.*/);
+
+    await expect(page.getByTestId('main-listing-grid').locator(":scope > button")).toHaveCount(2);
 });
