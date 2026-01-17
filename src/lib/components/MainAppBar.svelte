@@ -112,7 +112,7 @@ import gr from '$lib/assets/gr.svg';
       <AppBar.Lead>
         {#if loggedUser.accountType!=null}
           <Popover>
-            <Popover.Trigger class="btn"><MenuIcon></MenuIcon></Popover.Trigger>
+            <Popover.Trigger class="btn" data-testid="side_menu_button"><MenuIcon></MenuIcon></Popover.Trigger>
             <Portal>
               <Popover.Positioner>
                 <Popover.Content class="card max-w-md mt-5 p-4 bg-surface-100-900 shadow-xl space-y-2 max-h-[70dvh] overflow-hidden">
