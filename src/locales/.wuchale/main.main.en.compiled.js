@@ -1,2 +1,16 @@
-/** @type import('wuchale').CompiledElement[] */
+
+            /** @type import('wuchale').CompiledElement[] */
 export let c = ["Dark","Light","AD SPACE",["Skip in ",0],"Default","Review","@skeletonlabs.dev",["Leave a review for ",0," ",1],"Rate it","Leave comment","Lorem ipsum dolor sit amet consectetur adipisicing elit.","Submit","Progress","Items per row","No items found.","Please select an image file (JPEG, PNG, WEBP, etc.)","File size must be less than 5MB","Content-Type","Avatar","Upload or change your avatar",["Browse Files ",[0]],[0," bytes"],"Confirm","Delete Avatar","Passwords dont match","Bad credentials","Signup","Login","Username","Password","E-mail","Your email","First name","Your legal first name","Last name","Your legal last name","Show password","Already have an account ?","Dont have an account ?","Clipp€r","Back to Top",["Last Login : ",0],"Powered by","Django","Backend Framework","Svelte","Frontend Framework","Skeleton UI","UI Framework","Tailwind CSS","Styling Library","Lucide","Icons","GitHub","Version Control","Trello","Project Management","Playwright","Testing","SQLite","Database","This project is built using modern, open-source technologies.","My Clippings","Intrest Offers","My Offers","My analitics","Reviews","Shop Socials","Site analytics","Reports","Verification","Home","Settings","Menu","Clippr","Search...","SK","+ Create New","No items.","Search","Query username","Enter",["Submit ",[0]],"Shop","Verify","No results...","Page Size","A list of socials for your shop","Social","Symbol","Account","Discard changes","Apply changes","click to copy",["Welcome to ",0,"'s Shop"],["Welcome to ",0,"'s page"],"You can only upload up to 3 images","Only image files are allowed","Each file must be under 5MB","File rejected. Unsupported type or size.","Please fill in all required fields","Enter a valid minimum negotiable price","Item created successfully! 🎉","Failed to create item","Create New Item","List your item on the marketplace","Basic Information",["Title ",[0]],["Description ",[0]],"Describe your item in detail...","Tip: Be detailed to attract more buyers","Pricing & Stock",["Price ($) ",[0]],"Stock Quantity","Infinite Stock","Item is always available (digital products, services, etc.)","Price is negotiable","Allow buyers to make offers","Minimum Acceptable Price ($)","The lowest price you'll accept","Tags","Add tags to help buyers find your item","Separate tags with commas","Item Images","Upload up to 3 high-quality images (max 5MB each)",[[0]," Browse Images"],[0," KB"],"Creating Item...","Create Item","Unrated","Negotiable","Non negotiable",["Stock left: ",0],"Press to go to page","Thumbnail","Change Language","Account settings","Delete Account","Deletes your account forever","Delete","Not found"]
+            // only during dev, for HMR
+            let latestVersion = -1
+            // @ts-ignore
+            export function update({ version, data }) {
+                if (latestVersion >= version) {
+                    return
+                }
+                for (const [ index, item ] of data['en'] ?? []) {
+                    c[index] = item
+                }
+                latestVersion = version
+            }
+        

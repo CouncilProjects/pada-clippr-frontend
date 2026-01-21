@@ -1,8 +1,9 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import type { PageData } from './$types';
+  import type { PageProps } from './$types';
 
-  const {data} =$props<{data: PageData}>();
+  const {data}:PageProps=$props();
+  data.items[1]
 
   function createNew() {
       goto('/my-clippings/create/');
