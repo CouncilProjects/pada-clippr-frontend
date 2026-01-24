@@ -160,23 +160,19 @@ msgstr "Ηλεκτρονικό ταχυδρομείο"
 msgid "Your email"
 msgstr "Το email σας"
 
-#: src/routes/auth/+page.svelte
 #: src/routes/verifications/+page.svelte
 msgid "First name"
 msgstr "Όνομα"
 
-#: src/routes/auth/+page.svelte
-msgid "Your legal first name"
-msgstr "Το νόμιμο όνομα σας"
+#~ msgid "Your legal first name"
+#~ msgstr "Το νόμιμο όνομα σας"
 
-#: src/routes/auth/+page.svelte
 #: src/routes/verifications/+page.svelte
 msgid "Last name"
 msgstr "Επώνυμο"
 
-#: src/routes/auth/+page.svelte
-msgid "Your legal last name"
-msgstr "Το νόμιμο επώνυμό σας"
+#~ msgid "Your legal last name"
+#~ msgstr "Το νόμιμο επώνυμό σας"
 
 #: src/routes/auth/+page.svelte
 msgid "Show password"
@@ -643,4 +639,22 @@ msgstr ""
 
 #: src/routes/account-settings/+page.svelte
 msgid "Delete"
+msgstr ""
+
+#: src/routes/auth/+page.svelte
+msgid "First name-Last name"
+msgstr ""
+
+#~ msgid "Your legal first and last name"
+#~ msgstr ""
+
+#: src/routes/auth/+page.svelte
+msgid "Your full legal name"
+msgstr ""
+
+#~ msgid "Use separate the first and last name with '-'"
+#~ msgstr ""
+
+#: src/routes/auth/+page.svelte
+msgid "Use format first-last name"
 msgstr ""

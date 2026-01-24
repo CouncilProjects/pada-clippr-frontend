@@ -6,6 +6,7 @@
     import {fade} from 'svelte/transition';
 	import axios, { AxiosError } from "axios";
 	import { toaster } from "$lib/toast";
+    import type { paths } from "$lib/api-types";
     //change as needed
     const LOGINURL="/user/login/";
     const SIGNUPURL="/user/register/";
@@ -18,18 +19,16 @@
         formState={
             username:'',
             password:'',
-            firstName:'',
             email:'',
-            lastName:'',
+            legalName:'',
             confirm:''
         };
 
         formErrors={
             username:'',
             password:'',
-            firstName:'',
             email:'',
-            lastName:'',
+            legalName:'',
             confirm:''
         };
         signup=!signup;
@@ -42,17 +41,17 @@
         username:'',
         password:'',
         email:'',
-        firstName:'',
-        lastName:'',
-        confirm:''
+        confirm:'',
+        legalName:''
     })
     let formState=$state({
         username:'',
-        firstName:'',
+ 
         email:'',
-        lastName:'',
+ 
         password:'',
-        confirm:''
+        confirm:'',
+        legalName:''
     })
 
     function formErrorHandler(event:Event){
@@ -66,17 +65,29 @@
                 return;
             }
         }
-        formErrors[elName]=element.validity.valid?"":element.validationMessage;
+
+        if(elName=='legalName'){
+            const parts = formState.legalName.split('-');
+
+            if(parts.length<2 || parts[0].length==0 || parts[1].length==0){
+                formErrors['legalName']="Use format first-last name";
+                return;
+            }
+        }
+
+        formErrors[elName]=element.validity.valid?"":element.validationMessage.split('(')[0];
     }
 
     const invalidAction = $derived(
-         (!!formErrors.password || !!formErrors.username || signup&&formErrors.confirm)
+         (!!formErrors.password || !!formErrors.username || signup&& (formErrors.confirm || formErrors.legalName))
         );
 
     async function loginSubmit(e: Event|null) {
         e?.preventDefault();
+        type loginResponse = paths['/api/user/login/']['post']['responses']['200']['content']['application/json']
+        const body :paths['/api/user/login/']['post']['requestBody']['content']['application/json'] =  {username:formState.username,password:formState.password};
         try {
-            const result = await apiCaller.post(LOGINURL,{username:formState.username,password:formState.password},{ skipAuthRefresh: true } as AxiosAuthRefreshRequestConfig );
+            const result = await apiCaller.post<loginResponse>(LOGINURL,body,{ skipAuthRefresh: true } as AxiosAuthRefreshRequestConfig );
             const {id,username,token,role}=result.data;
             logInUser(id,username,token,role);
             queueMicrotask(()=>{
@@ -98,9 +109,14 @@
 
     async function signupSubmit(e: Event) {
         e.preventDefault();
-
+        const body : paths['/api/user/register/']['post']['requestBody']['content']['application/json'] = 
+            {email:formState.email,
+                first_name:formState.legalName.split('-')[0],
+                last_name:formState.legalName.split('-')[1],
+                username:formState.username,
+                password:formState.password};
         try {
-            const result = await apiCaller.post(SIGNUPURL,{username:formState.username,password:formState.password,email:formState.email,first_name:formState.firstName,last_name:formState.lastName});
+            const result = await apiCaller.post(SIGNUPURL,body);
             if(result.status==201){
                 loginSubmit(null);
             }
@@ -130,7 +146,7 @@
 </script>
 
 <div class="flex content-center align-center justify-center px-2 md:p-4">
-    <div class="card flex flex-col preset-filled-surface-400-600 p-4 space-y-2 max-w-[70%] lg:max-w-[30%]">
+    <div class="card flex flex-col preset-filled-surface-400-600 p-4 space-y-2 max-w-[70%] lg:max-w-[max(30%,400px)]">
             <h4 class="h4 text-center">{signup?'Signup':'Login'}</h4>
             <form class="space-y-3 md:space-y-5" onsubmit={signup?signupSubmit:loginSubmit}>
                 <div class="flex flex-col w-full">
@@ -148,7 +164,7 @@
                         />
                     </label>
 
-                    <p   class="block text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.username}>
+                    <p   class="text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.username}>
                         {formErrors.username}
                     </p>
                 </div>
@@ -168,7 +184,7 @@
                         />
                     </label>
 
-                    <p   class="block text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.password}>
+                    <p   class="text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.password}>
                         {formErrors.password}
                     </p>
                 </div>
@@ -189,7 +205,7 @@
                             />
                         </label>
 
-                        <p   class="block text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.confirm}>
+                        <p   class="text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.confirm}>
                             {formErrors.confirm}
                         </p>
                     </div>
@@ -208,46 +224,27 @@
                             />
                         </label>
 
-                        <p   class="block text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.email}>
+                        <p   class="text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.email}>
                             {formErrors.email}
                         </p>
                     </div>
 
                     <div class="flex flex-col w-full">
                         <label class="label">
-                            <span class="label-text">First name</span>
+                            <span class="label-text">First name-Last name</span>
                             <input
-                                class="input {formErrors.firstName && 'ring-error-500'}"
-                                bind:value={formState.firstName}
+                                class="input {formErrors.legalName && 'ring-error-500'}"
+                                bind:value={formState.legalName}
                                 type='text'
-                                name="fisrtName"
+                                name="legalName"
                                 required
                                 oninput={formErrorHandler}
-                                placeholder="Your legal first name"
+                                placeholder="Your full legal name"
                             />
                         </label>
 
-                        <p   class="block text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.firstName}>
-                            {formErrors.firstName}
-                        </p>
-                    </div>
-
-                    <div class="flex flex-col w-full">
-                        <label class="label">
-                            <span class="label-text">Last name</span>
-                            <input
-                                class="input {formErrors.lastName && 'ring-error-500'}"
-                                bind:value={formState.lastName}
-                                type='text'
-                                name="lastName"
-                                required
-                                oninput={formErrorHandler}
-                                placeholder="Your legal last name"
-                            />
-                        </label>
-
-                        <p   class="block text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.lastName}>
-                            {formErrors.lastName}
+                        <p   class="text-error-800-200 text-xs min-h-5 wrap-break-word whitespace-normal" class:invisible={!formErrors.legalName}>
+                            {formErrors.legalName}
                         </p>
                     </div>
                 {/if}

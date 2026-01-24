@@ -11,10 +11,9 @@ test('Sign up with existing name', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Confirm' }).fill('12345678');
   await page.getByRole('textbox', { name: 'E-mail' }).click();
   await page.getByRole('textbox', { name: 'E-mail' }).fill('sometest@gmail.com');
-  await page.getByRole('textbox', { name: 'First name' }).click();
-  await page.getByRole('textbox', { name: 'First name' }).fill('play');
-  await page.getByRole('textbox', { name: 'Last name' }).click();
-  await page.getByRole('textbox', { name: 'Last name' }).fill('wright');
+
+  await page.getByRole('textbox', { name: 'First name-Last name' }).click();
+  await page.getByRole('textbox', { name: 'First name' }).fill('play-wright');
   
 
   const responsePromise = page.waitForResponse(
@@ -42,10 +41,8 @@ test('Sign up', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Confirm' }).fill('12345678');
     await page.getByRole('textbox', { name: 'E-mail' }).click();
     await page.getByRole('textbox', { name: 'E-mail' }).fill('123456@gmail.com');
-    await page.getByRole('textbox', { name: 'First name' }).click();
-    await page.getByRole('textbox', { name: 'First name' }).fill('play');
-    await page.getByRole('textbox', { name: 'Last name' }).click();
-    await page.getByRole('textbox', { name: 'Last name' }).fill('wright');
+    await page.getByRole('textbox', { name: 'First name-Last name' }).click();
+    await page.getByRole('textbox', { name: 'First name' }).fill('play-wright');
 
     const signupPromice = page.waitForResponse(response => response.url().includes("/api/user/register"));
     await page.getByRole('button', { name: 'Signup' }).click();

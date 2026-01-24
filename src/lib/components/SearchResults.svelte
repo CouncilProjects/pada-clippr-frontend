@@ -3,9 +3,11 @@
     import { Pagination } from '@skeletonlabs/skeleton-svelte';
     import { ArrowLeftIcon, ArrowRightIcon } from '@lucide/svelte';
     import type { ClassValue } from 'svelte/elements';
+    import type {schemas} from "$lib"
 
     import type { ItemThumbnail } from '$lib/components/types';
     import ThumbnailList from "$lib/components/ThumbnailList.svelte";
+    import type { paths } from "$lib/api-types";
 
     const props: { class?: ClassValue, klass?: ClassValue } = $props();
     const fallback = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
@@ -20,7 +22,7 @@
         is_verified_seller: boolean
     }
 
-    interface ItemBackend {
+    interface itemBackend {
         id: number
         title: string
         price: number
@@ -31,9 +33,10 @@
         thumbnail: string | null
     }
 
+    type ItemBackend = schemas['ItemBasic']
+
     export async function doSearch(query: string|null, user: string|null) {
-        const params: Record<string, any> = {
-            q: null, u: null,
+        const params: paths['/api/item/']['get']['parameters']['query'] = {
             amount: pageSize,
             page: pageNumber
         }

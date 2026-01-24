@@ -160,23 +160,19 @@ msgstr "E-mail"
 msgid "Your email"
 msgstr "Your email"
 
-#: src/routes/auth/+page.svelte
 #: src/routes/verifications/+page.svelte
 msgid "First name"
 msgstr "First name"
 
-#: src/routes/auth/+page.svelte
-msgid "Your legal first name"
-msgstr "Your legal first name"
+#~ msgid "Your legal first name"
+#~ msgstr "Your legal first name"
 
-#: src/routes/auth/+page.svelte
 #: src/routes/verifications/+page.svelte
 msgid "Last name"
 msgstr "Last name"
 
-#: src/routes/auth/+page.svelte
-msgid "Your legal last name"
-msgstr "Your legal last name"
+#~ msgid "Your legal last name"
+#~ msgstr "Your legal last name"
 
 #: src/routes/auth/+page.svelte
 msgid "Show password"
@@ -644,3 +640,21 @@ msgstr "Deletes your account forever"
 #: src/routes/account-settings/+page.svelte
 msgid "Delete"
 msgstr "Delete"
+
+#: src/routes/auth/+page.svelte
+msgid "First name-Last name"
+msgstr "First name-Last name"
+
+#~ msgid "Your legal first and last name"
+#~ msgstr "Your legal first and last name"
+
+#: src/routes/auth/+page.svelte
+msgid "Your full legal name"
+msgstr "Your full legal name"
+
+#~ msgid "Use separate the first and last name with '-'"
+#~ msgstr "Use separate the first and last name with '-'"
+
+#: src/routes/auth/+page.svelte
+msgid "Use format first-last name"
+msgstr "Use format first-last name"

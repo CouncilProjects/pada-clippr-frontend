@@ -4,6 +4,7 @@
 	import type { PageProps } from './$types';
 
 	const { data }: PageProps = $props();
+    $inspect(data.shopSocials);
     let searchComponent: SearchResults
 
     import {
@@ -24,12 +25,12 @@
     const socials = {
 	email: AtSign,
 	facebook: Facebook,
-	youTube: Youtube,
+	youtube: Youtube,
 	instagram: Instagram,
-	whatsApp: MessageCircle,
-	x: Twitter,
+	whatsapp: MessageCircle,
+	twitter: Twitter,
 	snapchat: Ghost,
-	linkedIn: Linkedin,
+	linkedin: Linkedin,
 	pinterest: Pin
 };
 
@@ -42,7 +43,7 @@ import { type ItemThumbnail } from '$lib/components/types';
 import { md } from '$lib/universalReactivity/screenSizes'; // Note the screen sizes i made follow Tailwind sizes. Used the same way
 	import { onMount } from 'svelte';
 
-onMount(() => searchComponent.doSearch(null, data.userID))
+onMount(() => searchComponent.doSearch(null, data.userID?.toString()||''))
 
 </script>
 
@@ -64,7 +65,7 @@ onMount(() => searchComponent.doSearch(null, data.userID))
                                     <div class="relative flex flex-col justify-center items-center" >
                                         <Tooltip.Trigger>
                                         
-                                            <button class="btn-icon preset-tonal-surface {verifiedBgGradientHover}" onclick={()=>{copyURL(social.url)}}>
+                                            <button class="btn-icon preset-tonal-surface {verifiedBgGradientHover}" onclick={()=>{copyURL(social.url as string)}}>
                                             
                                                 <Icon size={30} />
                                             </button>

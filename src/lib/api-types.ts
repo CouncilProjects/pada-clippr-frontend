@@ -132,6 +132,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** Get socials of the user users */
         get: operations["user_socials_retrieve"];
         put?: never;
         post?: never;
@@ -437,6 +438,19 @@ export interface components {
             min_negotiable_price?: string | null;
             tags?: number[];
         };
+        /**
+         * @description * `facebook` - Facebook
+         *     * `youtube` - YouTube
+         *     * `instagram` - Instagram
+         *     * `whatsapp` - WhatsApp
+         *     * `twitter` - X (Twitter)
+         *     * `snapchat` - Snapchat
+         *     * `linkedin` - LinkedIn
+         *     * `pinterest` - Pinterest
+         *     * `email` - Email
+         * @enum {string}
+         */
+        PlatformEnum: "facebook" | "youtube" | "instagram" | "whatsapp" | "twitter" | "snapchat" | "linkedin" | "pinterest" | "email";
         PublicUserInfo: {
             readonly id: number;
             /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
@@ -461,6 +475,13 @@ export interface components {
              *     * `account` - account
              */
             about: components["schemas"]["AboutEnum"];
+        };
+        SocialLink: {
+            readonly id: number;
+            platform: components["schemas"]["PlatformEnum"];
+            /** Format: uri */
+            url?: string;
+            user: number;
         };
         User: {
             readonly id: number;
@@ -508,6 +529,29 @@ export interface components {
             first_name?: string;
             last_name?: string;
         };
+        UserRegister: {
+            /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
+            username: string;
+            /** Format: email */
+            email: string;
+            password: string;
+            first_name: string;
+            last_name: string;
+        };
+        UserSocialWithGlint: {
+            socials: components["schemas"]["SocialLink"][];
+            glint: boolean;
+        };
+        loginOKResponse: {
+            token: string;
+            id: number;
+            username: string;
+            role: string;
+        };
+        redusedTokenPair: {
+            username: string;
+            password: string;
+        };
     };
     responses: never;
     parameters: never;
@@ -524,6 +568,8 @@ export interface operations {
                 amount?: number;
                 /** @description A page number within the paginated result set. */
                 page?: number;
+                q?: string;
+                u?: string;
             };
             header?: never;
             path?: never;
@@ -786,7 +832,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["User"];
+                    "application/json": components["schemas"]["UserSocialWithGlint"];
                 };
             };
         };
@@ -945,14 +991,21 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        requestBody?: never;
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["redusedTokenPair"];
+                "application/x-www-form-urlencoded": components["schemas"]["redusedTokenPair"];
+                "multipart/form-data": components["schemas"]["redusedTokenPair"];
+            };
+        };
         responses: {
-            /** @description No response body */
             200: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["loginOKResponse"];
+                };
             };
         };
     };
@@ -979,16 +1032,19 @@ export interface operations {
             query?: never;
             header?: never;
             path?: never;
-            cookie?: never;
+            cookie: {
+                refresh_token: string;
+            };
         };
         requestBody?: never;
         responses: {
-            /** @description No response body */
             200: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["loginOKResponse"];
+                };
             };
         };
     };
@@ -999,20 +1055,37 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        requestBody?: never;
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UserRegister"];
+                "application/x-www-form-urlencoded": components["schemas"]["UserRegister"];
+                "multipart/form-data": components["schemas"]["UserRegister"];
+            };
+        };
         responses: {
-            /** @description No response body */
-            200: {
+            /** @description User created. No body */
+            201: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content?: never;
             };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserRegister"];
+                };
+            };
         };
     };
     user_unverified_list: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description Search based on username */
+                q?: string;
+            };
             header?: never;
             path?: never;
             cookie?: never;

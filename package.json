@@ -14,7 +14,8 @@
     "test": "npm run test:e2e",
     "format": "prettier --write .",
     "lint": "prettier --check .",
-    "typeGen":"bash ./generate-types.sh"
+    "typeGen": "bash ./generate-types.sh",
+    "analyze": "vite build --mode analyze"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
@@ -32,6 +33,7 @@
     "openapi-typescript": "^7.10.1",
     "prettier": "^3.6.2",
     "prettier-plugin-svelte": "^3.4.0",
+    "rollup-plugin-visualizer": "^6.0.5",
     "svelte": "^5.39.5",
     "svelte-check": "^4.3.2",
     "tailwindcss": "^4.1.13",

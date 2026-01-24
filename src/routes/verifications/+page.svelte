@@ -2,8 +2,10 @@
 	import apiCaller from '$lib/axiosConfig';
 	import { Progress } from '@skeletonlabs/skeleton-svelte';
 	import type { PageProps } from './$types';
+    import type { paths } from '$lib/api-types';
 
 	let { data }: PageProps = $props();
+	
 	let clone = $state(data.accounts);
 
 	let query = $state('');
@@ -32,7 +34,7 @@
 
 		loading = true;
 		try {
-			const { data } = await apiCaller.get('/user/unverified/', { params: { q: trimmed } });
+			const { data } = await apiCaller.get('/user/unverified/', { params: { q: trimmed } as paths['/api/user/unverified/']['get']['parameters']['query'] });
 			clone = data;
             lastSearch=trimmed;
 		} catch (error) {

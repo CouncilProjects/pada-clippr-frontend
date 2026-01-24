@@ -9,25 +9,29 @@
 		Ghost,
 		Linkedin,
 		Pin,
-		AtSign
-	} from '@lucide/svelte';
-	import type { social } from './proxy+page.js';
+		AtSign,
+		type IconProps
 
-	const socials = [
+	} from '@lucide/svelte';
+	import type {Component} from 'svelte';
+	import type { social } from './proxy+page.js';
+    import type { schemas } from '$lib';
+
+	const socials:{name:schemas['PlatformEnum'],icon:Component<IconProps, {}, "">}[] = [
 		{ name: 'email', icon: AtSign },
 		{ name: 'facebook', icon: Facebook }, // fallback (Lucide has no Facebook)
-		{ name: 'youTube', icon: Youtube },
+		{ name: 'youtube', icon: Youtube },
 		{ name: 'instagram', icon: Instagram },
-		{ name: 'whatsApp', icon: MessageCircle }, // closest match
-		{ name: 'x', icon: Twitter },
+		{ name: 'whatsapp', icon: MessageCircle }, // closest match
+		{ name: 'twitter', icon: Twitter },
 		{ name: 'snapchat', icon: Ghost }, // closest match
-		{ name: 'linkedIn', icon: Linkedin },
+		{ name: 'linkedin', icon: Linkedin },
 		{ name: 'pinterest', icon: Pin } // closest match
 	];
 
 	let { data } = $props();
 
-	let visualSocial = $state(data.socials);
+	let visualSocial = $state(data.socials) as social;
 
 	let changes = $state(0);
 
@@ -56,7 +60,7 @@
 		changes = 0;
 		
 		const {data} = await apiCaller.post("/user/update_socials/",sendForm);
-		data.updated.forEach((social:social)=>{
+		data.updated.forEach((social:schemas['SocialLink'])=>{
       		visualSocial[social.platform]=social.url
     	})
 	};

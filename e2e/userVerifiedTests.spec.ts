@@ -94,7 +94,7 @@ test("Update social", async (/*{page}*/) => {
     await page.getByTestId("side_menu_button").click();
 await expect(page.getByRole('link', { name: 'Shop Socials' })).toBeVisible();
     await page.getByRole('link', { name: 'Shop Socials' }).click();
-    const previous = page.locator('input[name="youTube"]');
+    const previous = page.locator('input[name="youtube"]');
     await expect(previous, 'Needs to be filled before the test').not.toBeEmpty();
     const prevVal = await previous.inputValue();
 
@@ -106,7 +106,7 @@ await expect(page.getByRole('link', { name: 'Shop Socials' })).toBeVisible();
     await page.waitForURL("/");
     await page.getByTestId("side_menu_button").click();
     await page.getByRole('link', { name: 'Shop Socials' }).click();
-    await expect(page.locator('input[name="youTube"]')).toHaveValue(`https://www.youtube.com/@${uniqe}`);
+    await expect(page.locator('input[name="youtube"]')).toHaveValue(`https://www.youtube.com/@${uniqe}`);
 })
 
 test("Remove social", async (/*{page}*/) => {

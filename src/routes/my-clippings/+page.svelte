@@ -3,7 +3,6 @@
   import type { PageProps } from './$types';
 
   const {data}:PageProps=$props();
-  data.items[1]
 
   function createNew() {
       goto('/my-clippings/create/');

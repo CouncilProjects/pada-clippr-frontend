@@ -1,8 +1,10 @@
 import  axios,{ AxiosError, type InternalAxiosRequestConfig } from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 const REFRESH_API="user/refresh/";
+type refreshResponse = paths['/api/user/refresh/']['get']['responses']['200']['content']['application/json'];
 
 import { loggedUser, logInUser } from "./universalReactivity/auth.svelte";
+import type { paths } from "./api-types";
 
 axios.defaults.withCredentials=true;
 
@@ -29,9 +31,8 @@ apiCaller.interceptors.request.use((config)=>{
 export async function refreshLogic(){
     //assume a call just failed with a 401
     try {
-        const refreshResponse = await axios.get(`http://127.0.0.1:8000/api/${REFRESH_API}`);
+        const refreshResponse = await axios.get<refreshResponse>(`http://127.0.0.1:8000/api/${REFRESH_API}`);
         const {id,token,username,role} = refreshResponse.data;
-        console.log(id+" and "+token+" and "+username+" and +"+role);
         if(!token){
             return Promise.reject({
                     response:{status:401}

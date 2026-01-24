@@ -27,6 +27,20 @@
                         "schema": {
                             "type": "integer"
                         }
+                    },
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "u",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "tags": [
@@ -436,6 +450,7 @@
         "/api/user/{id}/socials/": {
             "get": {
                 "operationId": "user_socials_retrieve",
+                "summary": "Get socials of the user users",
                 "parameters": [
                     {
                         "in": "path",
@@ -461,7 +476,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/User"
+                                    "$ref": "#/components/schemas/UserSocialWithGlint"
                                 }
                             }
                         },
@@ -696,6 +711,26 @@
                 "tags": [
                     "user"
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/redusedTokenPair"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/redusedTokenPair"
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/redusedTokenPair"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "security": [
                     {
                         "jwtAuth": []
@@ -704,7 +739,14 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "No response body"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loginOKResponse"
+                                }
+                            }
+                        },
+                        "description": ""
                     }
                 }
             }
@@ -731,6 +773,16 @@
         "/api/user/refresh/": {
             "get": {
                 "operationId": "user_refresh_retrieve",
+                "parameters": [
+                    {
+                        "in": "cookie",
+                        "name": "refresh_token",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
                 "tags": [
                     "user"
                 ],
@@ -742,7 +794,14 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "No response body"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loginOKResponse"
+                                }
+                            }
+                        },
+                        "description": ""
                     }
                 }
             }
@@ -753,6 +812,26 @@
                 "tags": [
                     "user"
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRegister"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRegister"
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRegister"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "security": [
                     {
                         "jwtAuth": []
@@ -760,8 +839,18 @@
                     {}
                 ],
                 "responses": {
-                    "200": {
-                        "description": "No response body"
+                    "201": {
+                        "description": "User created. No body"
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserRegister"
+                                }
+                            }
+                        },
+                        "description": ""
                     }
                 }
             }
@@ -771,6 +860,16 @@
                 "operationId": "user_unverified_list",
                 "description": "Retrieve the current list of unverified users.",
                 "summary": "Get unverified users",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Search based on username"
+                    }
+                ],
                 "tags": [
                     "user"
                 ],
@@ -1197,6 +1296,21 @@
                     }
                 }
             },
+            "PlatformEnum": {
+                "enum": [
+                    "facebook",
+                    "youtube",
+                    "instagram",
+                    "whatsapp",
+                    "twitter",
+                    "snapchat",
+                    "linkedin",
+                    "pinterest",
+                    "email"
+                ],
+                "type": "string",
+                "description": "* `facebook` - Facebook\n* `youtube` - YouTube\n* `instagram` - Instagram\n* `whatsapp` - WhatsApp\n* `twitter` - X (Twitter)\n* `snapchat` - Snapchat\n* `linkedin` - LinkedIn\n* `pinterest` - Pinterest\n* `email` - Email"
+            },
             "PublicUserInfo": {
                 "type": "object",
                 "properties": {
@@ -1272,6 +1386,31 @@
                     "about",
                     "offer",
                     "rating"
+                ]
+            },
+            "SocialLink": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": true
+                    },
+                    "platform": {
+                        "$ref": "#/components/schemas/PlatformEnum"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "maxLength": 200
+                    },
+                    "user": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "id",
+                    "platform",
+                    "user"
                 ]
             },
             "User": {
@@ -1389,6 +1528,95 @@
                 },
                 "required": [
                     "id",
+                    "username"
+                ]
+            },
+            "UserRegister": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+                        "pattern": "^[\\w.@+-]+$",
+                        "maxLength": 150
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "password": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "minLength": 8
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "email",
+                    "first_name",
+                    "last_name",
+                    "password",
+                    "username"
+                ]
+            },
+            "UserSocialWithGlint": {
+                "type": "object",
+                "properties": {
+                    "socials": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SocialLink"
+                        }
+                    },
+                    "glint": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "glint",
+                    "socials"
+                ]
+            },
+            "loginOKResponse": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "role",
+                    "token",
+                    "username"
+                ]
+            },
+            "redusedTokenPair": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "password",
                     "username"
                 ]
             }

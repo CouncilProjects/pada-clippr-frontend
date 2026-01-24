@@ -6,6 +6,4 @@ export async function  load() {
             return {};        
     }
 
-    const thing = await fetch('https://dummyjson.com/products');
-
 }
