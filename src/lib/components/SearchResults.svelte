@@ -8,9 +8,11 @@
     import type { ItemThumbnail } from '$lib/components/types';
     import ThumbnailList from "$lib/components/ThumbnailList.svelte";
     import type { paths } from "$lib/api-types";
+    import { loggedUser } from "$lib/universalReactivity/auth.svelte";
 
     const props: { class?: ClassValue, klass?: ClassValue } = $props();
     const fallback = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
+    const searchesKeptLimit = 5;
 
     let searchResults =  $state<ItemThumbnail[]>([])
     let pageNumber = $state(1)
@@ -45,6 +47,12 @@
         if(user != null)  params.u = user;
 
         const result = await apiCaller.get("/item/", { params: params })
+        let userIntrests:string[] = JSON.parse(localStorage.getItem(`clippr-${loggedUser.id}-latest-searches`) || '[]');
+        if(query!=null){
+            if(userIntrests.length==searchesKeptLimit) userIntrests.pop();
+            userIntrests = [query].concat(userIntrests);
+            localStorage.setItem(`clippr-${loggedUser.id}-latest-searches`,JSON.stringify(userIntrests));
+        }
 
         searchResults = result.data.results.map(
             (item: ItemBackend, index: number) => { return {
