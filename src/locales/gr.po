@@ -359,8 +359,8 @@ msgstr ""
 msgid "Non negotiable"
 msgstr ""
 
-#. placeholder {0}: stock
-#. placeholder {0}: stock
+#. placeholder {0}: item.stock
+#. placeholder {0}: item.stock
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
 msgid "Stock left: {0}"
@@ -657,4 +657,27 @@ msgstr ""
 
 #: src/routes/auth/+page.svelte
 msgid "Use format first-last name"
+msgstr ""
+
+#. placeholder {0}: item.seller.username
+#: src/lib/components/ListingThumbnailCard.svelte
+msgid "By {0}"
+msgstr ""
+
+#~ msgid "Skeleton"
+#~ msgstr ""
+
+#~ msgid "hello"
+#~ msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Expand the search"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Search expanded"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Disabled expanded search"
 msgstr ""

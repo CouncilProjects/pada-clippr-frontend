@@ -160,10 +160,12 @@
     {/snippet}
 </Toast.Group>
 
+<!--
 <style>
 
 :root {
   /* Use an existing Skeleton CSS variable */
-  --body-background-color: #e0f0e0
+  --body-background-color: #e0f0e0;
 }
 </style>
+-->

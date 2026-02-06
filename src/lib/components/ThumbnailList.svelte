@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ListingThumbnailCard from "$lib/components/ListingThumbnailCard.svelte";
     import { Slider } from '@skeletonlabs/skeleton-svelte';
+    import {type paths} from '$lib/api-types'
 
     import {md} from "$lib/universalReactivity/screenSizes";
 	import { onDestroy } from "svelte";
@@ -9,12 +10,13 @@
 
     let col_size = $state(Number.parseInt(preference || '3'));
 
-    type compProps=ItemThumbnail[]
+    type compProps = paths['/api/item/']['get']['responses']['200']['content']['application/json']['results']
     
-    	import type { ClassValue } from 'svelte/elements';
-	import type { ItemThumbnail } from "./types";
+    import type { ClassValue } from 'svelte/elements';
 
 	const props: { class?: ClassValue,items:compProps } = $props();
+
+    $inspect(props.items);
 
     //when the list is not shown anymore save the preference.
     onDestroy(()=>{
@@ -60,7 +62,7 @@ ThumbnailList component.
             <p>No items found.</p>
         {:else}
             {#each props.items as singleItem}
-                <ListingThumbnailCard {...singleItem}></ListingThumbnailCard>
+                <ListingThumbnailCard item={singleItem}></ListingThumbnailCard>
             {/each}
         {/if}
         

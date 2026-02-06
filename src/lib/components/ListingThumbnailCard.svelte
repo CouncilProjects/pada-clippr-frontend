@@ -1,37 +1,37 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
-    const fallback = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
-    import { verifiedTextGradient } from '$lib/assets/globalColors';
-    let {
-        title,
-        price,
-        neg,
-        stock,
-        rating,
-        thumbnail = fallback,
-        downsized,
-        fromVerified,
-        clipId
-    }: ItemThumbnail = $props();
-
-    import { md } from '$lib/universalReactivity/screenSizes';
-    import type { ItemThumbnail } from './types';
-
-    import getEventBus from '$lib/universalReactivity/eventBus';
     import { RatingGroup } from '@skeletonlabs/skeleton-svelte';
+    import { md } from '$lib/universalReactivity/screenSizes';
+    import getEventBus from '$lib/universalReactivity/eventBus';
     import { loggedUser } from '$lib/universalReactivity/auth.svelte';
+    import { verifiedTextGradient } from '$lib/assets/globalColors';
+
+    import type { paths } from '$lib/api-types';
+
+    const fallback =
+        'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
+
+    type Item =
+        paths['/api/item/']['get']['responses']['200']['content']['application/json']['results'][number];
+
+    let { item, downsized }: { item: Item; downsized?: number } = $props();
+
     const eventBus = getEventBus();
 
-    const clickHappned = (ver: boolean, clipId?: string) => {
-        
-        if (!ver && clipId && loggedUser.accountType=="member") {
+    const clickHappned = (item: Item) => {
+        if (
+            !item.negotiable &&
+            item.id &&
+            loggedUser.accountType === 'member'
+        ) {
             eventBus.emit('thumb-card-click');
         }
-        if (clipId) {
-            goto(`/clipping/${clipId}`);
+        if (item.id) {
+            goto(`/clipping/${item.id}`);
         }
     };
 </script>
+
 
 <!--
 @component
@@ -44,90 +44,111 @@ ThumbnailList component.
   <ListingThumbnailCard {title} {price} {neg} {stock} />
 -->
 
-{#snippet wideTable(title: string, price: number, neg: boolean, stock: number)}
+{#snippet wideTable()}
     <table class="table text-center mt-auto">
         <tbody>
             <tr>
                 <td>
-                    <div class={`flex flex-col ${fromVerified ? verifiedTextGradient + ' font-bold' : ''}`}>
-                        <span>{title}</span>
-                    {#if rating<0}
-                        <span class="text-white font-normal">Unrated</span>
-                    {:else}
-                        <RatingGroup class={fromVerified ? 'text-yellow-200' : 'text-white'} value={rating} count={5} allowHalf={true} readOnly={true}>
-                            <RatingGroup.Control>
-                                <RatingGroup.Context>
-                                    {#snippet children(ratingGroup)}
-                                        {#each ratingGroup().items as index (index)}
-                                            <RatingGroup.Item {index} />
-                                        {/each}
-                                    {/snippet}
-                                </RatingGroup.Context>
-                            </RatingGroup.Control>
-                            <RatingGroup.HiddenInput />
-                        </RatingGroup>
-                    {/if}
+                    <div
+                        class={`flex flex-col ${
+                            item.seller.is_verified_seller ? verifiedTextGradient + ' font-bold' : ''
+                        }`}
+                    >
+                        <span class='h5'>{item.title} </span>
+                        {#if item.seller.is_verified_seller} <span class="text-surface-contrast-light caption-bottom text-xs" >By {item.seller.username}</span> {/if}
+                        
+
+                        {#if Number.parseFloat(item.rating) < 0}
+                            <span class="text-white font-normal">Unrated</span>
+                        {:else}
+                            <RatingGroup
+                                class="{item.seller.is_verified_seller ? 'text-yellow-200' : 'text-white'}"
+                                value={Number.parseFloat(item.rating)}
+                                count={5}
+                                allowHalf
+                                readOnly
+                            >
+                                <RatingGroup.Control>
+                                    <RatingGroup.Context>
+                                        {#snippet children(ratingGroup)}
+                                            {#each ratingGroup().items as index (index)}
+                                                <RatingGroup.Item {index} />
+                                            {/each}
+                                        {/snippet}
+                                    </RatingGroup.Context>
+                                </RatingGroup.Control>
+                                <RatingGroup.HiddenInput />
+                            </RatingGroup>
+                        {/if}
                     </div>
                 </td>
-                <td>
-                    € <span>{price}</span>
-                </td>
+                <td>€ <span>{item.price}</span></td>
             </tr>
             <tr>
                 <td>
-                    {#if neg}
+                    {#if item.negotiable}
                         <span class="text-green-600 dark:text-green-400">Negotiable</span>
                     {:else}
                         <span class="text-red-600 dark:text-red-400">Non negotiable</span>
                     {/if}
                 </td>
                 <td>
-                    <span>Stock left: {stock}</span>
+                    <span>Stock left: {item.stock}</span>
                 </td>
             </tr>
         </tbody>
     </table>
 {/snippet}
 
-{#snippet tallTable(title: string, price: number, neg: boolean, stock: number)}
+
+
+
+{#snippet tallTable()}
     <table class="table text-center mt-auto">
         <tbody>
             <tr>
                 <td>
-                    <div class={`flex flex-col ${fromVerified ? verifiedTextGradient + ' font-bold' : ''}`}>
-                        <span>{title}</span>
-                    {#if rating<0}
-                        <span class="text-white font-normal">Unrated</span>
-                    {:else}
-                        <RatingGroup class={fromVerified ? 'text-yellow-200' : 'text-white'} value={rating} count={5} allowHalf={true} readOnly={true}>
-                            <RatingGroup.Control>
-                                <RatingGroup.Context>
-                                    {#snippet children(ratingGroup)}
-                                        {#each ratingGroup().items as index (index)}
-                                            <RatingGroup.Item {index} />
-                                        {/each}
-                                    {/snippet}
-                                </RatingGroup.Context>
-                            </RatingGroup.Control>
-                            <RatingGroup.HiddenInput />
-                        </RatingGroup>
-                    {/if}
+                    <div
+                        class={`flex flex-col ${
+                            item.seller.is_verified_seller ? verifiedTextGradient + ' font-bold' : ''
+                        }`}
+                    >
+                        <span>{item.title}</span>
+
+                        {#if Number.parseFloat(item.rating) < 0}
+                            <span class="text-white font-normal">Unrated</span>
+                        {:else}
+                            <RatingGroup
+                                class={item.seller.is_verified_seller ? 'text-yellow-200' : 'text-white'}
+                                value={Number.parseFloat(item.rating)}
+                                count={5}
+                                allowHalf
+                                readOnly
+                            >
+                                <RatingGroup.Control>
+                                    <RatingGroup.Context>
+                                        {#snippet children(ratingGroup)}
+                                            {#each ratingGroup().items as index (index)}
+                                                <RatingGroup.Item {index} />
+                                            {/each}
+                                        {/snippet}
+                                    </RatingGroup.Context>
+                                </RatingGroup.Control>
+                                <RatingGroup.HiddenInput />
+                            </RatingGroup>
+                        {/if}
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <span>{price} $</span>
-                </td>
+                <td><span>{item.price} €</span></td>
+            </tr>
+            <tr>
+                <td><span>Stock left: {item.stock}</span></td>
             </tr>
             <tr>
                 <td>
-                    <span>Stock left: {stock}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {#if neg}
+                    {#if item.negotiable}
                         <span class="text-green-600 dark:text-green-400">Negotiable</span>
                     {:else}
                         <span class="text-red-600 dark:text-red-400">Non negotiable</span>
@@ -137,31 +158,34 @@ ThumbnailList component.
         </tbody>
     </table>
 {/snippet}
+
+
 <button
     class="m-2 card hover:preset-filled-primary-500 hover:-translate-y-2 md:hover:-translate-y-5
-        {fromVerified ? 'bg-[#bdb8ae] dark:bg-[#595350] bg-linear-to-br from-red/10 to-blue/5 shadow-sm hover:shadow' : 'preset-filled-surface-300-700'} 
-        {clipId ? 'cursor-pointer' : 'cursor-auto'}"
+        {item.seller.is_verified_seller
+            ? 'bg-[#bdb8ae] dark:bg-[#595350] bg-linear-to-br from-red/10 to-blue/5 shadow-sm hover:shadow'
+            : 'preset-filled-surface-300-700'}
+        {item.id ? 'cursor-pointer' : 'cursor-auto'}"
     style={`max-width:${downsized || 100}%`}
-    onclick={() => {
-        clickHappned(neg, clipId);
-    }}
+    onclick={() => clickHappned(item)}
     aria-roledescription="Press to go to page"
 >
     <div class="flex flex-col items-center p-2 h-full">
         <div class="w-32 h-32 mb-2 overflow-hidden rounded-md">
-        <img
-            src={thumbnail}
-            onerror={(e) => {
-                (e.currentTarget as HTMLImageElement).src = fallback;
-            }}
-            alt="Thumbnail"
-        />
+            <img
+                src={item.thumbnail ?? fallback}
+                onerror={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = fallback;
+                }}
+                alt="Thumbnail"
+            />
         </div>
+
         {#if !md.current}
-            <!--If smaller than md-->
-            {@render tallTable(title, price, neg, stock)}
+            {@render tallTable()}
         {:else}
-            {@render wideTable(title, price, neg, stock)}
+            {@render wideTable()}
         {/if}
     </div>
 </button>
+

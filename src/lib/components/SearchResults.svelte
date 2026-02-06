@@ -14,7 +14,7 @@
     const fallback = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
     const searchesKeptLimit = 5;
 
-    let searchResults =  $state<ItemThumbnail[]>([])
+    let searchResults =  $state<ItemBackend['results']>([])
     let pageNumber = $state(1)
     let pageSize = $state(10)
     let totalItems = $state(0)
@@ -35,9 +35,9 @@
         thumbnail: string | null
     }
 
-    type ItemBackend = schemas['ItemBasic']
+    type ItemBackend = paths['/api/item/']['get']['responses']['200']['content']['application/json'];
 
-    export async function doSearch(query: string|null, user: string|null) {
+    export async function doSearch(query: string|null, user: string|null, expand:boolean=false) {
         const params: paths['/api/item/']['get']['parameters']['query'] = {
             amount: pageSize,
             page: pageNumber
@@ -45,8 +45,9 @@
 
         if(query != null) params.q = query;
         if(user != null)  params.u = user;
+        params.expand = expand; //JSON.parse(localStorage.getItem(`clippr-${loggedUser.id}-expand-search`) || 'false');
 
-        const result = await apiCaller.get("/item/", { params: params })
+        const result = await apiCaller.get<ItemBackend>("/item/", { params: params })
         let userIntrests:string[] = JSON.parse(localStorage.getItem(`clippr-${loggedUser.id}-latest-searches`) || '[]');
         if(query!=null){
             if(userIntrests.length==searchesKeptLimit) userIntrests.pop();
@@ -54,17 +55,7 @@
             localStorage.setItem(`clippr-${loggedUser.id}-latest-searches`,JSON.stringify(userIntrests));
         }
 
-        searchResults = result.data.results.map(
-            (item: ItemBackend, index: number) => { return {
-                title: item.title,
-                neg: item.negotiable,
-                price: item.price,
-                stock: item.stock,
-                clipId: item.id,
-                thumbnail: item.thumbnail || fallback,
-                fromVerified: item.seller.is_verified_seller
-            }}
-        )
+        searchResults = result.data.results.map((item)=>{return {...item,thumbnail:item.thumbnail||fallback}});
 
         totalItems = result.data.count
     }

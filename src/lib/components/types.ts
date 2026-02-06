@@ -2,7 +2,7 @@ export type ItemThumbnail={
     title:string,
     neg:boolean,
     price:number,
-    rating:number,
+    rating:string,
     stock:number,
     clipId?:string, //Note optional for now. tbh without this the card cant send you to its details page. 
     thumbnail?:string|undefined, //malformed or missing thumbnails are replaced.

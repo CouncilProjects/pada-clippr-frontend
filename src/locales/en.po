@@ -571,8 +571,8 @@ msgstr "Negotiable"
 msgid "Non negotiable"
 msgstr "Non negotiable"
 
-#. placeholder {0}: stock
-#. placeholder {0}: stock
+#. placeholder {0}: item.stock
+#. placeholder {0}: item.stock
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
 msgid "Stock left: {0}"
@@ -658,3 +658,25 @@ msgstr "Your full legal name"
 #: src/routes/auth/+page.svelte
 msgid "Use format first-last name"
 msgstr "Use format first-last name"
+
+#. placeholder {0}: item.seller.username
+#: src/lib/components/ListingThumbnailCard.svelte
+msgid "By {0}"
+msgstr "By {0}"
+
+#~ msgid "Skeleton"
+#~ msgstr "Skeleton"
+
+#~ msgid "hello"
+#~ msgstr "hello"
+
+#~ msgid "Expand the search"
+#~ msgstr "Expand the search"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Search expanded"
+msgstr "Search expanded"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Disabled expanded search"
+msgstr "Disabled expanded search"

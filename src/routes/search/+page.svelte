@@ -7,7 +7,8 @@
         const query = page.url.searchParams.get("q")
         if(query === null) return;
         const user = page.url.searchParams.get("u")
-        searchComponent.doSearch(query, user)
+        const exp = JSON.parse(page.url.searchParams.get('e') || 'false');
+        searchComponent.doSearch(query, user,exp)
     })
 </script>
 

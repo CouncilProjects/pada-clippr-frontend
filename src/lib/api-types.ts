@@ -566,6 +566,7 @@ export interface operations {
             query?: {
                 /** @description Number of results to return per page. */
                 amount?: number;
+                expand?: boolean;
                 /** @description A page number within the paginated result set. */
                 page?: number;
                 q?: string;

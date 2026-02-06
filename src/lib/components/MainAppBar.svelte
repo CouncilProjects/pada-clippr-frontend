@@ -1,7 +1,7 @@
 <script lang="ts">
   import LightSwitch from '$lib/components/LightSwitch.svelte';
-  import { SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck } from '@lucide/svelte';
-  import { AppBar, Avatar, Navigation } from '@skeletonlabs/skeleton-svelte';
+  import { SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck,ScanSearch } from '@lucide/svelte';
+  import { AppBar, Avatar, Navigation, Tooltip } from '@skeletonlabs/skeleton-svelte';
   import { locale, loggedUser, logoutUser, toogleLocale } from "$lib/universalReactivity/auth.svelte"
 import gr from '$lib/assets/gr.svg';
   import en from '$lib/assets/en.svg';
@@ -13,11 +13,22 @@ import gr from '$lib/assets/gr.svg';
   import { loadLocale } from 'wuchale/load-utils'
 
   import apiCaller, { backend} from '$lib/axiosConfig';
+    import { sm } from '$lib/universalReactivity/screenSizes';
+    import { toaster } from '$lib/toast';
 
   // tracks when the site title is hovered and onclick sends the user home
   let hovered = $state(false);
   const mouseTrack=()=>{
     hovered=!hovered;
+  }
+
+  let expanded = $state(JSON.parse(localStorage.getItem(`clippr-${loggedUser.id}-expand-search`) || 'false'));
+
+  const toogleExpanded = ()=>{
+    expanded=!expanded;
+    localStorage.setItem(`clippr-${loggedUser.id}-expand-search`,expanded);
+  
+    toaster.info({title:expanded ? "Search expanded" : "Disabled expanded search",duration:1500})
   }
 
   const onclick=()=>{
@@ -84,7 +95,7 @@ import gr from '$lib/assets/gr.svg';
     const query = formData.get("q")?.toString() ?? "";
     if (!query.trim()) return;
 
-    goto(`/search?q=${encodeURIComponent(query)}`);
+    goto(`/search?q=${encodeURIComponent(query)}&e=${encodeURIComponent(expanded)}`);
   }
 
   let icon = $state((localStorage.getItem("clippr-locale")||'en')=='en'?en:gr);
@@ -104,6 +115,8 @@ import gr from '$lib/assets/gr.svg';
   }
 
 </script>
+
+
 
 
 
@@ -161,10 +174,17 @@ import gr from '$lib/assets/gr.svg';
           <input class="ig-input" type="search" placeholder="Search..." name="q" autocomplete="off" />
           <button class="ig-btn preset-filled">Submit</button>
         </form>
+        
+
+        
+            <button class="btn btn-icon ml-1 {expanded ? 'preset-filled-primary-300-700' : 'preset-outlined-primary-300-700'} hover:preset-tonal-primary" onclick={toogleExpanded}>
+            <ScanSearch size="30"></ScanSearch>
+          </button>
+          
       </AppBar.Headline>
 
       <AppBar.Trail class="items-center">
-        <div class="hidden sm:block sm:flex  sm:flex-col md:flex-row items-center justify-center align-baseline">
+        <div class="hidden sm:block  sm:flex-col md:flex-row items-center justify-center align-baseline">
           <LightSwitch></LightSwitch>
           <button class="btn btn-icon w-12 h-8" aria-label="Change Language" onclick={changeLocal}><img class="w-full h-full object-cover" src={icon} alt={"change lang"}></button>
         </div>
