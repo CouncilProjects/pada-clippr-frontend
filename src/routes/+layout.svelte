@@ -128,20 +128,23 @@
         {/if}
     </button>
 {/if}
-<div class="h-screen grid grid-rows-[auto_1fr_auto]">
-    <MainAppBar></MainAppBar>
+<div class="h-dvh grid grid-rows-[auto_1fr_auto]">
+    <!--because the MainAppBar now had the portal div it needed to be wrapped so it could take the 1st auto-->
+    <div class="z-1">
+        <MainAppBar></MainAppBar>
+    </div>
 
     <!-- Main -->
     <main class="p-4 space-y-4">
         {@render children?.()}
     </main>
     <!-- Footer -->
-    <footer class="bg-surface-300-700 p-4 relative flex items-center justify-between">
+    <footer class="bg-surface-300-700 p-4 relative flex items-center justify-between bottom-0">
         {#if lastLogIn}
             <p>Last Login : {lastLogIn}</p>
         {/if}
         <div class="right-5 content-end">
-            <p class="text-right">2025-2026</p>
+            <p class="text-right">2025-{new Date().getFullYear()}</p>
             <a class="anchor text-right" href="/powered-by">Powered by</a>
         </div>
     </footer>

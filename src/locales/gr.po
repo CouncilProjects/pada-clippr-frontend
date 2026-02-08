@@ -60,7 +60,7 @@ msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit."
 msgstr "Το κείμενο αυτό είναι υποδειγματικό και δεν μεταφράζεται."
 
 #: src/lib/components/MainAppBar.svelte
-#: src/lib/components/ReviewPopUp.svelte
+#: src/lib/components/MainAppBar.svelte
 msgid "Submit"
 msgstr "Υποβολή"
 
@@ -336,6 +336,7 @@ msgstr ""
 msgid "Clippr"
 msgstr ""
 
+#: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
 msgid "Search..."
 msgstr ""
@@ -670,14 +671,103 @@ msgstr ""
 #~ msgid "hello"
 #~ msgstr ""
 
-#: src/lib/components/MainAppBar.svelte
-msgid "Expand the search"
-msgstr ""
+#~ msgid "Expand the search"
+#~ msgstr "Επέκταση αναζήτησης"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Search expanded"
-msgstr ""
+msgstr "Η αναζήτηση επεκτάθηκε"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Disabled expanded search"
-msgstr ""
+msgstr "Η εκτεταμένη αναζήτηση απενεργοποιήθηκε"
+
+#~ msgid "Hello test"
+#~ msgstr "Γεια δοκιμή"
+
+#~ msgid "How to better search"
+#~ msgstr "Πώς να κάνετε καλύτερη αναζήτηση"
+
+#~ msgid ""
+#~ "When typing a search with multiple words our algorithm tries to find items with atleast one of the words.\n"
+#~ "Examples: <0>superman t-shirt large <0/> superman OR t-shirt OR large</0>"
+#~ msgstr ""
+#~ "Όταν πληκτρολογείτε μια αναζήτηση με πολλαπλές λέξεις, ο αλγόριθμός μας προσπαθεί να βρει αντικείμενα που περιέχουν τουλάχιστον μία από τις λέξεις.\n"
+#~ "Παραδείγματα: <0>superman t-shirt large <0/> superman Ή t-shirt Ή large</0>"
+
+#~ msgid "How out search works"
+#~ msgstr "Πώς λειτουργεί η αναζήτησή μας"
+
+#~ msgid "When typing a search with multiple words our algorithm tries to find items with atleast one of the words."
+#~ msgstr "Όταν πληκτρολογείτε μια αναζήτηση με πολλές λέξεις, ο αλγόριθμός μας προσπαθεί να βρει αντικείμενα που περιέχουν τουλάχιστον μία από τις λέξεις."
+
+#~ msgid "superman t-shirt large <0/> superman OR t-shirt OR large"
+#~ msgstr "superman t-shirt large <0/> superman Ή t-shirt Ή large"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Typing multiple words"
+msgstr "Πληκτρολόγηση πολλών λέξεων"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Our algorithm will try to find clippings that have atleast one of the words"
+msgstr "Ο αλγόριθμός μας θα προσπαθήσει να βρει καταχωρήσεις που περιέχουν τουλάχιστον μία από τις λέξεις"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "superman t-shirt large <0/> superman <1>OR</1> t-shirt <2>OR</2> large"
+msgstr "superman t-shirt large <0/> superman <1>Ή</1> t-shirt <2>Ή</2> large"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "The above will match posts like <0>Superman</0> figuine, old <1>t-shirt</1>, <2>large</2> poster"
+msgstr "Τα παραπάνω θα ταιριάξουν με αγγελίες όπως φιγούρα <0>Superman</0>, παλιό <1>t-shirt</1>, <2>large</2> αφίσα"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "How to keep word ordering"
+msgstr "Πώς να διατηρήσετε τη σειρά των λέξεων"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Our algorithm will <0>NOT</0> process any group of words surrounded with <1/>"
+msgstr "Ο αλγόριθμός μας <0>ΔΕΝ</0> θα επεξεργαστεί καμία ομάδα λέξεων που περικλείεται σε <1/>"
+
+#~ msgid "\"t-shirt large\"<0/> superman <1>OR</1> t-shirt large"
+#~ msgstr "\"t-shirt large\"<0/> superman <1>Ή</1> t-shirt large"
+
+#~ msgid "The above will match posts like <0>t-shirt large</0>, metal <1>t-shirt large</1>, disneyland <2>t-shirt large</2>"
+#~ msgstr "Τα παραπάνω θα ταιριάξουν με αγγελίες όπως <0>t-shirt large</0>, metal <1>t-shirt large</1>, disneyland <2>t-shirt large</2>"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "It will not match clippings like, <0>movie t-shirt, large mirror, large tony t-shirt</0>"
+msgstr "Δεν θα ταιριάξει με καταχωρήσεις όπως <0>movie t-shirt, large mirror, large tony t-shirt</0>"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "metal \"t-shirt large\"<0/> metal <1>OR</1> t-shirt large"
+msgstr "metal \"t-shirt large\"<0/> metal <1>Ή</1> t-shirt large"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "The above will match posts like <0>t-shirt large</0>, <1>metal t-shirt large</1>, disneyland <2>t-shirt large</2>"
+msgstr "Τα παραπάνω θα ταιριάξουν με αγγελίες όπως <0>t-shirt large</0>, <1>metal t-shirt large</1>, disneyland <2>t-shirt large</2>"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Expand search"
+msgstr "Επέκταση αναζήτησης"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Our algorithm by default checks clipping titles to find results. But there are more places of information like descriptions and tags."
+msgstr "Ο αλγόριθμός μας από προεπιλογή ελέγχει τους τίτλους των καταχωρήσεων για να βρει αποτελέσματα. Ωστόσο, υπάρχουν και άλλες πηγές πληροφορίας όπως περιγραφές και ετικέτες."
+
+#: src/lib/components/MainAppBar.svelte
+msgid "By clicking the button <0/> next to the search you can enable expanded search"
+msgstr "Κάνοντας κλικ στο κουμπί <0/> δίπλα στην αναζήτηση μπορείτε να ενεργοποιήσετε την εκτεταμένη αναζήτηση"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "While expanded search is enabled, our algorithm will search in the clippings titles, but also in the desrciptions and tags to find matches."
+msgstr "Όταν η εκτεταμένη αναζήτηση είναι ενεργή, ο αλγόριθμός μας θα αναζητά τόσο στους τίτλους των καταχωρήσεων όσο και στις περιγραφές και τις ετικέτες για να βρει αντιστοιχίες."
+
+#~ msgid "Hellow"
+#~ msgstr "Γεια"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "How our search works"
+msgstr "Πώς λειτουργεί η αναζήτησή μας"
+
+#~ msgid "color=\"{0} \" <0>Submit</0>"
+#~ msgstr ""
