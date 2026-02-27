@@ -61,6 +61,7 @@ msgstr "Το κείμενο αυτό είναι υποδειγματικό κα�
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
+#: src/lib/components/ReviewPopUp.svelte
 msgid "Submit"
 msgstr "Υποβολή"
 
@@ -791,5 +792,7 @@ msgstr "Πώς λειτουργεί η αναζήτησή μας"
 #~ msgstr ""
 
 #: src/lib/components/MainAppBar.svelte
+#: src/lib/components/TagSelector.svelte
+#: src/routes/my-clippings/create/+page.svelte
 msgid "Add a tag..."
 msgstr ""

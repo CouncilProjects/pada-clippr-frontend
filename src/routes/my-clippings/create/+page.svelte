@@ -3,7 +3,7 @@
   import apiCaller from '$lib/axiosConfig';
   import { toaster } from '$lib/toast';
   import { ImageIcon } from 'lucide-svelte';
-  import { FileUpload } from '@skeletonlabs/skeleton-svelte';
+  import { FileUpload, TagsInput } from '@skeletonlabs/skeleton-svelte';
 
   let title = '';
   let description = '';
@@ -12,7 +12,7 @@
   let infiniteStock = false;
   let negotiable = false;
   let min_negotiable_price = '';
-  let tags = '';
+  let tagsArray: string[] = [];
 
   let images: File[] = [];
   let loading = false;
@@ -72,8 +72,7 @@
       formData.append('min_negotiable_price', min_negotiable_price);
     }
 
-    const tagArray = tags.split(',').map(t => t.trim()).filter(Boolean);
-    formData.append('tags', JSON.stringify(tagArray));
+    formData.append('tags', JSON.stringify(tagsArray));
 
     images.forEach(img => formData.append('images', img));
 
@@ -172,7 +171,24 @@
           <h4 class="h4 mb-4">Tags</h4>
           <label class="label">
             <span class="font-semibold">Add tags to help buyers find your item</span>
-            <input type="text" class="input" bind:value={tags} placeholder="vintage, clothing, leather, designer" />
+            <TagsInput onValueChange={(e) => (tagsArray = e.value)} validate={(d) => /^[a-z0-9]+(-[a-z0-9]+)*$/.test(d.inputValue)} editable={false}>
+              <TagsInput.Control>
+                <TagsInput.Context>
+                  {#snippet children(tagsInput)}
+                    {#each tagsInput().value as value, index (index)}
+                      <TagsInput.Item {value} {index}>
+                        <TagsInput.ItemPreview>
+                          <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                          <TagsInput.ItemDeleteTrigger />
+                        </TagsInput.ItemPreview>
+                        <TagsInput.ItemInput />
+                      </TagsInput.Item>
+                    {/each}
+                  {/snippet}
+                </TagsInput.Context>
+                <TagsInput.Input placeholder="Add a tag..." />
+              </TagsInput.Control>
+            </TagsInput>
             <small class="opacity-70">Separate tags with commas</small>
           </label>
         </section>

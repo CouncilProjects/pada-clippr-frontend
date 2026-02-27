@@ -6,7 +6,6 @@
   import gr from '$lib/assets/gr.svg';
   import en from '$lib/assets/en.svg';
 
-
   import { fade } from 'svelte/transition';
   import { goto } from '$app/navigation';
   import { Popover, Portal } from '@skeletonlabs/skeleton-svelte';
@@ -89,10 +88,6 @@
     }
   }
   let avatar = $derived(loggedUser.avatar ? backend + loggedUser.avatar : null);
-
-  function validateTag(details: any) {
-    return details.inputValue.match(/^[a-z0-9]+(-[a-z0-9]+)*$/);
-  }
 
   function doSearch(e: SubmitEvent) {
     e.preventDefault();
@@ -236,7 +231,7 @@ the coneten will now render inside this div and not the appbar.
               <SearchIcon size={16} />
             </div>
             <input class="ig-input" type="search" placeholder="Search..." name="q" autocomplete="off" />
-            <TagsInput validate={validateTag} editable={false}>
+            <TagsInput validate={(d) => /^[a-z0-9]+(-[a-z0-9]+)*$/.test(d.inputValue)} editable={false}>
               <TagsInput.Control>
                 <TagsInput.Context>
                   {#snippet children(tagsInput)}
@@ -265,7 +260,6 @@ the coneten will now render inside this div and not the appbar.
                 <Popover.Content class="card preset-filled-surface-600-400 p-2 flex flex-col">
 
                   <form onsubmit={doSearch} class="flex flex-col">
-            
                     <input class="ig-input" type="search" placeholder="Search..." name="q" autocomplete="off" />
                     <button class="ig-btn preset-filled w-fit self-center rounded-2xl">Submit</button>
                   </form>

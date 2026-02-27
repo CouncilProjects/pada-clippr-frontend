@@ -61,6 +61,7 @@ msgstr "Lorem ipsum dolor sit amet consectetur adipisicing elit."
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
+#: src/lib/components/ReviewPopUp.svelte
 msgid "Submit"
 msgstr "Submit"
 
@@ -791,5 +792,7 @@ msgstr "How our search works"
 #~ msgstr "Clear All"
 
 #: src/lib/components/MainAppBar.svelte
+#: src/lib/components/TagSelector.svelte
+#: src/routes/my-clippings/create/+page.svelte
 msgid "Add a tag..."
 msgstr "Add a tag..."
