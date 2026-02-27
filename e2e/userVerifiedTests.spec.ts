@@ -89,15 +89,12 @@ test("Add social", async (/*{page}*/) => {
 
 test("Update social", async (/*{page}*/) => {
     const uniqe = Date.now();
-
-
     await page.getByTestId("side_menu_button").click();
-await expect(page.getByRole('link', { name: 'Shop Socials' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Shop Socials' })).toBeVisible();
     await page.getByRole('link', { name: 'Shop Socials' }).click();
     const previous = page.locator('input[name="youtube"]');
     await expect(previous, 'Needs to be filled before the test').not.toBeEmpty();
     const prevVal = await previous.inputValue();
-
 
     await page.getByRole('textbox', { name: 'https://www.youtube.com/@' }).fill(`https://www.youtube.com/@${uniqe}`);
     await page.getByRole('button', { name: 'Apply changes' }).click();
@@ -111,7 +108,7 @@ await expect(page.getByRole('link', { name: 'Shop Socials' })).toBeVisible();
 
 test("Remove social", async (/*{page}*/) => {
     await page.getByTestId("side_menu_button").click();
-await expect(page.getByRole('link', { name: 'Shop Socials' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Shop Socials' })).toBeVisible();
     await page.getByRole('link', { name: 'Shop Socials' }).click();
     await expect(page.getByRole('textbox', { name: 'testEmail@gm.com' }), 'field should be already filled but isnt').toBeVisible();
 

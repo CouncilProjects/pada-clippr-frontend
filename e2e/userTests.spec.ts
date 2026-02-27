@@ -4,7 +4,7 @@ const username = "playUser";
 const password = "12345678";
 
 const normalTestPage = "test3"; //used in test ['Check out normal page']
-const verifiedTestPage = "test4"; //used in test ['Check out verified page']
+const verifiedTestPage = "playVerif"; //used in test ['Check out verified page']
 
 /* //NOTE this here will make ALL tests in the file to do independant logins. if you wish to use this then make sure that all tests have the {page} uncommented
 test.beforeEach(async ({ page }) => {
@@ -196,6 +196,26 @@ test('Delete avatar', async (/*{ page }*/) => {
     await expect(page.getByRole('button').nth(4)).toHaveCount(1);
 });
 
+// NOTE : remove skipping when item deletion is made
+
+test.skip('Member Create Items English', async (/*{ page }*/) => {
+    for(let i = 0; i < 5; i++) {
+        await page.goto('/');
+        await page.getByTestId('side_menu_button').click();
+        await page.getByRole('link', { name: 'My Clippings' }).click();
+        await page.getByRole('button', { name: '+ Create New' }).click();
+        await page.getByRole('textbox', { name: 'Title *' }).click();
+        await page.getByRole('textbox', { name: 'Title *' }).fill(`96b1dc01-e7c8${i}`);
+        await page.getByRole('textbox', { name: 'Description * Tip: Be' }).click();
+        await page.getByRole('textbox', { name: 'Description * Tip: Be' }).fill(`Test item ${i}`);
+        await page.getByRole('spinbutton', { name: 'Price ($) *' }).click();
+        await page.getByRole('spinbutton', { name: 'Price ($) *' }).fill('69');
+        await page.locator('label').filter({ hasText: 'Infinite Stock Item is always' }).click();
+        await page.getByRole('button', { name: 'Create Item' }).click();
+        await page.waitForURL(/\/my-clippings/);
+    }
+});
+
 // NOTE : for this test to work you need to have 5 items with the prefix 96b1dc01-e7c8 in the data base
 
 test('Search title-based', async (/*{ page }*/) => {
@@ -208,8 +228,27 @@ test('Search title-based', async (/*{ page }*/) => {
     await expect(page.getByTestId('main-listing-grid').locator(":scope > button")).toHaveCount(5);
 });
 
-// NOTE : for this test to work you need to have 2 items with the prefix ΩΧΡΝΒΣΒΜ in the data base
+// NOTE : remove skipping when item deletion is made
 
+test.skip('Member Create Items Greek', async (/*{ page }*/) => {
+    for(let i = 0; i < 2; i++) {
+        await page.goto('/');
+        await page.getByTestId('side_menu_button').click();
+        await page.getByRole('link', { name: 'My Clippings' }).click();
+        await page.getByRole('button', { name: '+ Create New' }).click();
+        await page.getByRole('textbox', { name: 'Title *' }).click();
+        await page.getByRole('textbox', { name: 'Title *' }).fill(`ΩΧΡΝΒΣΒΜ${i}`);
+        await page.getByRole('textbox', { name: 'Description * Tip: Be' }).click();
+        await page.getByRole('textbox', { name: 'Description * Tip: Be' }).fill(`Test item ${i}`);
+        await page.getByRole('spinbutton', { name: 'Price ($) *' }).click();
+        await page.getByRole('spinbutton', { name: 'Price ($) *' }).fill('69');
+        await page.locator('label').filter({ hasText: 'Infinite Stock Item is always' }).click();
+        await page.getByRole('button', { name: 'Create Item' }).click();
+        await page.waitForURL(/\/my-clippings/);
+    }
+});
+
+// NOTE : for this test to work you need to have 2 items with the prefix ΩΧΡΝΒΣΒΜ in the data base
 
 test('Search title-based Greek', async (/*{ page }*/) => {
     await page.goto('/');
@@ -221,22 +260,14 @@ test('Search title-based Greek', async (/*{ page }*/) => {
     await expect(page.getByTestId('main-listing-grid').locator(":scope > button")).toHaveCount(2);
 });
 
-
-
-
 test('Check out normal page', async (/*{ page }*/) => {
     await page.goto(`/account/${normalTestPage}`);
     await expect(page.getByRole('heading', { name: `Welcome to ${normalTestPage}\'s page` })).toBeVisible();
     await expect(page.getByText('ADSPACEFORRENT')).toBeVisible();
-
-    
 });
-
-
 
 test('Check out verified page', async (/*{ page }*/) => {
     await page.goto(`/account/${verifiedTestPage}`);
     await expect(page.getByRole('heading', { name: `Welcome to ${verifiedTestPage}\'s Shop` })).toBeVisible();
-
     await expect(page.getByRole('button', { name: 'Shop Socials' })).toBeVisible();
 });
