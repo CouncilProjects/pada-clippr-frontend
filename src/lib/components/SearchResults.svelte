@@ -3,9 +3,7 @@
     import { Pagination } from '@skeletonlabs/skeleton-svelte';
     import { ArrowLeftIcon, ArrowRightIcon } from '@lucide/svelte';
     import type { ClassValue } from 'svelte/elements';
-    import type {schemas} from "$lib"
 
-    import type { ItemThumbnail } from '$lib/components/types';
     import ThumbnailList from "$lib/components/ThumbnailList.svelte";
     import type { paths } from "$lib/api-types";
     import { loggedUser } from "$lib/universalReactivity/auth.svelte";
@@ -19,33 +17,18 @@
     let pageSize = $state(10)
     let totalItems = $state(0)
 
-    interface Seller {
-        username: string
-        is_verified_seller: boolean
-    }
-
-    interface itemBackend {
-        id: number
-        title: string
-        price: number
-        rating: number
-        stock: number
-        negotiable: boolean
-        seller: Seller
-        thumbnail: string | null
-    }
-
     type ItemBackend = paths['/api/item/']['get']['responses']['200']['content']['application/json'];
 
-    export async function doSearch(query: string|null, user: string|null, expand:boolean=false) {
+    export async function doSearch(query: string|null, tags: string|null, user: string|null, expand:boolean=false) {
         const params: paths['/api/item/']['get']['parameters']['query'] = {
             amount: pageSize,
             page: pageNumber
         }
 
         if(query != null) params.q = query;
+        if(tags != null)  params.t = tags;
         if(user != null)  params.u = user;
-        params.expand = expand; //JSON.parse(localStorage.getItem(`clippr-${loggedUser.id}-expand-search`) || 'false');
+        params.e = expand; //JSON.parse(localStorage.getItem(`clippr-${loggedUser.id}-expand-search`) || 'false');
 
         const result = await apiCaller.get<ItemBackend>("/item/", { params: params })
         let userIntrests:string[] = JSON.parse(localStorage.getItem(`clippr-${loggedUser.id}-latest-searches`) || '[]');

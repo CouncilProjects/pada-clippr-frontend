@@ -43,7 +43,7 @@ import { type ItemThumbnail } from '$lib/components/types';
 import { md } from '$lib/universalReactivity/screenSizes'; // Note the screen sizes i made follow Tailwind sizes. Used the same way
 	import { onMount } from 'svelte';
 
-onMount(() => searchComponent.doSearch(null, data.userID?.toString()||''))
+onMount(() => searchComponent.doSearch(null, null, data.userID?.toString()||''))
 
 </script>
 

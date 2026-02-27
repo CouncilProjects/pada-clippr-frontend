@@ -771,3 +771,25 @@ msgstr "How our search works"
 
 #~ msgid "color=\"{0} \" <0>Submit</0>"
 #~ msgstr "color=\"{0} \" <0>Submit</0>"
+
+#~ msgid "Vanilla"
+#~ msgstr "Vanilla"
+
+#~ msgid "Chocolate"
+#~ msgstr "Chocolate"
+
+#~ msgid "Strawberry"
+#~ msgstr "Strawberry"
+
+#~ msgid "Flavors"
+#~ msgstr "Flavors"
+
+#~ msgid "Add a flavor..."
+#~ msgstr "Add a flavor..."
+
+#~ msgid "Clear All"
+#~ msgstr "Clear All"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Add a tag..."
+msgstr "Add a tag..."

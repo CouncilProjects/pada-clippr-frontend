@@ -771,3 +771,25 @@ msgstr "Πώς λειτουργεί η αναζήτησή μας"
 
 #~ msgid "color=\"{0} \" <0>Submit</0>"
 #~ msgstr ""
+
+#~ msgid "Vanilla"
+#~ msgstr ""
+
+#~ msgid "Chocolate"
+#~ msgstr ""
+
+#~ msgid "Strawberry"
+#~ msgstr ""
+
+#~ msgid "Flavors"
+#~ msgstr ""
+
+#~ msgid "Add a flavor..."
+#~ msgstr ""
+
+#~ msgid "Clear All"
+#~ msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Add a tag..."
+msgstr ""

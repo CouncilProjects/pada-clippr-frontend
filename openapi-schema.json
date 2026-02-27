@@ -21,7 +21,7 @@
                     },
                     {
                         "in": "query",
-                        "name": "expand",
+                        "name": "e",
                         "schema": {
                             "type": "boolean"
                         }
@@ -38,6 +38,13 @@
                     {
                         "in": "query",
                         "name": "q",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "t",
                         "schema": {
                             "type": "string"
                         }

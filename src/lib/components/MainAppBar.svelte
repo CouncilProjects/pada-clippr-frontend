@@ -1,9 +1,9 @@
 <script lang="ts">
   import LightSwitch from '$lib/components/LightSwitch.svelte';
   import { ArrowRight,CircleQuestionMark,SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck,ScanSearch } from '@lucide/svelte';
-  import { AppBar, Avatar, Dialog, Navigation, Tooltip } from '@skeletonlabs/skeleton-svelte';
+  import { AppBar, Avatar, Dialog, Navigation, TagsInput } from '@skeletonlabs/skeleton-svelte';
   import { locale, loggedUser, logoutUser, toogleLocale } from "$lib/universalReactivity/auth.svelte"
-import gr from '$lib/assets/gr.svg';
+  import gr from '$lib/assets/gr.svg';
   import en from '$lib/assets/en.svg';
 
 
@@ -90,13 +90,18 @@ import gr from '$lib/assets/gr.svg';
   }
   let avatar = $derived(loggedUser.avatar ? backend + loggedUser.avatar : null);
 
+  function validateTag(details: any) {
+    return details.inputValue.match(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+  }
+
   function doSearch(e: SubmitEvent) {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const query = formData.get("q")?.toString() ?? "";
-    if (!query.trim()) return;
+    const tags = formData.get("t")?.toString().replaceAll(" ", "") ?? "";
+    if (!query.trim() && !tags) return;
 
-    goto(`/search?q=${encodeURIComponent(query)}&e=${encodeURIComponent(expanded)}`);
+    goto(`/search?q=${encodeURIComponent(query)}&t=${encodeURIComponent(tags)}&e=${encodeURIComponent(expanded)}`);
   }
 
   let icon = $state((localStorage.getItem("clippr-locale")||'en')=='en'?en:gr);
@@ -226,11 +231,30 @@ the coneten will now render inside this div and not the appbar.
           <CircleQuestionMark></CircleQuestionMark>
         </button>
         {#if md.current}
-          <form onsubmit={doSearch} class="input-group grid-cols-[auto_1fr_auto]">
+          <form onsubmit={doSearch} class="input-group grid-cols-[auto_1fr_auto_auto]">
             <div class="ig-cell preset-tonal">
               <SearchIcon size={16} />
             </div>
             <input class="ig-input" type="search" placeholder="Search..." name="q" autocomplete="off" />
+            <TagsInput validate={validateTag} editable={false}>
+              <TagsInput.Control>
+                <TagsInput.Context>
+                  {#snippet children(tagsInput)}
+                    {#each tagsInput().value as value, index (index)}
+                      <TagsInput.Item {value} {index}>
+                        <TagsInput.ItemPreview>
+                          <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                          <TagsInput.ItemDeleteTrigger />
+                        </TagsInput.ItemPreview>
+                        <TagsInput.ItemInput />
+                      </TagsInput.Item>
+                    {/each}
+                  {/snippet}
+                </TagsInput.Context>
+                <TagsInput.Input placeholder="Add a tag..." />
+              </TagsInput.Control>
+              <TagsInput.HiddenInput name="t" />
+            </TagsInput>
             <button class="ig-btn preset-filled">Submit</button>
           </form>
         {:else}

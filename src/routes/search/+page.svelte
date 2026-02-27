@@ -5,10 +5,11 @@
     let searchComponent: SearchResults
     $effect(() => {
         const query = page.url.searchParams.get("q")
-        if(query === null) return;
+        const tags = page.url.searchParams.get("t")
         const user = page.url.searchParams.get("u")
+        if(query === null && tags === null && user == null) return;
         const exp = JSON.parse(page.url.searchParams.get('e') || 'false');
-        searchComponent.doSearch(query, user,exp)
+        searchComponent.doSearch(query, tags, user, exp)
     })
 </script>
 
