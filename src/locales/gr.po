@@ -117,6 +117,7 @@ msgstr "{0} bytes"
 
 #: src/routes/account-settings/+page.svelte
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Confirm"
 msgstr "Επιβεβαίωση"
 
@@ -125,6 +126,7 @@ msgid "Delete Avatar"
 msgstr "Διαγραφή Άβαταρ"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Passwords dont match"
 msgstr "Οι κωδικοί δεν ταιριάζουν"
 
@@ -144,20 +146,27 @@ msgstr "Σύνδεση"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/auth/+page.svelte
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
+#: src/routes/create-admin/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Password"
 msgstr "Κωδικός"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "E-mail"
 msgstr "Ηλεκτρονικό ταχυδρομείο"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Your email"
 msgstr "Το email σας"
 
@@ -176,6 +185,7 @@ msgstr "Επώνυμο"
 #~ msgstr "Το νόμιμο επώνυμό σας"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Show password"
 msgstr "Εμφάνιση κωδικού"
 
@@ -644,6 +654,7 @@ msgid "Delete"
 msgstr ""
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "First name-Last name"
 msgstr ""
 
@@ -651,6 +662,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Your full legal name"
 msgstr ""
 
@@ -658,6 +670,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Use format first-last name"
 msgstr ""
 
@@ -795,4 +808,20 @@ msgstr "Πώς λειτουργεί η αναζήτησή μας"
 #: src/lib/components/TagSelector.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Add a tag..."
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Create Admin"
+msgstr ""
+
+#: src/routes/create-admin/+page.svelte
+msgid "Create New Admin"
+msgstr ""
+
+#: src/routes/create-admin/+page.svelte
+msgid "Create"
+msgstr ""
+
+#: src/routes/create-admin/+page.svelte
+msgid "New admin account has been created."
 msgstr ""

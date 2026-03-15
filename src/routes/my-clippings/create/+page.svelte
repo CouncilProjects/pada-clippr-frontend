@@ -2,7 +2,7 @@
   import { goto } from '$app/navigation';
   import apiCaller from '$lib/axiosConfig';
   import { toaster } from '$lib/toast';
-  import { ImageIcon } from 'lucide-svelte';
+  import { ImageIcon } from '@lucide/svelte';
   import { FileUpload, TagsInput } from '@skeletonlabs/skeleton-svelte';
 
   let title = '';

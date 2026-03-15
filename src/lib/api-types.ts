@@ -537,6 +537,10 @@ export interface components {
             password: string;
             first_name: string;
             last_name: string;
+            /** @default false */
+            is_staff: boolean;
+            /** @default false */
+            is_superuser: boolean;
         };
         UserSocialWithGlint: {
             socials: components["schemas"]["SocialLink"][];

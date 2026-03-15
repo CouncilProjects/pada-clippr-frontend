@@ -1568,6 +1568,14 @@
                     },
                     "last_name": {
                         "type": "string"
+                    },
+                    "is_staff": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "is_superuser": {
+                        "type": "boolean",
+                        "default": false
                     }
                 },
                 "required": [

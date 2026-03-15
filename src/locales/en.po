@@ -117,6 +117,7 @@ msgstr "{0} bytes"
 
 #: src/routes/account-settings/+page.svelte
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Confirm"
 msgstr "Confirm"
 
@@ -125,6 +126,7 @@ msgid "Delete Avatar"
 msgstr "Delete Avatar"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Passwords dont match"
 msgstr "Passwords dont match"
 
@@ -144,20 +146,27 @@ msgstr "Login"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Username"
 msgstr "Username"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/auth/+page.svelte
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
+#: src/routes/create-admin/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Password"
 msgstr "Password"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "E-mail"
 msgstr "E-mail"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Your email"
 msgstr "Your email"
 
@@ -176,6 +185,7 @@ msgstr "Last name"
 #~ msgstr "Your legal last name"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Show password"
 msgstr "Show password"
 
@@ -644,6 +654,7 @@ msgid "Delete"
 msgstr "Delete"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "First name-Last name"
 msgstr "First name-Last name"
 
@@ -651,6 +662,7 @@ msgstr "First name-Last name"
 #~ msgstr "Your legal first and last name"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Your full legal name"
 msgstr "Your full legal name"
 
@@ -658,6 +670,7 @@ msgstr "Your full legal name"
 #~ msgstr "Use separate the first and last name with '-'"
 
 #: src/routes/auth/+page.svelte
+#: src/routes/create-admin/+page.svelte
 msgid "Use format first-last name"
 msgstr "Use format first-last name"
 
@@ -796,3 +809,19 @@ msgstr "How our search works"
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Add a tag..."
 msgstr "Add a tag..."
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Create Admin"
+msgstr "Create Admin"
+
+#: src/routes/create-admin/+page.svelte
+msgid "Create New Admin"
+msgstr "Create New Admin"
+
+#: src/routes/create-admin/+page.svelte
+msgid "Create"
+msgstr "Create"
+
+#: src/routes/create-admin/+page.svelte
+msgid "New admin account has been created."
+msgstr "New admin account has been created."

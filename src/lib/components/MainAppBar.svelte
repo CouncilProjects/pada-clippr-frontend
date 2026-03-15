@@ -1,6 +1,6 @@
 <script lang="ts">
   import LightSwitch from '$lib/components/LightSwitch.svelte';
-  import { ArrowRight,CircleQuestionMark,SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck,ScanSearch } from '@lucide/svelte';
+  import { UserRoundKey, ArrowRight,CircleQuestionMark,SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck,ScanSearch } from '@lucide/svelte';
   import { AppBar, Avatar, Dialog, Navigation, TagsInput } from '@skeletonlabs/skeleton-svelte';
   import { locale, loggedUser, logoutUser, toogleLocale } from "$lib/universalReactivity/auth.svelte"
   import gr from '$lib/assets/gr.svg';
@@ -59,6 +59,7 @@
       { label: 'Site analytics', href: '#', icon: ChartColumnBig },
       { label: 'Reports', href: '#', icon: MessageCircleWarning },
       { label: 'Verification', href: '/verifications', icon: ShieldCheck },
+      { label: 'Create Admin', href: '/create-admin', icon: UserRoundKey },
     ],
   }
 
