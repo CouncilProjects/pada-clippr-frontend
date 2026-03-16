@@ -74,6 +74,7 @@ msgid "Items per row"
 msgstr "Items per row"
 
 #: src/lib/components/ThumbnailList.svelte
+#: src/routes/my-clippings/+page.svelte
 msgid "No items found."
 msgstr "No items found."
 
@@ -360,9 +361,8 @@ msgstr "SK"
 msgid "+ Create New"
 msgstr "+ Create New"
 
-#: src/routes/my-clippings/+page.svelte
-msgid "No items."
-msgstr "No items."
+#~ msgid "No items."
+#~ msgstr "No items."
 
 #: src/routes/verifications/+page.svelte
 msgid "Search"
@@ -451,6 +451,7 @@ msgstr "Each file must be under 5MB"
 msgid "File rejected. Unsupported type or size."
 msgstr "File rejected. Unsupported type or size."
 
+#: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Please fill in all required fields"
 msgstr "Please fill in all required fields"
@@ -475,6 +476,7 @@ msgstr "Create New Item"
 msgid "List your item on the marketplace"
 msgstr "List your item on the marketplace"
 
+#: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Basic Information"
 msgstr "Basic Information"
@@ -495,6 +497,7 @@ msgstr "Describe your item in detail..."
 msgid "Tip: Be detailed to attract more buyers"
 msgstr "Tip: Be detailed to attract more buyers"
 
+#: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Pricing & Stock"
 msgstr "Pricing & Stock"
@@ -503,6 +506,7 @@ msgstr "Pricing & Stock"
 msgid "Price ($) <0/>"
 msgstr "Price ($) <0/>"
 
+#: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Stock Quantity"
 msgstr "Stock Quantity"
@@ -515,14 +519,17 @@ msgstr "Infinite Stock"
 msgid "Item is always available (digital products, services, etc.)"
 msgstr "Item is always available (digital products, services, etc.)"
 
+#: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Price is negotiable"
 msgstr "Price is negotiable"
 
+#: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Allow buyers to make offers"
 msgstr "Allow buyers to make offers"
 
+#: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Minimum Acceptable Price ($)"
 msgstr "Minimum Acceptable Price ($)"
@@ -575,6 +582,8 @@ msgstr "Unrated"
 
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
+#: src/routes/clipping/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
 msgid "Negotiable"
 msgstr "Negotiable"
 
@@ -585,8 +594,10 @@ msgstr "Non negotiable"
 
 #. placeholder {0}: item.stock
 #. placeholder {0}: item.stock
+#. placeholder {0}: data.item.stock
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
+#: src/routes/clipping/+page.svelte
 msgid "Stock left: {0}"
 msgstr "Stock left: {0}"
 
@@ -636,6 +647,90 @@ msgstr "Not found"
 #: src/lib/components/MainAppBar.svelte
 msgid "Change Language"
 msgstr "Change Language"
+
+#: src/routes/clipping/+page.ts
+msgid "No item ID specified."
+msgstr "No item ID specified."
+
+#: src/routes/clipping/+page.ts
+msgid "Invalid item ID."
+msgstr "Invalid item ID."
+
+#: src/routes/clipping/+page.ts
+msgid "Failed to fetch item data."
+msgstr "Failed to fetch item data."
+
+#: src/routes/clipping/+page.svelte
+msgid "Item not found."
+msgstr "Item not found."
+
+#: src/routes/clipping/+page.svelte
+msgid "Non-negotiable"
+msgstr "Non-negotiable"
+
+#. placeholder {0}: data.item.seller.username
+#. placeholder {1}: data.item.seller.is_verified_seller ? '(Verified)' : ''
+#: src/routes/clipping/+page.svelte
+msgid "Seller: {0} {1}"
+msgstr "Seller: {0} {1}"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "← Back"
+msgstr "← Back"
+
+#~ msgid "Rating: {0}"
+#~ msgstr "Rating: {0}"
+
+#~ msgid "Stock: {0}"
+#~ msgstr "Stock: {0}"
+
+#~ msgid "thumbnail: {0}"
+#~ msgstr "thumbnail: {0}"
+
+#~ msgid "No image available"
+#~ msgstr "No image available"
+
+#~ msgid "Loading…"
+#~ msgstr "Loading…"
+
+#~ msgid "No preview available"
+#~ msgstr "No preview available"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Title *"
+msgstr "Title *"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Description *"
+msgstr "Description *"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Price ($) *"
+msgstr "Price ($) *"
+
+#~ msgid "For digital products or services"
+#~ msgstr "For digital products or services"
+
+#~ msgid "Must be $0.00 or higher"
+#~ msgstr "Must be $0.00 or higher"
+
+#~ msgid "Failed to load item."
+#~ msgstr "Failed to load item."
+
+#~ msgid "You need to be logged in to view this item."
+#~ msgstr "You need to be logged in to view this item."
+
+#~ msgid "Untitled"
+#~ msgstr "Untitled"
+
+#~ msgid "Rating:"
+#~ msgstr "Rating:"
+
+#~ msgid "Stock:"
+#~ msgstr "Stock:"
+
+#~ msgid "Description"
+#~ msgstr "Description"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Account settings"
@@ -810,6 +905,12 @@ msgstr "How our search works"
 msgid "Add a tag..."
 msgstr "Add a tag..."
 
+#~ msgid "Purchase failed."
+#~ msgstr "Purchase failed."
+
+#~ msgid "Delete failed."
+#~ msgstr "Delete failed."
+
 #: src/lib/components/MainAppBar.svelte
 msgid "Create Admin"
 msgstr "Create Admin"
@@ -825,3 +926,144 @@ msgstr "Create"
 #: src/routes/create-admin/+page.svelte
 msgid "New admin account has been created."
 msgstr "New admin account has been created."
+
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Out of stock"
+msgstr "Out of stock"
+
+#~ msgid "Buy now"
+#~ msgstr "Buy now"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Edit"
+msgstr "Edit"
+
+#~ msgid "Are you sure you want to delete <0/>?"
+#~ msgstr "Are you sure you want to delete <0/>?"
+
+#~ msgid "Yes, delete"
+#~ msgstr "Yes, delete"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Fixed price"
+msgstr "Fixed price"
+
+#~ msgid "Delete <0/>? This can't be undone."
+#~ msgstr "Delete <0/>? This can't be undone."
+
+#~ msgid "Edit listing"
+#~ msgstr "Edit listing"
+
+#~ msgid "Are you sure you want to delete <0/>? This cannot be undone."
+#~ msgstr "Are you sure you want to delete <0/>? This cannot be undone."
+
+#: src/routes/clipping/[clipId]/+page.svelte
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Failed to load listing."
+msgstr "Failed to load listing."
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Delete this listing?"
+msgstr "Delete this listing?"
+
+#~ msgid "Buy"
+#~ msgstr "Buy"
+
+#~ msgid "This image is already added"
+#~ msgstr "This image is already added"
+
+#~ msgid "Upload up to 3 images (max 5MB each)"
+#~ msgstr "Upload up to 3 images (max 5MB each)"
+
+#~ msgid "File rejected."
+#~ msgstr "File rejected."
+
+#~ msgid "Maximum images reached"
+#~ msgstr "Maximum images reached"
+
+#~ msgid "Browse Images ({0}/3)"
+#~ msgstr "Browse Images ({0}/3)"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Loading listing…"
+msgstr "Loading listing…"
+
+#~ msgid "View image {0}"
+#~ msgstr "View image {0}"
+
+#. placeholder {0}: clipping.seller.username
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Sold by {0}"
+msgstr "Sold by {0}"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "✓ Verified"
+msgstr "✓ Verified"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Stock"
+msgstr "Stock"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Rating"
+msgstr "Rating"
+
+#~ msgid "Buy Now"
+#~ msgstr "Buy Now"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Out of Stock"
+msgstr "Out of Stock"
+
+#~ msgid "Please upload at least one image"
+#~ msgstr "Please upload at least one image"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Show Interest"
+msgstr "Show Interest"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Listing updated successfully!"
+msgstr "Listing updated successfully!"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Failed to update item"
+msgstr "Failed to update item"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Are you sure you want to delete this listing? This action cannot be undone."
+msgstr "Are you sure you want to delete this listing? This action cannot be undone."
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Listing deleted successfully."
+msgstr "Listing deleted successfully."
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Failed to delete item"
+msgstr "Failed to delete item"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Edit Listing"
+msgstr "Edit Listing"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Update your item details"
+msgstr "Update your item details"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Optional"
+msgstr "Optional"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Delete Listing"
+msgstr "Delete Listing"
+
+#: src/routes/clipping/[clipId]/edit/+page.svelte
+msgid "Update Listing"
+msgstr "Update Listing"

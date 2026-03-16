@@ -5,17 +5,21 @@
   import { ImageIcon } from '@lucide/svelte';
   import { FileUpload, TagsInput } from '@skeletonlabs/skeleton-svelte';
 
-  let title = '';
-  let description = '';
-  let price = '';
-  let stock = 1;
-  let infiniteStock = false;
-  let negotiable = false;
-  let min_negotiable_price = '';
-  let tagsArray: string[] = [];
+  let title = $state('');
+  let description = $state('');
+  let price = $state('');
+  let stock = $state(1);
+  let infiniteStock = $state(false);
+  let negotiable = $state(false);
+  let min_negotiable_price = $state('');
+  let tagsArray = $state<string[]>([]);
 
-  let images: File[] = [];
-  let loading = false;
+  let images = $state<File[]>([]);
+  let loading = $state(false);
+
+  $effect(() => {
+    console.log('negotiable state (reactive):', negotiable);
+  });
 
   const onFileAccept = (event: any) => {
     const { files } = event;
@@ -145,7 +149,11 @@
 
           <div class="card preset-tonal-surface p-4 space-y-3">
             <label class="flex items-center space-x-3 cursor-pointer">
-              <input type="checkbox" class="checkbox" bind:checked={negotiable} />
+              <input
+                type="checkbox"
+                class="checkbox"
+                bind:checked={negotiable}
+              />
               <div>
                 <span class="font-semibold">Price is negotiable</span>
                 <p class="text-xs opacity-70">Allow buyers to make offers</p>

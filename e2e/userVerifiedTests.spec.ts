@@ -1,4 +1,5 @@
-import { test, expect, Response } from '@playwright/test';
+import { test, expect, Response, Page } from '@playwright/test';
+
 
 const username = "playVerif";
 const password = "12345678";
@@ -23,7 +24,8 @@ test.beforeEach(async ({ page }) => {
 
 */
 
-let page;
+
+let page: Page;
 
 test.beforeAll(async ({browser})=>{
     const context = await browser.newContext();
