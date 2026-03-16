@@ -36,6 +36,22 @@ export interface paths {
         patch: operations["item_partial_update"];
         trace?: never;
     };
+    "/api/item/home/feed/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["item_home_feed_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/item/my-clippings/": {
         parameters: {
             query?: never;
@@ -713,6 +729,32 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Item"];
+                };
+            };
+        };
+    };
+    item_home_feed_list: {
+        parameters: {
+            query?: {
+                /** @description Number of results to return per page. */
+                amount?: number;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description The users latest */
+                search?: string[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedItemBasicList"];
                 };
             };
         };
