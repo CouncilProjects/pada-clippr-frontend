@@ -24,7 +24,7 @@
         if (
             !item.negotiable &&
             item.id &&
-            loggedUser.accountType === 'member'
+            loggedUser.accountType === 'MEMBER'
         ) {
             eventBus.emit('thumb-card-click');
         }

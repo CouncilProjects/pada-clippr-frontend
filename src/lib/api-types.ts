@@ -405,11 +405,13 @@ export interface components {
             price: string;
             /** Format: int64 */
             stock?: number;
+            description: string;
             negotiable?: boolean;
             seller: components["schemas"]["SellerUser"];
             /** Format: decimal */
             readonly rating: string;
             readonly thumbnail: string | null;
+            readonly images: components["schemas"]["Image"][];
         };
         ItemReview: {
             readonly id: number;
@@ -651,7 +653,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["Item"];
+                    "application/json": components["schemas"]["ItemBasic"];
                 };
             };
         };

@@ -149,7 +149,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Item"
+                                    "$ref": "#/components/schemas/ItemBasic"
                                 }
                             }
                         },
@@ -1210,6 +1210,9 @@
                         "minimum": -9223372036854775808,
                         "format": "int64"
                     },
+                    "description": {
+                        "type": "string"
+                    },
                     "negotiable": {
                         "type": "boolean"
                     },
@@ -1226,10 +1229,19 @@
                         "type": "string",
                         "nullable": true,
                         "readOnly": true
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Image"
+                        },
+                        "readOnly": true
                     }
                 },
                 "required": [
+                    "description",
                     "id",
+                    "images",
                     "price",
                     "rating",
                     "seller",

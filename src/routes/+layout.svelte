@@ -28,13 +28,17 @@
 
     //Event handlers
     const removeEventCb = eventBus.on('thumb-card-click', () => {
-        const lastAd = localStorage.getItem(`last-popup-${loggedUser.username}`);
-        const storedTime = parseInt(lastAd || '0', 10);
+        console.log("Event called");
+        const lastAd = localStorage.getItem(`clippr-last-ad-${loggedUser.id}`);
+        const storedTime = lastAd ? parseInt(lastAd,10) : 0
+        
         const currentTime = Date.now();
         const fiveMinInMs = 5 * 60 * 1000;
-        if (lastAd == undefined || currentTime - storedTime > fiveMinInMs) {
+        
+        if (lastAd == undefined || (currentTime - storedTime) > fiveMinInMs) {
+            console.log("OKKKK??");
             showPopUp();
-            localStorage.setItem(`last-popup-${loggedUser.username}`, Date.now().toString());
+            localStorage.setItem(`clippr-last-popup-${loggedUser.id}`, Date.now().toString());
         }
     });
 
