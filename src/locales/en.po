@@ -324,18 +324,18 @@ msgstr "Shop Socials"
 msgid "Site analytics"
 msgstr "Site analytics"
 
-#: src/lib/components/MainAppBar.svelte
-msgid "Reports"
-msgstr "Reports"
+#~ msgid "Reports"
+#~ msgstr "Reports"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Verification"
 msgstr "Verification"
 
-#: src/lib/components/MainAppBar.svelte
-msgid "Home"
-msgstr "Home"
+#~ msgid "Home"
+#~ msgstr "Home"
 
+#: src/lib/components/MainAppBar.svelte
+#: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
 msgid "Settings"
 msgstr "Settings"
@@ -926,7 +926,6 @@ msgstr "Create"
 #: src/routes/create-admin/+page.svelte
 msgid "New admin account has been created."
 msgstr "New admin account has been created."
-
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Out of stock"

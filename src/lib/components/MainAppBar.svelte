@@ -48,18 +48,20 @@
         { label: 'My Clippings', href: '/my-clippings', icon: Store },
         { label: 'Intrest Offers', href: '#', icon: Inbox },
         { label: 'My Offers', href: '#', icon: Handshake },
+        { label: 'Settings', href: '/account-settings', icon: Settings },
     ],
     SELLER:[
       { label: 'My Clippings', href: '/my-clippings', icon: Store },
       { label: 'My analitics', href: '#', icon: ChartColumnBig },
       { label: 'Reviews', href: '#', icon: Inbox },
       { label: 'Shop Socials', href: '/shop-managment/socials', icon: Share2 },
+      { label: 'Settings', href: '/account-settings', icon: Settings },
     ],
     ADMIN:[
-      { label: 'Site analytics', href: '#', icon: ChartColumnBig },
-      { label: 'Reports', href: '#', icon: MessageCircleWarning },
+      { label: 'Site analytics', href: '/analytics', icon: ChartColumnBig },
       { label: 'Verification', href: '/verifications', icon: ShieldCheck },
       { label: 'Create Admin', href: '/create-admin', icon: UserRoundKey },
+      { label: 'Settings', href: '/account-settings', icon: Settings },
     ],
   }
 
@@ -69,14 +71,7 @@
     return navLinksLookUpTable[role as Role];
   }
 
-  const commonlinks=[
-    { label: 'Home', href: '/', icon: House },
-    { label: 'Settings', href: '/account-settings', icon: Settings },
-  ]
-
-  const currentUserLinks =$derived(
-    [commonlinks[0],...getNavLinks(loggedUser.accountType),commonlinks[1]]
-  );
+  const currentUserLinks = $derived(getNavLinks(loggedUser.accountType));
 
   async function logoutSubmit(e: Event|null) {
     e?.preventDefault();
