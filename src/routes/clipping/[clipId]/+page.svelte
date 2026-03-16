@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto } from '$app/navigation';
     import { page } from '$app/state';
     import apiCaller from '$lib/axiosConfig';
     import { loggedUser } from '$lib/universalReactivity/auth.svelte';
@@ -64,9 +65,7 @@
         if (clipping.ownerId != null) {
             return clipping.ownerId === currentUserId;
         }
-
-        // Fall back to comparing seller username (returned by the API)
-        return clipping.seller?.username != null && clipping.seller.username === loggedUser.username;
+;
     });
 
     const ratingDisplay = $derived.by(() => {
@@ -154,7 +153,7 @@
 <div class="min-h-screen p-8 bg-surface-50-950 text-surface-900-100">
     <div class="max-w-6xl mx-auto">
 
-        <button class="btn preset-tonal-surface mb-6" onclick={goBack}>
+        <button class="btn preset-tonal-surface mb-6" onclick={() => goto('/my-clippings')}>
             ← Back
         </button>
 
