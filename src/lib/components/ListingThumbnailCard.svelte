@@ -18,6 +18,8 @@
 
     const eventBus = getEventBus();
 
+    $inspect(item);
+
     const clickHappned = (item: Item) => {
         if (
             !item.negotiable &&

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import ListingThumbnailCard from '$lib/components/ListingThumbnailCard.svelte';
- import type { PageData } from './$types';
+  import type { PageData } from './$types';
 
   const { data } = $props<{ data: PageData }>();
 
@@ -17,14 +17,7 @@
   <div class="flex flex-wrap gap-4">
     {#each data.items as item}
       <ListingThumbnailCard 
-        title={item.title}
-        price={item.price}
-        neg={item.negotiable}
-        stock={item.stock}
-        rating={item.rating}
-        thumbnail={item.thumbnail}
-        fromVerified={item.seller.is_verified_seller}
-        clipId={item.id}
+         item={item}
       />
     {/each}
   </div>

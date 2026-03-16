@@ -717,7 +717,6 @@ msgid "Deletes your account forever"
 msgstr "Deletes your account forever"
 
 #: src/routes/account-settings/+page.svelte
-#: src/routes/clipping/[clipId]/+page.svelte
 msgid "Delete"
 msgstr "Delete"
 
@@ -943,10 +942,8 @@ msgstr "Delete this listing?"
 msgid "Loading listing…"
 msgstr "Loading listing…"
 
-#. placeholder {0}: i + 1
-#: src/routes/clipping/[clipId]/+page.svelte
-msgid "View image {0}"
-msgstr "View image {0}"
+#~ msgid "View image {0}"
+#~ msgstr "View image {0}"
 
 #. placeholder {0}: clipping.seller.username
 #: src/routes/clipping/[clipId]/+page.svelte
@@ -965,9 +962,8 @@ msgstr "Stock"
 msgid "Rating"
 msgstr "Rating"
 
-#: src/routes/clipping/[clipId]/+page.svelte
-msgid "Buy Now"
-msgstr "Buy Now"
+#~ msgid "Buy Now"
+#~ msgstr "Buy Now"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Out of Stock"
@@ -975,3 +971,7 @@ msgstr "Out of Stock"
 
 #~ msgid "Please upload at least one image"
 #~ msgstr "Please upload at least one image"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Show Interest"
+msgstr "Show Interest"
