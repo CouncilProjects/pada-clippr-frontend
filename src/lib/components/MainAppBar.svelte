@@ -288,15 +288,15 @@ the coneten will now render inside this div and not the appbar.
           {#if loggedUser.username!=null}
            
             {#if !avatar}
-            <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon size=18 /></button>
-          {:else}
-            <Avatar class="size-10 sm:size-18">
-              <Avatar.Image src={avatar} alt="small" class="w-full h-full object-cover"/>
-              <Avatar.Fallback>SK</Avatar.Fallback>
-            </Avatar>
-          {/if}
-           <p class="text-base">{loggedUser.username}</p>
-            <button type="button" class="btn-icon hover:preset-tonal" onclick={logoutSubmit}><LogOutIcon class="size-8" /></button>
+              <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon size=18 /></button>
+            {:else}
+              <Avatar class="size-10 sm:size-18">
+                <Avatar.Image src={avatar} alt="small" class="w-full h-full object-cover"/>
+                <Avatar.Fallback>SK</Avatar.Fallback>
+              </Avatar>
+            {/if}
+            <p class="text-base">{loggedUser.username}</p>
+            <button data-testid="logout-button" type="button" class="btn-icon hover:preset-tonal" onclick={logoutSubmit}><LogOutIcon class="size-8" /></button>
           {/if}
           
         </AppBar.Trail>

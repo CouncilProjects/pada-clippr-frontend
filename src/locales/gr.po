@@ -16,11 +16,11 @@ msgstr ""
 #: src/lib/components/MainAppBar.svelte
 #: src/routes/my-clippings/+page.svelte
 msgid "My Clippings"
-msgstr ""
+msgstr "Τα Αποσπάσματά μου"
 
 #: src/routes/my-clippings/+page.svelte
 msgid "+ Create New"
-msgstr ""
+msgstr "+ Δημιουργία Νέου"
 
 #: src/lib/components/ThumbnailList.svelte
 #: src/routes/my-clippings/+page.svelte
@@ -35,71 +35,71 @@ msgstr "Δεν βρέθηκαν αντικείμενα."
 
 #: src/routes/account-settings/+page.svelte
 msgid "Please select an image file (JPEG, PNG, WEBP, etc.)"
-msgstr ""
+msgstr "Παρακαλώ επιλέξτε ένα αρχείο εικόνας (JPEG, PNG, WEBP, κλπ.)"
 
 #: src/routes/account-settings/+page.svelte
 msgid "File size must be less than 5MB"
-msgstr ""
+msgstr "Το μέγεθος του αρχείου πρέπει να είναι μικρότερο από 5MB"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Content-Type"
-msgstr ""
+msgstr "Τύπος Περιεχομένου"
 
 #~ msgid "Todo"
 #~ msgstr "Εκκρεμεί"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Avatar"
-msgstr ""
+msgstr "Εικόνα Προφίλ"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Upload or change your avatar"
-msgstr ""
+msgstr "Ανεβάστε ή αλλάξτε την εικόνα προφίλ σας"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Browse Files <0/>"
-msgstr ""
+msgstr "Περιήγηση Αρχείων <0/>"
 
 #. placeholder {0}: file.size
 #: src/routes/account-settings/+page.svelte
 msgid "{0} bytes"
-msgstr ""
+msgstr "{0} bytes"
 
 #: src/routes/account-settings/+page.svelte
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
 msgid "Confirm"
-msgstr ""
+msgstr "Επιβεβαίωση"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Delete Avatar"
-msgstr ""
+msgstr "Διαγραφή Εικόνας Προφίλ"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
 msgid "Passwords dont match"
-msgstr ""
+msgstr "Οι κωδικοί δεν ταιριάζουν"
 
 #: src/routes/auth/+page.svelte
 msgid "Bad credentials"
-msgstr ""
+msgstr "Λανθασμένα στοιχεία σύνδεσης"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/auth/+page.svelte
 msgid "Signup"
-msgstr ""
+msgstr "Εγγραφή"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/auth/+page.svelte
 msgid "Login"
-msgstr ""
+msgstr "Σύνδεση"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
 #: src/routes/create-admin/+page.svelte
 msgid "Username"
-msgstr ""
+msgstr "Όνομα χρήστη"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/auth/+page.svelte
@@ -108,28 +108,28 @@ msgstr ""
 #: src/routes/create-admin/+page.svelte
 #: src/routes/create-admin/+page.svelte
 msgid "Password"
-msgstr ""
+msgstr "Κωδικός πρόσβασης"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
 msgid "E-mail"
-msgstr ""
+msgstr "Ηλεκτρονικό ταχυδρομείο"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
 msgid "Your email"
-msgstr ""
+msgstr "Το email σας"
 
 #: src/routes/verifications/+page.svelte
 msgid "First name"
-msgstr ""
+msgstr "Όνομα"
 
 #~ msgid "Your legal first name"
 #~ msgstr "Το νόμιμο όνομα σας"
 
 #: src/routes/verifications/+page.svelte
 msgid "Last name"
-msgstr ""
+msgstr "Επώνυμο"
 
 #~ msgid "Your legal last name"
 #~ msgstr "Το νόμιμο επώνυμό σας"
@@ -137,110 +137,110 @@ msgstr ""
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
 msgid "Show password"
-msgstr ""
+msgstr "Εμφάνιση κωδικού"
 
 #: src/routes/auth/+page.svelte
 msgid "Already have an account ?"
-msgstr ""
+msgstr "Έχετε ήδη λογαριασμό;"
 
 #: src/routes/auth/+page.svelte
 msgid "Dont have an account ?"
-msgstr ""
+msgstr "Δεν έχετε λογαριασμό;"
 
 #: src/lib/components/MainAppBar.svelte
 #: src/routes/+layout.svelte
 msgid "Clipp€r"
-msgstr ""
+msgstr "Clipp€r"
 
 #: src/routes/+layout.svelte
 msgid "Back to Top"
-msgstr ""
+msgstr "Επιστροφή στην κορυφή"
 
 #. placeholder {0}: lastLogIn
 #: src/routes/+layout.svelte
 msgid "Last Login : {0}"
-msgstr ""
+msgstr "Τελευταία σύνδεση: {0}"
 
 #: src/routes/+layout.svelte
 #: src/routes/powered-by/+page.svelte
 msgid "Powered by"
-msgstr ""
+msgstr "Υποστηρίζεται από"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Django"
-msgstr ""
+msgstr "Django"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Backend Framework"
-msgstr ""
+msgstr "Backend Framework"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Svelte"
-msgstr ""
+msgstr "Svelte"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Frontend Framework"
-msgstr ""
+msgstr "Frontend Framework"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Skeleton UI"
-msgstr ""
+msgstr "Skeleton UI"
 
 #: src/routes/powered-by/+page.svelte
 msgid "UI Framework"
-msgstr ""
+msgstr "UI Framework"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Tailwind CSS"
-msgstr ""
+msgstr "Tailwind CSS"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Styling Library"
-msgstr ""
+msgstr "Βιβλιοθήκη Στυλ"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Lucide"
-msgstr ""
+msgstr "Lucide"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Icons"
-msgstr ""
+msgstr "Εικονίδια"
 
 #: src/routes/powered-by/+page.svelte
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Version Control"
-msgstr ""
+msgstr "Έλεγχος Εκδόσεων"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Trello"
-msgstr ""
+msgstr "Trello"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Project Management"
-msgstr ""
+msgstr "Διαχείριση Έργου"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Playwright"
-msgstr ""
+msgstr "Playwright"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Testing"
-msgstr ""
+msgstr "Δοκιμές"
 
 #: src/routes/powered-by/+page.svelte
 msgid "SQLite"
-msgstr ""
+msgstr "SQLite"
 
 #: src/routes/powered-by/+page.svelte
 msgid "Database"
-msgstr ""
+msgstr "Βάση Δεδομένων"
 
 #: src/routes/powered-by/+page.svelte
 msgid "This project is built using modern, open-source technologies."
-msgstr ""
+msgstr "Αυτό το έργο έχει δημιουργηθεί με σύγχρονες τεχνολογίες ανοιχτού κώδικα."
 
 #: src/lib/components/MainAppBar.svelte
 msgid "The above will match posts like <0>Superman</0> figuine, old <1>t-shirt</1>, <2>large</2> poster"
@@ -282,312 +282,312 @@ msgstr "Κάνοντας κλικ στο κουμπί <0/> δίπλα στην �
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
 msgid "Settings"
-msgstr ""
+msgstr "Ρυθμίσεις"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Menu"
-msgstr ""
+msgstr "Μενού"
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
 msgid "Change Language"
-msgstr ""
+msgstr "Αλλαγή Γλώσσας"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Clippr"
-msgstr ""
+msgstr "Clippr"
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
 msgid "Search..."
-msgstr ""
+msgstr "Αναζήτηση..."
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/TagSelector.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Add a tag..."
-msgstr ""
+msgstr "Προσθήκη ετικέτας..."
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Submit"
-msgstr ""
+msgstr "Υποβολή"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "SK"
-msgstr ""
+msgstr "SK"
 
 #: src/lib/components/LightSwitch.svelte
 msgid "Dark"
-msgstr ""
+msgstr "Σκοτεινό"
 
 #: src/lib/components/LightSwitch.svelte
 msgid "Light"
-msgstr ""
+msgstr "Φωτεινό"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
 msgid "Use format first-last name"
-msgstr ""
+msgstr "Χρησιμοποιήστε τη μορφή όνομα-επώνυμο"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
 msgid "First name-Last name"
-msgstr ""
+msgstr "Όνομα-Επώνυμο"
 
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
 msgid "Your full legal name"
-msgstr ""
+msgstr "Το πλήρες νόμιμο όνομά σας"
 
 #. placeholder {0}: item.seller.username
 #: src/lib/components/ListingThumbnailCard.svelte
 msgid "By {0}"
-msgstr ""
+msgstr "Από {0}"
 
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
 msgid "Unrated"
-msgstr ""
+msgstr "Χωρίς βαθμολογία"
 
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Negotiable"
-msgstr ""
+msgstr "Διαπραγματεύσιμο"
 
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
 msgid "Non negotiable"
-msgstr ""
+msgstr "Μη διαπραγματεύσιμο"
 
 #. placeholder {0}: item.stock
 #. placeholder {0}: item.stock
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
 msgid "Stock left: {0}"
-msgstr ""
+msgstr "Υπόλοιπο αποθέματος: {0}"
 
 #: src/lib/components/ListingThumbnailCard.svelte
 msgid "Press to go to page"
-msgstr ""
+msgstr "Πατήστε για μετάβαση στη σελίδα"
 
 #: src/lib/components/ListingThumbnailCard.svelte
 msgid "Thumbnail"
-msgstr ""
+msgstr "Μικρογραφία"
 
 #~ msgid "No items."
 #~ msgstr ""
 
 #: src/lib/components/SearchResults.svelte
 msgid "Page Size"
-msgstr ""
+msgstr "Μέγεθος Σελίδας"
 
 #: src/lib/components/ThumbnailList.svelte
 msgid "Items per row"
-msgstr ""
+msgstr "Αντικείμενα ανά σειρά"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Account settings"
-msgstr ""
+msgstr "Ρυθμίσεις λογαριασμού"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Delete Account"
-msgstr ""
+msgstr "Διαγραφή λογαριασμού"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Deletes your account forever"
-msgstr ""
+msgstr "Διαγράφει τον λογαριασμό σας οριστικά"
 
 #: src/routes/account-settings/+page.svelte
 msgid "Delete"
-msgstr ""
+msgstr "Διαγραφή"
 
 #: src/routes/verifications/+page.svelte
 msgid "Search"
-msgstr ""
+msgstr "Αναζήτηση"
 
 #: src/routes/verifications/+page.svelte
 msgid "Query username"
-msgstr ""
+msgstr "Ερώτημα ονόματος χρήστη"
 
 #: src/routes/verifications/+page.svelte
 msgid "Enter"
-msgstr ""
+msgstr "Εισαγωγή"
 
 #: src/routes/verifications/+page.svelte
 msgid "Submit <0/>"
-msgstr ""
+msgstr "Υποβολή <0/>"
 
 #: src/routes/verifications/+page.svelte
 msgid "Shop"
-msgstr ""
+msgstr "Κατάστημα"
 
 #: src/routes/verifications/+page.svelte
 #: src/routes/verifications/+page.svelte
 msgid "Verify"
-msgstr ""
+msgstr "Επαλήθευση"
 
 #: src/routes/verifications/+page.svelte
 msgid "No results..."
-msgstr ""
+msgstr "Δεν βρέθηκαν αποτελέσματα..."
 
 #: src/routes/account/[name]/+page.svelte
 msgid "click to copy"
-msgstr ""
+msgstr "πατήστε για αντιγραφή"
 
 #. placeholder {0}: data.paramName
 #: src/routes/account/[name]/+page.svelte
 msgid "Welcome to {0}'s Shop"
-msgstr ""
+msgstr "Καλωσήρθατε στο κατάστημα του {0}"
 
 #. placeholder {0}: data.paramName
 #: src/routes/account/[name]/+page.svelte
 msgid "Welcome to {0}'s page"
-msgstr ""
+msgstr "Καλωσήρθατε στη σελίδα του {0}"
 
 #: src/routes/shop-managment/socials/+page.svelte
 msgid "A list of socials for your shop"
-msgstr ""
+msgstr "Λίστα κοινωνικών δικτύων για το κατάστημά σας"
 
 #: src/routes/shop-managment/socials/+page.svelte
 msgid "Social"
-msgstr ""
+msgstr "Κοινωνικό δίκτυο"
 
 #: src/routes/shop-managment/socials/+page.svelte
 msgid "Symbol"
-msgstr ""
+msgstr "Σύμβολο"
 
 #: src/routes/shop-managment/socials/+page.svelte
 msgid "Account"
-msgstr ""
+msgstr "Λογαριασμός"
 
 #: src/routes/shop-managment/socials/+page.svelte
 msgid "Discard changes"
-msgstr ""
+msgstr "Απόρριψη αλλαγών"
 
 #: src/routes/shop-managment/socials/+page.svelte
 msgid "Apply changes"
-msgstr ""
+msgstr "Εφαρμογή αλλαγών"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "You can only upload up to 3 images"
-msgstr ""
+msgstr "Μπορείτε να ανεβάσετε μόνο έως 3 εικόνες"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Only image files are allowed"
-msgstr ""
+msgstr "Επιτρέπονται μόνο αρχεία εικόνας"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Each file must be under 5MB"
-msgstr ""
+msgstr "Κάθε αρχείο πρέπει να είναι κάτω από 5MB"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "File rejected. Unsupported type or size."
-msgstr ""
+msgstr "Το αρχείο απορρίφθηκε. Μη υποστηριζόμενος τύπος ή μέγεθος."
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Enter a valid minimum negotiable price"
-msgstr ""
+msgstr "Εισάγετε έγκυρη ελάχιστη διαπραγματεύσιμη τιμή"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Item created successfully! 🎉"
-msgstr ""
+msgstr "Το αντικείμενο δημιουργήθηκε επιτυχώς! 🎉"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Failed to create item"
-msgstr ""
+msgstr "Η δημιουργία του αντικειμένου απέτυχε"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Create New Item"
-msgstr ""
+msgstr "Δημιουργία Νέου Αντικειμένου"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "List your item on the marketplace"
-msgstr ""
+msgstr "Καταχωρήστε το αντικείμενό σας στην αγορά"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Title <0/>"
-msgstr ""
+msgstr "Τίτλος <0/>"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Description <0/>"
-msgstr ""
+msgstr "Περιγραφή <0/>"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Describe your item in detail..."
-msgstr ""
+msgstr "Περιγράψτε το αντικείμενό σας με λεπτομέρεια..."
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Tip: Be detailed to attract more buyers"
-msgstr ""
+msgstr "Συμβουλή: Να είστε λεπτομερείς για να προσελκύσετε περισσότερους αγοραστές"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Price ($) <0/>"
-msgstr ""
+msgstr "Τιμή ($) <0/>"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Infinite Stock"
-msgstr ""
+msgstr "Άπειρο Απόθεμα"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Item is always available (digital products, services, etc.)"
-msgstr ""
+msgstr "Το αντικείμενο είναι πάντα διαθέσιμο (ψηφιακά προϊόντα, υπηρεσίες, κλπ.)"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "The lowest price you'll accept"
-msgstr ""
+msgstr "Η χαμηλότερη τιμή που θα αποδεχτείτε"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Tags"
-msgstr ""
+msgstr "Ετικέτες"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Add tags to help buyers find your item"
-msgstr ""
+msgstr "Προσθέστε ετικέτες για να βοηθήσετε τους αγοραστές να βρουν το αντικείμενό σας"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Separate tags with commas"
-msgstr ""
+msgstr "Διαχωρίστε τις ετικέτες με κόμματα"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Item Images"
-msgstr ""
+msgstr "Εικόνες Αντικειμένου"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Upload up to 3 high-quality images (max 5MB each)"
-msgstr ""
+msgstr "Ανεβάστε έως 3 εικόνες υψηλής ποιότητας (έως 5MB η κάθε μία)"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "<0/> Browse Images"
-msgstr ""
+msgstr "<0/> Περιήγηση Εικόνων"
 
 #. placeholder {0}: (file.size / 1024).toFixed(2)
 #: src/routes/my-clippings/create/+page.svelte
 msgid "{0} KB"
-msgstr ""
+msgstr "{0} KB"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Creating Item..."
-msgstr ""
+msgstr "Δημιουργία Αντικειμένου..."
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Create Item"
-msgstr ""
+msgstr "Δημιουργία Αντικειμένου"
 
 #: src/routes/account/[name]/+page.ts
 msgid "Not found"
-msgstr ""
+msgstr "Δεν βρέθηκε"
 
 #~ msgid "press"
 #~ msgstr ""
 
 #~ msgid "Your legal first and last name"
-#~ msgstr ""
+#~ msgstr "Το νομιμο όνομα και επώνημο σας"
 
 #~ msgid "Use separate the first and last name with '-'"
-#~ msgstr ""
+#~ msgstr "Διαζωρίστε το όνομα με το επώνυμο με το σύμβολο '-'"
 
 #~ msgid "Skeleton"
 #~ msgstr ""
@@ -680,234 +680,290 @@ msgstr "Πώς λειτουργεί η αναζήτησή μας"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Create Admin"
-msgstr ""
+msgstr "Δημιουργία Διαχειριστή"
 
 #: src/routes/create-admin/+page.svelte
 msgid "Create New Admin"
-msgstr ""
+msgstr "Δημιουργία Νέου Διαχειριστή"
 
 #: src/routes/create-admin/+page.svelte
 msgid "Create"
-msgstr ""
+msgstr "Δημιουργία"
 
 #: src/routes/create-admin/+page.svelte
 msgid "New admin account has been created."
-msgstr ""
+msgstr "Ο νέος λογαριασμός διαχειριστή δημιουργήθηκε."
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Intrest Offers"
-msgstr ""
+msgstr "Προσφορές Ενδιαφέροντος"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "My Offers"
-msgstr ""
+msgstr "Οι Προσφορές Μου"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "My analitics"
-msgstr ""
+msgstr "Τα Αναλυτικά Μου"
 
 #: src/lib/components/MainAppBar.svelte
+#: src/routes/account/[name]/+page.svelte
 msgid "Reviews"
-msgstr ""
+msgstr "Κριτικές"
 
 #: src/lib/components/MainAppBar.svelte
 #: src/routes/account/[name]/+page.svelte
 msgid "Shop Socials"
-msgstr ""
+msgstr "Κοινωνικά Δίκτυα Καταστήματος"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Site analytics"
-msgstr ""
+msgstr "Αναλυτικά Ιστοσελίδας"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Verification"
-msgstr ""
+msgstr "Επαλήθευση"
 
 #: src/lib/components/PopUpAd.svelte
 msgid "AD SPACE"
-msgstr ""
+msgstr "ΔΙΑΦΗΜΙΣΤΙΚΟΣ ΧΩΡΟΣ"
 
 #. placeholder {0}: timeTillClose
 #: src/lib/components/PopUpAd.svelte
 msgid "Skip in {0}"
-msgstr ""
+msgstr "Παράλειψη σε {0}"
 
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Default"
-msgstr ""
+msgstr "Προεπιλογή"
 
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Review"
-msgstr ""
+msgstr "Κριτική"
 
 #: src/lib/components/ReviewPopUp.svelte
 msgid "@skeletonlabs.dev"
-msgstr ""
+msgstr "@skeletonlabs.dev"
 
 #. placeholder {0}: about
 #. placeholder {1}: reference
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Leave a review for {0} {1}"
-msgstr ""
+msgstr "Αφήστε μια κριτική για {0} {1}"
 
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Rate it"
-msgstr ""
+msgstr "Βαθμολογήστε το"
 
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Leave comment"
-msgstr ""
+msgstr "Αφήστε σχόλιο"
 
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-msgstr ""
+msgstr "Παράδειγμα κειμένου περιγραφής."
 
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Progress"
-msgstr ""
+msgstr "Πρόοδος"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Please fill in all required fields"
-msgstr ""
+msgstr "Παρακαλώ συμπληρώστε όλα τα υποχρεωτικά πεδία"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Basic Information"
-msgstr ""
+msgstr "Βασικές Πληροφορίες"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Pricing & Stock"
-msgstr ""
+msgstr "Τιμή & Απόθεμα"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Stock Quantity"
-msgstr ""
+msgstr "Ποσότητα Αποθέματος"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Price is negotiable"
-msgstr ""
+msgstr "Η τιμή είναι διαπραγματεύσιμη"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Allow buyers to make offers"
-msgstr ""
+msgstr "Επιτρέψτε στους αγοραστές να κάνουν προσφορές"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Minimum Acceptable Price ($)"
-msgstr ""
+msgstr "Ελάχιστη Αποδεκτή Τιμή ($)"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Failed to load listing."
-msgstr ""
+msgstr "Αποτυχία φόρτωσης καταχώρησης."
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Delete this listing?"
-msgstr ""
+msgstr "Διαγραφή αυτής της καταχώρησης;"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "← Back"
-msgstr ""
+msgstr "← Πίσω"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Loading listing…"
-msgstr ""
+msgstr "Φόρτωση καταχώρησης…"
 
 #. placeholder {0}: clipping.seller.username
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Sold by {0}"
-msgstr ""
+msgstr "Πουλήθηκε από {0}"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "✓ Verified"
-msgstr ""
+msgstr "✓ Επαληθευμένο"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Fixed price"
-msgstr ""
+msgstr "Σταθερή τιμή"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Stock"
-msgstr ""
+msgstr "Απόθεμα"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Out of stock"
-msgstr ""
+msgstr "Εξαντλημένο"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Rating"
-msgstr ""
+msgstr "Αξιολόγηση"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Show Interest"
-msgstr ""
+msgstr "Δείξε Ενδιαφέρον"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Out of Stock"
-msgstr ""
+msgstr "Εξαντλημένο"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Edit"
-msgstr ""
+msgstr "Επεξεργασία"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Listing updated successfully!"
-msgstr ""
+msgstr "Η καταχώρηση ενημερώθηκε με επιτυχία!"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Failed to update item"
-msgstr ""
+msgstr "Αποτυχία ενημέρωσης του αντικειμένου"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Are you sure you want to delete this listing? This action cannot be undone."
-msgstr ""
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την καταχώρηση; Η ενέργεια δεν αναστρέφεται."
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Listing deleted successfully."
-msgstr ""
+msgstr "Η καταχώρηση διαγράφηκε με επιτυχία."
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Failed to delete item"
-msgstr ""
+msgstr "Αποτυχία διαγραφής του αντικειμένου"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Edit Listing"
-msgstr ""
+msgstr "Επεξεργασία Καταχώρησης"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Update your item details"
-msgstr ""
+msgstr "Ενημέρωση λεπτομερειών αντικειμένου"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Title *"
-msgstr ""
+msgstr "Τίτλος *"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Description *"
-msgstr ""
+msgstr "Περιγραφή *"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Price ($) *"
-msgstr ""
+msgstr "Τιμή ($) *"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Optional"
-msgstr ""
+msgstr "Προαιρετικό"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Delete Listing"
-msgstr ""
+msgstr "Διαγραφή Καταχώρησης"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Cancel"
-msgstr ""
+msgstr "Ακύρωση"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Update Listing"
-msgstr ""
+msgstr "Ενημέρωση Καταχώρησης"
+
+#~ msgid "done"
+#~ msgstr "Ολοκληρώθηκε"
+
+#: src/routes/account/[name]/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Searching for reviews"
+msgstr "Αναζήτηση κριτικών"
+
+#~ msgid "Posted at : ${0}"
+#~ msgstr "Αναρτήθηκε στις: ${0}"
+
+#: src/routes/account/[name]/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "A User said:"
+msgstr "Ένας χρήστης είπε:"
+
+#: src/routes/account/[name]/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "No comment"
+msgstr "Χωρίς σχόλιο"
+
+#~ msgid "Total reviews ${0}"
+#~ msgstr "Συνολικές κριτικές ${0}"
+
+#. placeholder {0}: data.length
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Total reviews {0}"
+msgstr "Συνολικές κριτικές {0}"
+
+#~ msgid "Posted at : {0}"
+#~ msgstr "Αναρτήθηκε στις: {0}"
+
+#. placeholder {0}: new Date(review.created_at).toLocaleString()
+#. placeholder {0}: new Date(review.created_at).toLocaleString()
+#: src/routes/account/[name]/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Posted at: {0}"
+msgstr "Αναρτήθηκε στις: {0}"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "More by <0/>"
+msgstr "Περισσότερα από <0/>"
+
+#. placeholder {0}: response?.data.length
+#: src/routes/account/[name]/+page.svelte
+msgid "Total reviews: {0}"
+msgstr "Συνολικές κριτικές: {0}"
+
+#: src/routes/account/[name]/+page.svelte
+msgid "Failed to load reviews."
+msgstr "Αποτυχία φόρτωσης κριτικών."
+
+#~ msgid "Shop socials"
+#~ msgstr "Κοινωνικά δίκτυα καταστήματος"

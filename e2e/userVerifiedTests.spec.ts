@@ -44,7 +44,7 @@ test.beforeAll(async ({browser})=>{
     await page.getByRole('button', { name: 'Login' }).click();
 
     // Wait for navigation to home page
-    await page.waitForURL('/');
+    await page.waitForURL('/my-clippings');
 
 });
 
@@ -54,8 +54,6 @@ test.beforeEach(async ()=>{
 
 test("Verified seller side menu",async (/*{page}*/) => {
     await page.getByTestId("side_menu_button").click();
-    
-    await expect(page.getByRole('link', { name: 'Home' })).toBeVisible();
     
     await expect(page.getByRole('link', { name: 'My Clippings' })).toBeVisible();
     
@@ -81,9 +79,6 @@ test("Add social", async (/*{page}*/) => {
     await page.getByRole('button', { name: 'Apply changes' }).click();
 
     await page.getByTestId("side_menu_button").click();
-    await page.getByRole('link', { name: 'Home' }).click();
-    await page.waitForURL("/");
-    await page.getByTestId("side_menu_button").click();
     await expect(page.getByRole('link', { name: 'Shop Socials' })).toBeVisible();
     await page.getByRole('link', { name: 'Shop Socials' }).click();
     await expect(page.locator('input[name="email"]'), "The social was not added, or addded incorectly").toHaveValue('testEmail@gm.com');
@@ -100,9 +95,7 @@ test("Update social", async (/*{page}*/) => {
 
     await page.getByRole('textbox', { name: 'https://www.youtube.com/@' }).fill(`https://www.youtube.com/@${uniqe}`);
     await page.getByRole('button', { name: 'Apply changes' }).click();
-    await page.getByTestId("side_menu_button").click();
-    await page.getByRole('link', { name: 'Home' }).click();
-    await page.waitForURL("/");
+
     await page.getByTestId("side_menu_button").click();
     await page.getByRole('link', { name: 'Shop Socials' }).click();
     await expect(page.locator('input[name="youtube"]')).toHaveValue(`https://www.youtube.com/@${uniqe}`);
@@ -116,9 +109,7 @@ test("Remove social", async (/*{page}*/) => {
 
     await page.getByRole('textbox', { name: 'testEmail@gm.com' }).fill('');
     await page.getByRole('button', { name: 'Apply changes' }).click();
-    await page.getByTestId("side_menu_button").click();
-    await page.getByRole('link', { name: 'Home' }).click();
-    await page.waitForURL("/");
+
     await page.getByTestId("side_menu_button").click();
     
     await page.getByRole('link', { name: 'Shop Socials' }).click();

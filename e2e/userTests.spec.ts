@@ -53,8 +53,6 @@ test('Normal user side menu', async (/*{ page }*/) => {
     await page.goto('/');
     await page.getByRole('button').first().click();
 
-    await expect(page.getByRole('link', { name: 'Home' })).toBeVisible();
-
     await expect(page.getByRole('link', { name: 'My Clippings' })).toBeVisible();
 
     await expect(page.getByRole('link', { name: 'Intrest Offers' })).toBeVisible();

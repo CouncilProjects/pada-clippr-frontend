@@ -1,8 +1,19 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
+    import { type PageProps } from './$types';
     import { page } from '$app/state';
     import apiCaller from '$lib/axiosConfig';
     import { loggedUser } from '$lib/universalReactivity/auth.svelte';
+    import { CircleChevronUp } from '@lucide/svelte';
+    import { Progress, RatingGroup } from '@skeletonlabs/skeleton-svelte';
+    import type { paths } from '$lib/api-types';
+
+    //why have a loader function if you dont use it ?
+    let { data:loaderData }:PageProps = $props()
+
+    type itemReviewType = paths['/api/review/item/{item_id}/']['get']['responses']['200']['content']['application/json'][number]
+    
+    
 
     const fallback =
         'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
@@ -77,7 +88,7 @@
         return r.toFixed(1);
     });
 
-
+    //?? the fuck is this ?
     $effect(() => {
         const clipId = page.params.clipId;
         if (!clipId) return;
@@ -150,10 +161,62 @@
     };
 </script>
 
-<div class="min-h-screen p-8 bg-surface-50-950 text-surface-900-100">
-    <div class="max-w-6xl mx-auto">
+{#snippet leftReview(review : itemReviewType)}
+    <div class="card flex flex-col preset-filled-surface-600-400 p-3 m-2 items-center">
+        <span>Posted at: {new Date(review.created_at).toLocaleString()}</span>
+        <hr class="hr">
+        <RatingGroup  
+            class={loaderData.clipping.seller.is_verified_seller ? 'text-yellow-200' : 'text-white'} 
+            count={5}
+            value={Number(review.rating)}
+            readOnly
+            allowHalf={true}>
+            <RatingGroup.Control>
+                <RatingGroup.Context>
+                    {#snippet children(ratingGroup)}
+                        {#each ratingGroup().items as index (index)}
+                            <RatingGroup.Item {index} />
+                        {/each}
+                    {/snippet}
+                </RatingGroup.Context>
+            </RatingGroup.Control>
+            <RatingGroup.HiddenInput />
+        </RatingGroup>
+        {#if review.comment!=null}
+            <span>A User said:</span>
+            <p class="card preset-filled-surface-700-300 p-2">{review.comment}</p>
+        {:else}
+            <span>No comment</span>
+        {/if}
+    </div>
+{/snippet}
 
-        <button class="btn preset-tonal-surface mb-6" onclick={() => goto('/my-clippings')}>
+<div class="max-h-dvh box-border p-8 bg-surface-50-950 text-surface-900-100 flex-col md:flex-row flex">
+    <div class=" md:w-1/4 card preset-filled-surface-200-800 p-1 m-1 items-center">
+        {#await loaderData.reviewPromice}
+            <div>
+                <Progress class="items-center w-fit" value={null}>
+                    <Progress.Circle>
+                        <Progress.CircleTrack />
+                        <Progress.CircleRange />
+                    </Progress.Circle>
+                    <Progress.ValueText />
+                </Progress>
+            <span>Searching for reviews</span>
+            </div>
+        {:then {data} } <!--This destructures the axios response--> 
+            <span>Total reviews {data.length}</span>
+            <div class="flex flex-col overflow-y-auto">
+                {#each data as entry}
+                    {@render leftReview(entry)}
+                {/each}
+            </div>
+        {/await}
+    </div>
+
+    <div class=" md:w-3/4 max-w-6xl mx-auto">
+
+        <button class="btn preset-tonal-surface mb-6" onclick={() => history.back()}>
             ← Back
         </button>
 
@@ -217,7 +280,8 @@
                 <div class="flex flex-col gap-6">
 
                     {#if clipping.seller}
-                        <div class="text-sm uppercase tracking-wider text-surface-500 flex items-center gap-2">
+                        <div>
+                            <div class="text-sm uppercase tracking-wider text-surface-500 flex items-center gap-2">
                             <span>Sold by {clipping.seller.username}</span>
 
                             {#if clipping.seller.is_verified_seller}
@@ -225,6 +289,8 @@
                                     ✓ Verified
                                 </span>
                             {/if}
+                        </div>
+                        <span class="text-xs">More by <a class="anchor" href="/account/{clipping.seller.username}">{clipping.seller.username}</a></span>
                         </div>
                     {/if}
 

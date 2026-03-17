@@ -312,6 +312,7 @@ msgid "My analitics"
 msgstr "My analitics"
 
 #: src/lib/components/MainAppBar.svelte
+#: src/routes/account/[name]/+page.svelte
 msgid "Reviews"
 msgstr "Reviews"
 
@@ -1066,3 +1067,58 @@ msgstr "Delete Listing"
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Update Listing"
 msgstr "Update Listing"
+
+#~ msgid "done"
+#~ msgstr "done"
+
+#: src/routes/account/[name]/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Searching for reviews"
+msgstr "Searching for reviews"
+
+#~ msgid "Posted at : ${0}"
+#~ msgstr "Posted at : ${0}"
+
+#: src/routes/account/[name]/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "A User said:"
+msgstr "A User said:"
+
+#: src/routes/account/[name]/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "No comment"
+msgstr "No comment"
+
+#~ msgid "Total reviews ${0}"
+#~ msgstr "Total reviews ${0}"
+
+#. placeholder {0}: data.length
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Total reviews {0}"
+msgstr "Total reviews {0}"
+
+#~ msgid "Posted at : {0}"
+#~ msgstr "Posted at : {0}"
+
+#. placeholder {0}: new Date(review.created_at).toLocaleString()
+#. placeholder {0}: new Date(review.created_at).toLocaleString()
+#: src/routes/account/[name]/+page.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Posted at: {0}"
+msgstr "Posted at: {0}"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "More by <0/>"
+msgstr "More by <0/>"
+
+#. placeholder {0}: response?.data.length
+#: src/routes/account/[name]/+page.svelte
+msgid "Total reviews: {0}"
+msgstr "Total reviews: {0}"
+
+#: src/routes/account/[name]/+page.svelte
+msgid "Failed to load reviews."
+msgstr "Failed to load reviews."
+
+#~ msgid "Shop socials"
+#~ msgstr "Shop socials"

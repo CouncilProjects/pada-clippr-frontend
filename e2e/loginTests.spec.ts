@@ -8,8 +8,8 @@ test('Login OK', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.getByRole('textbox', { name: 'Password' }).fill('12345678');
   await page.getByRole('button', { name: 'Login' }).click();
-  await page.getByRole('img', { name: 'small' }).click();
-  await page.getByText('test4').click();
+
+  await expect(await page.getByTestId('logout-button')).toHaveCount(1)
 });
 
 test("Login bad", async({page}) => {
