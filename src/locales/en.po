@@ -299,11 +299,11 @@ msgstr "This project is built using modern, open-source technologies."
 msgid "My Clippings"
 msgstr "My Clippings"
 
-#: src/lib/components/MainAppBar.svelte
-msgid "Intrest Offers"
-msgstr "Intrest Offers"
+#~ msgid "Intrest Offers"
+#~ msgstr "Intrest Offers"
 
 #: src/lib/components/MainAppBar.svelte
+#: src/routes/my-offers/+page.svelte
 msgid "My Offers"
 msgstr "My Offers"
 
@@ -945,6 +945,7 @@ msgstr "Edit"
 #~ msgid "Yes, delete"
 #~ msgstr "Yes, delete"
 
+#: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Cancel"
 msgstr "Cancel"
@@ -1122,3 +1123,132 @@ msgstr "Failed to load reviews."
 
 #~ msgid "Shop socials"
 #~ msgstr "Shop socials"
+
+#~ msgid "Failed to send request."
+#~ msgstr "Failed to send request."
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Escape"
+msgstr "Escape"
+
+#~ msgid "Write a message..."
+#~ msgstr "Write a message..."
+
+#~ msgid "Your offer (€)"
+#~ msgstr "Your offer (€)"
+
+#~ msgid "Sending..."
+#~ msgstr "Sending..."
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Send"
+msgstr "Send"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Message"
+msgstr "Message"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Offer"
+msgstr "Offer"
+
+#~ msgid "Error"
+#~ msgstr "Error"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Please enter a message before sending your request."
+msgstr "Please enter a message before sending your request."
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Please enter a valid offer amount."
+msgstr "Please enter a valid offer amount."
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Failed to create request (server error)."
+msgstr "Failed to create request (server error)."
+
+#: src/routes/clipping/[clipId]/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Quantity"
+msgstr "Quantity"
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Please enter a valid quantity."
+msgstr "Please enter a valid quantity."
+
+#. placeholder {0}: clipping.stock
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Quantity cannot exceed available stock ({0})."
+msgstr "Quantity cannot exceed available stock ({0})."
+
+#: src/lib/components/MainAppBar.svelte
+#: src/routes/list/+page.svelte
+msgid "Interest Offers"
+msgstr "Interest Offers"
+
+#: src/routes/list/+page.svelte
+msgid "You must be logged in to view interest offers."
+msgstr "You must be logged in to view interest offers."
+
+#: src/routes/list/+page.svelte
+msgid "Failed to load interest offers."
+msgstr "Failed to load interest offers."
+
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Loading offers…"
+msgstr "Loading offers…"
+
+#: src/routes/list/+page.svelte
+msgid "No interest offers yet."
+msgstr "No interest offers yet."
+
+#: src/routes/list/+page.svelte
+msgid "When someone sends an offer, it will appear here."
+msgstr "When someone sends an offer, it will appear here."
+
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Item"
+msgstr "Item"
+
+#: src/routes/list/+page.svelte
+msgid "From"
+msgstr "From"
+
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Created"
+msgstr "Created"
+
+#. placeholder {0}: itemInfo.itemId
+#. placeholder {0}: itemInfo.itemId
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Item #{0}"
+msgstr "Item #{0}"
+
+#: src/routes/my-offers/+page.svelte
+msgid "You must be logged in to view your offers."
+msgstr "You must be logged in to view your offers."
+
+#: src/routes/my-offers/+page.svelte
+msgid "Failed to load outgoing offers."
+msgstr "Failed to load outgoing offers."
+
+#: src/routes/my-offers/+page.svelte
+msgid "No outgoing offers yet."
+msgstr "No outgoing offers yet."
+
+#: src/routes/my-offers/+page.svelte
+msgid "Make an offer on a listing to see it here."
+msgstr "Make an offer on a listing to see it here."
+
+#: src/routes/my-offers/+page.svelte
+msgid "To"
+msgstr "To"

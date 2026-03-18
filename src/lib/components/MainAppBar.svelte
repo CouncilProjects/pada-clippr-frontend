@@ -46,8 +46,8 @@
   const navLinksLookUpTable:AccountLinks ={
     MEMBER:[
         { label: 'My Clippings', href: '/my-clippings', icon: Store },
-        { label: 'Intrest Offers', href: '#', icon: Inbox },
-        { label: 'My Offers', href: '#', icon: Handshake },
+        { label: 'Interest Offers', href: '/list', icon: Inbox },
+        { label: 'My Offers', href: '/my-offers', icon: Handshake },
         { label: 'Settings', href: '/account-settings', icon: Settings },
     ],
     SELLER:[

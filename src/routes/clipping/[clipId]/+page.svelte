@@ -49,6 +49,12 @@
     let error = $state<string | null>(null);
     const currentUserId = $derived.by(() => loggedUser.id);
     let activeImage = $state<string | null>(null);
+    let showModal = $state(false);
+    let message = $state('');
+    let offer = $state('');
+    let errorMsg = $state('');
+    let quantiny = $state('');
+    
 
     const allImages = $derived.by(() => {
         if (!clipping) return [];
@@ -76,7 +82,9 @@
         if (clipping.ownerId != null) {
             return clipping.ownerId === currentUserId;
         }
-;
+
+        // Fallback to seller ID if ownerId is not provided
+        return clipping.seller?.id === currentUserId;
     });
 
     const ratingDisplay = $derived.by(() => {
@@ -144,6 +152,7 @@
 
     const handleBuy = () => {
         if (!clipping || clipping.stock <= 0) return;
+        showModal = true;
         console.log('Buy clicked', clipping.id);
     };
 
@@ -159,6 +168,71 @@
 
         console.log('Delete clicked', clipping.id);
     };
+
+    const sendRequest = async () => {
+    if (!clipping) return;
+
+    // Basic client-side validation to avoid sending invalid payloads.
+    const messageText = message == null ? '' : String(message).trim();
+    if (!messageText) {
+        errorMsg = 'Please enter a message before sending your request.';
+        return;
+    }
+
+    const offerText = offer == null ? '' : String(offer).trim();
+    const offerNumber = clipping.negotiable
+        ? offerText
+            ? Number(offerText)
+            : null
+        : null;
+
+    if (clipping.negotiable && offerNumber != null && Number.isNaN(offerNumber)) {
+        errorMsg = 'Please enter a valid offer amount.';
+        return;
+    }
+
+    const quantity = quantiny ? Number(quantiny) : 1;
+
+    if (Number.isNaN(quantity) || quantity < 1) {
+        errorMsg = 'Please enter a valid quantity.';
+        return;
+    }
+
+    if (clipping.stock != null && quantity > clipping.stock) {
+        errorMsg = `Quantity cannot exceed available stock (${clipping.stock}).`;
+        return;
+    }
+
+    const body = {
+        item: clipping.id,
+        item_id: clipping.id,
+        message: message.trim(),
+        offer_price: offerNumber ?? clipping.price,
+        quantity
+    };
+
+    try {
+        await apiCaller.post('/pendingrequests/create/', body);
+
+        showModal = false;
+        message = '';
+        offer = '';
+        errorMsg = '';
+    } catch (e: any) {
+        console.error('Pending request failed', e);
+
+        const data = e?.response?.data;
+        if (data) {
+            // Prefer a user-friendly message but fall back to raw JSON if needed.
+            errorMsg =
+                data.detail ||
+                (typeof data === 'string' ? data : JSON.stringify(data));
+        } else {
+            errorMsg = 'Failed to create request (server error).';
+        }
+    }
+};
+
 </script>
 
 {#snippet leftReview(review : itemReviewType)}
@@ -373,3 +447,51 @@
 
     </div>
 </div>
+
+{#if showModal && clipping}
+<div class="fixed inset-0 bg-black/50 flex items-center justify-center" role="presentation" onclick={() => (showModal = false)} onkeydown={(e) => e.key === 'Escape' && (showModal = false)}>
+
+    <div class="card preset-filled-surface-200-800 p-4 flex flex-col gap-2 w-full max-w-md" role="dialog" tabindex="0" onclick={(e) => e.stopPropagation()} onkeydown={(e) => e.stopPropagation()}>
+
+        <textarea
+            class="input"
+            bind:value={message}
+            placeholder="Message"
+        ></textarea>
+
+        {#if clipping?.negotiable}
+            <input
+                type="number"
+                class="input"
+                bind:value={offer}
+                placeholder="Offer"
+            />
+        {/if}
+
+            <input
+                type="number"
+                class="input"
+                bind:value={quantiny}
+                min="1"
+                max={clipping.stock}
+                placeholder="Quantity"
+            />
+
+        {#if errorMsg}
+            <span class="text-error-500">{errorMsg}</span>
+        {/if}
+
+        <div class="flex gap-2 justify-end">
+            <button class="btn preset-tonal-surface" onclick={() => (showModal = false)}>
+                Cancel
+            </button>
+
+            <button class="btn preset-filled-primary-50-950" onclick={sendRequest}>
+                Send
+            </button>
+        </div>
+
+    </div>
+
+</div>
+{/if}

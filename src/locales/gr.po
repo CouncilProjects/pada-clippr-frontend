@@ -694,11 +694,11 @@ msgstr "Δημιουργία"
 msgid "New admin account has been created."
 msgstr "Ο νέος λογαριασμός διαχειριστή δημιουργήθηκε."
 
-#: src/lib/components/MainAppBar.svelte
-msgid "Intrest Offers"
-msgstr "Προσφορές Ενδιαφέροντος"
+#~ msgid "Intrest Offers"
+#~ msgstr "Προσφορές Ενδιαφέροντος"
 
 #: src/lib/components/MainAppBar.svelte
+#: src/routes/my-offers/+page.svelte
 msgid "My Offers"
 msgstr "Οι Προσφορές Μου"
 
@@ -905,6 +905,7 @@ msgstr "Προαιρετικό"
 msgid "Delete Listing"
 msgstr "Διαγραφή Καταχώρησης"
 
+#: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -967,3 +968,132 @@ msgstr "Αποτυχία φόρτωσης κριτικών."
 
 #~ msgid "Shop socials"
 #~ msgstr "Κοινωνικά δίκτυα καταστήματος"
+
+#~ msgid "Failed to send request."
+#~ msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Escape"
+msgstr ""
+
+#~ msgid "Write a message..."
+#~ msgstr ""
+
+#~ msgid "Your offer (€)"
+#~ msgstr ""
+
+#~ msgid "Sending..."
+#~ msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Send"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Message"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Offer"
+msgstr ""
+
+#~ msgid "Error"
+#~ msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Please enter a message before sending your request."
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Please enter a valid offer amount."
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Failed to create request (server error)."
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Quantity"
+msgstr ""
+
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Please enter a valid quantity."
+msgstr ""
+
+#. placeholder {0}: clipping.stock
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Quantity cannot exceed available stock ({0})."
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+#: src/routes/list/+page.svelte
+msgid "Interest Offers"
+msgstr ""
+
+#: src/routes/list/+page.svelte
+msgid "You must be logged in to view interest offers."
+msgstr ""
+
+#: src/routes/list/+page.svelte
+msgid "Failed to load interest offers."
+msgstr ""
+
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Loading offers…"
+msgstr ""
+
+#: src/routes/list/+page.svelte
+msgid "No interest offers yet."
+msgstr ""
+
+#: src/routes/list/+page.svelte
+msgid "When someone sends an offer, it will appear here."
+msgstr ""
+
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Item"
+msgstr ""
+
+#: src/routes/list/+page.svelte
+msgid "From"
+msgstr ""
+
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Created"
+msgstr ""
+
+#. placeholder {0}: itemInfo.itemId
+#. placeholder {0}: itemInfo.itemId
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Item #{0}"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "You must be logged in to view your offers."
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Failed to load outgoing offers."
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "No outgoing offers yet."
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Make an offer on a listing to see it here."
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "To"
+msgstr ""
