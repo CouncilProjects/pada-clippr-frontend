@@ -546,9 +546,8 @@ msgstr "Ετικέτες"
 msgid "Add tags to help buyers find your item"
 msgstr "Προσθέστε ετικέτες για να βοηθήσετε τους αγοραστές να βρουν το αντικείμενό σας"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Separate tags with commas"
-msgstr "Διαχωρίστε τις ετικέτες με κόμματα"
+#~ msgid "Separate tags with commas"
+#~ msgstr "Διαχωρίστε τις ετικέτες με κόμματα"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Item Images"
@@ -740,9 +739,8 @@ msgstr "Προεπιλογή"
 msgid "Review"
 msgstr "Κριτική"
 
-#: src/lib/components/ReviewPopUp.svelte
-msgid "@skeletonlabs.dev"
-msgstr "@skeletonlabs.dev"
+#~ msgid "@skeletonlabs.dev"
+#~ msgstr "@skeletonlabs.dev"
 
 #. placeholder {0}: about
 #. placeholder {1}: reference
@@ -1070,7 +1068,9 @@ msgstr ""
 
 #. placeholder {0}: itemInfo.itemId
 #. placeholder {0}: itemInfo.itemId
+#. placeholder {0}: itemInfo.itemId
 #: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Item #{0}"
 msgstr ""
@@ -1223,4 +1223,48 @@ msgid "Review item"
 msgstr ""
 
 #~ msgid "Accepted <0>Item reviewed</0>"
+#~ msgstr ""
+
+#~ msgid "class=\"btn-icon hover:preset-tonal\"><0/>"
+#~ msgstr ""
+
+#~ msgid "lass=\"btn-icon chover:preset-tonal\"><0/>"
+#~ msgstr ""
+
+#~ msgid "Use"
+#~ msgstr ""
+
+#: src/routes/my-clippings/create/+page.svelte
+msgid "Use lowercase letters, numbers, and hyphens only"
+msgstr ""
+
+#~ msgid "se"
+#~ msgstr ""
+
+#~ msgid "Se"
+#~ msgstr ""
+
+#~ msgid "Accepted <0>Accepted <0>User reviewedItem reviewed</0></0>"
+#~ msgstr ""
+
+#~ msgid "Accepted <0>✓ All reviews completed✓ User reviewed✓ Item reviewed</0>"
+#~ msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "✓ All reviews completed"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Unknown user"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "✓ User reviewed"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "✓ Item reviewed"
+msgstr ""
+
+#~ msgid "Accepted <0/> <1>✓ User reviewed✓ Item reviewed</1>"
 #~ msgstr ""

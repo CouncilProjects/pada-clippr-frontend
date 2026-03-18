@@ -179,7 +179,7 @@
                 <TagsInput.Input placeholder="Add a tag..." />
               </TagsInput.Control>
             </TagsInput>
-            <small class="opacity-70">Separate tags with commas</small>
+            <small class="opacity-70">Use lowercase letters, numbers, and hyphens only</small>
           </label>
         </section>
 

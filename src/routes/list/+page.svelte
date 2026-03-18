@@ -3,12 +3,14 @@
     import { loggedUser } from '$lib/universalReactivity/auth.svelte';
     import apiCaller from '$lib/axiosConfig';
     import { toaster } from '$lib/toast';
+    import { PrinterCheck } from '@lucide/svelte';
 
     type PendingRequest = {
         id: number;
         item?: any;
         item_id?: number | null;
         item_title?: string | null;
+        item_price?: number | null;
         message?: string | null;
         offer_price?: number | null;
         quantity?: number | null;
@@ -31,7 +33,14 @@
                 ? itemObj
                 : undefined);
 
-        return { itemId, title };
+        const price =
+            req.item_price != null
+                ? Number(req.item_price)
+                : itemObj && typeof itemObj === 'object' && itemObj.price != null
+                ? Number(itemObj.price)
+                : undefined;
+
+        return { itemId, title, price };
     };
 
     const getBuyerName = (req: PendingRequest) => {
@@ -194,7 +203,15 @@ const submitAction = async () => {
                             </td>
                             <td class="py-2 px-3 text-surface-900 dark:text-surface-100">{buyerName ?? '-'}</td>
                             <td class="py-2 px-3 text-surface-900 dark:text-surface-100">{req.quantity ?? '-'}</td>
-                            <td class="py-2 px-3 text-surface-900 dark:text-surface-100">{req.offer_price != null ? `€ ${req.offer_price}` : '-'}</td>
+                            <td class="py-2 px-3 text-surface-900 dark:text-surface-100">
+                                {#if req.offer_price != null}
+                                    € {req.offer_price}
+                                {:else if itemInfo.price != null}
+                                    € {itemInfo.price}
+                                {:else}
+                                    -
+                                {/if}
+                            </td>
                             <td class="py-2 px-3 break-words max-w-xs text-surface-900 dark:text-surface-100">{req.message ?? '-'}</td>
                             <td class="py-2 px-3 text-surface-900 dark:text-surface-100">{formatDate(req.created_at)}</td>
 

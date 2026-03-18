@@ -101,7 +101,6 @@ When you render the component a button will appear. Pressing the button will ope
 						
 						<div>
 							<Popover.Title class="text-lg font-bold">Review</Popover.Title>
-							<a href="https://bsky.app/profile/skeleton.dev" target="_blank" class="anchor">@skeletonlabs.dev</a>
 						</div>
 						<Popover.CloseTrigger class="btn-icon hover:preset-tonal self-start {loading&&'hidden'}">
 							<XIcon class="size-4" />

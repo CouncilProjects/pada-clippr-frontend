@@ -287,14 +287,16 @@ the coneten will now render inside this div and not the appbar.
           
           {#if loggedUser.username!=null}
            
+          <button type="button" onclick={() => goto(`/account/${loggedUser.username}`)} class="btn btn-ghost flex items-center gap-2">
             {#if !avatar}
-              <button type="button" class="btn-icon hover:preset-tonal"><CircleUserIcon size=18 /></button>
+              <CircleUserIcon size=18 />
             {:else}
               <Avatar class="size-10 sm:size-18">
                 <Avatar.Image src={avatar} alt="small" class="w-full h-full object-cover"/>
                 <Avatar.Fallback>SK</Avatar.Fallback>
               </Avatar>
             {/if}
+            </button>
             <p class="text-base">{loggedUser.username}</p>
             <button data-testid="logout-button" type="button" class="btn-icon hover:preset-tonal" onclick={logoutSubmit}><LogOutIcon class="size-8" /></button>
           {/if}
