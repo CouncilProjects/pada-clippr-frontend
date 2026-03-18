@@ -832,6 +832,8 @@ msgstr "Σταθερή τιμή"
 msgid "Stock"
 msgstr "Απόθεμα"
 
+#: src/lib/components/ListingThumbnailCard.svelte
+#: src/lib/components/ListingThumbnailCard.svelte
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Out of stock"
 msgstr "Εξαντλημένο"

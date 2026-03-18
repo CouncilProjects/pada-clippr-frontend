@@ -420,7 +420,7 @@
 
                         {#if !isOwner}
                             <button
-                                class="btn preset-filled-primary-50-950 flex-1"
+                                class="btn flex-1 {clipping.stock !== -1 && clipping.stock <= 0 ? 'preset-tonal-surface opacity-50 cursor-not-allowed' : 'preset-filled-primary-50-950'}"
                                 onclick={handleBuy}
                                 disabled={clipping.stock !== -1 && clipping.stock <= 0}
                             >

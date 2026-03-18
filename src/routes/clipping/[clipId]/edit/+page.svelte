@@ -82,7 +82,7 @@
     formData.append('title', title);
     formData.append('description', description);
     formData.append('price', price.toString());
-    formData.append('stock', Math.max(stock, 1).toString());
+    formData.append('stock', Math.max(stock, 0).toString());
     formData.append('negotiable', negotiable.toString());
 
 
@@ -188,9 +188,9 @@
                 <input
                   type="number"
                   class="input"
-                  min="1"
+                  min="0"
                   bind:value={stock}
-                  placeholder="1"
+                  placeholder="0"
                 />
               </label>
             </div>

@@ -95,7 +95,13 @@ ThumbnailList component.
                     {/if}
                 </td>
                 <td>
-                    <span>{item.stock === -1 ? 'Made to order' : `Stock left: ${item.stock}`}</span>
+                    <span>
+                        {item.stock === -1
+                            ? 'Made to order'
+                            : item.stock === 0
+                            ? 'Out of stock'
+                            : `Stock left: ${item.stock}`}
+                    </span>
                 </td>
             </tr>
         </tbody>
@@ -146,7 +152,15 @@ ThumbnailList component.
                 <td><span>{item.price} €</span></td>
             </tr>
             <tr>
-                <td><span>{item.stock === -1 ? 'Made to order' : `Stock left: ${item.stock}`}</span></td>
+                <td>
+                    {#if item.stock === -1}
+                        <span>Made to order</span>
+                    {:else if item.stock === 0}
+                        <span class="text-red-600 dark:text-red-400">Out of stock</span>
+                    {:else}
+                        <span>Stock left: {item.stock}</span>
+                    {/if}
+                </td>
             </tr>
             <tr>
                 <td>
