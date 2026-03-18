@@ -68,6 +68,7 @@ msgstr "{0} bytes"
 #: src/routes/account-settings/+page.svelte
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
+#: src/routes/list/+page.svelte
 msgid "Confirm"
 msgstr "Επιβεβαίωση"
 
@@ -795,9 +796,8 @@ msgstr "Η τιμή είναι διαπραγματεύσιμη"
 msgid "Allow buyers to make offers"
 msgstr "Επιτρέψτε στους αγοραστές να κάνουν προσφορές"
 
-#: src/routes/clipping/[clipId]/edit/+page.svelte
-msgid "Minimum Acceptable Price ($)"
-msgstr "Ελάχιστη Αποδεκτή Τιμή ($)"
+#~ msgid "Minimum Acceptable Price ($)"
+#~ msgstr "Ελάχιστη Αποδεκτή Τιμή ($)"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/clipping/[clipId]/edit/+page.svelte
@@ -894,9 +894,8 @@ msgstr "Περιγραφή *"
 msgid "Price ($) *"
 msgstr "Τιμή ($) *"
 
-#: src/routes/clipping/[clipId]/edit/+page.svelte
-msgid "Optional"
-msgstr "Προαιρετικό"
+#~ msgid "Optional"
+#~ msgstr "Προαιρετικό"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Delete Listing"
@@ -904,6 +903,7 @@ msgstr "Διαγραφή Καταχώρησης"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/clipping/[clipId]/edit/+page.svelte
+#: src/routes/list/+page.svelte
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -1101,14 +1101,18 @@ msgstr ""
 msgid "Made to order"
 msgstr ""
 
-#~ msgid "Pending"
-#~ msgstr ""
+#: src/routes/my-offers/+page.svelte
+msgid "Pending"
+msgstr ""
 
-#~ msgid "Accepted"
-#~ msgstr ""
+#: src/routes/list/+page.svelte
+msgid "Accepted"
+msgstr ""
 
-#~ msgid "Rejected"
-#~ msgstr ""
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Rejected"
+msgstr ""
 
 #~ msgid "Offer {0}."
 #~ msgstr ""
@@ -1116,14 +1120,107 @@ msgstr ""
 #~ msgid "Failed to update interest offer."
 #~ msgstr ""
 
-#~ msgid "Status"
-#~ msgstr ""
+#: src/routes/my-offers/+page.svelte
+msgid "Status"
+msgstr ""
 
 #~ msgid "Actions"
 #~ msgstr ""
 
-#~ msgid "Accept"
+#: src/routes/list/+page.svelte
+msgid "Accept"
+msgstr ""
+
+#: src/routes/list/+page.svelte
+msgid "Reject"
+msgstr ""
+
+#~ msgid "Are you sure you want to accept this offer? This will mark the item as sold and notify the buyer."
 #~ msgstr ""
 
-#~ msgid "Reject"
+#~ msgid "Are you sure you want to reject this offer? The buyer will be notified of your decision."
+#~ msgstr ""
+
+#~ msgid "Request rejected"
+#~ msgstr ""
+
+#~ msgid "Reject failed"
+#~ msgstr ""
+
+#: src/routes/list/+page.svelte
+msgid "Accept Request"
+msgstr ""
+
+#: src/routes/list/+page.svelte
+msgid "Reject Request"
+msgstr ""
+
+#: src/routes/list/+page.svelte
+msgid "Write a message (optional)..."
+msgstr ""
+
+#: src/routes/list/+page.svelte
+msgid "Processing..."
+msgstr ""
+
+#~ msgid ""
+#~ "<0/> <1/> class=\"w-full border rounded-lg p-2 mb-4\"\n"
+#~ "rows=\"3\"\n"
+#~ "bind:value={0} placeholder=\"Write a message (optional)...\"\n"
+#~ "/> <2>Cancel</2>"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "class=\"w-full border rounded-lg p-2 mb-4\"\n"
+#~ "rows=\"3\"\n"
+#~ "bind:value={0} placeholder=\"Write a message (optional)...\""
+#~ msgstr ""
+
+#~ msgid ""
+#~ "class=\"w-full border rounded-lg p-2 mb-4\"\n"
+#~ "rows=\"3\"\n"
+#~ "bind:value={0} placeholder=\"Write a message (optional)...\"\n"
+#~ ">"
+#~ msgstr ""
+
+#~ msgid "Request accepted"
+#~ msgstr ""
+
+#~ msgid "Accept failed"
+#~ msgstr ""
+
+#~ msgid "Action failed"
+#~ msgstr ""
+
+#~ msgid "Leave Review"
+#~ msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Accepted <0/>"
+msgstr ""
+
+#~ msgid "Review User"
+#~ msgstr ""
+
+#~ msgid "Review Item"
+#~ msgstr ""
+
+#~ msgid "Leave a review for user {0}"
+#~ msgstr ""
+
+#~ msgid "Leave a review for item {0}"
+#~ msgstr ""
+
+#~ msgid "Accepted <0>User reviewedItem reviewed</0>"
+#~ msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Review user"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Review item"
+msgstr ""
+
+#~ msgid "Accepted <0>Item reviewed</0>"
 #~ msgstr ""

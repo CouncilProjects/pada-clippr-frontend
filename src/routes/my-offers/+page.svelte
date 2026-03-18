@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import { loggedUser } from '$lib/universalReactivity/auth.svelte';
     import apiCaller from '$lib/axiosConfig';
+    import ReviewPopUp from '$lib/components/ReviewPopUp.svelte';
 
     type PendingRequest = {
         id: number;
@@ -9,6 +10,7 @@
         item_id?: number | null;
         item_title?: string | null;
         message?: string | null;
+        owner_response_message?: string | null;
         offer_price?: number | null;
         quantity?: number | null;
         created_at?: string | null;
@@ -85,6 +87,7 @@
         }
     };
 
+
     onMount(() => {
         fetchRequests();
     });
@@ -127,6 +130,7 @@
                             <th class="py-2 px-3">Offer</th>
                             <th class="py-2 px-3">Message</th>
                             <th class="py-2 px-3">Created</th>
+                            <th class="py-2 px-3">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -146,8 +150,23 @@
                                 <td class="py-2 px-3">{sellerName ?? '-'}</td>
                                 <td class="py-2 px-3">{req.quantity ?? '-'}</td>
                                 <td class="py-2 px-3">{req.offer_price != null ? `€ ${req.offer_price}` : '-'}</td>
-                                <td class="py-2 px-3 break-words max-w-xs">{req.message ?? '-'}</td>
+                                <td class="py-2 px-3 break-words max-w-xs">{req.owner_response_message ?? req.message ?? '-'}</td>
                                 <td class="py-2 px-3">{formatDate(req.created_at)}</td>
+                                <td class="py-2 px-3">
+                                    {#if req.response === null}
+                                        Pending
+                                    {:else if req.response === true}
+                                        Accepted
+                                        
+                                        <div class="flex gap-2">
+                                                <ReviewPopUp about="user" reference={sellerName} revid={req.id} message="Review user" closeCallback={() => { /* callback function */ }} />
+
+                                                <ReviewPopUp about="item" reference={itemInfo.title} revid={req.id} message="Review item" closeCallback={() => { /* callback function */ }} />
+                                        </div>
+                                    {:else}
+                                        Rejected
+                                    {/if}
+                                </td>
                             </tr>
                         {/each}
                     </tbody>

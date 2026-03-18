@@ -119,6 +119,7 @@ msgstr "{0} bytes"
 #: src/routes/account-settings/+page.svelte
 #: src/routes/auth/+page.svelte
 #: src/routes/create-admin/+page.svelte
+#: src/routes/list/+page.svelte
 msgid "Confirm"
 msgstr "Confirm"
 
@@ -529,9 +530,8 @@ msgstr "Price is negotiable"
 msgid "Allow buyers to make offers"
 msgstr "Allow buyers to make offers"
 
-#: src/routes/clipping/[clipId]/edit/+page.svelte
-msgid "Minimum Acceptable Price ($)"
-msgstr "Minimum Acceptable Price ($)"
+#~ msgid "Minimum Acceptable Price ($)"
+#~ msgstr "Minimum Acceptable Price ($)"
 
 #~ msgid "The lowest price you'll accept"
 #~ msgstr "The lowest price you'll accept"
@@ -944,6 +944,7 @@ msgstr "Edit"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/clipping/[clipId]/edit/+page.svelte
+#: src/routes/list/+page.svelte
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -1054,9 +1055,8 @@ msgstr "Edit Listing"
 msgid "Update your item details"
 msgstr "Update your item details"
 
-#: src/routes/clipping/[clipId]/edit/+page.svelte
-msgid "Optional"
-msgstr "Optional"
+#~ msgid "Optional"
+#~ msgstr "Optional"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Delete Listing"
@@ -1256,14 +1256,18 @@ msgstr "To"
 msgid "Made to order"
 msgstr "Made to order"
 
-#~ msgid "Pending"
-#~ msgstr "Pending"
+#: src/routes/my-offers/+page.svelte
+msgid "Pending"
+msgstr "Pending"
 
-#~ msgid "Accepted"
-#~ msgstr "Accepted"
+#: src/routes/list/+page.svelte
+msgid "Accepted"
+msgstr "Accepted"
 
-#~ msgid "Rejected"
-#~ msgstr "Rejected"
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+msgid "Rejected"
+msgstr "Rejected"
 
 #~ msgid "Offer {0}."
 #~ msgstr "Offer {0}."
@@ -1271,14 +1275,118 @@ msgstr "Made to order"
 #~ msgid "Failed to update interest offer."
 #~ msgstr "Failed to update interest offer."
 
-#~ msgid "Status"
-#~ msgstr "Status"
+#: src/routes/my-offers/+page.svelte
+msgid "Status"
+msgstr "Status"
 
 #~ msgid "Actions"
 #~ msgstr "Actions"
 
-#~ msgid "Accept"
-#~ msgstr "Accept"
+#: src/routes/list/+page.svelte
+msgid "Accept"
+msgstr "Accept"
 
-#~ msgid "Reject"
-#~ msgstr "Reject"
+#: src/routes/list/+page.svelte
+msgid "Reject"
+msgstr "Reject"
+
+#~ msgid "Are you sure you want to accept this offer? This will mark the item as sold and notify the buyer."
+#~ msgstr "Are you sure you want to accept this offer? This will mark the item as sold and notify the buyer."
+
+#~ msgid "Are you sure you want to reject this offer? The buyer will be notified of your decision."
+#~ msgstr "Are you sure you want to reject this offer? The buyer will be notified of your decision."
+
+#~ msgid "Request rejected"
+#~ msgstr "Request rejected"
+
+#~ msgid "Reject failed"
+#~ msgstr "Reject failed"
+
+#: src/routes/list/+page.svelte
+msgid "Accept Request"
+msgstr "Accept Request"
+
+#: src/routes/list/+page.svelte
+msgid "Reject Request"
+msgstr "Reject Request"
+
+#: src/routes/list/+page.svelte
+msgid "Write a message (optional)..."
+msgstr "Write a message (optional)..."
+
+#: src/routes/list/+page.svelte
+msgid "Processing..."
+msgstr "Processing..."
+
+#~ msgid ""
+#~ "<0/> <1/> class=\"w-full border rounded-lg p-2 mb-4\"\n"
+#~ "rows=\"3\"\n"
+#~ "bind:value={0} placeholder=\"Write a message (optional)...\"\n"
+#~ "/> <2>Cancel</2>"
+#~ msgstr ""
+#~ "<0/> <1/> class=\"w-full border rounded-lg p-2 mb-4\"\n"
+#~ "rows=\"3\"\n"
+#~ "bind:value={0} placeholder=\"Write a message (optional)...\"\n"
+#~ "/> <2>Cancel</2>"
+
+#~ msgid ""
+#~ "class=\"w-full border rounded-lg p-2 mb-4\"\n"
+#~ "rows=\"3\"\n"
+#~ "bind:value={0} placeholder=\"Write a message (optional)...\""
+#~ msgstr ""
+#~ "class=\"w-full border rounded-lg p-2 mb-4\"\n"
+#~ "rows=\"3\"\n"
+#~ "bind:value={0} placeholder=\"Write a message (optional)...\""
+
+#~ msgid ""
+#~ "class=\"w-full border rounded-lg p-2 mb-4\"\n"
+#~ "rows=\"3\"\n"
+#~ "bind:value={0} placeholder=\"Write a message (optional)...\"\n"
+#~ ">"
+#~ msgstr ""
+#~ "class=\"w-full border rounded-lg p-2 mb-4\"\n"
+#~ "rows=\"3\"\n"
+#~ "bind:value={0} placeholder=\"Write a message (optional)...\"\n"
+#~ ">"
+
+#~ msgid "Request accepted"
+#~ msgstr "Request accepted"
+
+#~ msgid "Accept failed"
+#~ msgstr "Accept failed"
+
+#~ msgid "Action failed"
+#~ msgstr "Action failed"
+
+#~ msgid "Leave Review"
+#~ msgstr "Leave Review"
+
+#: src/routes/my-offers/+page.svelte
+msgid "Accepted <0/>"
+msgstr "Accepted <0/>"
+
+#~ msgid "Review User"
+#~ msgstr "Review User"
+
+#~ msgid "Review Item"
+#~ msgstr "Review Item"
+
+#~ msgid "Leave a review for user {0}"
+#~ msgstr "Leave a review for user {0}"
+
+#~ msgid "Leave a review for item {0}"
+#~ msgstr "Leave a review for item {0}"
+
+#~ msgid "Accepted <0>User reviewedItem reviewed</0>"
+#~ msgstr "Accepted <0>User reviewedItem reviewed</0>"
+
+#: src/routes/my-offers/+page.svelte
+msgid "Review user"
+msgstr "Review user"
+
+#: src/routes/my-offers/+page.svelte
+msgid "Review item"
+msgstr "Review item"
+
+#~ msgid "Accepted <0>Item reviewed</0>"
+#~ msgstr "Accepted <0>Item reviewed</0>"
