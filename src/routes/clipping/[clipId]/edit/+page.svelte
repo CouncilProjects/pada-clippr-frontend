@@ -25,7 +25,6 @@
   let price = $state<number | null>(null);
   let stock = $state(1);
   let negotiable = $state(false);
-  let min_negotiable_price = $state<number | null>(null);
 
   $effect(() => {
     const clipId = page.params.clipId;
@@ -53,9 +52,6 @@
         price = Number(item.price ?? 0);
         stock = Number(item.stock ?? 1);
         negotiable = Boolean(item.negotiable ?? false);
-        min_negotiable_price = (res.data.min_negotiable_price != null
-          ? Number(res.data.min_negotiable_price)
-          : null) as number | null;
 
         loading = false;
       } catch (err: any) {
@@ -89,9 +85,6 @@
     formData.append('stock', Math.max(stock, 1).toString());
     formData.append('negotiable', negotiable.toString());
 
-    if (negotiable && min_negotiable_price !== null) {
-      formData.append('min_negotiable_price', min_negotiable_price.toString());
-    }
 
     try {
       await apiCaller.put(`/item/${clipId}/`, formData);
@@ -211,21 +204,7 @@
                 </div>
               </label>
 
-              {#if negotiable}
-                <div class="ml-8 mt-3 animate-fade-in">
-                  <label class="label">
-                    <span class="font-semibold">Minimum Acceptable Price ($)</span>
-                    <input
-                      type="number"
-                      class="input"
-                      min="0"
-                      step="0.01"
-                      bind:value={min_negotiable_price}
-                      placeholder="Optional"
-                    />
-                  </label>
-                </div>
-              {/if}
+
             </div>
           </section>
 

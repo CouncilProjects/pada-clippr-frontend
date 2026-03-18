@@ -209,7 +209,7 @@
         item: clipping.id,
         item_id: clipping.id,
         message: message.trim(),
-        offer_price: offerNumber ?? clipping.price,
+        offer_price: offerNumber,
         quantity
     };
 

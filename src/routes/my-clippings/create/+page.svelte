@@ -11,7 +11,6 @@
   let stock = $state(1);
   let infiniteStock = $state(false);
   let negotiable = $state(false);
-  let min_negotiable_price = $state('');
   let tagsArray = $state<string[]>([]);
 
   let images = $state<File[]>([]);
@@ -58,10 +57,6 @@
       return;
     }
 
-    if (negotiable && (!min_negotiable_price || parseFloat(min_negotiable_price) < 0)) {
-      toaster.create({ type: 'error', description: 'Enter a valid minimum negotiable price' });
-      return;
-    }
 
     loading = true;
 
@@ -72,9 +67,6 @@
     formData.append('stock', infiniteStock ? '-1' : Math.max(stock, 1).toString());
     formData.append('negotiable', negotiable.toString());
 
-    if (negotiable && min_negotiable_price) {
-      formData.append('min_negotiable_price', min_negotiable_price);
-    }
 
     formData.append('tags', JSON.stringify(tagsArray));
 
@@ -159,16 +151,6 @@
                 <p class="text-xs opacity-70">Allow buyers to make offers</p>
               </div>
             </label>
-
-            {#if negotiable}
-              <div class="ml-8 animate-fade-in">
-                <label class="label">
-                  <span class="font-semibold">Minimum Acceptable Price ($)</span>
-                  <input type="number" step="0.01" min="0" class="input" bind:value={min_negotiable_price} placeholder="0.00" />
-                  <small class="opacity-70">The lowest price you'll accept</small>
-                </label>
-              </div>
-            {/if}
           </div>
         </section>
 
@@ -241,11 +223,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-fade-in { animation: fade-in 0.3s ease-out; }
-</style>

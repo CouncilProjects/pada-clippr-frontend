@@ -16,7 +16,7 @@
 {#if data.items?.length > 0}
   <div class="flex flex-wrap gap-4">
     {#each data.items as item}
-      <ListingThumbnailCard 
+      <ListingThumbnailCard
          item={item}
       />
     {/each}

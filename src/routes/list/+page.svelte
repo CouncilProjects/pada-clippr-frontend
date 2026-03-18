@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import { loggedUser } from '$lib/universalReactivity/auth.svelte';
     import apiCaller from '$lib/axiosConfig';
+    import { toaster } from '$lib/toast';
 
     type PendingRequest = {
         id: number;

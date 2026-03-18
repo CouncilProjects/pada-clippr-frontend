@@ -55,7 +55,7 @@ test('Normal user side menu', async (/*{ page }*/) => {
 
     await expect(page.getByRole('link', { name: 'My Clippings' })).toBeVisible();
 
-    await expect(page.getByRole('link', { name: 'Intrest Offers' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Interest Offers' })).toBeVisible();
 
     await expect(page.getByRole('link', { name: 'My Offers' })).toBeVisible();
 
@@ -83,7 +83,7 @@ test('Create item[1] non negotiable not infinite', async (/*{ page }*/) => {
     await expect(page.getByRole('status').filter({ hasText: "Item created successfully! 🎉" })).toBeVisible;
 });
 
-test.skip('Create item[2] negotiable not infinite', async (/*{ page }*/) => {
+test('Create item[2] negotiable not infinite', async (/*{ page }*/) => {
     await page.goto('/');
     await page.getByRole('button').first().click();
     await page.getByRole('link', { name: 'My Clippings' }).click();
@@ -130,7 +130,7 @@ test('Create item[3] not negotiable infinite', async (/*{ page }*/) => {
     await expect(page.getByRole('status').filter({ hasText: "Item created successfully! 🎉" })).toBeVisible;
 });
 
-test.skip('Create item[4] negotiable infinite', async (/*{ page }*/) => {
+test('Create item[4] negotiable infinite', async (/*{ page }*/) => {
     await page.goto('/');
     await page.getByRole('button').first().click();
     await page.getByRole('link', { name: 'My Clippings' }).click();

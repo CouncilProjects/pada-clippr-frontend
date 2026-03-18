@@ -457,9 +457,8 @@ msgstr "File rejected. Unsupported type or size."
 msgid "Please fill in all required fields"
 msgstr "Please fill in all required fields"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Enter a valid minimum negotiable price"
-msgstr "Enter a valid minimum negotiable price"
+#~ msgid "Enter a valid minimum negotiable price"
+#~ msgstr "Enter a valid minimum negotiable price"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Item created successfully! 🎉"
@@ -531,13 +530,11 @@ msgid "Allow buyers to make offers"
 msgstr "Allow buyers to make offers"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
-#: src/routes/my-clippings/create/+page.svelte
 msgid "Minimum Acceptable Price ($)"
 msgstr "Minimum Acceptable Price ($)"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "The lowest price you'll accept"
-msgstr "The lowest price you'll accept"
+#~ msgid "The lowest price you'll accept"
+#~ msgstr "The lowest price you'll accept"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Tags"
@@ -1258,3 +1255,30 @@ msgstr "To"
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Made to order"
 msgstr "Made to order"
+
+#~ msgid "Pending"
+#~ msgstr "Pending"
+
+#~ msgid "Accepted"
+#~ msgstr "Accepted"
+
+#~ msgid "Rejected"
+#~ msgstr "Rejected"
+
+#~ msgid "Offer {0}."
+#~ msgstr "Offer {0}."
+
+#~ msgid "Failed to update interest offer."
+#~ msgstr "Failed to update interest offer."
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "Actions"
+#~ msgstr "Actions"
+
+#~ msgid "Accept"
+#~ msgstr "Accept"
+
+#~ msgid "Reject"
+#~ msgstr "Reject"

@@ -487,9 +487,8 @@ msgstr "Κάθε αρχείο πρέπει να είναι κάτω από 5MB"
 msgid "File rejected. Unsupported type or size."
 msgstr "Το αρχείο απορρίφθηκε. Μη υποστηριζόμενος τύπος ή μέγεθος."
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "Enter a valid minimum negotiable price"
-msgstr "Εισάγετε έγκυρη ελάχιστη διαπραγματεύσιμη τιμή"
+#~ msgid "Enter a valid minimum negotiable price"
+#~ msgstr "Εισάγετε έγκυρη ελάχιστη διαπραγματεύσιμη τιμή"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Item created successfully! 🎉"
@@ -535,9 +534,8 @@ msgstr "Άπειρο Απόθεμα"
 msgid "Item is always available (digital products, services, etc.)"
 msgstr "Το αντικείμενο είναι πάντα διαθέσιμο (ψηφιακά προϊόντα, υπηρεσίες, κλπ.)"
 
-#: src/routes/my-clippings/create/+page.svelte
-msgid "The lowest price you'll accept"
-msgstr "Η χαμηλότερη τιμή που θα αποδεχτείτε"
+#~ msgid "The lowest price you'll accept"
+#~ msgstr "Η χαμηλότερη τιμή που θα αποδεχτείτε"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Tags"
@@ -798,7 +796,6 @@ msgid "Allow buyers to make offers"
 msgstr "Επιτρέψτε στους αγοραστές να κάνουν προσφορές"
 
 #: src/routes/clipping/[clipId]/edit/+page.svelte
-#: src/routes/my-clippings/create/+page.svelte
 msgid "Minimum Acceptable Price ($)"
 msgstr "Ελάχιστη Αποδεκτή Τιμή ($)"
 
@@ -1103,3 +1100,30 @@ msgstr ""
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Made to order"
 msgstr ""
+
+#~ msgid "Pending"
+#~ msgstr ""
+
+#~ msgid "Accepted"
+#~ msgstr ""
+
+#~ msgid "Rejected"
+#~ msgstr ""
+
+#~ msgid "Offer {0}."
+#~ msgstr ""
+
+#~ msgid "Failed to update interest offer."
+#~ msgstr ""
+
+#~ msgid "Status"
+#~ msgstr ""
+
+#~ msgid "Actions"
+#~ msgstr ""
+
+#~ msgid "Accept"
+#~ msgstr ""
+
+#~ msgid "Reject"
+#~ msgstr ""
