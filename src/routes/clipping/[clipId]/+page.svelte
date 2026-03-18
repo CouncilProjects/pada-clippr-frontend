@@ -151,7 +151,8 @@
     };
 
     const handleBuy = () => {
-        if (!clipping || clipping.stock <= 0) return;
+        // Treat -1 as "Made to order" (infinite/always available) so we still allow interest.
+        if (!clipping || (clipping.stock !== -1 && clipping.stock <= 0)) return;
         showModal = true;
         console.log('Buy clicked', clipping.id);
     };
@@ -198,7 +199,8 @@
         return;
     }
 
-    if (clipping.stock != null && quantity > clipping.stock) {
+    // Treat -1 as "Made to order" (no stock limit)
+    if (clipping.stock != null && clipping.stock !== -1 && quantity > clipping.stock) {
         errorMsg = `Quantity cannot exceed available stock (${clipping.stock}).`;
         return;
     }
@@ -390,7 +392,7 @@
                             </div>
 
                             <div class="font-semibold">
-                                {clipping.stock > 0 ? clipping.stock : 'Out of stock'}
+                                {clipping.stock === -1 ? 'Made to order' : clipping.stock > 0 ? clipping.stock : 'Out of stock'}
                             </div>
                         </div>
 
@@ -420,9 +422,9 @@
                             <button
                                 class="btn preset-filled-primary-50-950 flex-1"
                                 onclick={handleBuy}
-                                disabled={clipping.stock <= 0}
+                                disabled={clipping.stock !== -1 && clipping.stock <= 0}
                             >
-                                {clipping.stock > 0 ? 'Show Interest' : 'Out of Stock'}
+                                {clipping.stock === -1 || clipping.stock > 0 ? 'Show Interest' : 'Out of Stock'}
                             </button>
                         {/if}
 
@@ -473,7 +475,7 @@
                 class="input"
                 bind:value={quantiny}
                 min="1"
-                max={clipping.stock}
+                max={clipping.stock > 0 ? clipping.stock : undefined}
                 placeholder="Quantity"
             />
 

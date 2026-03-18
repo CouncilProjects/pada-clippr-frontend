@@ -1252,3 +1252,9 @@ msgstr "Make an offer on a listing to see it here."
 #: src/routes/my-offers/+page.svelte
 msgid "To"
 msgstr "To"
+
+#: src/lib/components/ListingThumbnailCard.svelte
+#: src/lib/components/ListingThumbnailCard.svelte
+#: src/routes/clipping/[clipId]/+page.svelte
+msgid "Made to order"
+msgstr "Made to order"
