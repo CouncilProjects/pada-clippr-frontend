@@ -695,7 +695,6 @@ msgstr "Ο νέος λογαριασμός διαχειριστή δημιουρ
 #~ msgstr "Προσφορές Ενδιαφέροντος"
 
 #: src/lib/components/MainAppBar.svelte
-#: src/lib/components/MainAppBar.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "My Offers"
 msgstr "Οι Προσφορές Μου"
@@ -984,11 +983,13 @@ msgstr ""
 
 #: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/list/+page.svelte
+#: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Message"
 msgstr ""
 
 #: src/routes/clipping/[clipId]/+page.svelte
+#: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Offer"
@@ -1010,6 +1011,7 @@ msgid "Failed to create request (server error)."
 msgstr ""
 
 #: src/routes/clipping/[clipId]/+page.svelte
+#: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Quantity"
@@ -1043,23 +1045,24 @@ msgstr ""
 msgid "Loading offers…"
 msgstr ""
 
-#: src/routes/list/+page.svelte
-msgid "No interest offers yet."
-msgstr ""
+#~ msgid "No interest offers yet."
+#~ msgstr ""
+
+#~ msgid "When someone sends an offer, it will appear here."
+#~ msgstr ""
 
 #: src/routes/list/+page.svelte
-msgid "When someone sends an offer, it will appear here."
-msgstr ""
-
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Item"
 msgstr ""
 
 #: src/routes/list/+page.svelte
+#: src/routes/list/+page.svelte
 msgid "From"
 msgstr ""
 
+#: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Created"
@@ -1068,6 +1071,7 @@ msgstr ""
 #. placeholder {0}: itemInfo.itemId
 #. placeholder {0}: itemInfo.itemId
 #. placeholder {0}: itemInfo.itemId
+#: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
@@ -1100,16 +1104,19 @@ msgstr ""
 msgid "Made to order"
 msgstr ""
 
+#: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Pending"
 msgstr ""
 
+#: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Accepted"
 msgstr ""
 
+#: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
@@ -1122,12 +1129,15 @@ msgstr ""
 #~ msgid "Failed to update interest offer."
 #~ msgstr ""
 
+#: src/routes/list/+page.svelte
+#: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Status"
 msgstr ""
 
-#~ msgid "Actions"
-#~ msgstr ""
+#: src/routes/list/+page.svelte
+msgid "Actions"
+msgstr ""
 
 #: src/routes/list/+page.svelte
 msgid "Accept"
@@ -1157,9 +1167,8 @@ msgstr ""
 msgid "Reject Request"
 msgstr ""
 
-#: src/routes/list/+page.svelte
-msgid "Write a message (optional)..."
-msgstr ""
+#~ msgid "Write a message (optional)..."
+#~ msgstr ""
 
 #: src/routes/list/+page.svelte
 msgid "Processing..."
@@ -1361,90 +1370,110 @@ msgid "Analytics data is not available to member accounts."
 msgstr "Τα δεδομένα αναλυτικών δεν είναι διαθέσιμα σε λογαριασμούς μελών."
 
 #~ msgid "Outgoing purchase requests & their status"
-#~ msgstr ""
+#~ msgstr "Εξερχόμενα αιτήματα αγοράς & η κατάστασή τους"
 
 #~ msgid "{0} offer{1}"
-#~ msgstr ""
+#~ msgstr "{0} προσφορά{1}"
 
 #~ msgid "Fetching your offers…"
-#~ msgstr ""
+#~ msgstr "Ανάκτηση των προσφορών σας…"
 
 #~ msgid "No offers yet"
-#~ msgstr ""
+#~ msgstr "Δεν υπάρχουν προσφορές ακόμη"
 
 #~ msgid "Make an offer on a listing and it will appear here."
-#~ msgstr ""
+#~ msgstr "Κάντε μια προσφορά σε μια καταχώριση και θα εμφανιστεί εδώ."
 
 #~ msgid "to"
-#~ msgstr ""
+#~ msgstr "προς"
 
 #~ msgid "qty"
-#~ msgstr ""
+#~ msgstr "ποσ."
 
 #~ msgid "✓ All reviewed"
-#~ msgstr ""
+#~ msgstr "✓ Όλα ελέγχθηκαν"
 
 #~ msgid "✓ Seller"
-#~ msgstr ""
+#~ msgstr "✓ Πωλητής"
 
 #~ msgid "Review seller"
-#~ msgstr ""
+#~ msgstr "Αξιολόγηση πωλητή"
 
 #~ msgid "✓ Item"
-#~ msgstr ""
+#~ msgstr "✓ Αντικείμενο"
 
 #~ msgid "No outgoing offers yet"
-#~ msgstr ""
+#~ msgstr "Δεν υπάρχουν εξερχόμενες προσφορές ακόμη"
 
 #~ msgid "To {0}"
-#~ msgstr ""
+#~ msgstr "Προς {0}"
 
 #~ msgid "· Qty {0}"
-#~ msgstr ""
+#~ msgstr "· Ποσ. {0}"
 
 #~ msgid "Sample Item"
-#~ msgstr ""
+#~ msgstr "Δείγμα αντικειμένου"
 
 #~ msgid "to username · qty 1"
-#~ msgstr ""
+#~ msgstr "προς username · ποσ. 1"
 
 #~ msgid "No offers yet. Make an offer on a listing."
-#~ msgstr ""
+#~ msgstr "Δεν υπάρχουν προσφορές ακόμη. Κάντε μια προσφορά σε μια καταχώριση."
 
 #~ msgid "to {0}"
-#~ msgstr ""
+#~ msgstr "προς {0}"
 
 #~ msgid "· qty {0}"
-#~ msgstr ""
+#~ msgstr "· ποσ. {0}"
 
+#: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Refreshing…"
-msgstr ""
+msgstr "Ανανέωση..."
 
+#: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Refresh"
-msgstr ""
+msgstr "Ανανέωση"
 
+#: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Retry"
-msgstr ""
+msgstr "Eπανάληψη"
 
 #: src/routes/my-offers/+page.svelte
 msgid "Pending Offers"
-msgstr ""
+msgstr "Εκκρεμείς Προσφορές"
 
 #: src/routes/my-offers/+page.svelte
 msgid "Awaiting Review"
-msgstr ""
+msgstr "Αναμονή αναθεώρησης"
 
 #: src/routes/my-offers/+page.svelte
 msgid "Completed Offers"
-msgstr ""
+msgstr "Ολοκληρωμένες Προσφορές"
 
-#: src/routes/my-offers/+page.svelte
-msgid "Rejected Offers"
-msgstr ""
 
 #: src/routes/my-offers/+page.svelte
 msgid "No offers in this section."
-msgstr ""
+msgstr "Δεν υπάρχουν προσφορές σε αυτήν την ενότητα."
+
+#: src/routes/list/+page.svelte
+msgid "Active"
+msgstr "Ενεργές"
+
+#: src/routes/list/+page.svelte
+msgid "No active offers."
+msgstr "Δεν υπάρχουν ενεργές προσφορές."
+
+#: src/routes/list/+page.svelte
+msgid "History"
+msgstr "Ιστορικό"
+
+#: src/routes/list/+page.svelte
+msgid "No history yet."
+msgstr "Δεν υπάρχει ακόμα ιστορικό"
+
+#: src/routes/list/+page.svelte
+msgid "Write a message (please include some way to contact you, like your email or Discord) to the buyer."
+msgstr "Γράψτε ένα μήνυμα (συμπεριλάβετε κάποιον τρόπο επικοινωνίας μαζί σας, όπως το email σας ή το Discord) στον αγοραστή."

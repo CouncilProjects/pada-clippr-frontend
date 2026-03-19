@@ -2,8 +2,6 @@
     import { onMount } from 'svelte';
     import { loggedUser } from '$lib/universalReactivity/auth.svelte';
     import apiCaller from '$lib/axiosConfig';
-    import { toaster } from '$lib/toast';
-    import { PrinterCheck } from '@lucide/svelte';
 
     type PendingRequest = {
         id: number;
@@ -16,7 +14,27 @@
         quantity?: number | null;
         created_at?: string | null;
         buyer?: any;
+        buyer_id?: number | null;
+        buyer_username?: string | null;
+        response?: boolean | null;
         [key: string]: any;
+    };
+
+    const euro = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR' });
+
+    const formatCurrency = (value?: number | null) =>
+        value == null || Number.isNaN(Number(value)) ? '-' : euro.format(Number(value));
+
+    const getStatus = (req: PendingRequest) => {
+        if (req.response === null || req.response === undefined) return 'Pending';
+        return req.response ? 'Accepted' : 'Rejected';
+    };
+
+    const statusClass = (req: PendingRequest) => {
+        const s = getStatus(req);
+        if (s === 'Accepted') return 'text-success-700 bg-success-50';
+        if (s === 'Rejected') return 'text-error-700 bg-error-50';
+        return 'text-warning-700 bg-warning-50';
     };
 
     const getItemInfo = (req: PendingRequest) => {
@@ -44,7 +62,9 @@
     };
 
     const getBuyerName = (req: PendingRequest) => {
-        return req.buyer_username;
+        if (req.buyer_username) return req.buyer_username;
+        if (req.buyer && typeof req.buyer === 'object') return req.buyer.username ?? req.buyer.name ?? null;
+        return null;
     };
 
     let loading = $state(true);
@@ -55,6 +75,7 @@
     let actionType = $state<'accept' | 'reject' | null>(null);
     let actionMessage = $state('');
     let submitting = $state(false);
+    let showHistory = $state(false);
 
     const fetchRequests = async () => {
         loading = true;
@@ -68,7 +89,7 @@
 
         try {
             const res = await apiCaller.get<PendingRequest[]>('/pendingrequests/list/');
-            requests = res.data;
+            requests = (res.data ?? []) as PendingRequest[];
         } catch (e: any) {
             console.error('Failed to fetch interest offers', e);
             const data = e?.response?.data;
@@ -107,178 +128,246 @@
         actionType = null;
     };
 
-
-
     const handleReject = async (id: number) => {
-    try {
-        await apiCaller.post(`/pendingrequests/${id}/action/`, {
-            response: false,
-            message: ''
-        });
+        try {
+            await apiCaller.post(`/pendingrequests/${id}/action/`, {
+                response: false,
+                message: ''
+            });
 
-        requests = requests.map(r =>
-            r.id === id ? { ...r, response: false } : r
-        );
+            requests = requests.map((r) =>
+                r.id === id ? { ...r, response: false } : r
+            );
+        } catch (e) {
+            console.error(e);
+        }
+    };
 
+    const submitAction = async () => {
+        if (!selectedRequest || !actionType) return;
 
-    } catch (e) {
-        console.error(e);
-        
-    }
-};
+        submitting = true;
 
-const submitAction = async () => {
-    if (!selectedRequest || !actionType) return;
+        try {
+            const response = actionType === 'accept';
 
-    submitting = true;
+            await apiCaller.post(`/pendingrequests/${selectedRequest.id}/action/`, {
+                response,
+                message: actionMessage
+            });
 
-    try {
-        const response = actionType === 'accept';
+            requests = requests.map((r) =>
+                selectedRequest && r.id === selectedRequest.id ? { ...r, response } : r
+            );
 
-        await apiCaller.post(`/pendingrequests/${selectedRequest.id}/action/`, {
-            response,
-            message: actionMessage
-        });
-
-        requests = requests.map(r =>
-            selectedRequest && r.id === selectedRequest.id ? { ...r, response } : r
-        );
-
-        closeModal();
-    } catch (e) {
-        console.error(e);
-    } finally {
-        submitting = false;
-    }
-};
-
+            closeModal();
+        } catch (e) {
+            console.error(e);
+        } finally {
+            submitting = false;
+        }
+    };
 </script>
 
-<div class="max-w-6xl mx-auto p-8 bg-surface-100-900 rounded-xl shadow-lg">
-    <h1 class="text-3xl font-semibold mb-4 text-surface-900 dark:text-surface-100">Interest Offers</h1>
+<div class="max-w-6xl mx-auto p-8">
+    <div class="flex items-center justify-between gap-4 mb-4">
+        <h1 class="text-3xl font-semibold">Interest Offers</h1>
+        <button class="btn btn-sm" onclick={fetchRequests} disabled={loading}>
+            {loading ? 'Refreshing…' : 'Refresh'}
+        </button>
+    </div>
 
     {#if loading}
         <div class="flex flex-col items-center gap-3 py-20">
             <div class="spinner"></div>
-            <span class="text-surface-900 dark:text-surface-100">Loading offers…</span>
+            <span>Loading offers…</span>
         </div>
-
     {:else if error}
-        <div class="text-center py-20 text-error-500 dark:text-error-400">
-            ⚠ {error}
+        <div class="text-center py-20 text-error-500">
+            <p>⚠ {error}</p>
+            <button class="btn btn-sm mt-3" onclick={fetchRequests}>Retry</button>
         </div>
-
-    {:else if requests.length === 0}
-        <div class="text-center py-20">
-            <p class="text-lg text-surface-900 dark:text-surface-100">No interest offers yet.</p>
-            <p class="text-sm text-surface-500 dark:text-surface-400">When someone sends an offer, it will appear here.</p>
-        </div>
-
     {:else}
-        <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse bg-surface-200-900 rounded-lg">
-                <thead>
-                    <tr class="text-xs uppercase text-surface-500 dark:text-surface-300 border-b border-surface-200 dark:border-surface-700">
-                        <th class="py-2 px-3">Item</th>
-                        <th class="py-2 px-3">From</th>
-                        <th class="py-2 px-3">Quantity</th>
-                        <th class="py-2 px-3">Offer</th>
-                        <th class="py-2 px-3">Message</th>
-                        <th class="py-2 px-3">Created</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {#each requests as req}
-                        {@const itemInfo = getItemInfo(req)}
-                        {@const buyerName = getBuyerName(req)}
-                        <tr class="border-b border-surface-200 dark:border-surface-700">
-                            <td class="py-2 px-3 text-surface-900 dark:text-surface-100">
-                                {#if itemInfo.itemId}
-                                    <a class="anchor text-primary-600 dark:text-primary-400" href={`/clipping/${itemInfo.itemId}`}>
-                                        {itemInfo.title ?? `Item #${itemInfo.itemId}`}
-                                    </a>
-                                {:else}
-                                    {itemInfo.title ?? '-'}
-                                {/if}
-                            </td>
-                            <td class="py-2 px-3 text-surface-900 dark:text-surface-100">{buyerName ?? '-'}</td>
-                            <td class="py-2 px-3 text-surface-900 dark:text-surface-100">{req.quantity ?? '-'}</td>
-                            <td class="py-2 px-3 text-surface-900 dark:text-surface-100">
-                                {#if req.offer_price != null}
-                                    € {req.offer_price}
-                                {:else if itemInfo.price != null}
-                                    € {itemInfo.price}
-                                {:else}
-                                    -
-                                {/if}
-                            </td>
-                            <td class="py-2 px-3 break-words max-w-xs text-surface-900 dark:text-surface-100">{req.message ?? '-'}</td>
-                            <td class="py-2 px-3 text-surface-900 dark:text-surface-100">{formatDate(req.created_at)}</td>
+        {@const sortedRequests = [...requests].sort(
+            (a, b) => new Date(b.created_at ?? 0).getTime() - new Date(a.created_at ?? 0).getTime()
+        )}
+        {@const activeRequests = sortedRequests.filter((req) => req.response == null)}
+        {@const historyRequests = sortedRequests.filter((req) => req.response != null)}
 
-                            <td class="py-2 px-3">
-                                {#if req.response === null}
-                                    <div class="flex gap-2">
-                                        <button
-                                            class="bg-green-600 dark:bg-green-400 text-white dark:text-surface-900 px-2 py-1 rounded"
-                                            onclick={() => openModal(req, 'accept')}
-                                        >
-                                            Accept
-                                        </button>
+        <div class="space-y-8">
+            <section>
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-xl font-semibold">Active</h2>
+                    <span class="text-sm text-surface-500">{activeRequests.length}</span>
+                </div>
 
-                                        <button
-                                            class="bg-red-600 dark:bg-red-400 text-white dark:text-surface-900 px-2 py-1 rounded"
-                                            onclick={() => handleReject(req.id)}
-                                        >
-                                            Reject
-                                        </button>
-                                    </div>
+                {#if activeRequests.length === 0}
+                    <div class="text-sm text-surface-500 border border-surface-200 rounded p-4">
+                        No active offers.
+                    </div>
+                {:else}
+                    <div class="overflow-x-auto border border-surface-200 rounded">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="text-xs uppercase text-surface-500 border-b border-surface-200">
+                                    <th scope="col" class="py-2 px-3">Item</th>
+                                    <th scope="col" class="py-2 px-3">From</th>
+                                    <th scope="col" class="py-2 px-3">Quantity</th>
+                                    <th scope="col" class="py-2 px-3">Offer</th>
+                                    <th scope="col" class="py-2 px-3">Message</th>
+                                    <th scope="col" class="py-2 px-3">Created</th>
+                                    <th scope="col" class="py-2 px-3">Status</th>
+                                    <th scope="col" class="py-2 px-3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {#each activeRequests as req (req.id)}
+                                    {@const itemInfo = getItemInfo(req)}
+                                    {@const buyerName = getBuyerName(req)}
 
-                                {:else if req.response === true}
-                                    <span class="text-green-600 dark:text-green-400 text-sm">Accepted</span>
+                                    <tr class="border-b border-surface-200 align-top">
+                                        <td class="py-2 px-3">
+                                            {#if itemInfo.itemId}
+                                                <a class="anchor" href={`/clipping/${itemInfo.itemId}`}>
+                                                    {itemInfo.title ?? `Item #${itemInfo.itemId}`}
+                                                </a>
+                                            {:else}
+                                                {itemInfo.title ?? '-'}
+                                            {/if}
+                                        </td>
+                                        <td class="py-2 px-3">{buyerName ?? '-'}</td>
+                                        <td class="py-2 px-3">{req.quantity ?? '-'}</td>
+                                        <td class="py-2 px-3">{formatCurrency(req.offer_price ?? itemInfo.price)}</td>
+                                        <td class="py-2 px-3 break-words max-w-xs">{req.message ?? '-'}</td>
+                                        <td class="py-2 px-3 whitespace-nowrap">{formatDate(req.created_at)}</td>
+                                        <td class="py-2 px-3">
+                                            <span class={`inline-flex px-2 py-1 rounded text-xs font-medium ${statusClass(req)}`}>
+                                                {getStatus(req)}
+                                            </span>
+                                        </td>
+                                        <td class="py-2 px-3">
+                                            <div class="flex gap-2">
+                                                <button
+                                                    class="bg-green-600 text-white px-2 py-1 rounded"
+                                                    onclick={() => openModal(req, 'accept')}
+                                                >
+                                                    Accept
+                                                </button>
+                                                <button
+                                                    class="bg-red-600 text-white px-2 py-1 rounded"
+                                                    onclick={() => handleReject(req.id)}
+                                                >
+                                                    Reject
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {/each}
+                            </tbody>
+                        </table>
+                    </div>
+                {/if}
+            </section>
 
-                                {:else}
-                                    <span class="text-red-600 dark:text-red-400 text-sm">Rejected</span>
-                                {/if}
-                            </td>
+            <section>
+                <div class="flex items-center justify-between mb-2">
+                    <button
+                        class="flex items-center gap-2 text-xl font-semibold"
+                        onclick={() => (showHistory = !showHistory)}
+                    >
+                        <span>History</span>
+                        <span class="text-base">{showHistory ? '▾' : '▸'}</span>
+                    </button>
+                    <span class="text-sm text-surface-500">{historyRequests.length}</span>
+                </div>
 
-                        </tr>
-                    {/each}
-                </tbody>
-            </table>
+                {#if showHistory}
+                    {#if historyRequests.length === 0}
+                        <div class="text-sm text-surface-500 border border-surface-200 rounded p-4">
+                            No history yet.
+                        </div>
+                    {:else}
+                        <div class="overflow-x-auto border border-surface-200 rounded">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="text-xs uppercase text-surface-500 border-b border-surface-200">
+                                        <th scope="col" class="py-2 px-3">Item</th>
+                                        <th scope="col" class="py-2 px-3">From</th>
+                                        <th scope="col" class="py-2 px-3">Quantity</th>
+                                        <th scope="col" class="py-2 px-3">Offer</th>
+                                        <th scope="col" class="py-2 px-3">Message</th>
+                                        <th scope="col" class="py-2 px-3">Created</th>
+                                        <th scope="col" class="py-2 px-3">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {#each historyRequests as req (req.id)}
+                                        {@const itemInfo = getItemInfo(req)}
+                                        {@const buyerName = getBuyerName(req)}
+
+                                        <tr class="border-b border-surface-200 align-top">
+                                            <td class="py-2 px-3">
+                                                {#if itemInfo.itemId}
+                                                    <a class="anchor" href={`/clipping/${itemInfo.itemId}`}>
+                                                        {itemInfo.title ?? `Item #${itemInfo.itemId}`}
+                                                    </a>
+                                                {:else}
+                                                    {itemInfo.title ?? '-'}
+                                                {/if}
+                                            </td>
+                                            <td class="py-2 px-3">{buyerName ?? '-'}</td>
+                                            <td class="py-2 px-3">{req.quantity ?? '-'}</td>
+                                            <td class="py-2 px-3">{formatCurrency(req.offer_price ?? itemInfo.price)}</td>
+                                            <td class="py-2 px-3 break-words max-w-xs">{req.message ?? '-'}</td>
+                                            <td class="py-2 px-3 whitespace-nowrap">{formatDate(req.created_at)}</td>
+                                            <td class="py-2 px-3">
+                                                <span class={`inline-flex px-2 py-1 rounded text-xs font-medium ${statusClass(req)}`}>
+                                                    {getStatus(req)}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    {/each}
+                                </tbody>
+                            </table>
+                        </div>
+                    {/if}
+                {/if}
+            </section>
         </div>
     {/if}
 </div>
+
 {#if showModal}
-<div class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-    <div class="bg-surface-100-900 rounded-xl p-6 w-full max-w-md shadow-lg">
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div class="w-full max-w-md rounded-xl border border-slate-200 bg-white p-6 shadow-lg dark:border-slate-700 dark:bg-slate-900">
+            <h2 class="mb-4 text-xl font-semibold text-slate-900 dark:text-slate-100">
+                {actionType === 'accept' ? 'Accept Request' : 'Reject Request'}
+            </h2>
 
-        <h2 class="text-xl font-semibold mb-4 text-surface-900 dark:text-surface-100">
-            {actionType === 'accept' ? 'Accept Request' : 'Reject Request'}
-        </h2>
+            <textarea
+                class="mb-4 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500"
+                rows="3"
+                bind:value={actionMessage}
+                placeholder="Write a message (please include some way to contact you, like your email or Discord) to the buyer. This is required if accepting the request"
+            ></textarea>
 
-        <textarea
-            class="w-full border border-surface-300 dark:border-surface-700 rounded-lg p-2 mb-4 bg-surface-200-900 text-surface-900 dark:text-surface-100"
-            rows="3"
-            bind:value={actionMessage}
-            placeholder="Write a message (optional)..."
-        ></textarea>
+            <div class="flex justify-end gap-2">
+                <button onclick={closeModal} class="btn preset-tonal">
+                    Cancel
+                </button>
 
-        <div class="flex justify-end gap-2">
-            <button onclick={closeModal} class="btn preset-tonal">
-                Cancel
-            </button>
-
-            <button
-                onclick={submitAction}
-                disabled={submitting}
-                class="text-white px-4 py-2 rounded"
-                class:bg-green-600={actionType === 'accept'}
-                class:bg-red-600={actionType === 'reject'}
-            >
-                {submitting ? 'Processing...' : 'Confirm'}
-            </button>
+                <button
+                    onclick={submitAction}
+                    disabled={submitting}
+                    class="rounded px-4 py-2 text-white disabled:cursor-not-allowed disabled:opacity-60"
+                    class:bg-green-600={actionType === 'accept'}
+                    class:hover:bg-green-700={actionType === 'accept'}
+                    class:bg-red-600={actionType === 'reject'}
+                    class:hover:bg-red-700={actionType === 'reject'}
+                >
+                    {submitting ? 'Processing...' : 'Confirm'}
+                </button>
+            </div>
         </div>
-
     </div>
-</div>
 {/if}

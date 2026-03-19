@@ -91,6 +91,7 @@ const isFullyReviewed = (req: PendingRequest) =>
 let loading = $state(true);
 let error = $state<string | null>(null);
 let requests = $state<PendingRequest[]>([]);
+let showCompleted = $state(false);
 
 const fetchRequests = async () => {
     loading = true;
@@ -171,9 +172,7 @@ const formatDate = (iso?: string | null) => {
         {:else}
             {@const sections = [
                 { title: 'Pending Offers', offers: pendingOffers },
-                { title: 'Awaiting Review', offers: awaitingReviewOffers },
-                { title: 'Completed Offers', offers: completedOffers },
-                { title: 'Rejected Offers', offers: rejectedOffers }
+                { title: 'Awaiting Review', offers: awaitingReviewOffers }
             ]}
 
             <div class="space-y-8">
@@ -272,6 +271,76 @@ const formatDate = (iso?: string | null) => {
                         {/if}
                     </section>
                 {/each}
+
+                <section>
+                    <div class="flex items-center justify-between mb-2">
+                        <button
+                            class="flex items-center gap-2 text-xl font-semibold"
+                            onclick={() => (showCompleted = !showCompleted)}
+                        >
+                            <span>Completed Offers</span>
+                            <span class="text-base">{showCompleted ? '▾' : '▸'}</span>
+                        </button>
+                        <span class="text-sm text-surface-500">{completedOffers.length}</span>
+                    </div>
+
+                    {#if showCompleted}
+                        {#if completedOffers.length === 0}
+                            <div class="text-sm text-surface-500 border border-surface-200 rounded p-4">
+                                No offers in this section.
+                            </div>
+                        {:else}
+                            <div class="overflow-x-auto border border-surface-200 rounded">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="text-xs uppercase text-surface-500 border-b border-surface-200">
+                                            <th scope="col" class="py-2 px-3">Item</th>
+                                            <th scope="col" class="py-2 px-3">To</th>
+                                            <th scope="col" class="py-2 px-3">Quantity</th>
+                                            <th scope="col" class="py-2 px-3">Offer</th>
+                                            <th scope="col" class="py-2 px-3">Message</th>
+                                            <th scope="col" class="py-2 px-3">Created</th>
+                                            <th scope="col" class="py-2 px-3">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {#each completedOffers as req (req.id)}
+                                            {@const itemInfo = getItemInfo(req)}
+                                            {@const sellerName = getSellerName(req)}
+
+                                            <tr class="border-b border-surface-200 align-top">
+                                                <td class="py-2 px-3">
+                                                    {#if itemInfo.itemId}
+                                                        <a class="anchor" href={`/clipping/${itemInfo.itemId}`}>
+                                                            {itemInfo.title ?? `Item #${itemInfo.itemId}`}
+                                                        </a>
+                                                    {:else}
+                                                        {itemInfo.title ?? '-'}
+                                                    {/if}
+                                                </td>
+                                                <td class="py-2 px-3">{sellerName ?? '-'}</td>
+                                                <td class="py-2 px-3">{req.quantity ?? '-'}</td>
+                                                <td class="py-2 px-3">
+                                                    {formatCurrency(req.offer_price ?? itemInfo.price)}
+                                                </td>
+                                                <td class="py-2 px-3 break-words max-w-xs">
+                                                    {req.owner_response_message ?? req.message ?? '-'}
+                                                </td>
+                                                <td class="py-2 px-3 whitespace-nowrap">{formatDate(req.created_at)}</td>
+                                                <td class="py-2 px-3">
+                                                    <span class={`inline-flex px-2 py-1 rounded text-xs font-medium ${statusClass(req)}`}>
+                                                        {getStatus(req)}
+                                                    </span>
+                                                    <div class="text-xs text-surface-500 mt-2">✓ All reviews completed</div>
+                                                </td>
+                                            </tr>
+                                        {/each}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {/if}
+                    {/if}
+                </section>
             </div>
         {/if}
     {/if}

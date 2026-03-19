@@ -1138,12 +1138,16 @@ msgstr "Send"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/list/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Message"
 msgstr "Message"
 
 #: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/list/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Offer"
 msgstr "Offer"
@@ -1165,6 +1169,8 @@ msgstr "Failed to create request (server error)."
 
 #: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/list/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Quantity"
 msgstr "Quantity"
@@ -1197,24 +1203,27 @@ msgstr "Failed to load interest offers."
 msgid "Loading offers…"
 msgstr "Loading offers…"
 
-#: src/routes/list/+page.svelte
-msgid "No interest offers yet."
-msgstr "No interest offers yet."
+#~ msgid "No interest offers yet."
+#~ msgstr "No interest offers yet."
+
+#~ msgid "When someone sends an offer, it will appear here."
+#~ msgstr "When someone sends an offer, it will appear here."
 
 #: src/routes/list/+page.svelte
-msgid "When someone sends an offer, it will appear here."
-msgstr "When someone sends an offer, it will appear here."
-
 #: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Item"
 msgstr "Item"
 
 #: src/routes/list/+page.svelte
+#: src/routes/list/+page.svelte
 msgid "From"
 msgstr "From"
 
 #: src/routes/list/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Created"
 msgstr "Created"
@@ -1222,7 +1231,11 @@ msgstr "Created"
 #. placeholder {0}: itemInfo.itemId
 #. placeholder {0}: itemInfo.itemId
 #. placeholder {0}: itemInfo.itemId
+#. placeholder {0}: itemInfo.itemId
+#. placeholder {0}: itemInfo.itemId
 #: src/routes/list/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Item #{0}"
@@ -1245,6 +1258,7 @@ msgid "Make an offer on a listing to see it here."
 msgstr "Make an offer on a listing to see it here."
 
 #: src/routes/my-offers/+page.svelte
+#: src/routes/my-offers/+page.svelte
 msgid "To"
 msgstr "To"
 
@@ -1254,16 +1268,19 @@ msgstr "To"
 msgid "Made to order"
 msgstr "Made to order"
 
+#: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Pending"
 msgstr "Pending"
 
+#: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Accepted"
 msgstr "Accepted"
 
+#: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
@@ -1276,12 +1293,16 @@ msgstr "Rejected"
 #~ msgid "Failed to update interest offer."
 #~ msgstr "Failed to update interest offer."
 
+#: src/routes/list/+page.svelte
+#: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Status"
 msgstr "Status"
 
-#~ msgid "Actions"
-#~ msgstr "Actions"
+#: src/routes/list/+page.svelte
+msgid "Actions"
+msgstr "Actions"
 
 #: src/routes/list/+page.svelte
 msgid "Accept"
@@ -1311,9 +1332,8 @@ msgstr "Accept Request"
 msgid "Reject Request"
 msgstr "Reject Request"
 
-#: src/routes/list/+page.svelte
-msgid "Write a message (optional)..."
-msgstr "Write a message (optional)..."
+#~ msgid "Write a message (optional)..."
+#~ msgstr "Write a message (optional)..."
 
 #: src/routes/list/+page.svelte
 msgid "Processing..."
@@ -1416,6 +1436,7 @@ msgstr "Use lowercase letters, numbers, and hyphens only"
 #~ msgid "Accepted <0>✓ All reviews completed✓ User reviewed✓ Item reviewed</0>"
 #~ msgstr "Accepted <0>✓ All reviews completed✓ User reviewed✓ Item reviewed</0>"
 
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "✓ All reviews completed"
 msgstr "✓ All reviews completed"
@@ -1582,14 +1603,17 @@ msgstr "Analytics data is not available to member accounts."
 #~ msgid "· qty {0}"
 #~ msgstr "· qty {0}"
 
+#: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Refreshing…"
 msgstr "Refreshing…"
 
+#: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Refresh"
 msgstr "Refresh"
 
+#: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Retry"
 msgstr "Retry"
@@ -1606,10 +1630,48 @@ msgstr "Awaiting Review"
 msgid "Completed Offers"
 msgstr "Completed Offers"
 
-#: src/routes/my-offers/+page.svelte
-msgid "Rejected Offers"
-msgstr "Rejected Offers"
+#~ msgid "Rejected Offers"
+#~ msgstr "Rejected Offers"
 
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "No offers in this section."
 msgstr "No offers in this section."
+
+#: src/routes/list/+page.svelte
+msgid "Active"
+msgstr "Active"
+
+#: src/routes/list/+page.svelte
+msgid "No active offers."
+msgstr "No active offers."
+
+#: src/routes/list/+page.svelte
+msgid "History"
+msgstr "History"
+
+#: src/routes/list/+page.svelte
+msgid "No history yet."
+msgstr "No history yet."
+
+#~ msgid "Write a message ("
+#~ msgstr "Write a message ("
+
+#~ msgid "Write a message (it"
+#~ msgstr "Write a message (it"
+
+#~ msgid "Write a message (please"
+#~ msgstr "Write a message (please"
+
+#~ msgid "Write a message (please include some"
+#~ msgstr "Write a message (please include some"
+
+#~ msgid "Write a message (please include some way"
+#~ msgstr "Write a message (please include some way"
+
+#~ msgid "Write a message (please include some way to contact you, like your email or Discord) to the buyer. This is required if accepting the request, and optional if rejecting."
+#~ msgstr "Write a message (please include some way to contact you, like your email or Discord) to the buyer. This is required if accepting the request, and optional if rejecting."
+
+#: src/routes/list/+page.svelte
+msgid "Write a message (please include some way to contact you, like your email or Discord) to the buyer. This is required if accepting the request"
+msgstr "Write a message (please include some way to contact you, like your email or Discord) to the buyer. This is required if accepting the request"
