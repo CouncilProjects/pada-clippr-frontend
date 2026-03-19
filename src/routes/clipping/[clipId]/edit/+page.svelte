@@ -89,7 +89,7 @@
     try {
       await apiCaller.put(`/item/${clipId}/`, formData);
       toaster.create({ type: 'success', description: 'Listing updated successfully!' });
-      goto(`/clipping/${clipId}`);
+      goto(`/clipping/${clipId}`,{replaceState:true});
     } catch (err: any) {
       toaster.create({
         type: 'error',
@@ -113,7 +113,7 @@
     try {
       await apiCaller.delete(`/item/${clipId}/`);
       toaster.create({ type: 'success', description: 'Listing deleted successfully.' });
-      goto('/my-clippings');
+      goto('/my-clippings',{replaceState:true});
     } catch (err: any) {
       toaster.create({
         type: 'error',
@@ -125,7 +125,7 @@
   };
 
   const cancel = () => {
-    goto(`/clipping/${page.params.clipId}`);
+    goto(`/clipping/${page.params.clipId}`,{replaceState:true});
   };
 </script>
 

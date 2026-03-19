@@ -159,7 +159,7 @@
 
     const handleEdit = () => {
         if (!clipping) return;
-        window.location.href = `/clipping/${clipping.id}/edit`;
+        goto(`/clipping/${clipping.id}/edit`,{replaceState:true});
     };
 
     const handleDelete = async () => {

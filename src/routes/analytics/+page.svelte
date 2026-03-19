@@ -1,12 +1,13 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import apiCaller from "$lib/axiosConfig";
-  import type { paths } from "$lib/api-types";
+  import type { paths, components } from "$lib/api-types";
   import { toaster } from "$lib/toast";
   import { Line, Doughnut } from 'svelte-chartjs';
   import 'chart.js/auto';
 
-  type siteAnalyticsResponse = paths['/api/analytics/']['get']['responses']['200']['content']['application/json'];
+  type analyticsResponse = paths['/api/analytics/']['get']['responses']['200']['content']['application/json'];
+  type siteAnalyticsData = components["schemas"]["SiteAnalytics"][];
   const chartLocale: Intl.DateTimeFormatOptions = {
     month: 'short', day: 'numeric',
     hour: '2-digit', minute: '2-digit', hour12: false
@@ -179,9 +180,10 @@
   onMount(async () => {
     try {
       const response = await apiCaller.get('/analytics/');
-      const analyticsData: siteAnalyticsResponse | null = response.data;
+      const genericAnalyticsResponse: analyticsResponse | null = response.data;
+      const siteAnalyticsData: siteAnalyticsData | null = genericAnalyticsResponse?.data ?? null;
 
-      analyticsData?.data.forEach((entry) => {
+      siteAnalyticsData?.forEach((entry) => {
         const date = new Date(entry.created_at).toLocaleString(undefined, chartLocale);
         usersChart.labels.push(date);
         usersChart.datasets[0].data.push(entry.member_count ?? 0);
@@ -210,7 +212,7 @@
         uniqTagAvgChart.datasets[1].data.push(entry.seller_items_count ? (entry.seller_distinct_tags_count ?? 0) / entry.seller_items_count : 0);
       });
 
-      const lastEntry = analyticsData?.data.at(-1);
+      const lastEntry = siteAnalyticsData?.at(-1);
       itemsPie.datasets[0].data = [
         lastEntry?.member_items_count ?? 0,
         lastEntry?.seller_items_count ?? 0
