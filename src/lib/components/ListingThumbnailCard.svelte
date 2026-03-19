@@ -185,6 +185,7 @@ ThumbnailList component.
     style={`max-width:${downsized || 100}%`}
     onclick={() => clickHappned(item)}
     aria-roledescription="Press to go to page"
+    data-test={`${item.title}`}
 >
     <div class="flex flex-col items-center p-2 h-full">
         <div class="w-32 h-32 mb-2 overflow-hidden rounded-md">
