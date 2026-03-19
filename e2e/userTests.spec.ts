@@ -1,4 +1,6 @@
-import { test, expect,Response } from '@playwright/test';
+import { test, expect,Response,Page } from '@playwright/test';
+import * as os from 'os';
+import * as path from 'path';
 
 const username = "playUser";
 const password = "12345678";
@@ -26,7 +28,7 @@ test.beforeEach(async ({ page }) => {
 
 */
 
-let page;
+let page: Page;
 
 test.beforeAll(async ({browser})=>{
     const context = await browser.newContext();
@@ -155,11 +157,50 @@ test('Create item[4] negotiable infinite', async (/*{ page }*/) => {
     await expect(page.getByRole('status').filter({ hasText: "Item created successfully! 🎉" })).toBeVisible;
 });
 
+test('Edit item[1] non negotiable not infinite', async (/*{ page }*/) => {
+    await page.goto('/');
+    await page.getByRole('button').first().click();
+    await page.getByRole('link', { name: 'My Clippings' }).click();
+    await page.getByRole('button', { name: 'Thumbnail testnNeg-nInf' }).click();
+    await page.getByRole('button', { name: 'close' }).click();
+    await page.getByRole('button', { name: 'Edit' }).click();
+    await page.getByRole('textbox', { name: 'Title *' }).click();
+    await page.getByRole('textbox', { name: 'Title *' }).fill(`test${'edited'} item`);
+    await page.getByRole('spinbutton', { name: 'Price ($) *' }).click();
+    await page.getByRole('spinbutton', { name: 'Price ($) *' }).fill('69');
+    await page.getByRole('spinbutton', { name: 'Stock Quantity' }).click();
+    await page.getByRole('spinbutton', { name: 'Stock Quantity' }).fill('10');
+    await page.getByRole('textbox', { name: 'Description *' }).click();
+    await page.getByRole('textbox', { name: 'Description *' }).fill('Some edited test');
+
+    const editResponsePromise = page.waitForResponse(resp => resp.url().includes("/api/item/") && resp.request().method() === "PUT")
+    await page.getByRole('button', { name: 'Update Listing' }).click();
+    const editResponse = await editResponsePromise;
+    await expect(editResponse.status()).toBe(200);
+    await expect(page.getByRole('status').filter({ hasText: "Item updated successfully! 🎉" })).toBeVisible;
+});
 
 
+test('Delete item[1]', async (/*{ page }*/) => {
+    await page.goto('/');
+    await page.getByRole('button').first().click();
+    await page.getByRole('link', { name: 'My Clippings' }).click();
+    await page.getByRole('button', { name: 'Thumbnail testedited item' }).click();
+    await page.getByRole('button', { name: 'close' }).click();
+    await page.getByRole('button', { name: 'Edit' }).click();
+    page.once('dialog', dialog => {
+      console.log(`Dialog message: ${dialog.message()}`);
+      dialog.dismiss().catch(() => {});
+    });
+    await page.getByRole('button', { name: 'Delete Listing' }).click();
+    page.once('dialog', async dialog => {
+      console.log(`Dialog message: ${dialog.message()}`);
+      await dialog.accept();
+    });
+    await page.getByRole('button', { name: 'Delete Listing' }).click();
+});
 
-import * as os from 'os';
-import * as path from 'path';
+
 
 // NOTE for this test to work you need to have an image in Pictures named Adrian_Monk.webp
 test('Set avatar', async (/*{ page }*/) => {
@@ -269,3 +310,4 @@ test('Check out verified page', async (/*{ page }*/) => {
     await expect(page.getByRole('heading', { name: `Welcome to ${verifiedTestPage}\'s Shop` })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Shop Socials' })).toBeVisible();
 });
+
