@@ -1293,84 +1293,84 @@ msgstr ""
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Member Accounts"
-msgstr ""
+msgstr "Λογαριασμοί Μελών"
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Seller Accounts"
-msgstr ""
+msgstr "Λογαριασμοί Πωλητών"
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Admin Accounts"
-msgstr ""
+msgstr "Λογαριασμοί Διαχειριστών"
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Member Items"
-msgstr ""
+msgstr "Αντικείμενα από Μέλη"
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Seller Items"
-msgstr ""
+msgstr "Αντικείμενα από Πωλητές"
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Member Tag Usage"
-msgstr ""
+msgstr "Χρήση Tag από Μέλη"
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Seller Tag Usage"
-msgstr ""
+msgstr "Χρήση Tag από Πωλητές"
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Tags per Member Item"
-msgstr ""
+msgstr "Tags Ανά Αντικείμενο Μέλους"
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Tags per Seller Item"
-msgstr ""
+msgstr "Tags Ανά Αντικείμενο Πωλητή"
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Member Unique Tag Usage"
-msgstr ""
+msgstr "Χρήση Μοναδικών Tag από Μέλη"
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Seller Unique Tag Usage"
-msgstr ""
+msgstr "Χρήση Μοναδικών Tag από Πωλητές"
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Unique Tags per Member Item"
-msgstr ""
+msgstr "Μοναδικά Tags Ανά Αντικείμενο Μέλους"
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Unique Tags per Seller Item"
-msgstr ""
+msgstr "Μοναδικά Tags Ανά Αντικείμενο Πωλητή"
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Items per Member Account"
-msgstr ""
+msgstr "Αντικείμενα ανά Λογαριασμό Μέλους"
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Items per Seller Account"
-msgstr ""
+msgstr "Αντικείμενα ανά Λογαριασμό Πωλητή"
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
 msgid "My Profile"
-msgstr ""
+msgstr "Το Προφίλ Μου"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "My Analytics"
-msgstr ""
+msgstr "Τα Αναλυτικά Μου"
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Site Analytics"
-msgstr ""
+msgstr "Αναλυτικά Σελίδας"
 
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Submit Review"
@@ -1491,37 +1491,37 @@ msgstr "Δεν υπάρχει ακόμα ιστορικό"
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Accepted Requests"
-msgstr ""
+msgstr "Αιτήματα που Δεχθήκατε"
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Rejected Requests"
-msgstr ""
+msgstr "Αιτήματα που Απορρίψατε"
 
 #: src/routes/list/+page.svelte
 msgid "Write a message (please include some way to contact you, like your email or Discord) to the buyer. This is required if accepting the request"
-msgstr ""
+msgstr "Γράψτε ένα μήνυμα (συμπεριλάβετε κάποιον τρόπο επικοινωνίας μαζί σας, όπως το email σας ή το Discord) στον αγοραστή."
 
 #: src/routes/analytics/+page.svelte
 msgid "Items Listed"
-msgstr ""
+msgstr "Αντικείμενα"
 
 #: src/routes/analytics/+page.svelte
 msgid "Total Item Views"
-msgstr ""
+msgstr "Συνολικές Εμφανίσεις Αντικειμένων"
 
 #: src/routes/analytics/+page.svelte
 msgid "Total Tags Used"
-msgstr ""
+msgstr "Συνολική Χρήση Tags"
 
 #: src/routes/analytics/+page.svelte
 msgid "Total Unique Tags Used"
-msgstr ""
+msgstr "Συνολική Μοναδική Χρήση Tags"
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Views per Item"
-msgstr ""
+msgstr "Εμφανίσεις ανά Αντικείμενο"
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Tags Used per Item"
-msgstr ""
+msgstr "Χρήση Tags ανά Αντικείμενο"
