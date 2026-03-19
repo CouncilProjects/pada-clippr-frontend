@@ -695,6 +695,7 @@ msgstr "Ο νέος λογαριασμός διαχειριστή δημιουρ
 #~ msgstr "Προσφορές Ενδιαφέροντος"
 
 #: src/lib/components/MainAppBar.svelte
+#: src/lib/components/MainAppBar.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "My Offers"
 msgstr "Οι Προσφορές Μου"
@@ -793,7 +794,6 @@ msgstr "Επιτρέψτε στους αγοραστές να κάνουν πρ�
 #~ msgid "Minimum Acceptable Price ($)"
 #~ msgstr "Ελάχιστη Αποδεκτή Τιμή ($)"
 
-#: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Failed to load listing."
 msgstr "Αποτυχία φόρτωσης καταχώρησης."
@@ -1025,6 +1025,7 @@ msgid "Quantity cannot exceed available stock ({0})."
 msgstr ""
 
 #: src/lib/components/MainAppBar.svelte
+#: src/lib/components/MainAppBar.svelte
 #: src/routes/list/+page.svelte
 msgid "Interest Offers"
 msgstr ""
@@ -1104,10 +1105,13 @@ msgid "Pending"
 msgstr ""
 
 #: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+#: src/routes/my-offers/+page.svelte
 msgid "Accepted"
 msgstr ""
 
 #: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Rejected"
 msgstr ""
@@ -1193,9 +1197,8 @@ msgstr ""
 #~ msgid "Leave Review"
 #~ msgstr ""
 
-#: src/routes/my-offers/+page.svelte
-msgid "Accepted <0/>"
-msgstr ""
+#~ msgid "Accepted <0/>"
+#~ msgstr ""
 
 #~ msgid "Review User"
 #~ msgstr ""
@@ -1356,3 +1359,92 @@ msgstr "Υποβολή κριτικής"
 #: src/routes/analytics/+page.svelte
 msgid "Analytics data is not available to member accounts."
 msgstr "Τα δεδομένα αναλυτικών δεν είναι διαθέσιμα σε λογαριασμούς μελών."
+
+#~ msgid "Outgoing purchase requests & their status"
+#~ msgstr ""
+
+#~ msgid "{0} offer{1}"
+#~ msgstr ""
+
+#~ msgid "Fetching your offers…"
+#~ msgstr ""
+
+#~ msgid "No offers yet"
+#~ msgstr ""
+
+#~ msgid "Make an offer on a listing and it will appear here."
+#~ msgstr ""
+
+#~ msgid "to"
+#~ msgstr ""
+
+#~ msgid "qty"
+#~ msgstr ""
+
+#~ msgid "✓ All reviewed"
+#~ msgstr ""
+
+#~ msgid "✓ Seller"
+#~ msgstr ""
+
+#~ msgid "Review seller"
+#~ msgstr ""
+
+#~ msgid "✓ Item"
+#~ msgstr ""
+
+#~ msgid "No outgoing offers yet"
+#~ msgstr ""
+
+#~ msgid "To {0}"
+#~ msgstr ""
+
+#~ msgid "· Qty {0}"
+#~ msgstr ""
+
+#~ msgid "Sample Item"
+#~ msgstr ""
+
+#~ msgid "to username · qty 1"
+#~ msgstr ""
+
+#~ msgid "No offers yet. Make an offer on a listing."
+#~ msgstr ""
+
+#~ msgid "to {0}"
+#~ msgstr ""
+
+#~ msgid "· qty {0}"
+#~ msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Refreshing…"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Refresh"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Retry"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Pending Offers"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Awaiting Review"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Completed Offers"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "Rejected Offers"
+msgstr ""
+
+#: src/routes/my-offers/+page.svelte
+msgid "No offers in this section."
+msgstr ""

@@ -25,7 +25,7 @@
     
     if (!files || files.length === 0) return;
 
-    let selected = [...images, ...files];
+    let selected = [...files];
     if (selected.length > 3) {
       toaster.create({ type: 'error', description: 'You can only upload up to 3 images' });
       selected = selected.slice(0, 3);

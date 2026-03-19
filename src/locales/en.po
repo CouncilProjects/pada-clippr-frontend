@@ -957,7 +957,6 @@ msgstr "Fixed price"
 #~ msgid "Are you sure you want to delete <0/>? This cannot be undone."
 #~ msgstr "Are you sure you want to delete <0/>? This cannot be undone."
 
-#: src/routes/clipping/[clipId]/+page.svelte
 #: src/routes/clipping/[clipId]/edit/+page.svelte
 msgid "Failed to load listing."
 msgstr "Failed to load listing."
@@ -1180,6 +1179,7 @@ msgid "Quantity cannot exceed available stock ({0})."
 msgstr "Quantity cannot exceed available stock ({0})."
 
 #: src/lib/components/MainAppBar.svelte
+#: src/lib/components/MainAppBar.svelte
 #: src/routes/list/+page.svelte
 msgid "Interest Offers"
 msgstr "Interest Offers"
@@ -1259,10 +1259,13 @@ msgid "Pending"
 msgstr "Pending"
 
 #: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
+#: src/routes/my-offers/+page.svelte
 msgid "Accepted"
 msgstr "Accepted"
 
 #: src/routes/list/+page.svelte
+#: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Rejected"
 msgstr "Rejected"
@@ -1359,9 +1362,8 @@ msgstr "Processing..."
 #~ msgid "Leave Review"
 #~ msgstr "Leave Review"
 
-#: src/routes/my-offers/+page.svelte
-msgid "Accepted <0/>"
-msgstr "Accepted <0/>"
+#~ msgid "Accepted <0/>"
+#~ msgstr "Accepted <0/>"
 
 #~ msgid "Review User"
 #~ msgstr "Review User"
@@ -1522,3 +1524,92 @@ msgstr "Submit Review"
 #: src/routes/analytics/+page.svelte
 msgid "Analytics data is not available to member accounts."
 msgstr "Analytics data is not available to member accounts."
+
+#~ msgid "Outgoing purchase requests & their status"
+#~ msgstr "Outgoing purchase requests & their status"
+
+#~ msgid "{0} offer{1}"
+#~ msgstr "{0} offer{1}"
+
+#~ msgid "Fetching your offers…"
+#~ msgstr "Fetching your offers…"
+
+#~ msgid "No offers yet"
+#~ msgstr "No offers yet"
+
+#~ msgid "Make an offer on a listing and it will appear here."
+#~ msgstr "Make an offer on a listing and it will appear here."
+
+#~ msgid "to"
+#~ msgstr "to"
+
+#~ msgid "qty"
+#~ msgstr "qty"
+
+#~ msgid "✓ All reviewed"
+#~ msgstr "✓ All reviewed"
+
+#~ msgid "✓ Seller"
+#~ msgstr "✓ Seller"
+
+#~ msgid "Review seller"
+#~ msgstr "Review seller"
+
+#~ msgid "✓ Item"
+#~ msgstr "✓ Item"
+
+#~ msgid "No outgoing offers yet"
+#~ msgstr "No outgoing offers yet"
+
+#~ msgid "To {0}"
+#~ msgstr "To {0}"
+
+#~ msgid "· Qty {0}"
+#~ msgstr "· Qty {0}"
+
+#~ msgid "Sample Item"
+#~ msgstr "Sample Item"
+
+#~ msgid "to username · qty 1"
+#~ msgstr "to username · qty 1"
+
+#~ msgid "No offers yet. Make an offer on a listing."
+#~ msgstr "No offers yet. Make an offer on a listing."
+
+#~ msgid "to {0}"
+#~ msgstr "to {0}"
+
+#~ msgid "· qty {0}"
+#~ msgstr "· qty {0}"
+
+#: src/routes/my-offers/+page.svelte
+msgid "Refreshing…"
+msgstr "Refreshing…"
+
+#: src/routes/my-offers/+page.svelte
+msgid "Refresh"
+msgstr "Refresh"
+
+#: src/routes/my-offers/+page.svelte
+msgid "Retry"
+msgstr "Retry"
+
+#: src/routes/my-offers/+page.svelte
+msgid "Pending Offers"
+msgstr "Pending Offers"
+
+#: src/routes/my-offers/+page.svelte
+msgid "Awaiting Review"
+msgstr "Awaiting Review"
+
+#: src/routes/my-offers/+page.svelte
+msgid "Completed Offers"
+msgstr "Completed Offers"
+
+#: src/routes/my-offers/+page.svelte
+msgid "Rejected Offers"
+msgstr "Rejected Offers"
+
+#: src/routes/my-offers/+page.svelte
+msgid "No offers in this section."
+msgstr "No offers in this section."

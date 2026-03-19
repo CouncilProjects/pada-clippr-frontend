@@ -8,8 +8,7 @@
     import { Progress, RatingGroup } from '@skeletonlabs/skeleton-svelte';
     import type { paths } from '$lib/api-types';
 
-    //why have a loader function if you dont use it ?
-    let { data:loaderData }:PageProps = $props()
+    let { data: loaderData }: PageProps = $props();
 
     type itemReviewType = paths['/api/review/item/{item_id}/']['get']['responses']['200']['content']['application/json'][number]
     
@@ -44,8 +43,19 @@
         seller?: Seller | null;
     }
 
-    let clipping = $state<Clipping | null>(null);
-    let loading = $state(true);
+    const normalizeClipping = (raw: any): Clipping => ({
+        ...raw,
+        price: Number(raw.price),
+        rating: raw.rating != null ? Number(raw.rating) : undefined,
+        stock: Number(raw.stock),
+        ownerId: raw.seller?.id ?? null,
+        images: Array.isArray(raw.images) ? raw.images : []
+    });
+
+    let clipping = $derived.by(() =>
+        loaderData?.clipping ? normalizeClipping(loaderData.clipping) : null
+    );
+    let loading = $derived.by(() => !clipping);
     let error = $state<string | null>(null);
     const currentUserId = $derived.by(() => loggedUser.id);
     let activeImage = $state<string | null>(null);
@@ -94,54 +104,6 @@
         if (isNaN(r) || r < 0) return null;
 
         return r.toFixed(1);
-    });
-
-    //?? the fuck is this ?
-    $effect(() => {
-        const clipId = page.params.clipId;
-        if (!clipId) return;
-
-        const fetchClipping = async () => {
-            loading = true;
-            error = null;
-
-            try {
-                const res = await apiCaller.get(`/item/${clipId}/`);
-
-                clipping = {
-                    ...res.data,
-                    price: Number(res.data.price),
-                    rating:
-                        res.data.rating != null
-                            ? Number(res.data.rating)
-                            : undefined,
-                    stock: Number(res.data.stock),
-                    // API seems to return seller as nested object (Django FK), not ownerId directly
-                    ownerId: res.data.seller?.id ?? null,
-                    images: Array.isArray(res.data.images)
-                        ? res.data.images
-                        : []
-                };
-
-                activeImage = null;
-
-                console.log('Clipping loaded', {
-                    clipId,
-                    ownerId: clipping ? clipping.ownerId : null,
-                    seller: clipping ? clipping.seller : null,
-                    currentUserId: loggedUser.id,
-                    isOwner: clipping ? clipping.ownerId === loggedUser.id : false,
-                    clipping
-                });
-            } catch (err) {
-                error = 'Failed to load listing.';
-                console.error('Failed to fetch clipping', err);
-            } finally {
-                loading = false;
-            }
-        };
-
-        fetchClipping();
     });
 
     const goBack = () => {

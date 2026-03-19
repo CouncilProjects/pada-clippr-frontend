@@ -55,6 +55,7 @@
       { label: 'My Clippings', href: '/my-clippings', icon: Store },
       { label: 'My Analytics', href: '/analytics', icon: ChartColumnBig },
       { label: 'Shop Socials', href: '/shop-managment/socials', icon: Share2 },
+      { label: 'Interest Offers', href: '/list', icon: Inbox },
       { label: 'My Profile', href: `/account/${loggedUser.username}`, icon: FileUserIcon },
       { label: 'Settings', href: '/account-settings', icon: Settings },
     ],

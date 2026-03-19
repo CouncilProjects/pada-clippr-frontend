@@ -1,4 +1,3 @@
-
 <script lang="ts">
 import { onMount } from 'svelte';
 import { loggedUser } from '$lib/universalReactivity/auth.svelte';
@@ -10,16 +9,39 @@ type PendingRequest = {
     item?: any;
     item_id?: number | null;
     item_title?: string | null;
+    item_price?: number | null;
     message?: string | null;
     owner_response_message?: string | null;
     offer_price?: number | null;
     quantity?: number | null;
     created_at?: string | null;
+    response?: boolean | null;
+    is_seller_reviewed?: boolean;
+    is_item_reviewed?: boolean;
     buyer?: any;
     seller?: any;
+    buyer_id?: number | null;
+    seller_id?: number | null;
     buyer_username?: string | null;
     seller_username?: string | null;
     [key: string]: any;
+};
+
+const euro = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR' });
+
+const formatCurrency = (value?: number | null) =>
+    value == null || Number.isNaN(Number(value)) ? '-' : euro.format(Number(value));
+
+const getStatus = (req: PendingRequest) => {
+    if (req.response === null || req.response === undefined) return 'Pending';
+    return req.response ? 'Accepted' : 'Rejected';
+};
+
+const statusClass = (req: PendingRequest) => {
+    const s = getStatus(req);
+    if (s === 'Accepted') return 'text-success-700 bg-success-50';
+    if (s === 'Rejected') return 'text-error-700 bg-error-50';
+    return 'text-warning-700 bg-warning-50';
 };
 
 const getItemInfo = (req: PendingRequest) => {
@@ -62,6 +84,9 @@ const isOutgoing = (req: PendingRequest) => {
 
     return false;
 };
+
+const isFullyReviewed = (req: PendingRequest) =>
+    Boolean(req.is_seller_reviewed) && Boolean(req.is_item_reviewed);
 
 let loading = $state(true);
 let error = $state<string | null>(null);
@@ -106,9 +131,13 @@ const formatDate = (iso?: string | null) => {
 };
 </script>
 
-
 <div class="max-w-6xl mx-auto p-8">
-    <h1 class="text-3xl font-semibold mb-4">My Offers</h1>
+    <div class="flex items-center justify-between gap-4 mb-4">
+        <h1 class="text-3xl font-semibold">My Offers</h1>
+        <button class="btn btn-sm" onclick={fetchRequests} disabled={loading}>
+            {loading ? 'Refreshing…' : 'Refresh'}
+        </button>
+    </div>
 
     {#if loading}
         <div class="flex flex-col items-center gap-3 py-20">
@@ -117,104 +146,132 @@ const formatDate = (iso?: string | null) => {
         </div>
     {:else if error}
         <div class="text-center py-20 text-error-500">
-            ⚠ {error}
+            <p>⚠ {error}</p>
+            <button class="btn btn-sm mt-3" onclick={fetchRequests}>Retry</button>
         </div>
     {:else}
-        {#if requests.filter(isOutgoing).length === 0}
+        {@const outgoing = [...requests.filter(isOutgoing)].sort(
+            (a, b) => (new Date(b.created_at ?? 0).getTime() - new Date(a.created_at ?? 0).getTime())
+        )}
+
+        {@const pendingOffers = outgoing.filter((req) => req.response == null)}
+        {@const awaitingReviewOffers = outgoing.filter(
+            (req) => req.response === true && !isFullyReviewed(req)
+        )}
+        {@const completedOffers = outgoing.filter(
+            (req) => req.response === true && isFullyReviewed(req)
+        )}
+        {@const rejectedOffers = outgoing.filter((req) => req.response === false)}
+
+        {#if outgoing.length === 0}
             <div class="text-center py-20">
                 <p class="text-lg">No outgoing offers yet.</p>
                 <p class="text-sm text-surface-500">Make an offer on a listing to see it here.</p>
             </div>
         {:else}
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="text-xs uppercase text-surface-500 border-b border-surface-200">
-                            <th class="py-2 px-3">Item</th>
-                            <th class="py-2 px-3">To</th>
-                            <th class="py-2 px-3">Quantity</th>
-                            <th class="py-2 px-3">Offer</th>
-                            <th class="py-2 px-3">Message</th>
-                            <th class="py-2 px-3">Created</th>
-                            <th class="py-2 px-3">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {#each requests.filter(isOutgoing) as req}
-                            {@const itemInfo = getItemInfo(req)}
-                            {@const sellerName = getSellerName(req)}
-                            <tr class="border-b border-surface-200">
-                                <td class="py-2 px-3">
-                                    {#if itemInfo.itemId}
-                                        <a class="anchor" href={`/clipping/${itemInfo.itemId}`}>
-                                            {itemInfo.title ?? `Item #${itemInfo.itemId}`}
-                                        </a>
-                                    {:else}
-                                        {itemInfo.title ?? '-'}
-                                    {/if}
-                                </td>
-                                <td class="py-2 px-3">{sellerName ?? '-'}</td>
-                                <td class="py-2 px-3">{req.quantity ?? '-'}</td>
-                                <td class="py-2 px-3">
-                                    {#if req.offer_price != null}
-                                        € {req.offer_price}
-                                    {:else if itemInfo.price != null}
-                                        € {itemInfo.price}
-                                    {:else}
-                                        -
-                                    {/if}
-                                </td>
-                                <td class="py-2 px-3 break-words max-w-xs">{req.owner_response_message ?? req.message ?? '-'}</td>
-                                <td class="py-2 px-3">{formatDate(req.created_at)}</td>
-                                <td class="py-2 px-3">
-                                    {#if req.response === null}
-                                        Pending
-                                    {:else if req.response === true}
-                                        Accepted
-                                        {#if req.is_seller_reviewed && req.is_item_reviewed}
-                                            <span class="text-xs text-surface-500">
-                                                ✓ All reviews completed
-                                            </span>
-                                        {:else}
-                                            <div class="flex flex-col gap-1">
-                                                <div class="flex gap-2">
-                                                    {#if !req.is_seller_reviewed}
-                                                        <ReviewPopUp
-                                                            about="user"
-                                                            reference={sellerName ?? 'Unknown user'}
-                                                            revid={req.id}
-                                                            message="Review user"
-                                                            closeCallback={fetchRequests}
-                                                        />
+            {@const sections = [
+                { title: 'Pending Offers', offers: pendingOffers },
+                { title: 'Awaiting Review', offers: awaitingReviewOffers },
+                { title: 'Completed Offers', offers: completedOffers },
+                { title: 'Rejected Offers', offers: rejectedOffers }
+            ]}
+
+            <div class="space-y-8">
+                {#each sections as section}
+                    <section>
+                        <div class="flex items-center justify-between mb-2">
+                            <h2 class="text-xl font-semibold">{section.title}</h2>
+                            <span class="text-sm text-surface-500">{section.offers.length}</span>
+                        </div>
+
+                        {#if section.offers.length === 0}
+                            <div class="text-sm text-surface-500 border border-surface-200 rounded p-4">
+                                No offers in this section.
+                            </div>
+                        {:else}
+                            <div class="overflow-x-auto border border-surface-200 rounded">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="text-xs uppercase text-surface-500 border-b border-surface-200">
+                                            <th scope="col" class="py-2 px-3">Item</th>
+                                            <th scope="col" class="py-2 px-3">To</th>
+                                            <th scope="col" class="py-2 px-3">Quantity</th>
+                                            <th scope="col" class="py-2 px-3">Offer</th>
+                                            <th scope="col" class="py-2 px-3">Message</th>
+                                            <th scope="col" class="py-2 px-3">Created</th>
+                                            <th scope="col" class="py-2 px-3">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {#each section.offers as req (req.id)}
+                                            {@const itemInfo = getItemInfo(req)}
+                                            {@const sellerName = getSellerName(req)}
+
+                                            <tr class="border-b border-surface-200 align-top">
+                                                <td class="py-2 px-3">
+                                                    {#if itemInfo.itemId}
+                                                        <a class="anchor" href={`/clipping/${itemInfo.itemId}`}>
+                                                            {itemInfo.title ?? `Item #${itemInfo.itemId}`}
+                                                        </a>
+                                                    {:else}
+                                                        {itemInfo.title ?? '-'}
                                                     {/if}
-                                                    {#if !req.is_item_reviewed}
-                                                        <ReviewPopUp
-                                                            about="item"
-                                                            reference={itemInfo.title ?? `Item #${itemInfo.itemId}`}
-                                                            revid={req.id}
-                                                            message="Review item"
-                                                            closeCallback={fetchRequests}
-                                                        />
+                                                </td>
+                                                <td class="py-2 px-3">{sellerName ?? '-'}</td>
+                                                <td class="py-2 px-3">{req.quantity ?? '-'}</td>
+                                                <td class="py-2 px-3">
+                                                    {formatCurrency(req.offer_price ?? itemInfo.price)}
+                                                </td>
+                                                <td class="py-2 px-3 break-words max-w-xs">
+                                                    {req.owner_response_message ?? req.message ?? '-'}
+                                                </td>
+                                                <td class="py-2 px-3 whitespace-nowrap">{formatDate(req.created_at)}</td>
+                                                <td class="py-2 px-3">
+                                                    <span class={`inline-flex px-2 py-1 rounded text-xs font-medium ${statusClass(req)}`}>
+                                                        {getStatus(req)}
+                                                    </span>
+
+                                                    {#if req.response === true}
+                                                        {#if req.is_seller_reviewed && req.is_item_reviewed}
+                                                            <div class="text-xs text-surface-500 mt-2">✓ All reviews completed</div>
+                                                        {:else}
+                                                            <div class="flex flex-col gap-1 mt-2">
+                                                                <div class="flex gap-2">
+                                                                    {#if !req.is_seller_reviewed}
+                                                                        <ReviewPopUp
+                                                                            about="user"
+                                                                            reference={sellerName ?? 'Unknown user'}
+                                                                            revid={req.id}
+                                                                            message="Review user"
+                                                                            closeCallback={fetchRequests}
+                                                                        />
+                                                                    {/if}
+                                                                    {#if !req.is_item_reviewed}
+                                                                        <ReviewPopUp
+                                                                            about="item"
+                                                                            reference={itemInfo.title ?? `Item #${itemInfo.itemId}`}
+                                                                            revid={req.id}
+                                                                            message="Review item"
+                                                                            closeCallback={fetchRequests}
+                                                                        />
+                                                                    {/if}
+                                                                </div>
+                                                                <div class="flex gap-2 text-xs text-surface-500">
+                                                                    {#if req.is_seller_reviewed}<span>✓ User reviewed</span>{/if}
+                                                                    {#if req.is_item_reviewed}<span>✓ Item reviewed</span>{/if}
+                                                                </div>
+                                                            </div>
+                                                        {/if}
                                                     {/if}
-                                                </div>
-                                            </div>
-                                            <div class="flex gap-2 text-xs text-surface-500 mt-2">
-                                                {#if req.is_seller_reviewed}
-                                                    <span>✓ User reviewed</span>
-                                                {/if}
-                                                {#if req.is_item_reviewed}
-                                                    <span>✓ Item reviewed</span>
-                                                {/if}
-                                            </div>
-                                        {/if}
-                                    {:else}
-                                        Rejected
-                                    {/if}
-                                </td>
-                            </tr>
-                        {/each}
-                    </tbody>
-                </table>
+                                                </td>
+                                            </tr>
+                                        {/each}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {/if}
+                    </section>
+                {/each}
             </div>
         {/if}
     {/if}
