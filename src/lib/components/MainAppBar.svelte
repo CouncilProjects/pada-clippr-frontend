@@ -1,6 +1,6 @@
 <script lang="ts">
   import LightSwitch from '$lib/components/LightSwitch.svelte';
-  import { UserRoundKey, ArrowRight,CircleQuestionMark,SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, House, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, MessageCircleWarning, ShieldCheck,ScanSearch } from '@lucide/svelte';
+  import { UserRoundKey, ArrowRight,CircleQuestionMark,SearchIcon, CircleUserIcon, MenuIcon, LogOutIcon, FileUserIcon, Store, Handshake, Inbox, Settings, Share2, ChartColumnBig, ShieldCheck,ScanSearch } from '@lucide/svelte';
   import { AppBar, Avatar, Dialog, Navigation, TagsInput } from '@skeletonlabs/skeleton-svelte';
   import { locale, loggedUser, logoutUser, toogleLocale } from "$lib/universalReactivity/auth.svelte"
   import gr from '$lib/assets/gr.svg';
@@ -48,17 +48,18 @@
         { label: 'My Clippings', href: '/my-clippings', icon: Store },
         { label: 'Interest Offers', href: '/list', icon: Inbox },
         { label: 'My Offers', href: '/my-offers', icon: Handshake },
+        { label: 'My Profile', href: `/account/${loggedUser.username}`, icon: FileUserIcon },
         { label: 'Settings', href: '/account-settings', icon: Settings },
     ],
     SELLER:[
       { label: 'My Clippings', href: '/my-clippings', icon: Store },
-      { label: 'My analitics', href: '#', icon: ChartColumnBig },
-      { label: 'Reviews', href: '#', icon: Inbox },
+      { label: 'My Analytics', href: '/analytics', icon: ChartColumnBig },
       { label: 'Shop Socials', href: '/shop-managment/socials', icon: Share2 },
+      { label: 'My Profile', href: `/account/${loggedUser.username}`, icon: FileUserIcon },
       { label: 'Settings', href: '/account-settings', icon: Settings },
     ],
     ADMIN:[
-      { label: 'Site analytics', href: '/analytics', icon: ChartColumnBig },
+      { label: 'Site Analytics', href: '/analytics', icon: ChartColumnBig },
       { label: 'Verification', href: '/verifications', icon: ShieldCheck },
       { label: 'Create Admin', href: '/create-admin', icon: UserRoundKey },
       { label: 'Settings', href: '/account-settings', icon: Settings },

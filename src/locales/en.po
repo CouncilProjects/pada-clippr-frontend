@@ -307,11 +307,9 @@ msgstr "My Clippings"
 msgid "My Offers"
 msgstr "My Offers"
 
-#: src/lib/components/MainAppBar.svelte
-msgid "My analitics"
-msgstr "My analitics"
+#~ msgid "My analitics"
+#~ msgstr "My analitics"
 
-#: src/lib/components/MainAppBar.svelte
 #: src/routes/account/[name]/+page.svelte
 msgid "Reviews"
 msgstr "Reviews"
@@ -321,9 +319,8 @@ msgstr "Reviews"
 msgid "Shop Socials"
 msgstr "Shop Socials"
 
-#: src/lib/components/MainAppBar.svelte
-msgid "Site analytics"
-msgstr "Site analytics"
+#~ msgid "Site analytics"
+#~ msgstr "Site analytics"
 
 #~ msgid "Reports"
 #~ msgstr "Reports"
@@ -1505,3 +1502,16 @@ msgstr "Average Items per Member Account"
 #: src/routes/analytics/+page.svelte
 msgid "Average Items per Seller Account"
 msgstr "Average Items per Seller Account"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "My Analytics"
+msgstr "My Analytics"
+
+#: src/lib/components/MainAppBar.svelte
+#: src/lib/components/MainAppBar.svelte
+msgid "My Profile"
+msgstr "My Profile"
+
+#: src/lib/components/MainAppBar.svelte
+msgid "Site Analytics"
+msgstr "Site Analytics"
