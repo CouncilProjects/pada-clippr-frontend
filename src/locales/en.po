@@ -60,7 +60,6 @@ msgstr "Lorem ipsum dolor sit amet consectetur adipisicing elit."
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
-#: src/lib/components/ReviewPopUp.svelte
 msgid "Submit"
 msgstr "Submit"
 
@@ -1515,3 +1514,7 @@ msgstr "My Profile"
 #: src/lib/components/MainAppBar.svelte
 msgid "Site Analytics"
 msgstr "Site Analytics"
+
+#: src/lib/components/ReviewPopUp.svelte
+msgid "Submit Review"
+msgstr "Submit Review"

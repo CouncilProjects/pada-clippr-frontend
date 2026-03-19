@@ -311,7 +311,6 @@ msgstr "Προσθήκη ετικέτας..."
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
-#: src/lib/components/ReviewPopUp.svelte
 msgid "Submit"
 msgstr "Υποβολή"
 
@@ -1271,81 +1270,85 @@ msgstr ""
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Member Accounts"
-msgstr "Λογαριασμοί Μελών"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Seller Accounts"
-msgstr "Λογαριασμοί Πωλητών"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Admin Accounts"
-msgstr "Λογαριασμοί Διαχειριστών"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Member Items"
-msgstr "Αντικείμενα από Μέλη"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Seller Items"
-msgstr "Αντικείμενα από Πωλητές"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Member Tag Usage"
-msgstr "Χρήση Tag από Μέλη"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Seller Tag Usage"
-msgstr "Χρήση Tag από Πωλητές"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Tags per Member Item"
-msgstr "Tags Ανά Αντικείμενο Μέλους"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Tags per Seller Item"
-msgstr "Tags Ανά Αντικείμενο Πωλητή"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Member Unique Tag Usage"
-msgstr "Χρήση Μοναδικών Tag από Μέλη"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 #: src/routes/analytics/+page.svelte
 msgid "Seller Unique Tag Usage"
-msgstr "Χρήση Μοναδικών Tag από Πωλητές"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Unique Tags per Member Item"
-msgstr "Μοναδικά Tags Ανά Αντικείμενο Μέλους"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Unique Tags per Seller Item"
-msgstr "Μοναδικά Tags Ανά Αντικείμενο Πωλητή"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Items per Member Account"
-msgstr "Αντικείμενα ανά Λογαριασμό Μέλους"
+msgstr ""
 
 #: src/routes/analytics/+page.svelte
 msgid "Average Items per Seller Account"
-msgstr "Αντικείμενα ανά Λογαριασμό Πωλητή"
-
-#: src/lib/components/MainAppBar.svelte
-msgid "My Analytics"
-msgstr "Τα Αναλυτικά Μου"
+msgstr ""
 
 #: src/lib/components/MainAppBar.svelte
 #: src/lib/components/MainAppBar.svelte
 msgid "My Profile"
-msgstr "Το Προφίλ Μου"
+msgstr ""
+
+#: src/lib/components/MainAppBar.svelte
+msgid "My Analytics"
+msgstr ""
 
 #: src/lib/components/MainAppBar.svelte
 msgid "Site Analytics"
-msgstr "Αναλυτικά Σελίδας"
+msgstr ""
+
+#: src/lib/components/ReviewPopUp.svelte
+msgid "Submit Review"
+msgstr "Υποβολή κριτικής"

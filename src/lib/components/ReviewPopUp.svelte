@@ -130,7 +130,7 @@ When you render the component a button will appear. Pressing the button will ope
                             ></textarea>
                         </label>
                         {#if !loading}
-                            <button class="btn preset-filled" type="submit" disabled={loading}>Submit</button>
+                            <button class="btn preset-filled" type="submit" disabled={loading}>Submit Review</button>
                         {:else}
                             <Progress value={null} class="items-center w-fit">
 		<Progress.Label>Progress</Progress.Label>
