@@ -559,7 +559,18 @@ export interface components {
         SellerAnalytics: {
             /** Format: date-time */
             readonly created_at: string;
-            seller: number;
+            /** Format: int64 */
+            items_count?: number;
+            /** Format: int64 */
+            used_tags_count?: number;
+            /** Format: int64 */
+            distinct_tags_count?: number;
+            /** Format: int64 */
+            accepted_request_count?: number;
+            /** Format: int64 */
+            rejected_request_count?: number;
+            /** Format: int64 */
+            total_views?: number;
         };
         SellerAnalyticsResponse: {
             /** Format: date-time */
