@@ -44,6 +44,7 @@
   "dependencies": {
     "@lucide/svelte": "^0.564.0",
     "axios": "^1.12.2",
-    "axios-auth-refresh": "^3.3.6"
+    "axios-auth-refresh": "^3.3.6",
+    "svelte-chartjs": "^4.0.1"
   }
 }

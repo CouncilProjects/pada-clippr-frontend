@@ -1270,3 +1270,72 @@ msgstr ""
 
 #~ msgid "Accepted <0/> <1>✓ User reviewed✓ Item reviewed</1>"
 #~ msgstr ""
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Member Accounts"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Seller Accounts"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Admin Accounts"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Member Items"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Seller Items"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Member Tag Usage"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Seller Tag Usage"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Tags per Member Item"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Tags per Seller Item"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Member Unique Tag Usage"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Seller Unique Tag Usage"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Unique Tags per Member Item"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Unique Tags per Seller Item"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Items per Member Account"
+msgstr ""
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Items per Seller Account"
+msgstr ""

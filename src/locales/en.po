@@ -1436,3 +1436,72 @@ msgstr "✓ Item reviewed"
 
 #~ msgid "Accepted <0/> <1>✓ User reviewed✓ Item reviewed</1>"
 #~ msgstr "Accepted <0/> <1>✓ User reviewed✓ Item reviewed</1>"
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Member Accounts"
+msgstr "Member Accounts"
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Seller Accounts"
+msgstr "Seller Accounts"
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Admin Accounts"
+msgstr "Admin Accounts"
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Member Items"
+msgstr "Member Items"
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Seller Items"
+msgstr "Seller Items"
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Member Tag Usage"
+msgstr "Member Tag Usage"
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Seller Tag Usage"
+msgstr "Seller Tag Usage"
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Tags per Member Item"
+msgstr "Average Tags per Member Item"
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Tags per Seller Item"
+msgstr "Average Tags per Seller Item"
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Member Unique Tag Usage"
+msgstr "Member Unique Tag Usage"
+
+#: src/routes/analytics/+page.svelte
+#: src/routes/analytics/+page.svelte
+msgid "Seller Unique Tag Usage"
+msgstr "Seller Unique Tag Usage"
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Unique Tags per Member Item"
+msgstr "Average Unique Tags per Member Item"
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Unique Tags per Seller Item"
+msgstr "Average Unique Tags per Seller Item"
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Items per Member Account"
+msgstr "Average Items per Member Account"
+
+#: src/routes/analytics/+page.svelte
+msgid "Average Items per Seller Account"
+msgstr "Average Items per Seller Account"

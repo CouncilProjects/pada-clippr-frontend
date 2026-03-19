@@ -4,6 +4,22 @@
  */
 
 export interface paths {
+    "/api/analytics/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["analytics_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/item/": {
         parameters: {
             query?: never;
@@ -78,6 +94,73 @@ export interface paths {
         get?: never;
         put?: never;
         post: operations["item_my_clippings_create_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/pendingrequests/{id}/action/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Accept or reject a pending request for an item owned by the user. */
+        post: operations["pendingrequests_action_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/pendingrequests/create/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["pendingrequests_create_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/pendingrequests/list/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List pending requests for items owned by the user. */
+        get: operations["pendingrequests_list_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/pendingrequests/myoffers/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List current outgoing offers made by the user. */
+        get: operations["pendingrequests_myoffers_retrieve"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -394,8 +477,6 @@ export interface components {
             /** Format: date-time */
             readonly updated_at: string;
             negotiable?: boolean;
-            /** Format: decimal */
-            min_negotiable_price?: string | null;
             tags?: number[];
         };
         ItemBasic: {
@@ -452,8 +533,6 @@ export interface components {
             /** Format: date-time */
             readonly updated_at?: string;
             negotiable?: boolean;
-            /** Format: decimal */
-            min_negotiable_price?: string | null;
             tags?: number[];
         };
         /**
@@ -477,6 +556,7 @@ export interface components {
             readonly avatar: components["schemas"]["Image"][];
         };
         SellerUser: {
+            readonly id: number;
             /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
             username: string;
             is_verified_seller?: boolean;
@@ -493,6 +573,35 @@ export interface components {
              *     * `account` - account
              */
             about: components["schemas"]["AboutEnum"];
+        };
+        SiteAnalytics: {
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: int64 */
+            member_count?: number;
+            /** Format: int64 */
+            seller_count?: number;
+            /** Format: int64 */
+            admin_count?: number;
+            /** Format: int64 */
+            member_items_count?: number;
+            /** Format: int64 */
+            seller_items_count?: number;
+            /** Format: int64 */
+            member_used_tags_count?: number;
+            /** Format: int64 */
+            seller_used_tags_count?: number;
+            /** Format: int64 */
+            member_distinct_tags_count?: number;
+            /** Format: int64 */
+            seller_distinct_tags_count?: number;
+        };
+        SiteAnalyticsResponse: {
+            /** Format: date-time */
+            requested_at: string;
+            /** Format: date-time */
+            last_update: string | null;
+            data: components["schemas"]["SiteAnalytics"][];
         };
         SocialLink: {
             readonly id: number;
@@ -583,6 +692,25 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    analytics_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteAnalyticsResponse"];
+                };
+            };
+        };
+    };
     item_list: {
         parameters: {
             query?: {
@@ -781,6 +909,80 @@ export interface operations {
         };
     };
     item_my_clippings_create_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    pendingrequests_action_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    pendingrequests_create_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    pendingrequests_list_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    pendingrequests_myoffers_retrieve: {
         parameters: {
             query?: never;
             header?: never;
