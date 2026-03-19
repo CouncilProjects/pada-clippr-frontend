@@ -1518,3 +1518,7 @@ msgstr "Site Analytics"
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Submit Review"
 msgstr "Submit Review"
+
+#: src/routes/analytics/+page.svelte
+msgid "Analytics data is not available to member accounts."
+msgstr "Analytics data is not available to member accounts."

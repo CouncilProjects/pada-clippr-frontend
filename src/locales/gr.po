@@ -1352,3 +1352,7 @@ msgstr ""
 #: src/lib/components/ReviewPopUp.svelte
 msgid "Submit Review"
 msgstr "Υποβολή κριτικής"
+
+#: src/routes/analytics/+page.svelte
+msgid "Analytics data is not available to member accounts."
+msgstr "Τα δεδομένα αναλυτικών δεν είναι διαθέσιμα σε λογαριασμούς μελών."
