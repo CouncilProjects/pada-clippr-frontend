@@ -1033,15 +1033,15 @@ msgstr ""
 #: src/lib/components/MainAppBar.svelte
 #: src/routes/list/+page.svelte
 msgid "Interest Offers"
-msgstr ""
+msgstr "Προσφορές Ενδιαφέροντος"
 
 #: src/routes/list/+page.svelte
 msgid "You must be logged in to view interest offers."
-msgstr ""
+msgstr "Πρέπει να είστε συνδεδεμένοι για να δείτε προσφορές ενδιαφέροντος."
 
 #: src/routes/list/+page.svelte
 msgid "Failed to load interest offers."
-msgstr ""
+msgstr "Αποτυχία φόρτωσης προσφορών ενδιαφέροντος."
 
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
@@ -1049,29 +1049,29 @@ msgid "Loading offers…"
 msgstr ""
 
 #~ msgid "No interest offers yet."
-#~ msgstr ""
+#~ msgstr "Φόρτωση προσφορών..."
 
 #~ msgid "When someone sends an offer, it will appear here."
-#~ msgstr ""
+#~ msgstr "Όταν κάποιος στέλνει μια προσφορά, θα εμφανίζεται εδώ."
 
 #: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Item"
-msgstr ""
+msgstr "Είδος"
 
 #: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 msgid "From"
-msgstr ""
+msgstr "Από"
 
 #: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Created"
-msgstr ""
+msgstr "Δημιουργήθηκε"
 
 #. placeholder {0}: itemInfo.itemId
 #. placeholder {0}: itemInfo.itemId
@@ -1084,90 +1084,90 @@ msgstr ""
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Item #{0}"
-msgstr ""
+msgstr "Στοιχείο #{0}"
 
 #: src/routes/my-offers/+page.svelte
 msgid "You must be logged in to view your offers."
-msgstr ""
+msgstr "Πρέπει να είστε συνδεδεμένοι για να δείτε τις προσφορές σας."
 
 #: src/routes/my-offers/+page.svelte
 msgid "Failed to load outgoing offers."
-msgstr ""
+msgstr "Αποτυχία φόρτωσης εξερχόμενων προσφορών."
 
 #: src/routes/my-offers/+page.svelte
 msgid "No outgoing offers yet."
-msgstr ""
+msgstr "Δεν υπάρχουν ακόμη εξερχόμενες προσφορές"
 
 #: src/routes/my-offers/+page.svelte
 msgid "Make an offer on a listing to see it here."
-msgstr ""
+msgstr "Κάντε μια προσφορά σε μια καταχώρηση για να τη δείτε εδώ"
 
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "To"
-msgstr ""
+msgstr "Πρός"
 
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/lib/components/ListingThumbnailCard.svelte
 #: src/routes/clipping/[clipId]/+page.svelte
 msgid "Made to order"
-msgstr ""
+msgstr "Κατόπιν παραγγελίας"
 
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Pending"
-msgstr ""
+msgstr "Σε εκκρεμότητα"
 
 #: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Accepted"
-msgstr ""
+msgstr "Αποδέχτηκε"
 
 #: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Rejected"
-msgstr ""
+msgstr "Απορρίφθηκε"
 
 #~ msgid "Offer {0}."
-#~ msgstr ""
+#~ msgstr "Προσφέρετε {0}."
 
 #~ msgid "Failed to update interest offer."
-#~ msgstr ""
+#~ msgstr "Αποτυχία ενημέρωσης της προσφοράς ενδιαφέροντος."
 
 #: src/routes/list/+page.svelte
 #: src/routes/list/+page.svelte
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "Status"
-msgstr ""
+msgstr "Κατάσταση"
 
 #: src/routes/list/+page.svelte
 msgid "Actions"
-msgstr ""
+msgstr "Ενέργειες"
 
 #: src/routes/list/+page.svelte
 msgid "Accept"
-msgstr ""
+msgstr "Αποδοχή"
 
 #: src/routes/list/+page.svelte
 msgid "Reject"
-msgstr ""
+msgstr "Απόρριψη"
 
 #~ msgid "Are you sure you want to accept this offer? This will mark the item as sold and notify the buyer."
-#~ msgstr ""
+#~ msgstr "Είστε σίγουροι ότι θέλετε να αποδεχτείτε αυτήν την προσφορά; Αυτό θα επισημάνει το προϊόν ως πωλημένο και θα ειδοποιήσει τον αγοραστή."
 
 #~ msgid "Are you sure you want to reject this offer? The buyer will be notified of your decision."
-#~ msgstr ""
+#~ msgstr "Είστε βέβαιοι ότι θέλετε να απορρίψετε αυτήν την προσφορά; Ο αγοραστής θα ειδοποιηθεί για την απόφασή σας."
 
 #~ msgid "Request rejected"
-#~ msgstr ""
+#~ msgstr "Το αίτημα απορρίφθηκε"
 
 #~ msgid "Reject failed"
-#~ msgstr ""
+#~ msgstr "Η απόρριψη απέτυχε"
 
 #: src/routes/list/+page.svelte
 msgid "Accept Request"
@@ -1175,14 +1175,14 @@ msgstr ""
 
 #: src/routes/list/+page.svelte
 msgid "Reject Request"
-msgstr ""
+msgstr "Αποδοχή αιτήματος"
 
 #~ msgid "Write a message (optional)..."
-#~ msgstr ""
+#~ msgstr "Γράψτε ένα μήνυμα (προαιρετικό)..."
 
 #: src/routes/list/+page.svelte
 msgid "Processing..."
-msgstr ""
+msgstr "Επεξεργασία..."
 
 #~ msgid ""
 #~ "<0/> <1/> class=\"w-full border rounded-lg p-2 mb-4\"\n"
@@ -1236,27 +1236,21 @@ msgstr ""
 
 #: src/routes/my-offers/+page.svelte
 msgid "Review user"
-msgstr ""
+msgstr "Αξιολόγηση χρήστη"
 
 #: src/routes/my-offers/+page.svelte
 msgid "Review item"
 msgstr ""
 
 #~ msgid "Accepted <0>Item reviewed</0>"
-#~ msgstr ""
-
-#~ msgid "class=\"btn-icon hover:preset-tonal\"><0/>"
-#~ msgstr ""
-
-#~ msgid "lass=\"btn-icon chover:preset-tonal\"><0/>"
-#~ msgstr ""
+#~ msgstr "Αποδεκτό <0>Το στοιχείο αξιολογήθηκε"
 
 #~ msgid "Use"
-#~ msgstr ""
+#~ msgstr "Χρήση"
 
 #: src/routes/my-clippings/create/+page.svelte
 msgid "Use lowercase letters, numbers, and hyphens only"
-msgstr ""
+msgstr "Χρησιμοποιήστε μόνο πεζά γράμματα, αριθμούς και παύλες"
 
 #~ msgid "se"
 #~ msgstr ""
@@ -1265,27 +1259,27 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Accepted <0>Accepted <0>User reviewedItem reviewed</0></0>"
-#~ msgstr ""
+#~ msgstr "Αποδεκτό <0>Αποδεχόμενο <0>Αξιολόγηση από χρήστηΑξιολόγηση στοιχείου</0></0>"
 
 #~ msgid "Accepted <0>✓ All reviews completed✓ User reviewed✓ Item reviewed</0>"
-#~ msgstr ""
+#~ msgstr "Αποδεκτό <0>✓ Όλες οι αξιολογήσεις ολοκληρώθηκαν✓ Αξιολογήθηκε από χρήστη✓ Ελέγχθηκε το στοιχείο</0>"
 
 #: src/routes/my-offers/+page.svelte
 #: src/routes/my-offers/+page.svelte
 msgid "✓ All reviews completed"
-msgstr ""
+msgstr "✓ Όλες οι αξιολογήσεις ολοκληρώθηκαν"
 
 #: src/routes/my-offers/+page.svelte
 msgid "Unknown user"
-msgstr ""
+msgstr "Άγνωστος χρήστης"
 
 #: src/routes/my-offers/+page.svelte
 msgid "✓ User reviewed"
-msgstr ""
+msgstr "✓ Ο χρήστης αξιολογήθηκε"
 
 #: src/routes/my-offers/+page.svelte
 msgid "✓ Item reviewed"
-msgstr ""
+msgstr "✓ Το είδος αξιολογήθηκε"
 
 #~ msgid "Accepted <0/> <1>✓ User reviewed✓ Item reviewed</1>"
 #~ msgstr ""
