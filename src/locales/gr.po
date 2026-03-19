@@ -1349,3 +1349,7 @@ msgstr "Το Προφίλ Μου"
 #: src/lib/components/MainAppBar.svelte
 msgid "Site Analytics"
 msgstr "Αναλυτικά Σελίδας"
+
+#: src/routes/analytics/+page.svelte
+msgid "Analytics data is not available to member accounts."
+msgstr "Τα δεδομένα αναλυτικών δεν είναι διαθέσιμα σε λογαριασμούς μελών."

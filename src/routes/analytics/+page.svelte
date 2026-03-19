@@ -1,13 +1,18 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { loggedUser } from "$lib/universalReactivity/auth.svelte"
   import apiCaller from "$lib/axiosConfig";
   import type { paths, components } from "$lib/api-types";
   import { toaster } from "$lib/toast";
   import { Line, Doughnut } from 'svelte-chartjs';
   import 'chart.js/auto';
 
-  type analyticsResponse = paths['/api/analytics/']['get']['responses']['200']['content']['application/json'];
-  type siteAnalyticsData = components["schemas"]["SiteAnalytics"][];
+  type genericAnalyticsResponse = paths['/api/analytics/']['get']['responses']['200']['content']['application/json'] | null;
+  type siteAnalyticsResponse = components["schemas"]["SiteAnalyticsResponse"] | null;
+  type sellerAnalyticsResponse = components["schemas"]["SellerAnalyticsResponse"] | null;
+  type siteAnalyticsData = components["schemas"]["SiteAnalytics"][] | null;
+  type sellerAnalyticsData = components["schemas"]["SellerAnalytics"][] | null;
+
   const chartLocale: Intl.DateTimeFormatOptions = {
     month: 'short', day: 'numeric',
     hour: '2-digit', minute: '2-digit', hour12: false
@@ -177,84 +182,106 @@
     ]
   });
 
+  function processSiteAnalytics(siteAnalyticsData: siteAnalyticsData) {
+    siteAnalyticsData?.forEach((entry) => {
+      const date = new Date(entry.created_at).toLocaleString(undefined, chartLocale);
+      usersChart.labels.push(date);
+      usersChart.datasets[0].data.push(entry.member_count ?? 0);
+      usersChart.datasets[1].data.push(entry.seller_count ?? 0);
+      usersChart.datasets[2].data.push(entry.admin_count ?? 0);
+
+      itemsChart.labels.push(date);
+      itemsChart.datasets[0].data.push(entry.member_items_count ?? 0);
+      itemsChart.datasets[1].data.push(entry.seller_items_count ?? 0);
+      itemAvgChart.labels.push(date);
+      itemAvgChart.datasets[0].data.push(entry.member_count ? (entry.member_items_count ?? 0) / entry.member_count : 0);
+      itemAvgChart.datasets[1].data.push(entry.seller_count ? (entry.seller_items_count ?? 0) / entry.seller_count : 0);
+
+      tagsChart.labels.push(date);
+      tagsChart.datasets[0].data.push(entry.member_used_tags_count ?? 0);
+      tagsChart.datasets[1].data.push(entry.seller_used_tags_count ?? 0);
+      tagAvgChart.labels.push(date);
+      tagAvgChart.datasets[0].data.push(entry.member_items_count ? (entry.member_used_tags_count ?? 0) / entry.member_items_count : 0);
+      tagAvgChart.datasets[1].data.push(entry.seller_items_count ? (entry.seller_used_tags_count ?? 0) / entry.seller_items_count : 0);
+
+      uniqTagChart.labels.push(date);
+      uniqTagChart.datasets[0].data.push(entry.member_distinct_tags_count ?? 0);
+      uniqTagChart.datasets[1].data.push(entry.seller_distinct_tags_count ?? 0);
+      uniqTagAvgChart.labels.push(date);
+      uniqTagAvgChart.datasets[0].data.push(entry.member_items_count ? (entry.member_distinct_tags_count ?? 0) / entry.member_items_count : 0);
+      uniqTagAvgChart.datasets[1].data.push(entry.seller_items_count ? (entry.seller_distinct_tags_count ?? 0) / entry.seller_items_count : 0);
+    });
+
+    const lastEntry = siteAnalyticsData?.at(-1);
+    itemsPie.datasets[0].data = [
+      lastEntry?.member_items_count ?? 0,
+      lastEntry?.seller_items_count ?? 0
+    ];
+    usersPie.datasets[0].data = [
+      lastEntry?.member_count ?? 0,
+      lastEntry?.seller_count ?? 0,
+      lastEntry?.admin_count ?? 0
+    ];
+    tagsPie.datasets[0].data = [
+      lastEntry?.member_used_tags_count ?? 0,
+      lastEntry?.seller_used_tags_count ?? 0
+    ];
+    uniqTagsPie.datasets[0].data = [
+      lastEntry?.member_distinct_tags_count ?? 0,
+      lastEntry?.seller_distinct_tags_count ?? 0
+    ];
+  }
+
+  function processSellerAnalytics(sellerAnalyticsData: sellerAnalyticsData) {
+    console.log("real")
+    console.log(sellerAnalyticsData)
+  }
+
   onMount(async () => {
     try {
-      const response = await apiCaller.get('/analytics/');
-      const genericAnalyticsResponse: analyticsResponse | null = response.data;
-      const siteAnalyticsData: siteAnalyticsData | null = genericAnalyticsResponse?.data ?? null;
-
-      siteAnalyticsData?.forEach((entry) => {
-        const date = new Date(entry.created_at).toLocaleString(undefined, chartLocale);
-        usersChart.labels.push(date);
-        usersChart.datasets[0].data.push(entry.member_count ?? 0);
-        usersChart.datasets[1].data.push(entry.seller_count ?? 0);
-        usersChart.datasets[2].data.push(entry.admin_count ?? 0);
-
-        itemsChart.labels.push(date);
-        itemsChart.datasets[0].data.push(entry.member_items_count ?? 0);
-        itemsChart.datasets[1].data.push(entry.seller_items_count ?? 0);
-        itemAvgChart.labels.push(date);
-        itemAvgChart.datasets[0].data.push(entry.member_count ? (entry.member_items_count ?? 0) / entry.member_count : 0);
-        itemAvgChart.datasets[1].data.push(entry.seller_count ? (entry.seller_items_count ?? 0) / entry.seller_count : 0);
-
-        tagsChart.labels.push(date);
-        tagsChart.datasets[0].data.push(entry.member_used_tags_count ?? 0);
-        tagsChart.datasets[1].data.push(entry.seller_used_tags_count ?? 0);
-        tagAvgChart.labels.push(date);
-        tagAvgChart.datasets[0].data.push(entry.member_items_count ? (entry.member_used_tags_count ?? 0) / entry.member_items_count : 0);
-        tagAvgChart.datasets[1].data.push(entry.seller_items_count ? (entry.seller_used_tags_count ?? 0) / entry.seller_items_count : 0);
-
-        uniqTagChart.labels.push(date);
-        uniqTagChart.datasets[0].data.push(entry.member_distinct_tags_count ?? 0);
-        uniqTagChart.datasets[1].data.push(entry.seller_distinct_tags_count ?? 0);
-        uniqTagAvgChart.labels.push(date);
-        uniqTagAvgChart.datasets[0].data.push(entry.member_items_count ? (entry.member_distinct_tags_count ?? 0) / entry.member_items_count : 0);
-        uniqTagAvgChart.datasets[1].data.push(entry.seller_items_count ? (entry.seller_distinct_tags_count ?? 0) / entry.seller_items_count : 0);
-      });
-
-      const lastEntry = siteAnalyticsData?.at(-1);
-      itemsPie.datasets[0].data = [
-        lastEntry?.member_items_count ?? 0,
-        lastEntry?.seller_items_count ?? 0
-      ];
-      usersPie.datasets[0].data = [
-        lastEntry?.member_count ?? 0,
-        lastEntry?.seller_count ?? 0,
-        lastEntry?.admin_count ?? 0
-      ];
-      tagsPie.datasets[0].data = [
-        lastEntry?.member_used_tags_count ?? 0,
-        lastEntry?.seller_used_tags_count ?? 0
-      ];
-      uniqTagsPie.datasets[0].data = [
-        lastEntry?.member_distinct_tags_count ?? 0,
-        lastEntry?.seller_distinct_tags_count ?? 0
-      ];
-
+      if (loggedUser.accountType === "ADMIN") {
+        const response = await apiCaller.get('/analytics/');
+        const siteAnalytics: siteAnalyticsResponse = response.data;
+        processSiteAnalytics(siteAnalytics?.data ?? null);
+      } else if (loggedUser.accountType === "SELLER") {
+        const response = await apiCaller.get('/analytics/');
+        const sellerAnalytics: sellerAnalyticsResponse = response.data;
+        processSellerAnalytics(sellerAnalytics?.data ?? null);
+      }
     } catch (error) {
       toaster.info({title: "Error fetching analytics data", duration: 1500})
     }
   });
 </script>
 
-<div>
-  <div class="flex flex-row">
-    <div class="flex-1 h-80"><Line data={usersChart} options={lineOptions} /></div>
-    <div class="ml-3 h-80"><Doughnut data={usersPie} options={pieOptions} /></div>
+{#if loggedUser.accountType === "ADMIN"}
+  <div>
+    <div class="flex flex-row">
+      <div class="flex-1 h-80"><Line data={usersChart} options={lineOptions} /></div>
+      <div class="ml-3 h-80"><Doughnut data={usersPie} options={pieOptions} /></div>
+    </div>
+    <div class="mt-10 flex flex-row">
+      <div class="flex-1 h-80"><Line data={itemsChart} options={lineOptions} /></div>
+      <div class="ml-3 h-80"><Doughnut data={itemsPie} options={pieOptions} /></div>
+      <div class="flex-1 h-80"><Line data={itemAvgChart} options={lineOptions} /></div>
+    </div>
+    <div class="mt-10 flex flex-row">
+      <div class="flex-1 h-80"><Line data={tagsChart} options={lineOptions} /></div>
+      <div class="ml-3 h-80"><Doughnut data={tagsPie} options={pieOptions} /></div>
+      <div class="flex-1 h-80"><Line data={tagAvgChart} options={lineOptions} /></div>
+    </div>
+    <div class="mt-10 flex flex-row">
+      <div class="flex-1 h-80"><Line data={uniqTagChart} options={lineOptions} /></div>
+      <div class="ml-3 h-80"><Doughnut data={uniqTagsPie} options={pieOptions} /></div>
+      <div class="flex-1 h-80"><Line data={uniqTagAvgChart} options={lineOptions} /></div>
+    </div>
   </div>
-  <div class="mt-10 flex flex-row">
-    <div class="flex-1 h-80"><Line data={itemsChart} options={lineOptions} /></div>
-    <div class="ml-3 h-80"><Doughnut data={itemsPie} options={pieOptions} /></div>
-    <div class="flex-1 h-80"><Line data={itemAvgChart} options={lineOptions} /></div>
+{:else if loggedUser.accountType === "SELLER"}
+  <div>
+
   </div>
-  <div class="mt-10 flex flex-row">
-    <div class="flex-1 h-80"><Line data={tagsChart} options={lineOptions} /></div>
-    <div class="ml-3 h-80"><Doughnut data={tagsPie} options={pieOptions} /></div>
-    <div class="flex-1 h-80"><Line data={tagAvgChart} options={lineOptions} /></div>
+{:else}
+  <div class="flex flex-col items-center justify-center h-full">
+    <p class="text-gray-600">Analytics data is not available to member accounts.</p>
   </div>
-  <div class="mt-10 flex flex-row">
-    <div class="flex-1 h-80"><Line data={uniqTagChart} options={lineOptions} /></div>
-    <div class="ml-3 h-80"><Doughnut data={uniqTagsPie} options={pieOptions} /></div>
-    <div class="flex-1 h-80"><Line data={uniqTagAvgChart} options={lineOptions} /></div>
-  </div>
-</div>
+{/if}

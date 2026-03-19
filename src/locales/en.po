@@ -1515,3 +1515,7 @@ msgstr "My Profile"
 #: src/lib/components/MainAppBar.svelte
 msgid "Site Analytics"
 msgstr "Site Analytics"
+
+#: src/routes/analytics/+page.svelte
+msgid "Analytics data is not available to member accounts."
+msgstr "Analytics data is not available to member accounts."
