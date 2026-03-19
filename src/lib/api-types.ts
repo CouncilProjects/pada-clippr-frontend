@@ -450,6 +450,7 @@ export interface components {
             comment?: string | null;
             offer: number;
         };
+        AnalyticsResponse: components["schemas"]["SiteAnalyticsResponse"] | components["schemas"]["SellerAnalyticsResponse"];
         /** @description Mixin to handle image uploads for any model with a GenericRelation to Image */
         AvatarUpload: {
             /** Format: uri */
@@ -554,6 +555,18 @@ export interface components {
             username: string;
             is_verified_seller?: boolean;
             readonly avatar: components["schemas"]["Image"][];
+        };
+        SellerAnalytics: {
+            /** Format: date-time */
+            readonly created_at: string;
+            seller: number;
+        };
+        SellerAnalyticsResponse: {
+            /** Format: date-time */
+            requested_at: string;
+            /** Format: date-time */
+            last_update: string | null;
+            data: components["schemas"]["SellerAnalytics"][];
         };
         SellerUser: {
             readonly id: number;
@@ -701,12 +714,13 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
+            /** @description Returns either site-wide or seller-specific analytics depending on the user role. */
             200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["SiteAnalyticsResponse"];
+                    "application/json": components["schemas"]["AnalyticsResponse"];
                 };
             };
         };

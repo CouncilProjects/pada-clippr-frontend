@@ -22,11 +22,11 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/SiteAnalyticsResponse"
+                                    "$ref": "#/components/schemas/AnalyticsResponse"
                                 }
                             }
                         },
-                        "description": ""
+                        "description": "Returns either site-wide or seller-specific analytics depending on the user role."
                     }
                 }
             }
@@ -1185,6 +1185,16 @@
                     "rating"
                 ]
             },
+            "AnalyticsResponse": {
+                "oneOf": [
+                    {
+                        "$ref": "#/components/schemas/SiteAnalyticsResponse"
+                    },
+                    {
+                        "$ref": "#/components/schemas/SellerAnalyticsResponse"
+                    }
+                ]
+            },
             "AvatarUpload": {
                 "type": "object",
                 "description": "Mixin to handle image uploads for any model with a GenericRelation to Image",
@@ -1520,6 +1530,48 @@
                     "avatar",
                     "id",
                     "username"
+                ]
+            },
+            "SellerAnalytics": {
+                "type": "object",
+                "properties": {
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "seller": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "created_at",
+                    "seller"
+                ]
+            },
+            "SellerAnalyticsResponse": {
+                "type": "object",
+                "properties": {
+                    "requested_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "last_update": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SellerAnalytics"
+                        }
+                    }
+                },
+                "required": [
+                    "data",
+                    "last_update",
+                    "requested_at"
                 ]
             },
             "SellerUser": {
